@@ -1,0 +1,253 @@
+/* Layered so component styles always override these base rules, regardless of bundle order. */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: calc(var(--header-height) + 1rem);
+  }
+
+  body {
+    min-height: 100svh;
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--leading-body);
+    color: var(--color-text);
+    background-color: var(--color-background);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  img,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 380;
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-display);
+    text-wrap: balance;
+    font-variation-settings: 'opsz' 144;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ul[role='list'],
+  ol[role='list'] {
+    list-style: none;
+  }
+
+  a {
+    color: var(--color-link);
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+    transition: color var(--duration-fast) var(--ease-out);
+  }
+
+  a:hover {
+    color: var(--color-link-hover);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+
+  main:focus {
+    outline: none;
+  }
+
+  .on-dark :focus-visible {
+    outline-color: var(--color-focus-inverse);
+  }
+
+  /* Layout */
+  .container {
+    width: 100%;
+    max-width: var(--container);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+
+  .section {
+    padding-block: var(--section-pad);
+  }
+
+  .on-dark {
+    background-color: var(--color-ink);
+    color: var(--color-text-inverse);
+  }
+
+  /* Type helpers */
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: var(--text-eyebrow);
+    font-weight: 600;
+    letter-spacing: var(--tracking-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+
+  .eyebrow::before {
+    content: '';
+    width: 1.75rem;
+    height: 1px;
+    background-color: currentColor;
+  }
+
+  .on-dark .eyebrow {
+    color: var(--color-text-inverse-muted);
+  }
+
+  .lede {
+    font-size: var(--text-body-lg);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+    max-width: 38rem;
+  }
+
+  .on-dark .lede {
+    color: var(--color-text-inverse-muted);
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.625rem;
+    min-height: 3.25rem;
+    padding: 0 1.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1;
+    text-decoration: none;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition:
+      background-color var(--duration-base) var(--ease-out),
+      border-color var(--duration-base) var(--ease-out),
+      color var(--duration-base) var(--ease-out);
+  }
+
+  .btn__arrow {
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  .btn:hover .btn__arrow {
+    transform: translateX(4px);
+  }
+
+  .btn--primary {
+    background-color: var(--color-cta);
+    color: var(--color-cta-text);
+  }
+
+  .btn--primary:hover {
+    background-color: var(--color-cta-hover);
+    color: var(--color-cta-text);
+  }
+
+  .btn--ghost {
+    background-color: transparent;
+    border-color: var(--color-border-strong);
+    color: var(--color-text);
+  }
+
+  .btn--ghost:hover {
+    border-color: var(--color-text);
+    color: var(--color-text);
+  }
+
+  .btn--ghost-inverse {
+    background-color: transparent;
+    border-color: rgba(246, 242, 236, 0.45);
+    color: var(--color-text-inverse);
+  }
+
+  .btn--ghost-inverse:hover {
+    border-color: var(--color-text-inverse);
+    background-color: rgba(246, 242, 236, 0.08);
+    color: var(--color-text-inverse);
+  }
+
+  /* Inline arrow link */
+  .arrow-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    text-decoration: none;
+    color: var(--color-link);
+  }
+
+  .arrow-link .btn__arrow {
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  .arrow-link:hover .btn__arrow {
+    transform: translateX(4px);
+  }
+
+  /* Accessibility */
+  .visually-hidden {
+    position: absolute !important;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .skip-link {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    z-index: 2000;
+    padding: 0.75rem 1rem;
+    background: var(--color-ink);
+    color: var(--color-text-inverse);
+    font-weight: 600;
+    text-decoration: none;
+    transform: translateY(-200%);
+  }
+
+  .skip-link:focus-visible {
+    transform: none;
+    color: var(--color-text-inverse);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

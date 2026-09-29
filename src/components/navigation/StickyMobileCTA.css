@@ -1,0 +1,37 @@
+.sticky-cta {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .sticky-cta {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 900;
+    padding: 0.75rem var(--gutter) calc(0.75rem + env(safe-area-inset-bottom));
+    background-color: rgba(246, 242, 236, 0.94);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--color-border);
+    transform: translateY(100%);
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+
+  .sticky-cta.is-visible {
+    transform: none;
+  }
+
+  .sticky-cta__button {
+    width: 100%;
+  }
+
+  body:has(.sticky-cta) {
+    padding-bottom: var(--mobile-cta-height);
+  }
+
+  /* Focused or scrolled-to elements stop above the bar instead of hiding under it. */
+  html:has(.sticky-cta) {
+    scroll-padding-bottom: calc(var(--mobile-cta-height) + 1rem);
+  }
+}

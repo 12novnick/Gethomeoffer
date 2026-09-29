@@ -1,0 +1,86 @@
+:root {
+  /* Color */
+  --color-background: #f6f2ec;
+  --color-surface: #fbf9f5;
+  --color-surface-alt: #ede7df;
+  --color-ink: #1c1915;
+  --color-text: #1c1915;
+  --color-text-muted: #5e574e;
+  --color-text-inverse: #f6f2ec;
+  --color-text-inverse-muted: #cbc3b8;
+  --color-border: #d9d1c6;
+  --color-border-strong: #b3a899;
+  --color-border-inverse: rgba(246, 242, 236, 0.2);
+  /* Dark enough for small text on every light surface (≥5:1). */
+  --color-earth: #8c5230;
+  --color-olive: #6b7549;
+  --color-olive-light: #b8c08f;
+
+  /* Sky blue is reserved for action. Button text stays dark for contrast (≈10:1). */
+  --color-cta: #6ec6e8;
+  --color-cta-hover: #8dd3ee;
+  --color-cta-text: #0f1b20;
+  /* Text-weight blue for links on light backgrounds (≈5.8:1 on ivory). */
+  --color-link: #1d6a86;
+  --color-link-hover: #144e63;
+  --color-focus: #1d6a86;
+  --color-focus-inverse: #8dd3ee;
+
+  /* Typography */
+  --font-display: 'Fraunces Variable', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --text-display-xl: clamp(2.75rem, 1.4rem + 5.6vw, 6.75rem);
+  --text-display-lg: clamp(2.25rem, 1.35rem + 3.8vw, 4.75rem);
+  --text-display-md: clamp(1.875rem, 1.35rem + 2.2vw, 3.25rem);
+  --text-heading: clamp(1.375rem, 1.2rem + 0.75vw, 1.875rem);
+  --text-body-lg: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-eyebrow: 0.75rem;
+
+  --leading-tight: 1.02;
+  --leading-snug: 1.2;
+  --leading-body: 1.65;
+  --tracking-display: -0.025em;
+  --tracking-eyebrow: 0.16em;
+
+  /* Spacing */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+  --section-pad: clamp(4.5rem, 2.5rem + 7vw, 9.5rem);
+  --gutter: clamp(1rem, 0.4rem + 2.6vw, 3rem);
+
+  /* Layout */
+  --container: 1360px;
+  --container-narrow: 760px;
+  --header-height: 72px;
+  --mobile-cta-height: 76px;
+
+  /* Shape */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --shadow-soft: 0 1px 2px rgba(28, 25, 21, 0.06), 0 12px 32px -16px rgba(28, 25, 21, 0.18);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 160ms;
+  --duration-base: 280ms;
+  --duration-slow: 700ms;
+  --duration-image: 1400ms;
+
+  /* Breakpoints (reference only; CSS media queries can't read variables):
+     sm 480px · md 768px · lg 1024px · xl 1280px · 2xl 1600px */
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --header-height: 64px;
+  }
+}

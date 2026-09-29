@@ -1,0 +1,16 @@
+.placeholder-page {
+  min-height: 60svh;
+}
+
+.placeholder-page__title {
+  font-size: var(--text-display-lg);
+  max-width: 16ch;
+}
+
+.placeholder-page__note {
+  margin-top: var(--space-md);
+}
+
+.placeholder-page__link {
+  margin-top: var(--space-xl);
+}

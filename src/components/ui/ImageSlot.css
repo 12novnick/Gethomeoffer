@@ -1,0 +1,58 @@
+.image-slot {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-slot--placeholder {
+  position: relative;
+  --tone-a: #8f8577;
+  --tone-b: #6d6457;
+  background-color: var(--tone-b);
+  background-image:
+    linear-gradient(160deg, var(--tone-a) 0%, var(--tone-b) 70%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 64px);
+  background-blend-mode: normal, overlay;
+}
+
+.image-slot--placeholder[data-tone='dusk'] {
+  --tone-a: #4a4a52;
+  --tone-b: #23211f;
+}
+
+.image-slot--placeholder[data-tone='stone'] {
+  --tone-a: #aaa295;
+  --tone-b: #7c7468;
+}
+
+.image-slot--placeholder[data-tone='earth'] {
+  --tone-a: #b88a68;
+  --tone-b: #7f5a40;
+}
+
+.image-slot--placeholder[data-tone='olive'] {
+  --tone-a: #9da37d;
+  --tone-b: #5f6546;
+}
+
+.image-slot--placeholder[data-tone='sand'] {
+  --tone-a: #cfc2ae;
+  --tone-b: #a39581;
+}
+
+.image-slot__label {
+  position: absolute;
+  top: 0.875rem;
+  right: 0.875rem;
+  max-width: calc(100% - 1.75rem);
+  padding: 0.3rem 0.55rem;
+  font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  font-size: 0.6875rem;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(0, 0, 0, 0.28);
+  border-radius: var(--radius-sm);
+  pointer-events: none;
+}

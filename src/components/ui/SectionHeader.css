@@ -1,0 +1,19 @@
+.section-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-md) var(--space-xl);
+  align-items: end;
+  margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.section-header__title {
+  margin-top: var(--space-md);
+  font-size: var(--text-display-md);
+  max-width: 16ch;
+}
+
+@media (max-width: 767px) {
+  .section-header {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

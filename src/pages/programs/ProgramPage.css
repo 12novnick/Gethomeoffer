@@ -1,0 +1,37 @@
+.check-list {
+  display: grid;
+  gap: 0.875rem;
+  margin-top: var(--space-xl);
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 2rem;
+  font-size: var(--text-body-lg);
+}
+
+.check-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 1.125rem;
+  height: 1px;
+  background-color: var(--color-earth);
+}
+
+.program-note {
+  margin-top: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  max-width: 40rem;
+}
+
+.program-note a {
+  font-weight: 600;
+}
+
+.program-page__situations {
+  background-color: var(--color-surface-alt);
+}

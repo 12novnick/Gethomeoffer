@@ -1,0 +1,145 @@
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: clamp(560px, calc(100svh - var(--header-height)), 980px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+}
+
+.parallax-layer {
+  position: absolute;
+  inset: -12% 0;
+  will-change: transform;
+}
+
+.hero__image {
+  animation: hero-settle var(--duration-image) var(--ease-out) both;
+}
+
+@keyframes hero-settle {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.hero__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(20, 18, 15, 0.1) 0%, rgba(20, 18, 15, 0.25) 45%, rgba(20, 18, 15, 0.78) 100%);
+}
+
+.hero__content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    'eyebrow eyebrow'
+    'title title'
+    'lede paths'
+    'actions paths';
+  column-gap: var(--space-xl);
+  padding-block: var(--space-3xl) clamp(2.5rem, 5vw, 4.5rem);
+}
+
+.hero .eyebrow {
+  grid-area: eyebrow;
+  color: var(--color-text-inverse);
+}
+
+.hero__title {
+  grid-area: title;
+  max-width: 12ch;
+  margin-top: var(--space-md);
+  font-size: var(--text-display-xl);
+  font-weight: 330;
+  color: var(--color-text-inverse);
+}
+
+.hero__lede {
+  grid-area: lede;
+  max-width: 34rem;
+  margin-top: var(--space-lg);
+  font-size: var(--text-body-lg);
+  color: rgba(246, 242, 236, 0.86);
+}
+
+.hero__actions {
+  grid-area: actions;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.hero__paths {
+  grid-area: paths;
+  align-self: end;
+  display: grid;
+  gap: 0.25rem;
+  min-width: 15rem;
+  border-top: 1px solid var(--color-border-inverse);
+}
+
+.hero__paths li {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding-block: 0.875rem;
+  border-bottom: 1px solid var(--color-border-inverse);
+}
+
+.hero__path-index {
+  font-size: var(--text-eyebrow);
+  letter-spacing: 0.12em;
+  color: var(--color-text-inverse-muted);
+}
+
+.hero__paths a {
+  color: var(--color-text-inverse);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.hero__paths a:hover {
+  color: var(--color-cta-hover);
+}
+
+@media (max-width: 1023px) {
+  .hero__content {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      'eyebrow'
+      'title'
+      'lede'
+      'actions';
+  }
+
+  .hero__paths {
+    display: none;
+  }
+}
+
+@media (max-width: 479px) {
+  .hero {
+    min-height: calc(100svh - var(--header-height));
+  }
+
+  .hero__scrim {
+    background: linear-gradient(180deg, rgba(20, 18, 15, 0.05) 0%, rgba(20, 18, 15, 0.35) 35%, rgba(20, 18, 15, 0.85) 100%);
+  }
+
+  .hero__actions .btn {
+    flex: 1 1 100%;
+  }
+}

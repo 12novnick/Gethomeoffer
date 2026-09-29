@@ -1,0 +1,9 @@
+.placeholder-value {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  font-family: ui-monospace, 'SFMono-Regular', Consolas, monospace;
+  font-size: 0.8125rem;
+  color: var(--color-earth);
+}

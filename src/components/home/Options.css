@@ -1,0 +1,161 @@
+.options {
+  background-color: var(--color-surface);
+  border-block: 1px solid var(--color-border);
+}
+
+.options__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: var(--space-xl);
+  align-items: end;
+}
+
+.options__header .eyebrow {
+  grid-column: 1 / -1;
+}
+
+.options__title {
+  margin-top: var(--space-md);
+  font-size: var(--text-display-lg);
+}
+
+.options__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 2rem);
+  margin-top: var(--space-2xl);
+}
+
+.program-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+}
+
+.program-card--cash {
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
+}
+
+.program-card--agent {
+  background-color: var(--color-ink);
+  color: var(--color-text-inverse);
+}
+
+/* Agent card sits lower so the pair reads as two distinct paths. */
+.program-card--agent {
+  margin-top: clamp(0rem, 6vw, 5rem);
+}
+
+.program-card__media {
+  aspect-ratio: 5 / 4;
+  overflow: hidden;
+}
+
+.program-card__media .image-slot {
+  transition: transform var(--duration-image) var(--ease-out);
+}
+
+.program-card:hover .program-card__media .image-slot,
+.program-card:focus-within .program-card__media .image-slot {
+  transform: scale(1.04);
+}
+
+.program-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.program-card__meta {
+  display: flex;
+  gap: 1rem;
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.program-card--cash .program-card__meta {
+  color: var(--color-earth);
+}
+
+.program-card--agent .program-card__meta {
+  color: var(--color-olive-light);
+}
+
+.program-card__title {
+  margin-top: var(--space-md);
+  font-size: var(--text-display-md);
+}
+
+.program-card__description {
+  margin-top: var(--space-sm);
+  max-width: 30rem;
+  font-size: var(--text-body-lg);
+  color: var(--color-text-muted);
+}
+
+.program-card--agent .program-card__description {
+  color: var(--color-text-inverse-muted);
+}
+
+.program-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  margin-top: auto;
+  padding-top: var(--space-xl);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-link);
+}
+
+.program-card--agent .program-card__link {
+  color: var(--color-cta);
+}
+
+.program-card__link:hover {
+  color: var(--color-link-hover);
+}
+
+.program-card--agent .program-card__link:hover {
+  color: var(--color-cta-hover);
+}
+
+.program-card--agent .program-card__link:focus-visible {
+  outline-color: var(--color-focus-inverse);
+}
+
+/* Makes the whole card clickable while keeping one accessible link. */
+.program-card__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.program-card:hover .btn__arrow {
+  transform: translateX(4px);
+}
+
+.program-card .btn__arrow {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+@media (max-width: 767px) {
+  .options__header,
+  .options__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .options__header .lede {
+    margin-top: var(--space-md);
+  }
+
+  .program-card--agent {
+    margin-top: 0;
+  }
+}

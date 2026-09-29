@@ -1,0 +1,128 @@
+.situations__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(2.5rem, 6vw, 7rem);
+  align-items: start;
+}
+
+.situations__frame {
+  position: sticky;
+  top: calc(var(--header-height) + 2.5rem);
+  aspect-ratio: 4 / 5;
+  max-height: calc(100svh - var(--header-height) - 5rem);
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--color-surface-alt);
+}
+
+.situations__image {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.03);
+  transition:
+    opacity var(--duration-slow) var(--ease-out),
+    transform var(--duration-image) var(--ease-out);
+}
+
+.situations__image.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.situations__title {
+  margin-top: var(--space-md);
+  font-size: var(--text-display-lg);
+  max-width: 12ch;
+}
+
+.situations__lede {
+  margin-top: var(--space-lg);
+}
+
+.situations__list {
+  margin-top: var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+}
+
+.situations__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: var(--space-sm);
+  padding-block: clamp(1.75rem, 4vh, 2.75rem);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Marks the item that matches the image; text itself never changes. */
+.situations__item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -1px;
+  width: 3rem;
+  height: 2px;
+  background-color: var(--color-cta);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.situations__item.is-active::before {
+  transform: scaleX(1);
+}
+
+.situations__index {
+  padding-top: 0.35rem;
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-muted);
+}
+
+.situations__item-title {
+  font-size: var(--text-heading);
+  line-height: var(--leading-snug);
+}
+
+.situations__item-body {
+  margin-top: 0.5rem;
+  max-width: 34rem;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 1023px) {
+  .situations__layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .situations__frame {
+    position: relative;
+    top: auto;
+    order: 2;
+    aspect-ratio: 3 / 2;
+    max-height: none;
+  }
+
+  .situations__content {
+    display: contents;
+  }
+
+  .situations__content > :not(.situations__list) {
+    order: 1;
+  }
+
+  .situations__list {
+    order: 3;
+    margin-top: 0;
+  }
+
+  .situations__item::before {
+    display: none;
+  }
+}
+
+@media (max-width: 479px) {
+  .situations__item {
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+  }
+}

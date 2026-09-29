@@ -1,0 +1,114 @@
+.process__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.process__title {
+  margin-top: var(--space-md);
+  font-size: var(--text-display-lg);
+  max-width: 13ch;
+}
+
+.process__more {
+  color: var(--color-cta);
+}
+
+.process__more:hover {
+  color: var(--color-cta-hover);
+}
+
+.process__steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: var(--space-3xl);
+  counter-reset: step;
+}
+
+.process__step {
+  position: relative;
+  padding: var(--space-xl) var(--space-lg) 0 0;
+  border-top: 1px solid var(--color-border-inverse);
+}
+
+/* A marker on the line for each step; the last one is sky blue as the destination. */
+.process__step::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--color-ink);
+  border: 1px solid var(--color-text-inverse-muted);
+}
+
+.process__step:last-child::before {
+  background-color: var(--color-cta);
+  border-color: var(--color-cta);
+}
+
+.process__number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 2rem + 3vw, 5rem);
+  font-weight: 250;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--color-text-inverse-muted);
+  font-variation-settings: 'opsz' 144;
+}
+
+.process__step-title {
+  margin-top: var(--space-lg);
+  font-size: var(--text-heading);
+  line-height: var(--leading-snug);
+  color: var(--color-text-inverse);
+}
+
+.process__step-body {
+  margin-top: var(--space-sm);
+  color: var(--color-text-inverse-muted);
+}
+
+@media (max-width: 1023px) {
+  .process__steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: var(--space-2xl);
+  }
+}
+
+@media (max-width: 599px) {
+  .process__steps {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0;
+    margin-top: var(--space-2xl);
+    border-left: 1px solid var(--color-border-inverse);
+    margin-left: 4px;
+  }
+
+  .process__step {
+    padding: 0 0 var(--space-xl) var(--space-lg);
+    border-top: 0;
+  }
+
+  .process__step:last-child {
+    padding-bottom: 0;
+  }
+
+  .process__step::before {
+    top: 0.5rem;
+    left: -5px;
+  }
+
+  .process__number {
+    font-size: 2.5rem;
+  }
+
+  .process__step-title {
+    margin-top: var(--space-sm);
+  }
+}
