@@ -8,8 +8,6 @@ export function Footer() {
   return (
     <footer className="site-footer on-dark">
       <div className="container">
-        <p className="site-footer__statement">Fast Solutions for Your Next Move.</p>
-
         <div className="site-footer__grid">
           <nav aria-label="Footer">
             <h2 className="site-footer__heading">Explore</h2>
@@ -29,7 +27,7 @@ export function Footer() {
                 <Link to={CASH_PATH}>We Buy Houses Cash</Link>
               </li>
               <li>
-                <Link to={AGENT_PATH}>Agent Program</Link>
+                <Link to={AGENT_PATH}>Real Estate Agent Program</Link>
               </li>
             </ul>
           </nav>

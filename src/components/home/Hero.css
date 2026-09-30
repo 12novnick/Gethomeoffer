@@ -61,9 +61,30 @@
   grid-area: title;
   max-width: 12ch;
   margin-top: var(--space-md);
+  font-family: var(--font-body);
   font-size: var(--text-display-xl);
-  font-weight: 330;
+  font-weight: 600;
   color: var(--color-text-inverse);
+}
+
+.hero__title-period {
+  display: inline-block;
+  color: white;
+  margin-left: 0.15em;
+  animation: glow-pulse 1.5s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+  }
+  50% {
+    opacity: 1;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
 }
 
 .hero__lede {

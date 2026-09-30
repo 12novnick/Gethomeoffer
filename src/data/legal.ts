@@ -42,7 +42,7 @@ export const PRIVACY_POLICY: LegalDocument = {
       id: 'how-we-share-information',
       title: 'How we share information',
       guidance:
-        'Whether details are shared with real estate professionals through the Agent Program, service providers (hosting, email, CRM) and when required by law. State whether information is sold or shared for advertising.',
+        'Whether details are shared with real estate professionals through the Real Estate Agent Program, service providers (hosting, email, CRM) and when required by law. State whether information is sold or shared for advertising.',
     },
     {
       id: 'communications',
@@ -103,7 +103,7 @@ export const TERMS: LegalDocument = {
       id: 'our-services',
       title: 'About our services',
       guidance:
-        'What the Cash Program and Agent Program are, that information on the site is general, and that submitting a form does not create an obligation or guarantee an offer.',
+        'What the Cash Program and Real Estate Agent Program are, that information on the site is general, and that submitting a form does not create an obligation or guarantee an offer.',
     },
     {
       id: 'cash-offers',
@@ -112,7 +112,7 @@ export const TERMS: LegalDocument = {
     },
     {
       id: 'agent-program',
-      title: 'Agent Program',
+      title: 'Real Estate Agent Program',
       guidance:
         'The relationship between GetHomeOffer and any real estate professionals, including any referral arrangements, compensation and licensing disclosures required in each state. Attorney review required.',
     },

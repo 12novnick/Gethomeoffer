@@ -43,11 +43,27 @@
   border-bottom-color: var(--color-link);
 }
 
-.state-directory__abbr {
-  font-size: var(--text-eyebrow);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  color: var(--color-text-muted);
+.state-directory__link {
+  align-items: center;
+}
+
+.state-directory__flag {
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  outline: 1px solid var(--color-border-strong);
+  outline-offset: 2px;
+  filter: saturate(0.7);
+  transition:
+    filter var(--duration-fast) var(--ease-out),
+    outline-color var(--duration-fast) var(--ease-out);
+}
+
+.state-directory__link:hover .state-directory__flag {
+  filter: none;
+  outline-color: var(--color-cta);
 }
 
 @media (max-width: 1023px) {

@@ -5,7 +5,7 @@ import './ContactForm.css';
 
 const PATHWAYS: { value: Pathway; label: string; hint: string }[] = [
   { value: 'cash', label: 'I want a cash offer', hint: 'Explore a direct sale through the Cash Program.' },
-  { value: 'agent', label: 'I want to explore the Agent Program', hint: 'Sell on the traditional market with a professional.' },
+  { value: 'agent', label: 'I want to explore the Real Estate Agent Program', hint: 'Sell on the traditional market with a professional.' },
   { value: 'unsure', label: "I'm not sure yet", hint: "We'll help you compare both paths." },
 ];
 

@@ -14,7 +14,7 @@ export function ContactPage() {
         crumbs={CONTACT_CRUMBS}
         eyebrow="Contact"
         title="Let's Talk About Your Property."
-        lede="Tell us a little about your property and what you're hoping to do. Whether you want a cash offer or would like to explore the Agent Program, we'll help you take the next step."
+        lede="Tell us a little about your property and what you're hoping to do. Whether you want a cash offer or would like to explore the Real Estate Agent Program, we'll help you take the next step."
       />
 
       <section className="section" aria-labelledby="contact-form-title">

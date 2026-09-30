@@ -40,8 +40,8 @@
 }
 
 .program-card--agent {
-  background-color: var(--color-ink);
-  color: var(--color-text-inverse);
+  background-color: var(--color-surface-alt);
+  color: var(--color-text);
 }
 
 /* Agent card sits lower so the pair reads as two distinct paths. */
@@ -79,6 +79,14 @@
   text-transform: uppercase;
 }
 
+.program-card__meta span:nth-child(1) {
+  color: var(--color-cta);
+}
+
+.program-card__meta span:nth-child(2) {
+  color: var(--color-cta);
+}
+
 .program-card--cash .program-card__meta {
   color: var(--color-earth);
 }
@@ -97,10 +105,6 @@
   max-width: 30rem;
   font-size: var(--text-body-lg);
   color: var(--color-text-muted);
-}
-
-.program-card--agent .program-card__description {
-  color: var(--color-text-inverse-muted);
 }
 
 .program-card__link {

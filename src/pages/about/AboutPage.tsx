@@ -77,7 +77,7 @@ export function AboutPage() {
         <p>
           We offer two programs because property owners need different things. The{' '}
           <Link to={CASH_PROGRAM.path}>Cash Program</Link> is a direct sale with a straightforward offer and no
-          listing. The <Link to={AGENT_PROGRAM.path}>Agent Program</Link> is for owners who prefer the traditional
+          listing. The <Link to={AGENT_PROGRAM.path}>Real Estate Agent Program</Link> is for owners who prefer the traditional
           market with a real estate professional.
         </p>
         <p>
@@ -95,7 +95,7 @@ export function AboutPage() {
         id="about-cta"
         title="Let's talk about your property."
         body="Tell us about your property and your situation, and we'll help you understand your options."
-        cta={{ label: 'Get Your Offer', path: OFFER_PATH }}
+        cta={{ label: 'Get My Cash Offer', path: OFFER_PATH }}
       />
     </>
   );

@@ -6,8 +6,9 @@
 }
 
 .cta-band__title {
+  font-family: var(--font-body);
   font-size: var(--text-display-lg);
-  font-weight: 330;
+  font-weight: 600;
   max-width: 13ch;
 }
 

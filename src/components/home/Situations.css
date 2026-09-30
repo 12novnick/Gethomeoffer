@@ -40,6 +40,12 @@
   margin-top: var(--space-lg);
 }
 
+.situations__prompt {
+  margin-top: var(--space-2xl);
+  font-size: calc(var(--text-body-lg) * 1.15);
+  color: var(--color-text-muted);
+}
+
 .situations__list {
   margin-top: var(--space-2xl);
   border-top: 1px solid var(--color-border);
@@ -109,6 +115,11 @@
 
   .situations__content > :not(.situations__list) {
     order: 1;
+  }
+
+  .situations__content > .situations__prompt {
+    order: 2;
+    margin-top: 0;
   }
 
   .situations__list {

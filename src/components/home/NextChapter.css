@@ -43,6 +43,14 @@
   color: rgba(246, 242, 236, 0.86);
 }
 
+.next-chapter__period {
+  display: inline-block;
+  color: white;
+  margin-left: 0.08em;
+  animation: glow-pulse 2s ease-in-out infinite;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
 .next-chapter__cta {
   margin-top: var(--space-xl);
 }

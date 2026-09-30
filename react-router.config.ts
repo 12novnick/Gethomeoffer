@@ -4,7 +4,7 @@ import type { Config } from '@react-router/dev/config';
 import { LOCATIONS } from './src/data/locations.ts';
 import { PAGES } from './src/data/pages.ts';
 
-const locationPaths = ['/we-buy-houses-cash/', '/agent-program/'].flatMap((base) =>
+const locationPaths = ['/we-buy-houses-cash/', '/real-estate-agent-program/'].flatMap((base) =>
   LOCATIONS.flatMap((state) => [
     `${base}${state.slug}/`,
     ...state.cities.map((city) => `${base}${state.slug}/${city.slug}/`),

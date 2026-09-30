@@ -9,32 +9,26 @@ export const PAGES: Record<string, PageInfo> = {
   '/': {
     title: 'GetHomeOffer | Fast Solutions for Your Next Move',
     description:
-      'Explore two ways to sell your property: a direct sale through our Cash Program, or the traditional market through our Agent Program.',
+      'Explore two ways to sell your property: a direct sale through our Cash Program, or the traditional market through our Real Estate Agent Program.',
     heading: 'Every property has a story.',
   },
   '/services/': {
-    title: 'Services: Cash Program & Agent Program | GetHomeOffer',
+    title: 'Services: Cash Program & Real Estate Agent Program | GetHomeOffer',
     description:
       'Your property, your options. Compare a direct cash sale with a traditional sale through a real estate professional.',
     heading: 'Your Property. Your Options.',
   },
   '/we-buy-houses-cash/': {
-    title: 'We Buy Houses Cash | GetHomeOffer',
+    title: 'We Buy Houses | A Simpler Way to Sell Your Home | GetHomeOffer',
     description:
       'Explore a direct sale and get a straightforward cash offer for your property. See how the Cash Program works and where we buy houses.',
-    heading: 'We Buy Houses Cash',
+    heading: 'Discover What a Cash Sale Could Look Like In Our We Buy Houses Program',
   },
-  '/agent-program/': {
-    title: 'Agent Program: Sell With a Real Estate Agent | GetHomeOffer',
+  '/real-estate-agent-program/': {
+    title: 'Real Estate Agent Program: Sell on the Traditional Market | GetHomeOffer',
     description:
-      'Prefer the traditional market? Learn how the Agent Program helps you explore connecting with a real estate professional.',
+      'Prefer the traditional market? Learn how the Real Estate Agent Program helps you explore connecting with a real estate professional.',
     heading: 'Explore a Different Way to Sell.',
-  },
-  '/how-it-works/': {
-    title: 'How It Works | GetHomeOffer',
-    description:
-      'From your property to your next move: see how the Cash Program and the Agent Program work, step by step.',
-    heading: 'How GetHomeOffer Works',
   },
   '/about/': {
     title: 'About Us | GetHomeOffer',
@@ -43,12 +37,12 @@ export const PAGES: Record<string, PageInfo> = {
   },
   '/faq/': {
     title: 'Frequently Asked Questions | GetHomeOffer',
-    description: 'Answers to common questions about GetHomeOffer, the Cash Program, the Agent Program and where we operate.',
+    description: 'Answers to common questions about GetHomeOffer, the Cash Program, the Real Estate Agent Program and where we operate.',
     heading: 'Frequently Asked Questions',
   },
   '/contact/': {
     title: 'Contact Us | GetHomeOffer',
-    description: "Let's talk about your property. Ask about a cash offer or about exploring the Agent Program.",
+    description: "Let's talk about your property. Ask about a cash offer or about exploring the Real Estate Agent Program.",
     heading: "Let's Talk About Your Property.",
   },
   '/privacy-policy/': {
@@ -60,7 +54,7 @@ export const PAGES: Record<string, PageInfo> = {
   '/terms/': {
     title: 'Terms & Conditions | GetHomeOffer',
     description:
-      'The terms and conditions that apply to using GetHomeOffer.com, the Cash Program and the Agent Program.',
+      'The terms and conditions that apply to using GetHomeOffer.com, the Cash Program and the Real Estate Agent Program.',
     heading: 'Terms & Conditions',
   },
 };

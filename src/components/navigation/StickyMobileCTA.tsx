@@ -21,7 +21,7 @@ export function StickyMobileCTA() {
   return (
     <div className={`sticky-cta ${isVisible ? 'is-visible' : ''}`} aria-hidden={!isVisible}>
       <Link to={OFFER_PATH} className="btn btn--primary sticky-cta__button" tabIndex={isVisible ? 0 : -1}>
-        Get Your Offer
+        Get My Cash Offer
       </Link>
     </div>
   );

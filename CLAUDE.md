@@ -23,6 +23,7 @@ React 19 + TypeScript + Vite + React Router 8 in framework mode (`appDirectory: 
 
 ## Images
 Every image goes through `ImageSlot` + an entry in `src/data/images.ts`. Without `src` it renders a labeled placeholder describing the photo needed. To add a real photo, set `src` on the entry.
+- Responsive sizes come from Cloudflare Image Transformations (`src/lib/images.ts`): build with `VITE_IMAGE_CDN=cloudflare` to emit `/cdn-cgi/image/...` srcsets. Only enable once Transformations is turned on for the zone; off by default so dev and other hosts serve originals. Pass `sizes` to `ImageSlot` when an image renders narrower than the viewport.
 
 ## Rules
 - NO text reveal or scroll-triggered text animations. Motion is for images only (parallax via `useParallax`, subtle scale, crossfades) and hover states.

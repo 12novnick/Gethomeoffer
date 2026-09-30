@@ -4,7 +4,7 @@ import './ComparisonTable.css';
 export function ComparisonTable() {
   return (
     <table className="compare-table">
-      <caption className="visually-hidden">Cash Program compared with the Agent Program</caption>
+      <caption className="visually-hidden">Cash Program compared with the Real Estate Agent Program</caption>
       <thead>
         <tr>
           <td />

@@ -21,14 +21,14 @@ export function NextChapter() {
 
       <div className="container next-chapter__content">
         <h2 id="next-chapter-title" className="next-chapter__title">
-          Your next chapter starts here.
+          Your next chapter starts here<span className="next-chapter__period">.</span>
         </h2>
         <p className="next-chapter__lede">
-          Whether you're considering a direct sale or exploring the traditional market, we're here to help you take
+          Whether you're considering a cash sale or exploring the traditional market, we're here to help you take
           the next step.
         </p>
         <Link to={OFFER_PATH} className="btn btn--primary next-chapter__cta">
-          Get Your Offer
+          Get My Cash Offer
           <span className="btn__arrow" aria-hidden="true">
             →
           </span>

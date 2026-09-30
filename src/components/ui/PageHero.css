@@ -3,6 +3,11 @@
   border-bottom: 1px solid var(--color-border);
 }
 
+.page-hero--seamless {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
 .page-hero__layout {
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
@@ -24,8 +29,9 @@
 
 .page-hero__title {
   margin-top: var(--space-md);
+  font-family: var(--font-body);
   font-size: var(--text-display-xl);
-  font-weight: 330;
+  font-weight: 600;
   max-width: 12ch;
 }
 

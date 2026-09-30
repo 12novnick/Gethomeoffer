@@ -2,6 +2,7 @@
   /* Color */
   --color-background: #f6f2ec;
   --color-surface: #fbf9f5;
+  --color-white: #ffffff;
   --color-surface-alt: #ede7df;
   --color-ink: #1c1915;
   --color-text: #1c1915;
@@ -16,10 +17,10 @@
   --color-olive: #6b7549;
   --color-olive-light: #b8c08f;
 
-  /* Sky blue is reserved for action. Button text stays dark for contrast (≈10:1). */
-  --color-cta: #6ec6e8;
-  --color-cta-hover: #8dd3ee;
-  --color-cta-text: #0f1b20;
+  /* Navy blue is reserved for action. Button text stays white for contrast. */
+  --color-cta: #003d82;
+  --color-cta-hover: #002d5f;
+  --color-cta-text: white;
   /* Text-weight blue for links on light backgrounds (≈5.8:1 on ivory). */
   --color-link: #1d6a86;
   --color-link-hover: #144e63;

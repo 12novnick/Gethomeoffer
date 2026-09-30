@@ -22,7 +22,7 @@ export interface Program {
 // Draft copy. Statements about process and property types must be confirmed by the business before launch.
 export const CASH_PROGRAM: Program = {
   id: 'cash',
-  name: 'We Buy Houses Cash',
+  name: 'We Buy Houses Cash Program',
   path: CASH_PATH,
   kicker: 'Direct sale',
   summary: 'Explore a direct sale and get a straightforward offer for your property.',
@@ -45,11 +45,11 @@ export const CASH_PROGRAM: Program = {
 
 export const AGENT_PROGRAM: Program = {
   id: 'agent',
-  name: 'Agent Program',
+  name: 'Real Estate Agent Program',
   path: AGENT_PATH,
   kicker: 'Traditional market',
   summary: 'Prefer the traditional market? Explore connecting with a real estate professional.',
-  exploreLabel: 'Explore the Agent Program',
+  exploreLabel: 'Explore the Real Estate Agent Program',
   cta: { label: 'Connect With an Agent', path: AGENT_CONNECT_PATH },
   image: IMAGES.programAgent,
   bestFor: [
@@ -105,9 +105,8 @@ export interface ComparisonRow {
 }
 
 export const PROGRAM_COMPARISON: ComparisonRow[] = [
-  { label: 'How you sell', cash: 'Directly, without listing', agent: 'Listed on the open market' },
   { label: 'Showings', cash: 'Not part of the process', agent: 'Usually part of the process' },
   { label: 'Preparing the home', cash: 'Considered in its current condition', agent: 'Preparation and repairs are common' },
   { label: 'Timeline', cash: 'Discussed around your needs', agent: 'Depends on the market and the buyer' },
-  { label: 'Price', cash: 'A straightforward offer', agent: 'Set by market demand' },
+  { label: 'Price', cash: 'A straightforward offer while considering repairs and profit margin', agent: 'Set by market demand' },
 ];

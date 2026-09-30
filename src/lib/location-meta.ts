@@ -21,7 +21,7 @@ export function stateMeta(page: StatePageData | undefined): MetaDescriptor[] {
   if (!page) return [];
   const labels = LOCATION_LABELS[page.program];
   const crumbs = stateCrumbs(page);
-  const description = page.content.summary ?? labels.stateDescription(page.state.name);
+  const description = page.content.metaDescription ?? page.content.summary ?? labels.stateDescription(page.state.name);
   return [
     ...seo({
       title: `${labels.stateTitle(page.state.name)} | GetHomeOffer`,

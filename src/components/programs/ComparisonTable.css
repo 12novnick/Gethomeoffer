@@ -6,11 +6,12 @@
 
 .compare-table thead th {
   padding-bottom: var(--space-md);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: var(--text-heading);
-  font-weight: 380;
+  font-weight: 600;
   letter-spacing: var(--tracking-display);
   vertical-align: bottom;
+  color: var(--color-cta);
 }
 
 .compare-table tbody tr {
@@ -29,10 +30,20 @@
 
 .compare-table tbody th {
   width: 28%;
-  font-size: var(--text-small);
+  font-size: var(--text-heading);
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--color-text-muted);
+  transition:
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    color 600ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+  .compare-table tbody tr:hover th {
+    transform: translateY(-6px);
+    color: var(--color-cta);
+  }
 }
 
 .compare-table tbody td {
@@ -40,17 +51,20 @@
   font-size: var(--text-body-lg);
 }
 
+.compare-table tr > :last-child {
+  padding-left: var(--space-md);
+  border-left: 1px solid var(--color-border);
+}
+
 @media (max-width: 767px) {
   .compare-table thead {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
+    display: none;
   }
 
   .compare-table tbody tr {
-    display: block;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    column-gap: var(--space-md);
     padding-block: var(--space-md);
   }
 
@@ -61,9 +75,17 @@
     padding: 0;
   }
 
+  .compare-table tbody th {
+    grid-column: 1 / -1;
+  }
+
   .compare-table tbody td {
     margin-top: var(--space-sm);
     font-size: var(--text-body);
+  }
+
+  .compare-table tbody tr > :last-child {
+    padding-left: var(--space-md);
   }
 
   .compare-table tbody td::before {
@@ -73,6 +95,6 @@
     font-weight: 600;
     letter-spacing: var(--tracking-eyebrow);
     text-transform: uppercase;
-    color: var(--color-earth);
+    color: var(--color-cta);
   }
 }

@@ -3,7 +3,7 @@ import './CityDirectory.css';
 
 interface CityDirectoryProps {
   id: string;
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   basePath: string;
   cities: { name: string; slug: string }[];
@@ -14,7 +14,7 @@ export function CityDirectory({ id, eyebrow, title, basePath, cities, stateAbbr 
   return (
     <section className="city-directory section" aria-labelledby={id}>
       <div className="container">
-        <p className="eyebrow">{eyebrow}</p>
+        {eyebrow && <p className="eyebrow">{eyebrow}</p>}
         <h2 id={id} className="city-directory__title">
           {title}
         </h2>

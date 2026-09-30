@@ -37,14 +37,15 @@ export function Situations() {
         </div>
 
         <div className="situations__content">
-          <p className="eyebrow">Life changes</p>
           <h2 id="situations-title" className="situations__title">
             Sometimes, life changes the plan.
           </h2>
           <p className="lede situations__lede">
-            Property owners reach moments where they need to decide what comes next. There's no single right answer,
+            Property owners then reach moments where they need to decide what comes next. There's no single right answer,
             only the one that fits your situation.
           </p>
+
+          <p className="situations__prompt">Perhaps you are experiencing one or more of the following.</p>
 
           <ol role="list" className="situations__list">
             {SITUATIONS.map((situation, index) => (

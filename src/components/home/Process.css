@@ -13,11 +13,12 @@
 }
 
 .process__more {
-  color: var(--color-cta);
+  margin-top: var(--space-2xl);
+  color: var(--color-text-inverse);
 }
 
 .process__more:hover {
-  color: var(--color-cta-hover);
+  color: var(--color-text-inverse);
 }
 
 .process__steps {
@@ -33,9 +34,11 @@
   border-top: 1px solid var(--color-border-inverse);
 }
 
-/* A marker on the line for each step; the last one is sky blue as the destination. */
-.process__step::before {
-  content: '';
+.process__track {
+  position: relative;
+}
+
+.process__marker {
   position: absolute;
   top: -5px;
   left: 0;
@@ -44,22 +47,56 @@
   border-radius: 50%;
   background-color: var(--color-ink);
   border: 1px solid var(--color-text-inverse-muted);
+  transition:
+    background-color 600ms var(--ease-out),
+    border-color 600ms var(--ease-out),
+    box-shadow 600ms var(--ease-out);
 }
 
-.process__step:last-child::before {
-  background-color: var(--color-cta);
-  border-color: var(--color-cta);
+.process__step.is-reached .process__marker {
+  background-color: #fff;
+  border-color: #fff;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.35);
+}
+
+.process__traveler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 400ms var(--ease-out);
+  animation: process-glow 2s ease-in-out infinite;
+}
+
+.process__traveler.is-visible {
+  opacity: 1;
+}
+
+@keyframes process-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 6px 1px rgba(255, 255, 255, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 14px 4px rgba(255, 255, 255, 0.5);
+  }
 }
 
 .process__number {
   display: block;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: clamp(3rem, 2rem + 3vw, 5rem);
-  font-weight: 250;
+  font-weight: 600;
   line-height: 1;
   letter-spacing: -0.04em;
   color: var(--color-text-inverse-muted);
-  font-variation-settings: 'opsz' 144;
 }
 
 .process__step-title {
@@ -99,7 +136,7 @@
     padding-bottom: 0;
   }
 
-  .process__step::before {
+  .process__marker {
     top: 0.5rem;
     left: -5px;
   }

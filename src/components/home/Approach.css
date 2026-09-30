@@ -36,25 +36,37 @@
 }
 
 .approach__word {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: var(--text-display-md);
-  font-weight: 330;
+  font-weight: 600;
   font-style: italic;
   line-height: 1;
   letter-spacing: var(--tracking-display);
-  font-variation-settings: 'opsz' 144;
+  transition:
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.approach__pillars.is-animated .approach__word {
+  transform: translateX(-16px);
+  opacity: 0.45;
+}
+
+.approach__pillars.is-animated .approach__pillar.is-active .approach__word {
+  transform: none;
+  opacity: 1;
 }
 
 .approach__pillar:nth-child(1) .approach__word {
-  color: var(--color-text);
+  color: var(--color-cta);
 }
 
 .approach__pillar:nth-child(2) .approach__word {
-  color: var(--color-earth);
+  color: var(--color-cta);
 }
 
 .approach__pillar:nth-child(3) .approach__word {
-  color: var(--color-olive);
+  color: var(--color-cta);
 }
 
 .approach__body {

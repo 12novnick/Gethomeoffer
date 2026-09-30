@@ -31,9 +31,17 @@ export function Navigation() {
   return (
     <header className={`site-header ${isOpen ? 'is-open' : ''}`}>
       <div className="site-header__bar container">
-        <Link to="/" className="wordmark" onClick={closeMenu}>
-          Get Home Offer
-        </Link>
+        <button
+          ref={toggleRef}
+          type="button"
+          className="menu-toggle"
+          aria-expanded={isOpen}
+          aria-controls="mobile-menu"
+          onClick={() => setIsOpen((open) => !open)}
+        >
+          <span className="visually-hidden">{isOpen ? 'Close menu' : 'Open menu'}</span>
+          <span className="menu-toggle__icon" aria-hidden="true" />
+        </button>
 
         <nav className="site-nav" aria-label="Primary">
           <ul role="list" className="site-nav__list">
@@ -47,21 +55,13 @@ export function Navigation() {
           </ul>
         </nav>
 
-        <Link to={OFFER_PATH} className="btn btn--primary site-header__cta">
-          Get Your Offer
+        <Link to="/" className="wordmark" onClick={closeMenu}>
+          Get Home Offer
         </Link>
 
-        <button
-          ref={toggleRef}
-          type="button"
-          className="menu-toggle"
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
-          onClick={() => setIsOpen((open) => !open)}
-        >
-          <span className="visually-hidden">{isOpen ? 'Close menu' : 'Open menu'}</span>
-          <span className="menu-toggle__icon" aria-hidden="true" />
-        </button>
+        <Link to={OFFER_PATH} className="btn btn--primary site-header__cta">
+          Get My Cash Offer
+        </Link>
       </div>
 
       <div id="mobile-menu" className="mobile-menu">
@@ -76,7 +76,7 @@ export function Navigation() {
             ))}
           </ul>
           <Link to={OFFER_PATH} className="btn btn--primary mobile-menu__cta" onClick={closeMenu}>
-            Get Your Offer
+            Get My Cash Offer
           </Link>
         </nav>
       </div>

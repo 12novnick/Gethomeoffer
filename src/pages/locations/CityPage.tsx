@@ -4,7 +4,6 @@ import { DetailGrid } from '../../components/ui/DetailGrid';
 import { PageHero } from '../../components/ui/PageHero';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import { SplitSection } from '../../components/ui/SplitSection';
-import { IMAGES } from '../../data/images';
 import { LOCATION_LABELS } from '../../data/location-labels';
 import { AGENT_HELP_AREAS } from '../../data/programs';
 import { cityCrumbs } from '../../lib/location-meta';
@@ -26,7 +25,7 @@ export function CityPage({ page }: { page: CityPageData }) {
         eyebrow={`${place} · ${program.name}`}
         title={labels.cityTitle(page.city.name, page.state.abbr)}
         lede={page.content.summary ?? program.summary}
-        image={page.content.image ?? (isCash ? IMAGES.cashHero : IMAGES.agentHero)}
+        image={page.content.image}
         actions={
           <Link to={program.cta.path} className="btn btn--primary">
             {program.cta.label}

@@ -15,7 +15,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
       {
         question: 'What is GetHomeOffer?',
         answer:
-          'GetHomeOffer helps property owners explore two ways to sell: a direct sale through our Cash Program, or a traditional sale on the open market through our Agent Program.',
+          'GetHomeOffer helps property owners explore two ways to sell: a direct sale through our Cash Program, or a traditional sale on the open market through our Real Estate Agent Program.',
       },
       {
         question: 'How do I know which program is right for me?',
@@ -65,10 +65,10 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
   },
   {
     id: 'agent',
-    title: 'Agent Program',
+    title: 'Real Estate Agent Program',
     faqs: [
       {
-        question: 'How does the Agent Program work?',
+        question: 'How does the Real Estate Agent Program work?',
         answer:
           'You tell us about your property and your goals, and we help you explore connecting with a real estate professional in your area. Your agent then guides pricing, preparation, marketing, showings, negotiation and closing.',
       },
@@ -91,7 +91,7 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
       {
         question: 'Where do you operate?',
         answer:
-          'The Cash Program and Agent Program pages each list the states we serve. Choose your state to see the cities covered.',
+          'The Cash Program and Real Estate Agent Program pages each list the states we serve. Choose your state to see the cities covered.',
       },
       {
         question: "My city isn't listed. Can you still help?",

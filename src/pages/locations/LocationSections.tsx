@@ -42,7 +42,7 @@ export function ProgramSteps({ program }: { program: Program }) {
         <SectionHeader
           id="program-steps-title"
           eyebrow="The process"
-          title={`How the ${program.id === 'cash' ? 'Cash' : 'Agent'} Program works.`}
+          title={`How the ${program.id === 'cash' ? 'Cash' : 'Real Estate Agent'} Program works.`}
           lede="Clear steps, and the decision stays yours at every point."
         />
         <StepSequence steps={program.steps} />
@@ -88,9 +88,14 @@ export function AreasServed({ city, content }: { city: string; content: LocalCon
   );
 }
 
-export function LocalFaqs({ place, content }: { place: string; content: LocalContent }) {
+export function LocalFaqs({ place, content, title }: { place: string; content: LocalContent; title?: string }) {
   return (
-    <SplitSection id="local-faqs" eyebrow="FAQ" title={`Questions about selling in ${place}.`} tone="surface">
+    <SplitSection
+      id="local-faqs"
+      eyebrow={title ? undefined : 'FAQ'}
+      title={title ?? `Questions about selling in ${place}.`}
+      tone="surface"
+    >
       {content.faqs?.length ? (
         <FaqList faqs={content.faqs} />
       ) : (
@@ -103,7 +108,15 @@ export function LocalFaqs({ place, content }: { place: string; content: LocalCon
   );
 }
 
-export function LocationCta({ program, place }: { program: ProgramId; place: string }) {
+export function LocationCta({
+  program,
+  place,
+  closing,
+}: {
+  program: ProgramId;
+  place: string;
+  closing?: { title: string; body: string; secondaryLabel: string; secondaryPath: string };
+}) {
   const isCash = program === 'cash';
   const current = isCash ? CASH_PROGRAM : AGENT_PROGRAM;
   const other = isCash ? AGENT_PROGRAM : CASH_PROGRAM;
@@ -111,17 +124,19 @@ export function LocationCta({ program, place }: { program: ProgramId; place: str
     <CtaBand
       id="location-cta"
       title={
-        isCash ? `Get a straightforward offer for your ${place} property.` : `Explore the ${place} market with a professional.`
+        closing?.title ??
+        (isCash ? `Get a straightforward offer for your ${place} property.` : `Explore the ${place} market with a professional.`)
       }
       body={
-        isCash
+        closing?.body ??
+        (isCash
           ? "Tell us about your property. We'll review the details and follow up with a straightforward offer."
-          : "Tell us about your property and your goals, and we'll help you take the next step toward listing."
+          : "Tell us about your property and your goals, and we'll help you take the next step toward listing.")
       }
       cta={current.cta}
       secondary={
-        <Link to={other.path} className="arrow-link">
-          Or explore the {isCash ? 'Agent' : 'Cash'} Program
+        <Link to={closing?.secondaryPath ?? other.path} className="arrow-link">
+          {closing?.secondaryLabel ?? `Or explore the ${isCash ? 'Real Estate Agent' : 'Cash'} Program`}
           <span className="btn__arrow" aria-hidden="true">
             →
           </span>

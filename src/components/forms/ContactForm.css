@@ -11,8 +11,9 @@
 
 .contact-form__legend {
   margin-bottom: var(--space-sm);
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: var(--text-heading);
+  font-weight: 600;
   letter-spacing: var(--tracking-display);
 }
 

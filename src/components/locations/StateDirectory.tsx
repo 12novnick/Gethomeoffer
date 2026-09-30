@@ -14,7 +14,6 @@ export function StateDirectory({ id, title, lede, basePath }: StateDirectoryProp
     <section className="state-directory section" aria-labelledby={id}>
       <div className="container">
         <header className="state-directory__header">
-          <p className="eyebrow">Locations</p>
           <h2 id={id} className="state-directory__title">
             {title}
           </h2>
@@ -26,9 +25,15 @@ export function StateDirectory({ id, title, lede, basePath }: StateDirectoryProp
             <li key={state.slug}>
               <Link to={`${basePath}${state.slug}/`} className="state-directory__link">
                 <span>{state.name}</span>
-                <span className="state-directory__abbr" aria-hidden="true">
-                  {state.abbr}
-                </span>
+                <img
+                  src={`/flags/${state.slug}.webp`}
+                  alt=""
+                  width={28}
+                  height={28}
+                  loading="lazy"
+                  decoding="async"
+                  className="state-directory__flag"
+                />
               </Link>
             </li>
           ))}

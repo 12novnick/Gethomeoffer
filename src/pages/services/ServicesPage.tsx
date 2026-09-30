@@ -5,7 +5,6 @@ import { ImageSlot } from '../../components/ui/ImageSlot';
 import { PageHero } from '../../components/ui/PageHero';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import { SERVICES_CRUMBS } from '../../data/breadcrumbs';
-import { IMAGES } from '../../data/images';
 import { PROGRAMS } from '../../data/programs';
 import { OFFER_PATH } from '../../lib/site';
 import './ServicesPage.css';
@@ -15,10 +14,8 @@ export function ServicesPage() {
     <>
       <PageHero
         crumbs={SERVICES_CRUMBS}
-        eyebrow="Services"
-        title="Your Property. Your Options."
-        lede="Two ways to sell, one place to start. Explore a direct sale through our Cash Program or the traditional market through our Agent Program, and choose the path that fits."
-        image={IMAGES.servicesHero}
+        title="Find The Path That Fits Your Situation"
+        lede="Explore a direct sale through our Cash Program or the traditional market through our Real Estate Agent Program, and choose the path that fits."
       />
 
       <section className="section" aria-labelledby="programs-title">
@@ -62,7 +59,6 @@ export function ServicesPage() {
         <div className="container">
           <SectionHeader
             id="compare-title"
-            eyebrow="At a glance"
             title="Comparing your options."
             lede="Both paths lead to a sale. The difference is how you get there."
           />
@@ -74,15 +70,7 @@ export function ServicesPage() {
         id="services-cta"
         title="Not sure which path fits?"
         body="Tell us about your property and your situation. We'll help you understand both options."
-        cta={{ label: 'Get Your Offer', path: OFFER_PATH }}
-        secondary={
-          <Link to="/how-it-works/" className="arrow-link">
-            See how it works
-            <span className="btn__arrow" aria-hidden="true">
-              →
-            </span>
-          </Link>
-        }
+        cta={{ label: 'Get My Cash Offer', path: OFFER_PATH }}
       />
     </>
   );

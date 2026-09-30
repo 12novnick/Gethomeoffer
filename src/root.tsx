@@ -9,6 +9,8 @@ import './index.css';
 import { Footer } from './components/footer/Footer';
 import { Navigation } from './components/navigation/Navigation';
 import { StickyMobileCTA } from './components/navigation/StickyMobileCTA';
+import { ScrollToTop } from './components/navigation/ScrollToTop';
+import { ScrollProgress } from './components/navigation/ScrollProgress';
 import { PlaceholderPage } from './pages/PlaceholderPage';
 
 // Preloading the two latin font files prevents headings from re-wrapping (layout shift) when fonts swap in.
@@ -29,6 +31,7 @@ export function Layout({ children }: { children: ReactNode }) {
         <Links />
       </head>
       <body>
+        <ScrollProgress />
         <a href="#main" className="skip-link">
           Skip to content
         </a>
@@ -38,6 +41,7 @@ export function Layout({ children }: { children: ReactNode }) {
         </main>
         <Footer />
         <StickyMobileCTA />
+        <ScrollToTop />
         <ScrollRestoration />
         <Scripts />
       </body>

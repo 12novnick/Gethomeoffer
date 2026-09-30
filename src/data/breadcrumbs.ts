@@ -4,7 +4,6 @@ import { AGENT_PROGRAM, CASH_PROGRAM } from './programs';
 const HOME: Crumb = { label: 'Home', path: '/' };
 
 export const SERVICES_CRUMBS: Crumb[] = [HOME, { label: 'Services', path: '/services/' }];
-export const HOW_IT_WORKS_CRUMBS: Crumb[] = [HOME, { label: 'How It Works', path: '/how-it-works/' }];
 export const ABOUT_CRUMBS: Crumb[] = [HOME, { label: 'About Us', path: '/about/' }];
 export const FAQ_CRUMBS: Crumb[] = [HOME, { label: 'FAQ', path: '/faq/' }];
 export const CONTACT_CRUMBS: Crumb[] = [HOME, { label: 'Contact', path: '/contact/' }];

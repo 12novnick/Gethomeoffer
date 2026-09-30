@@ -19,7 +19,7 @@ function ProgramCard({ variant, index, kicker, title, description, cta, to, imag
   return (
     <article className={`program-card program-card--${variant}`}>
       <div className="program-card__media">
-        <ImageSlot image={image} />
+        <ImageSlot image={image} sizes="(max-width: 767px) 100vw, 50vw" />
       </div>
       <div className="program-card__body">
         <p className="program-card__meta">
@@ -44,12 +44,11 @@ export function Options() {
     <section id="options" className="options section" aria-labelledby="options-title">
       <div className="container">
         <header className="options__header">
-          <p className="eyebrow">Two paths</p>
           <h2 id="options-title" className="options__title">
             You have options.
           </h2>
           <p className="lede">
-            Every property is different. That's why we've created different ways to help you move forward.
+            Every homeowner's situation is different. That's why we've created different ways to help you move forward.
           </p>
         </header>
 
@@ -68,9 +67,9 @@ export function Options() {
             variant="agent"
             index="02"
             kicker="Traditional market"
-            title="Agent Program"
+            title="Real Estate Agent Program"
             description="Prefer the traditional market? Explore connecting with a real estate professional."
-            cta="Explore the Agent Program"
+            cta="Explore the Real Estate Agent Program"
             to={AGENT_PATH}
             image={IMAGES.programAgent}
           />

@@ -4,12 +4,12 @@ import { DetailGrid } from '../../components/ui/DetailGrid';
 import { PageHero } from '../../components/ui/PageHero';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import { SplitSection } from '../../components/ui/SplitSection';
-import { IMAGES } from '../../data/images';
 import { LOCATION_LABELS } from '../../data/location-labels';
 import { AGENT_HELP_AREAS, CASH_PROPERTY_TYPES } from '../../data/programs';
 import { stateCrumbs } from '../../lib/location-meta';
 import type { StatePageData } from '../../lib/location-pages';
 import { LocalFaqs, LocalIntro, LocalSituations, LocationCta, ProgramSteps } from './LocationSections';
+import { StateGuideSections } from './StateGuide';
 
 export function StatePage({ page }: { page: StatePageData }) {
   const labels = LOCATION_LABELS[page.program];
@@ -17,6 +17,40 @@ export function StatePage({ page }: { page: StatePageData }) {
   const isCash = page.program === 'cash';
   const crumbs = stateCrumbs(page);
   const statePath = crumbs[crumbs.length - 1].path;
+  const { guide } = page.content;
+
+  if (guide) {
+    return (
+      <div className="state-guide">
+        <PageHero
+          crumbs={crumbs}
+          title={labels.stateTitle(page.state.name)}
+          lede={page.content.summary ?? program.summary}
+          image={page.content.image}
+          actions={
+            <>
+              <Link to={program.cta.path} className="btn btn--primary">
+                {program.cta.label}
+              </Link>
+              <a href="#how-it-works" className="btn btn--ghost">
+                How It Works
+              </a>
+            </>
+          }
+        />
+        <StateGuideSections guide={guide} intro={page.content.intro ?? []} program={program} />
+        <CityDirectory
+          id="cities"
+          title={guide.citiesTitle}
+          basePath={statePath}
+          cities={page.cities}
+          stateAbbr={page.state.abbr}
+        />
+        <LocationCta program={page.program} place={page.state.name} closing={guide.closing} />
+        <LocalFaqs place={page.state.name} content={page.content} title={guide.faqTitle} />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -25,7 +59,7 @@ export function StatePage({ page }: { page: StatePageData }) {
         eyebrow={`${page.state.name} · ${program.name}`}
         title={labels.stateTitle(page.state.name)}
         lede={page.content.summary ?? program.summary}
-        image={page.content.image ?? (isCash ? IMAGES.cashHero : IMAGES.agentHero)}
+        image={page.content.image}
         actions={
           <Link to={program.cta.path} className="btn btn--primary">
             {program.cta.label}

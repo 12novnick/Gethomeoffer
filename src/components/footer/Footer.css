@@ -1,25 +1,12 @@
 .site-footer {
-  padding-block: var(--section-pad) var(--space-lg);
+  padding-block: var(--space-2xl) var(--space-lg);
   border-top: 1px solid var(--color-border-inverse);
-}
-
-.site-footer__statement {
-  max-width: 14ch;
-  font-family: var(--font-display);
-  font-size: var(--text-display-lg);
-  font-weight: 350;
-  line-height: var(--leading-tight);
-  letter-spacing: var(--tracking-display);
-  font-variation-settings: 'opsz' 144;
 }
 
 .site-footer__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--space-xl);
-  margin-top: var(--space-3xl);
-  padding-top: var(--space-xl);
-  border-top: 1px solid var(--color-border-inverse);
 }
 
 .site-footer__heading {

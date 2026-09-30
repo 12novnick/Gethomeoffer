@@ -25,10 +25,10 @@ export const LOCATION_LABELS: Record<ProgramId, LocationLabels> = {
     program: AGENT_PROGRAM,
     stateTitle: (state) => `Find a Real Estate Agent in ${state}`,
     cityTitle: (city, abbr) => `Find a Real Estate Agent in ${city}, ${abbr}`,
-    citiesTitle: (state) => `Where Our Agent Program Operates in ${state}`,
+    citiesTitle: (state) => `Where Our Real Estate Agent Program Operates in ${state}`,
     stateDescription: (state) =>
-      `Selling on the traditional market in ${state}? Learn how the Agent Program helps you explore connecting with a real estate professional.`,
+      `Selling on the traditional market in ${state}? Learn how the Real Estate Agent Program helps you explore connecting with a real estate professional.`,
     cityDescription: (city, abbr) =>
-      `Selling a home in ${city}, ${abbr}? Learn about pricing, preparation, marketing, showings and closing, and how the Agent Program works.`,
+      `Selling a home in ${city}, ${abbr}? Learn about pricing, preparation, marketing, showings and closing, and how the Real Estate Agent Program works.`,
   },
 };

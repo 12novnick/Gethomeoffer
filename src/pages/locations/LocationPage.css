@@ -1,3 +1,109 @@
+.page-hero__title {
+  color: var(--color-cta);
+}
+
+.state-guide :not(.btn, .btn *, .cta-band, .cta-band *) {
+  border-color: transparent !important;
+}
+
+.state-guide :is(p, li, dt, th, td, caption, .detail-grid__body):not(.cta-band *) {
+  color: var(--color-text) !important;
+}
+
+.state-guide__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-lg) var(--space-xl);
+  margin-top: var(--space-xl);
+  max-width: 40rem;
+}
+
+.state-guide__stat {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: var(--space-xs);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.state-guide__stat dd {
+  font-size: var(--text-display-md);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-cta);
+}
+
+.state-guide__stat dt {
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+.state-guide__table {
+  width: 100%;
+  max-width: 40rem;
+  margin-block: var(--space-xl);
+  border-collapse: collapse;
+  font-size: var(--text-small);
+}
+
+.state-guide__table caption {
+  margin-bottom: var(--space-sm);
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.state-guide__table th,
+.state-guide__table td {
+  padding: 0.625rem 0;
+  border-bottom: 1px solid var(--color-border);
+  text-align: right;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.state-guide__table th:first-child {
+  padding-right: var(--space-md);
+  text-align: left;
+}
+
+.state-guide__table td + td {
+  padding-left: var(--space-md);
+}
+
+.state-guide__table thead th {
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.split-section__body > .state-guide__list,
+.split-section__body > .detail-grid {
+  margin-block: var(--space-lg);
+}
+
+.split-section__body > .state-guide__note {
+  margin-top: var(--space-lg);
+  max-width: 40rem;
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+.state-guide__cta {
+  margin-top: var(--space-xl);
+}
+
+.state-guide__quiet .split-section__title {
+  font-size: var(--text-heading);
+}
+
+.state-guide__quiet .split-section__body > p {
+  font-size: var(--text-body);
+}
+
 .location-page__tinted {
   background-color: var(--color-surface-alt);
 }

@@ -1,4 +1,3 @@
-import { Link } from 'react-router';
 import { FaqList } from '../../components/faq/FaqList';
 import { CtaBand } from '../../components/ui/CtaBand';
 import { PageHero } from '../../components/ui/PageHero';
@@ -13,7 +12,7 @@ export function FaqPage() {
         crumbs={FAQ_CRUMBS}
         eyebrow="FAQ"
         title="Frequently Asked Questions"
-        lede="Answers to common questions about GetHomeOffer, the Cash Program, the Agent Program and where we operate."
+        lede="Answers to common questions about GetHomeOffer, the Cash Program, the Real Estate Agent Program and where we operate."
       />
 
       <section className="section" aria-label="Questions by topic">
@@ -48,14 +47,6 @@ export function FaqPage() {
         title="Still have questions?"
         body="Tell us about your property and what you're hoping to do. We're happy to walk you through your options."
         cta={{ label: 'Contact Us', path: '/contact/' }}
-        secondary={
-          <Link to="/how-it-works/" className="arrow-link">
-            See how it works
-            <span className="btn__arrow" aria-hidden="true">
-              →
-            </span>
-          </Link>
-        }
       />
     </>
   );

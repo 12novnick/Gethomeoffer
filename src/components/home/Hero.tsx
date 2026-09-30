@@ -20,21 +20,16 @@ export function Hero() {
       <div className="hero__scrim" aria-hidden="true" />
 
       <div className="hero__content container">
-        <p className="eyebrow">Fast Solutions for Your Next Move</p>
         <h1 id="hero-title" className="hero__title">
-          Every property has a story.
+          Fast Solutions for Your Next Move<span className="hero__title-period">.</span>
         </h1>
         <p className="hero__lede">
-          Whether you want a direct sale or the traditional market, we help you understand your options and choose
-          what comes next.
+          What if you could sell your home without listing it, making costly repairs, or waiting months for a buyer? Find out what a cash offer could look like for your property.
         </p>
         <div className="hero__actions">
           <Link to={OFFER_PATH} className="btn btn--primary">
-            Get Your Offer
+            Get My Cash Offer
           </Link>
-          <a href="#options" className="btn btn--ghost-inverse">
-            Explore Your Options
-          </a>
         </div>
 
         <ul role="list" className="hero__paths" aria-label="Programs">
@@ -44,7 +39,7 @@ export function Hero() {
           </li>
           <li>
             <span className="hero__path-index">02</span>
-            <Link to={AGENT_PATH}>Agent Program</Link>
+            <Link to={AGENT_PATH}>Real Estate Agent Program</Link>
           </li>
         </ul>
       </div>

@@ -16,7 +16,7 @@ export function AgentProgramPage() {
     <>
       <PageHero
         crumbs={AGENT_CRUMBS}
-        eyebrow="Agent Program"
+        eyebrow="Real Estate Agent Program"
         title="Explore a Different Way to Sell."
         lede={AGENT_PROGRAM.summary}
         image={IMAGES.agentHero}
@@ -52,7 +52,7 @@ export function AgentProgramPage() {
           <SectionHeader
             id="agent-process-title"
             eyebrow="The process"
-            title="How the Agent Program works."
+            title="How the Real Estate Agent Program works."
             lede="From your first conversation to closing day, you stay in control of every decision."
           />
           <StepSequence steps={AGENT_PROGRAM.steps} />
@@ -89,8 +89,8 @@ export function AgentProgramPage() {
 
       <StateDirectory
         id="agent-locations"
-        title="Where Our Agent Program Operates"
-        lede="Choose your state to learn how the Agent Program works where your property is located."
+        title="Where Our Real Estate Agent Program Operates"
+        lede="Choose your state to learn how the Real Estate Agent Program works where your property is located."
         basePath={AGENT_PROGRAM.path}
       />
 

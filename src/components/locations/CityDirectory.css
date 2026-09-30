@@ -31,8 +31,9 @@
 }
 
 .city-directory__name {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: var(--text-display-md);
+  font-weight: 600;
   line-height: 1.05;
   letter-spacing: var(--tracking-display);
 }

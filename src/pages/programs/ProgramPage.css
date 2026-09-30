@@ -28,10 +28,90 @@
   max-width: 40rem;
 }
 
+.program-page--no-dividers #cash-properties .program-note {
+  margin-top: -4rem;
+}
+
 .program-note a {
   font-weight: 600;
 }
 
 .program-page__situations {
   background-color: var(--color-surface-alt);
+}
+
+.program-page--no-dividers,
+.program-page--no-dividers :not(a, a *, .btn, .btn *) {
+  color: var(--color-text) !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .program-page--no-dividers .state-directory__link {
+    transition:
+      color var(--duration-fast) var(--ease-out),
+      transform 450ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .program-page--no-dividers .state-directory__link:hover {
+    transform: translateY(-4px);
+  }
+
+  .program-page--no-dividers .state-directory__link:active {
+    transform: translateY(-1px) scale(0.97);
+    transition-duration: 120ms;
+  }
+}
+
+body:has(.program-page--no-dividers),
+.program-page--no-dividers section {
+  background-color: var(--color-white) !important;
+}
+
+.program-page--no-dividers :is(section, header, div, ol, ul, li, dl, dt, dd, p, article, hr) {
+  border: 0 !important;
+}
+
+.program-page--no-dividers .split-section + .split-section {
+  margin-top: -8rem;
+}
+
+.program-page--no-dividers #cash-what {
+  margin-top: -2.5rem;
+}
+
+.program-page--no-dividers #cash-process-title {
+  color: var(--color-cta) !important;
+}
+
+.program-page--no-dividers #cash-fit {
+  margin-bottom: -8rem;
+}
+
+.program-page--no-dividers #cash-process {
+  margin-bottom: -8rem;
+}
+
+.program-page--no-dividers .state-directory:has(#cash-locations) {
+  margin-top: -8rem;
+}
+
+.program-page--no-dividers .state-directory:has(#cash-locations) .state-directory__list {
+  margin-top: 0.5rem;
+}
+
+.program-page--no-dividers #cash-process .step-sequence__number {
+  color: var(--color-cta) !important;
+}
+
+.program-page--no-dividers #cash-process .step-sequence__title {
+  color: var(--color-cta) !important;
+}
+
+.program-page--no-dividers .page-hero__title {
+  color: var(--color-cta) !important;
+}
+
+.program-page--no-dividers #cash-properties,
+.program-page--no-dividers #cash-locations {
+  color: var(--color-cta) !important;
 }

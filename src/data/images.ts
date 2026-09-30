@@ -11,16 +11,19 @@ export interface ImageAsset {
 
 export const IMAGES = {
   heroHome: {
+    src: '/images/hero-home.avif',
     alt: 'A family home at golden hour, seen from across a quiet residential street.',
     label: 'Hero · Residential exterior at golden hour, wide, calm street',
     tone: 'dusk',
   },
   situationInherited: {
-    alt: 'Sunlight falling across a well-loved living room with family furniture.',
-    label: 'Inherited · Lived-in interior, soft window light',
+    src: '/images/situation-relocation.avif',
+    alt: 'Blue and red doors.',
+    label: 'Inherited · Blue and red doors',
     tone: 'sand',
   },
   situationRelocation: {
+    src: '/images/situation-relocation.avif',
     alt: 'A moving box resting on the floor of a bright, empty room.',
     label: 'Relocation · Empty room, single moving box',
     tone: 'stone',
@@ -51,13 +54,15 @@ export const IMAGES = {
     tone: 'sand',
   },
   programCash: {
-    alt: 'The exterior of a modest single-family home in daylight.',
-    label: 'Cash Program · Single-family exterior, daylight, straight-on',
+    src: '/images/program-cash.jpg',
+    alt: 'Closing at the title company.',
+    label: 'Cash Program · Closing at the title company',
     tone: 'earth',
   },
   programAgent: {
-    alt: 'A bright, prepared interior ready for showings.',
-    label: 'Agent Program · Bright staged interior, open plan',
+    src: '/images/program-agent.avif',
+    alt: 'A realtor.',
+    label: 'Real Estate Agent Program · Realtor',
     tone: 'olive',
   },
   servicesHero: {

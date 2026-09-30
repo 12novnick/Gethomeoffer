@@ -23,7 +23,7 @@ export const JOURNEY: JourneyStage[] = [
   },
   {
     label: 'Two paths',
-    title: 'Cash Program or Agent Program.',
+    title: 'Cash Program or Real Estate Agent Program.',
     body: 'Choose the path that fits. Each is explained step by step below.',
     branch: true,
   },

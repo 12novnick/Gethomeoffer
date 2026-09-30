@@ -28,13 +28,12 @@
 
 .step-sequence__number {
   display: block;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-size: clamp(2.5rem, 1.8rem + 2vw, 3.75rem);
-  font-weight: 250;
+  font-weight: 600;
   line-height: 1;
   letter-spacing: -0.04em;
   color: var(--color-earth);
-  font-variation-settings: 'opsz' 144;
 }
 
 .step-sequence__title {

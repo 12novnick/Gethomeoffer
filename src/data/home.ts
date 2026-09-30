@@ -9,7 +9,7 @@ export interface Situation {
 export const SITUATIONS: Situation[] = [
   {
     title: 'Inherited property',
-    body: "A home that holds a family's history, and now a decision about what comes next.",
+    body: "A property with a history of its own. Maybe it's weighing you down.",
     image: IMAGES.situationInherited,
   },
   {
@@ -38,24 +38,24 @@ export const SITUATIONS: Situation[] = [
     image: IMAGES.situationDownsizing,
   },
   {
-    title: 'Simply exploring',
-    body: "No decision yet. You'd just like to understand your property's value and your options.",
+    title: 'Other',
+    body: "Not seeing your situation? You're not alone, tell us about your property and what you're hoping to accomplish.",
     image: IMAGES.situationExploring,
   },
 ];
 
 export const PILLARS = [
   {
-    word: 'Simple',
-    body: "A clear process with plain-language next steps, so you always know where things stand.",
+    word: 'Consistency',
+    body: 'We have a repeatable process that keeps things organized and moving forward.',
   },
   {
-    word: 'Transparent',
-    body: 'We explain how each option works so you can compare them on your own terms.',
+    word: 'Transparency',
+    body: "You'll know what's happening and what comes next. You should never feel like you're guessing your way throughout the sales process.",
   },
   {
-    word: 'Flexible',
-    body: 'A direct sale or the traditional market. You choose the path that fits your situation.',
+    word: 'Adaptability',
+    body: "We work on your timeline and for the specific situation you're facing.",
   },
 ];
 
@@ -63,17 +63,17 @@ export const STEPS = [
   {
     number: '01',
     title: 'Tell us about your property.',
-    body: 'Share the address and a few details about the home.',
+    body: 'Share a few details about the home.',
   },
   {
     number: '02',
-    title: 'We understand your situation.',
-    body: "We learn about your timeline, your goals and the property's condition.",
+    title: 'We listen to your situation.',
+    body: "We learn about your timeline, your goals, and the property's condition.",
   },
   {
     number: '03',
     title: 'Explore your options.',
-    body: 'Compare a direct sale with a path to the traditional market.',
+    body: 'Compare a cash sale with a path to the traditional market.',
   },
   {
     number: '04',
