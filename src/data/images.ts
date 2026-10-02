@@ -110,4 +110,10 @@ export const IMAGES = {
     label: 'Next chapter · Same home as hero or similar, at dusk, lights on',
     tone: 'dusk',
   },
+  milwaukeeHero: {
+    src: '/images/milwaukee-hero.avif',
+    alt: 'Milwaukee neighborhood street view.',
+    label: 'Milwaukee · Historic neighborhoods, vertical',
+    tone: 'stone',
+  },
 } satisfies Record<string, ImageAsset>;

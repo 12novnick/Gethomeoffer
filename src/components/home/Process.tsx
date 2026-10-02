@@ -5,7 +5,6 @@ import './Process.css';
 export function Process() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(-1);
-  const [pos, setPos] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const list = trackRef.current;
@@ -17,19 +16,18 @@ export function Process() {
       const markers = list.querySelectorAll<HTMLElement>('.process__marker');
       const threshold = window.innerHeight * 0.6;
       let index = -1;
-      markers.forEach((marker, i) => {
-        if (marker.getBoundingClientRect().top < threshold) index = i;
-      });
-      setActive(index);
-      const target = markers[Math.max(index, 0)];
-      if (target) {
-        const listRect = list.getBoundingClientRect();
-        const rect = target.getBoundingClientRect();
-        setPos({
-          x: rect.left + rect.width / 2 - listRect.left,
-          y: rect.top + rect.height / 2 - listRect.top,
+      const tops = Array.from(markers, (marker) => marker.getBoundingClientRect().top);
+      const inOneRow = tops.length > 1 && Math.abs(tops[tops.length - 1] - tops[0]) < 4;
+      if (inOneRow) {
+        // Steps share a row: advance one step per 30% of viewport scrolled past the threshold.
+        const scrolled = threshold - tops[0];
+        if (scrolled >= 0) index = Math.min(markers.length - 1, Math.floor(scrolled / (window.innerHeight * 0.3)));
+      } else {
+        tops.forEach((top, i) => {
+          if (top < threshold) index = i;
         });
       }
+      setActive(index);
     };
 
     const schedule = () => {
@@ -70,11 +68,6 @@ export function Process() {
             </li>
           ))}
         </ol>
-          <span
-            className={`process__traveler${active >= 0 ? ' is-visible' : ''}`}
-            style={{ transform: `translate(${pos.x}px, ${pos.y}px) translate(-50%, -50%)` }}
-            aria-hidden="true"
-          />
         </div>
       </div>
     </section>

@@ -5,13 +5,10 @@ export function FaqList({ faqs }: { faqs: Faq[] }) {
   return (
     <div className="faq-list">
       {faqs.map((faq) => (
-        <details key={faq.question} className="faq-list__item">
-          <summary className="faq-list__question">
-            <span>{faq.question}</span>
-            <span className="faq-list__icon" aria-hidden="true" />
-          </summary>
+        <div key={faq.question} className="faq-list__item">
+          <h3 className="faq-list__question">{faq.question}</h3>
           <p className="faq-list__answer">{faq.answer}</p>
-        </details>
+        </div>
       ))}
     </div>
   );

@@ -1,5 +1,4 @@
 import { Link } from 'react-router';
-import { StateDirectory } from '../../components/locations/StateDirectory';
 import { CtaBand } from '../../components/ui/CtaBand';
 import { DetailGrid } from '../../components/ui/DetailGrid';
 import { PageHero } from '../../components/ui/PageHero';
@@ -86,13 +85,6 @@ export function AgentProgramPage() {
           ))}
         </ul>
       </SplitSection>
-
-      <StateDirectory
-        id="agent-locations"
-        title="Where Our Real Estate Agent Program Operates"
-        lede="Choose your state to learn how the Real Estate Agent Program works where your property is located."
-        basePath={AGENT_PROGRAM.path}
-      />
 
       <CtaBand
         id="agent-cta"

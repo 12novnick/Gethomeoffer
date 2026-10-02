@@ -21,11 +21,11 @@
 }
 
 .cta-band__actions .arrow-link {
-  color: var(--color-cta);
+  color: var(--color-text-inverse-muted);
 }
 
 .cta-band__actions .arrow-link:hover {
-  color: var(--color-cta-hover);
+  color: var(--color-text-inverse);
 }
 
 @media (max-width: 1023px) {

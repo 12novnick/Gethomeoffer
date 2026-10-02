@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(cd C:\\\\Users\\\\nicol\\\\Projects\\\\Gethomeoffers; npx react-router typegen 2>&1 | Out-Null; npx tsc -b 2>&1 | Select-Object -First 10; \"exit: $LASTEXITCODE\")",
+      "PowerShell(Get-ChildItem \"C:\\\\Users\\\\nicol\\\\OneDrive\\\\Rank and Rent\\\\Get Home Offers\" -File | ForEach-Object { $_.Name + \" \\(\" + [math]::Round\\($_.Length / 1KB, 1\\) + \"KB\\)\" })",
+      "Bash(npm run *)"
+    ]
+  }
+}

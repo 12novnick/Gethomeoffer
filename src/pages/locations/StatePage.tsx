@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { CityDirectory } from '../../components/locations/CityDirectory';
+import { SidebarLayout } from '../../components/locations/SidebarLayout';
 import { DetailGrid } from '../../components/ui/DetailGrid';
 import { PageHero } from '../../components/ui/PageHero';
 import { SectionHeader } from '../../components/ui/SectionHeader';
@@ -8,7 +9,7 @@ import { LOCATION_LABELS } from '../../data/location-labels';
 import { AGENT_HELP_AREAS, CASH_PROPERTY_TYPES } from '../../data/programs';
 import { stateCrumbs } from '../../lib/location-meta';
 import type { StatePageData } from '../../lib/location-pages';
-import { LocalFaqs, LocalIntro, LocalSituations, LocationCta, ProgramSteps } from './LocationSections';
+import { LocalFaqs, LocalIntro, LocationCta, ProgramSteps } from './LocationSections';
 import { StateGuideSections } from './StateGuide';
 
 export function StatePage({ page }: { page: StatePageData }) {
@@ -21,6 +22,7 @@ export function StatePage({ page }: { page: StatePageData }) {
 
   if (guide) {
     return (
+      <SidebarLayout>
       <div className="state-guide">
         <PageHero
           crumbs={crumbs}
@@ -48,15 +50,26 @@ export function StatePage({ page }: { page: StatePageData }) {
         />
         <LocationCta program={page.program} place={page.state.name} closing={guide.closing} />
         <LocalFaqs place={page.state.name} content={page.content} title={guide.faqTitle} />
+        <section className="section">
+          <div className="container">
+            <h3>Back to Start</h3>
+            <p>
+              <Link to="/" className="arrow-link">
+                Back to Home
+                <span className="btn__arrow" aria-hidden="true">←</span>
+              </Link>
+            </p>
+          </div>
+        </section>
       </div>
+      </SidebarLayout>
     );
   }
 
   return (
-    <>
+    <SidebarLayout>
       <PageHero
         crumbs={crumbs}
-        eyebrow={`${page.state.name} · ${program.name}`}
         title={labels.stateTitle(page.state.name)}
         lede={page.content.summary ?? program.summary}
         image={page.content.image}
@@ -76,7 +89,7 @@ export function StatePage({ page }: { page: StatePageData }) {
       <ProgramSteps program={program} />
 
       {isCash ? (
-        <SplitSection id="properties" eyebrow="Properties" title="Properties we consider." tone="surface">
+        <SplitSection id="properties" title="Properties we consider." tone="surface">
           <p>We consider a range of residential properties, in many conditions.</p>
           <DetailGrid items={CASH_PROPERTY_TYPES} />
         </SplitSection>
@@ -85,7 +98,6 @@ export function StatePage({ page }: { page: StatePageData }) {
           <div className="container">
             <SectionHeader
               id="agent-role-title"
-              eyebrow="The agent's role"
               title="What an agent can help with."
               lede="A real estate professional guides the sale from pricing through closing."
             />
@@ -94,20 +106,18 @@ export function StatePage({ page }: { page: StatePageData }) {
         </section>
       )}
 
-      <LocalSituations place={page.state.name} content={page.content} />
-
       <CityDirectory
         id="cities"
-        eyebrow="Cities"
         title={labels.citiesTitle(page.state.name)}
         basePath={statePath}
         cities={page.cities}
         stateAbbr={page.state.abbr}
+        className="hide-on-desktop"
       />
 
       <LocalFaqs place={page.state.name} content={page.content} />
 
       <LocationCta program={page.program} place={page.state.name} />
-    </>
+    </SidebarLayout>
   );
 }

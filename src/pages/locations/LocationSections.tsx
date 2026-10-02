@@ -23,7 +23,7 @@ export function Paragraphs({ paragraphs, slot }: { paragraphs?: string[]; slot: 
 
 export function LocalIntro({ place, content, title }: { place: string; content: LocalContent; title: string }) {
   return (
-    <SplitSection id="local-intro" eyebrow={place} title={title}>
+    <SplitSection id="local-intro" title={title}>
       <Paragraphs
         paragraphs={content.intro}
         slot={{
@@ -41,7 +41,6 @@ export function ProgramSteps({ program }: { program: Program }) {
       <div className="container">
         <SectionHeader
           id="program-steps-title"
-          eyebrow="The process"
           title={`How the ${program.id === 'cash' ? 'Cash' : 'Real Estate Agent'} Program works.`}
           lede="Clear steps, and the decision stays yours at every point."
         />
@@ -57,7 +56,6 @@ export function LocalSituations({ place, content }: { place: string; content: Lo
       <div className="container">
         <SectionHeader
           id="local-situations-title"
-          eyebrow="Local situations"
           title={`Common selling situations in ${place}.`}
         />
         {content.situations?.length ? (
@@ -75,7 +73,7 @@ export function LocalSituations({ place, content }: { place: string; content: Lo
 
 export function AreasServed({ city, content }: { city: string; content: LocalContent }) {
   return (
-    <SplitSection id="areas-served" eyebrow="Areas served" title={`Neighborhoods and communities around ${city}.`}>
+    <SplitSection id="areas-served" title={`Neighborhoods and communities around ${city}.`}>
       {content.areas?.length ? (
         <DetailGrid items={content.areas.map((area) => ({ title: area }))} />
       ) : (
@@ -92,7 +90,6 @@ export function LocalFaqs({ place, content, title }: { place: string; content: L
   return (
     <SplitSection
       id="local-faqs"
-      eyebrow={title ? undefined : 'FAQ'}
       title={title ?? `Questions about selling in ${place}.`}
       tone="surface"
     >

@@ -1,3 +1,4 @@
+import { IMAGES } from './images';
 import type { ImageAsset } from './images';
 import type { AgentTopic, ContentItem } from './programs';
 
@@ -29,6 +30,8 @@ export interface GuideSection {
   tone?: 'default' | 'surface';
   /** Visually secondary section. */
   quiet?: boolean;
+  /** Optional badge image path. */
+  badgeImage?: string;
 }
 
 /** Long-form state page. When present it replaces the generic template sections. */
@@ -48,6 +51,8 @@ export interface StateGuide {
  * labeled content slot. A page is published (indexed + in the sitemap) once `intro` is provided.
  */
 export interface LocalContent {
+  /** Custom H1; defaults to the program's location title. */
+  heading?: string;
   /** Hero paragraph under the H1. */
   summary?: string;
   /** Meta description when it should differ from `summary`. */
@@ -71,270 +76,507 @@ export interface LocalContent {
  * Keys: state slug ('wisconsin') or state/city slug ('wisconsin/madison').
  * Content is only read by route loaders at build time, so it never ships in the client bundle.
  */
-const ESRI_ALABAMA =
-  'Source: Esri Housing Profile, Alabama. Esri forecasts for 2026 and 2031; U.S. Census Bureau 2020 Decennial Census data. © 2026 Esri.';
-
 export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> = {
   cash: {
-    alabama: {
+    wisconsin: {
+      summary: 'Looking to sell a property in Wisconsin? Explore a straightforward cash option and find a path that fits your situation.',
+      intro: ['Selling a property in Wisconsin can follow different paths. Whether you have inherited a home, are relocating, own a vacant property, or want to explore your options, GetHomeOffer provides a direct way to move forward.'],
+      faqs: [
+        {
+          question: 'How fast can you close on a Wisconsin home?',
+          answer: 'Most of our sales close in 14 to 30 days. We move quickly because we have the cash available and don\'t need to wait for financing or appraisals. If you need to close faster or have more time, we can often work with your timeline.',
+        },
+        {
+          question: 'Do you buy as-is?',
+          answer: 'Yes. We buy houses in any condition, whether they need cosmetic updates, major repairs, or structural work. You don\'t need to fix anything before selling to us. We handle all repairs after closing.',
+        },
+        {
+          question: 'How do you calculate your cash offer?',
+          answer: 'Every property is unique, so we evaluate each one individually. We consider the property\'s condition, location, market value, and what repairs or updates it may need. After our assessment, we\'ll make you a straightforward offer with no surprises.',
+        },
+        {
+          question: 'Do I pay realtor fees or commissions?',
+          answer: 'No. Since you\'re selling directly to us, there are no realtor commissions, no listing fees, and no hidden costs. You keep more of your proceeds.',
+        },
+        {
+          question: 'What areas of Wisconsin do you serve?',
+          answer: 'We primarily buy in Milwaukee, Madison, Green Bay, Kenosha, Racine, Appleton, Waukesha, Eau Claire, La Crosse, and Oshkosh. If you\'re in one of these cities, we can help. Not sure if your property qualifies? Reach out and we\'ll let you know.',
+        },
+        {
+          question: 'Can you help if I\'m facing foreclosure or need to sell quickly?',
+          answer: 'Yes. We work with homeowners in all situations: foreclosure, inherited properties, estate sales, relocation, divorce, or just needing a fast sale. We understand urgency and can often close in weeks, not months.',
+        },
+      ],
+    },
+    'wisconsin/milwaukee': {
+      image: IMAGES.milwaukeeHero,
+      heading: 'We Buy Houses in Milwaukee, WI. Sell Fast. Get Cash.',
       summary:
-        'Looking to sell a property in Alabama? Explore a straightforward cash option and find a path that fits your situation.',
+        'Sell your Milwaukee house as-is, with no repairs, no showings and no commissions. Get a cash offer and close in as little as 14 days.',
       metaDescription:
-        "GetHomeOffer helps Alabama property owners explore a direct cash sale for qualifying homes and properties. Learn how it works and explore your options.",
+        'We buy houses in Milwaukee, WI in any condition. No repairs, no fees or commissions, and closing in 14 to 30 days. Get your cash offer.',
       intro: [
-        "Selling a property doesn't always follow the traditional path. Whether you've inherited a home, are relocating, own a vacant property, or simply want to explore your options, GetHomeOffer gives you another way to move forward.",
-        "With GetHomeOffer, qualifying properties can be considered in their current condition. You don't necessarily have to make the property market-ready before you explore a direct sale.",
+        'Whether your house needs work, sits empty, came to you through an estate or has tenants you are tired of managing, we can make you a cash offer on it as it stands today.',
+        'There are no repairs to make, no open houses to host and no commissions taken out at closing. You get a clear number, and you decide.',
       ],
       guide: {
-        introTitle: 'A different way to sell your Alabama property.',
+        introTitle: 'We buy houses in Milwaukee, in any condition.',
         introCta: true,
         sections: [
           {
-            id: 'alabama-market',
-            title: "Alabama's housing market is diverse.",
-            tone: 'surface',
-            body: [
-              'Alabama is home to more than 5.1 million people, with an estimated 2.4 million housing units in 2026. About 60% of those housing units are owner-occupied, while approximately 12% are vacant.',
+            id: 'houses-we-buy',
+            title: 'You Don’t Need a Perfect House or Situation to Sell It.',
+            body: ['If you own it in Milwaukee and want to move on from it, tell us about it.'],
+            items: [
+              { title: 'Houses needing repairs', body: 'Roof, foundation, plumbing or wiring. Leave it as it is.' },
+              { title: 'Inherited houses', body: 'Skip the cleanout and the costs of holding an estate property.' },
+              { title: 'Vacant houses', body: 'Stop paying taxes, utilities and insurance on an empty home.' },
+              { title: 'Duplexes and rentals', body: 'Occupied or vacant. You do not need to wait for a lease to end.' },
+              { title: 'Facing foreclosure', body: 'A fast sale can help you move before the timeline runs out.' },
+              { title: 'Any other reason', body: 'Divorce, relocation or simply ready to be done.' },
             ],
-            stats: [
-              { value: '5.17M', label: 'Estimated population, 2026' },
-              { value: '2.42M', label: 'Housing units, 2026' },
-              { value: '60.3%', label: 'Owner-occupied housing' },
-              { value: '12.2%', label: 'Vacant housing' },
-            ],
-            note: ESRI_ALABAMA,
-          },
-          {
-            id: 'alabama-urban-rural',
-            title: "Some properties aren't ready for the traditional market.",
-            body: [
-              "Across Alabama, the housing landscape includes both urban and rural properties. Census 2020 data in the Esri profile shows approximately 58% of Alabama's housing units were in urban areas and 42% were in rural areas.",
-              "A property doesn't have to fit a particular mold for you to explore your options. Whether you're dealing with a vacant house, an inherited property, a home that needs repairs, or simply a property you're ready to move on from, GetHomeOffer gives you a way to start the conversation.",
-            ],
-            stats: [
-              { value: '57.9%', label: 'Urban housing units, 2020' },
-              { value: '42.1%', label: 'Rural housing units, 2020' },
-            ],
-            note: ESRI_ALABAMA,
-          },
-          {
-            id: 'alabama-vacant',
-            title: 'A vacant property can be a different kind of responsibility.',
-            tone: 'surface',
-            body: [
-              "A vacant property can sit unused while still requiring attention, maintenance, insurance, taxes, and oversight. Alabama's 2020 Census data counted 276,383 vacant housing units statewide, with different reasons behind that vacancy.",
-            ],
-            table: {
-              caption: 'Vacant housing units by status, Alabama, 2020',
-              rows: [
-                { label: 'For rent', count: '71,571', share: '25.9%' },
-                { label: 'Rented, not occupied', count: '6,348', share: '2.3%' },
-                { label: 'For sale only', count: '22,588', share: '8.2%' },
-                { label: 'Sold, not occupied', count: '12,340', share: '4.5%' },
-                { label: 'Seasonal, recreational or occasional use', count: '57,294', share: '20.7%' },
-                { label: 'For migrant workers', count: '197', share: '0.1%' },
-                { label: 'Other vacant', count: '106,045', share: '38.4%' },
-              ],
-            },
-            after: [
-              "If you own a vacant Alabama property and are considering selling, you don't necessarily have to bring it back to perfect condition before exploring your options.",
-            ],
-            note: ESRI_ALABAMA,
+            after: ['Not sure your property fits? Ask us. It costs nothing.'],
             cta: true,
           },
           {
-            id: 'alabama-values',
-            title: 'Every Alabama property is different.',
+            id: 'milwaukee-homes',
+            title: 'We know Milwaukee properties.',
             body: [
-              "Property values vary widely across Alabama. Esri's 2026 Housing Profile estimates the median value of owner-occupied housing units statewide at approximately $245,000, while the average value is approximately $299,000. Esri's 2031 forecast shows a projected median value of $308,747 and average value of $356,226.",
-              "But statewide numbers don't determine what your individual property is worth. Location, condition, size, improvements, property characteristics, and the circumstances of the sale all matter.",
-              "That's why we start with your property, rather than assuming every house fits the same formula.",
+              'Many Milwaukee homes are decades old, and getting one ready for the open market can mean months of contractors, inspections and surprise costs before a buyer even walks through.',
+              'We buy houses exactly as they are. We factor the work into our offer and handle every repair after closing, so you never spend a dollar or a weekend on the house again.',
+              'An as-is offer will usually be lower than what a fully renovated house might list for. What you get in return is certainty, speed and no out-of-pocket costs.',
             ],
-            stats: [
-              { value: '$245K', label: '2026 median owner-occupied housing value' },
-              { value: '$299K', label: '2026 average owner-occupied housing value' },
-            ],
-            note: `${ESRI_ALABAMA} Statewide figures are not an estimate of any individual property's value.`,
-          },
-          {
-            id: 'alabama-as-is',
-            title: 'What does selling as-is mean in Alabama?',
-            tone: 'surface',
-            body: [
-              `If you're considering selling a house in Alabama, you may have heard the term "as-is." It can sound more complicated than it really is.`,
-              "In simple terms, selling a property as-is means the property is being offered in its current condition. You don't have to make the house look perfect or complete every repair before you explore a sale.",
-              "For homeowners who don't want to spend months making repairs, updating an older property, or preparing a house for showings, an as-is sale can provide another option.",
-            ],
-          },
-          {
-            id: 'alabama-caveat-emptor',
-            title: 'What does "buyer beware" mean in Alabama?',
-            body: [
-              'Alabama generally follows the legal principle known as caveat emptor, or "let the buyer beware," when it comes to sales of existing residential property.',
-              "In practical terms, buyers generally have responsibility for investigating the condition of a property before completing the purchase. That can include looking at the property's condition, asking questions, and conducting appropriate inspections.",
-              '"As-is" does not mean that everything becomes negotiation-free or that a buyer cannot investigate the property. The buyer can still evaluate the property before closing and decide whether the proposed transaction makes sense.',
-            ],
-            note: "Alabama's caveat emptor framework and the legal effect of an as-is provision can depend on the specific transaction and contract. This page is intended for general information, not legal advice. Property owners with specific legal questions should consult their own Alabama real-estate attorney or other qualified professional.",
-          },
-          {
-            id: 'alabama-seller',
-            title: "What does that mean if you're selling your house?",
-            tone: 'surface',
-            body: [
-              "If you're selling your Alabama property to an as-is buyer, you aren't necessarily expected to repair everything before the buyer considers purchasing it.",
-              "You can tell the buyer about the property's current condition, and the buyer can evaluate the property based on that information. Property conditions may include:",
-            ],
-            list: [
-              'Older roof',
-              'Outdated kitchen or bathrooms',
-              'Deferred maintenance',
-              'Structural concerns',
-              'Plumbing or electrical issues',
-              'Water damage',
-              'Vacant or neglected interior',
-              'Significant cosmetic repairs',
-            ],
-            after: ["An as-is buyer can take the property's condition into account when evaluating the purchase."],
-          },
-          {
-            id: 'alabama-options',
-            title: 'You still have options.',
-            body: [
-              'One of the biggest misconceptions about an as-is sale is that the phrase means there can be no discussion about the property. That is not necessarily the case.',
-              'Before closing, the parties can still discuss the property\'s condition and negotiate the terms of the transaction. Depending on the circumstances, discussions can involve the purchase price, repairs, closing terms, and other conditions of the transaction.',
-              `"As-is" describes the property's condition; it doesn't mean you lose your ability to make decisions about the transaction. You can:`,
-            ],
-            list: [
-              'Ask questions',
-              'Have the property evaluated',
-              'Discuss the terms',
-              'Decide whether the offer and transaction are right for you',
-            ],
-          },
-          {
-            id: 'alabama-why',
-            title: 'Why some Alabama homeowners choose to sell as-is.',
-            tone: 'surface',
             items: [
               {
-                title: 'Making repairs',
-                body: 'Fixing a roof, updating a bathroom, replacing flooring, or addressing other issues can become expensive.',
+                title: 'Older homes',
+                body: 'Aging systems, deferred maintenance or dated interiors. We price the work in, not against you.',
               },
               {
-                title: 'Preparing the property',
-                body: 'Cleaning, painting, landscaping, decluttering, and staging can take time and effort.',
+                title: 'Duplexes and multi-unit',
+                body: 'Milwaukee has a deep stock of duplexes. We buy them owner-occupied, tenant-occupied or empty.',
               },
               {
-                title: 'Coordinating contractors',
-                body: 'Major repairs can require finding contractors, getting estimates, managing schedules, and waiting for work to be completed.',
+                title: 'Vacant properties',
+                body: 'An empty house keeps costing you every month. We can take it off your hands quickly.',
               },
               {
-                title: 'The traditional-market process',
-                body: 'A traditional sale may involve showings, negotiations, inspections, financing, and other steps before closing.',
+                title: 'Vacant building registration',
+                body: 'A house left empty 30 days or more must be registered with the Department of Neighborhood Services. Longer vacancies bring inspections and fees.',
+              },
+              {
+                title: 'Rental property registration',
+                body: 'Non-owner-occupied homes must be registered with the city, and a new owner has 15 days after the sale to re-register.',
+              },
+              {
+                title: 'Open code violations',
+                body: 'Unresolved city orders transfer to the next owner and often scare off retail buyers.',
               },
             ],
             after: [
-              'An as-is sale can be an alternative for homeowners who would rather explore selling the property in its current condition. For owners who prefer the traditional route, our Real Estate Agent Program is another path.',
+              'Selling as-is to us means you do not have to clear these up first. Tell us what is open and we will factor it into the offer.',
             ],
+            note: 'Source: City of Milwaukee Department of Neighborhood Services.',
           },
           {
-            id: 'alabama-approach',
-            title: 'How GetHomeOffer approaches as-is properties.',
+            id: 'why-us',
+            title: 'Why work with us?',
             body: [
-              'At GetHomeOffer, we buy qualifying properties as-is. That means you can tell us about your property as it exists today, even if it needs work.',
-              "We consider the property's current condition when evaluating whether we can purchase it. You don't need to make the property perfect just to start a conversation with us.",
-              "If the property is something we're interested in purchasing, we'll evaluate the situation and determine whether we can make an offer. You can then decide whether that offer and the terms of the transaction are right for you.",
-              "There is no need to assume that an as-is sale is automatically the right choice. It's simply another option to consider.",
+              'I founded GetHomeOffer because Milwaukee homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
+              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees. And often, our offer is more than what competing buyers propose.',
             ],
+            badgeImage: '/images/number1-badge.png',
             cta: true,
           },
           {
-            id: 'alabama-questions',
-            title: 'As-is doesn\'t mean "no questions asked."',
-            quiet: true,
-            body: [
-              "Selling as-is doesn't mean you should avoid asking questions or skip appropriate due diligence. The time to investigate concerns and discuss the terms of a transaction is before closing.",
-              "If you're considering selling your Alabama property, make sure you understand the purchase agreement and the terms you're agreeing to. If you have questions about your legal rights or obligations, consider speaking with an Alabama real-estate attorney.",
+            id: 'service-area',
+            title: 'Milwaukee and nearby suburbs.',
+            body: ['We buy houses across the city and the surrounding Milwaukee County suburbs, including:'],
+            list: [
+              'Wauwatosa',
+              'West Allis',
+              'Greenfield',
+              'Oak Creek',
+              'Franklin',
+              'Cudahy',
+              'South Milwaukee',
+              'St. Francis',
+              'Shorewood',
+              'Whitefish Bay',
+              'Glendale',
+              'Brown Deer',
             ],
+            after: ['Near Milwaukee but not listed? Ask us anyway.'],
+            cta: true,
+          },
+          {
+            id: 'market',
+            title: 'Milwaukee housing at a glance.',
+            tone: 'surface',
+            quiet: true,
+            body: ['Area-wide numbers describe the market, not your house. Your offer is based on your property.'],
+            stats: [
+              { value: '$339,896', label: 'Median owner-occupied home value' },
+              { value: '1,062,233', label: 'Total housing units' },
+              { value: '34.9%', label: 'Renter-occupied homes' },
+              { value: '77,615', label: 'Vacant housing units' },
+            ],
+            note: 'Source: Esri Housing Profile, Milwaukee, WI (DMA). 2026 Esri forecasts; U.S. Census Bureau 2020 decennial Census. Figures cover the Milwaukee media market, not only the city.',
           },
         ],
-        stepsTitle: 'How selling your Alabama property works.',
+        stepsTitle: 'How selling your Milwaukee house works.',
         steps: [
-          { title: 'Tell us about the property.', body: 'Give us the address and some basic information about the house.' },
-          {
-            title: 'We evaluate the property.',
-            body: "We'll learn more about the property, including its current condition and your situation.",
-          },
-          {
-            title: 'Review the offer.',
-            body: "If we're able to purchase the property, we'll present the terms for you to consider.",
-          },
-          {
-            title: "Decide what's next.",
-            body: 'You can review the offer and determine whether moving forward makes sense for you.',
-          },
+          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
+          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
+          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
+          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
+          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
         ],
-        citiesTitle: 'Where we buy houses in Alabama.',
+        citiesTitle: 'Other Wisconsin cities we serve',
         closing: {
-          title: 'From Alabama property to your next move.',
-          body: "Your property is part of your story. Whether you're ready to sell or simply exploring what's possible, we're here to help you understand your options.",
-          secondaryLabel: 'Explore Your Options',
-          secondaryPath: '/services/',
+          title: 'See what we could offer for your Milwaukee house.',
+          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
+          secondaryLabel: 'See all Wisconsin cities',
+          secondaryPath: '/we-buy-houses-cash/wisconsin/',
         },
-        faqTitle: 'Questions about selling a house for cash in Alabama?',
+        faqTitle: 'Questions Milwaukee sellers ask.',
       },
       faqs: [
         {
-          question: 'How does selling a house for cash in Alabama work?',
-          answer:
-            "You tell us about the property, we evaluate it, including its current condition and your situation, and if we're able to purchase it we present the terms. You then decide whether moving forward makes sense for you.",
+          question: 'Do you buy houses as-is in Milwaukee?',
+          answer: 'Yes, in any condition. No repairs, cleaning or updates needed.',
         },
         {
-          question: 'What does "as-is" mean when selling a house?',
+          question: 'How much will you pay for my house?',
           answer:
-            "It means the property is offered in its current condition. You don't have to complete every repair before exploring a sale. It describes the property's condition; it doesn't take away your ability to ask questions, discuss terms, or decide.",
+            'Every offer is calculated for your specific property, based on its condition, location and value. Tell us about it and we will give you a straightforward number.',
         },
         {
-          question: 'Do I need to make repairs before selling my Alabama house?',
-          answer:
-            "Not necessarily. We evaluate qualifying properties in their current condition, so you don't need to make the property perfect just to start a conversation with us.",
+          question: 'Are there any fees or commissions?',
+          answer: 'No. There are no realtor commissions, listing fees or hidden costs.',
         },
         {
-          question: 'Can I sell an inherited property for cash?',
-          answer:
-            "Inherited properties are one of the situations we're glad to hear about. Tell us about the property and your situation, and we'll let you know whether it's something we can evaluate.",
+          question: 'How quickly can you close?',
+          answer: 'Typically 14 to 30 days. We can often work around the date you need.',
         },
         {
-          question: 'Can I sell a vacant house in Alabama?',
-          answer:
-            "Yes, you can tell us about a vacant property. You don't necessarily have to bring it back to perfect condition before exploring your options.",
+          question: 'Can you buy a house with tenants, or one I inherited?',
+          answer: 'Yes. We buy tenant-occupied, vacant and inherited properties.',
         },
         {
-          question: 'What types of properties do you buy in Alabama?',
-          answer:
-            "We consider qualifying residential properties in a range of conditions. Tell us about yours and we'll let you know whether it's something we're able to purchase.",
+          question: 'Do you buy houses outside Milwaukee?',
+          answer: 'Yes. We buy throughout the nearby suburbs, from Wauwatosa and West Allis to Oak Creek and Brown Deer.',
         },
         {
-          question: 'How quickly can I sell my Alabama property?',
-          answer:
-            "It depends on the property and the terms of the transaction. If we make an offer, the closing timeline is part of the terms you review before deciding.",
-        },
-        {
-          question: 'What happens after I request an offer?',
-          answer:
-            "We'll learn more about the property and your situation. If we're able to purchase it, we'll present the terms for you to consider, and the decision is yours.",
-        },
-        {
-          question: 'Can I sell my house if it needs major repairs?',
-          answer:
-            "You can tell us about it. We consider the property's current condition when evaluating whether we can purchase it. We can't promise an offer on every property, but repairs alone don't rule out a conversation.",
-        },
-        {
-          question: 'Should I sell my Alabama house for cash or use a real estate agent?',
-          answer:
-            "It depends on what matters most to you. A cash sale can suit owners who want to sell in the property's current condition. If reaching the open market matters more, our Real Estate Agent Program is built for a traditional sale. Either way, the choice is yours.",
+          question: 'Do I have to accept your offer?',
+          answer: 'No. Our offer comes with no obligation. You decide whether it works for you.',
         },
       ],
+    },
+    'wisconsin/madison': {
+      guide: {
+        introTitle: 'We buy houses in Madison, in any condition.',
+        introCta: true,
+        sections: [
+          {
+            id: 'why-us',
+            title: 'Why work with us?',
+            body: [
+              'I founded GetHomeOffer because Madison homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
+              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
+            ],
+            badgeImage: '/images/number1-badge.png',
+            cta: true,
+          },
+        ],
+        stepsTitle: 'How selling your Madison house works.',
+        steps: [
+          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
+          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
+          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
+          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
+          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
+        ],
+        citiesTitle: 'Other Wisconsin cities we serve',
+        closing: {
+          title: 'See what we could offer for your Madison house.',
+          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
+          secondaryLabel: 'See all Wisconsin cities',
+          secondaryPath: '/we-buy-houses-cash/wisconsin/',
+        },
+        faqTitle: 'Questions Madison sellers ask.',
+      },
+    },
+    'wisconsin/green-bay': {
+      guide: {
+        introTitle: 'We buy houses in Green Bay, in any condition.',
+        introCta: true,
+        sections: [
+          {
+            id: 'why-us',
+            title: 'Why work with us?',
+            body: [
+              'I founded GetHomeOffer because Green Bay homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
+              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
+            ],
+            badgeImage: '/images/number1-badge.png',
+            cta: true,
+          },
+        ],
+        stepsTitle: 'How selling your Green Bay house works.',
+        steps: [
+          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
+          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
+          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
+          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
+          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
+        ],
+        citiesTitle: 'Other Wisconsin cities we serve',
+        closing: {
+          title: 'See what we could offer for your Green Bay house.',
+          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
+          secondaryLabel: 'See all Wisconsin cities',
+          secondaryPath: '/we-buy-houses-cash/wisconsin/',
+        },
+        faqTitle: 'Questions Green Bay sellers ask.',
+      },
+    },
+    'wisconsin/kenosha': {
+      guide: {
+        introTitle: 'We buy houses in Kenosha, in any condition.',
+        introCta: true,
+        sections: [
+          {
+            id: 'why-us',
+            title: 'Why work with us?',
+            body: [
+              'I founded GetHomeOffer because Kenosha homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
+              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
+            ],
+            badgeImage: '/images/number1-badge.png',
+            cta: true,
+          },
+        ],
+        stepsTitle: 'How selling your Kenosha house works.',
+        steps: [
+          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
+          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
+          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
+          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
+          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
+        ],
+        citiesTitle: 'Other Wisconsin cities we serve',
+        closing: {
+          title: 'See what we could offer for your Kenosha house.',
+          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
+          secondaryLabel: 'See all Wisconsin cities',
+          secondaryPath: '/we-buy-houses-cash/wisconsin/',
+        },
+        faqTitle: 'Questions Kenosha sellers ask.',
+      },
+    },
+    'wisconsin/racine': {
+      guide: {
+        introTitle: 'We buy houses in Racine, in any condition.',
+        introCta: true,
+        sections: [
+          {
+            id: 'why-us',
+            title: 'Why work with us?',
+            body: [
+              'I founded GetHomeOffer because Racine homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
+              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
+            ],
+            badgeImage: '/images/number1-badge.png',
+            cta: true,
+          },
+        ],
+        stepsTitle: 'How selling your Racine house works.',
+        steps: [
+          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
+          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
+          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
+          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
+          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
+        ],
+        citiesTitle: 'Other Wisconsin cities we serve',
+        closing: {
+          title: 'See what we could offer for your Racine house.',
+          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
+          secondaryLabel: 'See all Wisconsin cities',
+          secondaryPath: '/we-buy-houses-cash/wisconsin/',
+        },
+        faqTitle: 'Questions Racine sellers ask.',
+      },
+    },
+    'wisconsin/appleton': {
+      guide: {
+        introTitle: 'We buy houses in Appleton, in any condition.',
+        introCta: true,
+        sections: [
+          {
+            id: 'why-us',
+            title: 'Why work with us?',
+            body: [
+              'I founded GetHomeOffer because Appleton homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
+              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
+            ],
+            badgeImage: '/images/number1-badge.png',
+            cta: true,
+          },
+        ],
+        stepsTitle: 'How selling your Appleton house works.',
+        steps: [
+          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
+          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
+          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
+          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
+          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
+        ],
+        citiesTitle: 'Other Wisconsin cities we serve',
+        closing: {
+          title: 'See what we could offer for your Appleton house.',
+          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
+          secondaryLabel: 'See all Wisconsin cities',
+          secondaryPath: '/we-buy-houses-cash/wisconsin/',
+        },
+        faqTitle: 'Questions Appleton sellers ask.',
+      },
+    },
+    'wisconsin/waukesha': {
+      guide: {
+        introTitle: 'We buy houses in Waukesha, in any condition.',
+        introCta: true,
+        sections: [
+          {
+            id: 'why-us',
+            title: 'Why work with us?',
+            body: [
+              'I founded GetHomeOffer because Waukesha homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
+              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
+            ],
+            badgeImage: '/images/number1-badge.png',
+            cta: true,
+          },
+        ],
+        stepsTitle: 'How selling your Waukesha house works.',
+        steps: [
+          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
+          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
+          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
+          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
+          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
+        ],
+        citiesTitle: 'Other Wisconsin cities we serve',
+        closing: {
+          title: 'See what we could offer for your Waukesha house.',
+          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
+          secondaryLabel: 'See all Wisconsin cities',
+          secondaryPath: '/we-buy-houses-cash/wisconsin/',
+        },
+        faqTitle: 'Questions Waukesha sellers ask.',
+      },
+    },
+    'wisconsin/eau-claire': {
+      guide: {
+        introTitle: 'We buy houses in Eau Claire, in any condition.',
+        introCta: true,
+        sections: [
+          {
+            id: 'why-us',
+            title: 'Why work with us?',
+            body: [
+              'I founded GetHomeOffer because Eau Claire homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
+              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
+            ],
+            badgeImage: '/images/number1-badge.png',
+            cta: true,
+          },
+        ],
+        stepsTitle: 'How selling your Eau Claire house works.',
+        steps: [
+          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
+          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
+          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
+          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
+          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
+        ],
+        citiesTitle: 'Other Wisconsin cities we serve',
+        closing: {
+          title: 'See what we could offer for your Eau Claire house.',
+          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
+          secondaryLabel: 'See all Wisconsin cities',
+          secondaryPath: '/we-buy-houses-cash/wisconsin/',
+        },
+        faqTitle: 'Questions Eau Claire sellers ask.',
+      },
+    },
+    'wisconsin/la-crosse': {
+      guide: {
+        introTitle: 'We buy houses in La Crosse, in any condition.',
+        introCta: true,
+        sections: [
+          {
+            id: 'why-us',
+            title: 'Why work with us?',
+            body: [
+              'I founded GetHomeOffer because La Crosse homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
+              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
+            ],
+            badgeImage: '/images/number1-badge.png',
+            cta: true,
+          },
+        ],
+        stepsTitle: 'How selling your La Crosse house works.',
+        steps: [
+          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
+          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
+          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
+          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
+          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
+        ],
+        citiesTitle: 'Other Wisconsin cities we serve',
+        closing: {
+          title: 'See what we could offer for your La Crosse house.',
+          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
+          secondaryLabel: 'See all Wisconsin cities',
+          secondaryPath: '/we-buy-houses-cash/wisconsin/',
+        },
+        faqTitle: 'Questions La Crosse sellers ask.',
+      },
+    },
+    'wisconsin/oshkosh': {
+      guide: {
+        introTitle: 'We buy houses in Oshkosh, in any condition.',
+        introCta: true,
+        sections: [
+          {
+            id: 'why-us',
+            title: 'Why work with us?',
+            body: [
+              'I founded GetHomeOffer because Oshkosh homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
+              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
+            ],
+            badgeImage: '/images/number1-badge.png',
+            cta: true,
+          },
+        ],
+        stepsTitle: 'How selling your Oshkosh house works.',
+        steps: [
+          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
+          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
+          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
+          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
+          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
+        ],
+        citiesTitle: 'Other Wisconsin cities we serve',
+        closing: {
+          title: 'See what we could offer for your Oshkosh house.',
+          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
+          secondaryLabel: 'See all Wisconsin cities',
+          secondaryPath: '/we-buy-houses-cash/wisconsin/',
+        },
+        faqTitle: 'Questions Oshkosh sellers ask.',
+      },
     },
   },
   agent: {},

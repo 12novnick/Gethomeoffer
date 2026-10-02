@@ -70,9 +70,15 @@
   opacity: 0;
   pointer-events: none;
   transition:
-    transform 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1400ms cubic-bezier(0.22, 1, 0.36, 1),
     opacity 400ms var(--ease-out);
   animation: process-glow 2s ease-in-out infinite;
+}
+
+@media (min-width: 1024px) {
+  .process__traveler {
+    transition-duration: 2800ms, 400ms;
+  }
 }
 
 .process__traveler.is-visible {

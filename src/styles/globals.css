@@ -251,6 +251,16 @@
     color: var(--color-text-inverse);
   }
 
+  @media (hover: hover) and (pointer: fine) {
+    body {
+      cursor: url('/images/cursor.png') 16 16, auto;
+    }
+  }
+
+  .hide-on-desktop {
+    display: none;
+  }
+
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

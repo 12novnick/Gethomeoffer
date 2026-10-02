@@ -56,7 +56,7 @@ export function Navigation() {
         </nav>
 
         <Link to="/" className="wordmark" onClick={closeMenu}>
-          Get Home Offer
+          <img src="/images/logo.png" alt="Get Home Offer" className="wordmark__logo" />
         </Link>
 
         <Link to={OFFER_PATH} className="btn btn--primary site-header__cta">

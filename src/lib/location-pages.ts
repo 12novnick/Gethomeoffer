@@ -1,6 +1,6 @@
 import { data } from 'react-router';
 import { LOCATION_CONTENT, type LocalContent, type ProgramId } from '../data/location-content';
-import { LOCATIONS, getCityBySlug, getStateBySlug } from '../data/locations';
+import { CASH_STATE_SLUGS, LOCATIONS, getCityBySlug, getStateBySlug } from '../data/locations';
 import { AGENT_PATH, CASH_PATH } from './site';
 
 // Build-time only: imported by route loaders, never by components.
@@ -15,7 +15,7 @@ export function isPublished(content: LocalContent) {
 
 export function buildStatePage(program: ProgramId, stateSlug: string | undefined) {
   const state = getStateBySlug(stateSlug ?? '');
-  if (!state) throw data(null, { status: 404 });
+  if (!state || !CASH_STATE_SLUGS.includes(state.slug)) throw data(null, { status: 404 });
 
   const content = contentFor(program, state.slug);
   return {
@@ -30,7 +30,7 @@ export function buildStatePage(program: ProgramId, stateSlug: string | undefined
 export function buildCityPage(program: ProgramId, stateSlug: string | undefined, citySlug: string | undefined) {
   const state = getStateBySlug(stateSlug ?? '');
   const city = state && getCityBySlug(state.slug, citySlug ?? '');
-  if (!state || !city) throw data(null, { status: 404 });
+  if (!state || !city || !CASH_STATE_SLUGS.includes(state.slug)) throw data(null, { status: 404 });
 
   const content = contentFor(program, `${state.slug}/${city.slug}`);
   return {

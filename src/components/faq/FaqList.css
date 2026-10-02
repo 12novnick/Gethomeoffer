@@ -1,9 +1,7 @@
 .faq-list {
-  border-top: 1px solid var(--color-text);
 }
 
 .faq-list__item {
-  border-bottom: 1px solid var(--color-border);
 }
 
 .faq-list__question {

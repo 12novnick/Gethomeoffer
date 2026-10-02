@@ -26,14 +26,9 @@ export function Situations() {
     <section className="situations section" aria-labelledby="situations-title">
       <div className="container situations__layout">
         <div className="situations__frame" aria-hidden="true">
-          {SITUATIONS.map((situation, index) => (
-            <div
-              key={situation.title}
-              className={`situations__image ${index === activeIndex ? 'is-active' : ''}`}
-            >
-              <ImageSlot image={situation.image} />
-            </div>
-          ))}
+          <div className="situations__image is-active">
+            <ImageSlot image={SITUATIONS[0].image} />
+          </div>
         </div>
 
         <div className="situations__content">

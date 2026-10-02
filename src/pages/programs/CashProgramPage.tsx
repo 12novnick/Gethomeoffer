@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { SidebarLayout } from '../../components/locations/SidebarLayout';
 import { StateDirectory } from '../../components/locations/StateDirectory';
 import { CtaBand } from '../../components/ui/CtaBand';
 import { DetailGrid } from '../../components/ui/DetailGrid';
@@ -12,6 +13,7 @@ import './ProgramPage.css';
 
 export function CashProgramPage() {
   return (
+    <SidebarLayout>
     <div className="program-page--no-dividers">
       <PageHero
         crumbs={CASH_CRUMBS}
@@ -85,5 +87,6 @@ export function CashProgramPage() {
         }
       />
     </div>
+    </SidebarLayout>
   );
 }

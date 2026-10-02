@@ -8,11 +8,12 @@ interface CityDirectoryProps {
   basePath: string;
   cities: { name: string; slug: string }[];
   stateAbbr: string;
+  className?: string;
 }
 
-export function CityDirectory({ id, eyebrow, title, basePath, cities, stateAbbr }: CityDirectoryProps) {
+export function CityDirectory({ id, eyebrow, title, basePath, cities, stateAbbr, className }: CityDirectoryProps) {
   return (
-    <section className="city-directory section" aria-labelledby={id}>
+    <section className={`city-directory section ${className ?? ''}`} aria-labelledby={id}>
       <div className="container">
         {eyebrow && <p className="eyebrow">{eyebrow}</p>}
         <h2 id={id} className="city-directory__title">

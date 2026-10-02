@@ -655,6 +655,11 @@ export const LOCATIONS: State[] = [
       { id: 'green-bay', name: 'Green Bay', state: 'WI', slug: 'green-bay' },
       { id: 'kenosha', name: 'Kenosha', state: 'WI', slug: 'kenosha' },
       { id: 'racine', name: 'Racine', state: 'WI', slug: 'racine' },
+      { id: 'appleton', name: 'Appleton', state: 'WI', slug: 'appleton' },
+      { id: 'waukesha', name: 'Waukesha', state: 'WI', slug: 'waukesha' },
+      { id: 'eau-claire', name: 'Eau Claire', state: 'WI', slug: 'eau-claire' },
+      { id: 'la-crosse', name: 'La Crosse', state: 'WI', slug: 'la-crosse' },
+      { id: 'oshkosh', name: 'Oshkosh', state: 'WI', slug: 'oshkosh' },
     ],
   },
   {
@@ -671,6 +676,11 @@ export const LOCATIONS: State[] = [
     ],
   },
 ];
+
+// States with Cash Program pages. Only these are listed, built and reachable.
+export const CASH_STATE_SLUGS: readonly string[] = ['wisconsin'];
+
+export const CASH_STATES = LOCATIONS.filter((state) => CASH_STATE_SLUGS.includes(state.slug));
 
 // Helper function to get a state by slug
 export const getStateBySlug = (slug: string): State | undefined => {

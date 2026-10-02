@@ -21,6 +21,11 @@ function GuideBlock({ section, program }: { section: GuideSection; program: Prog
     <div className={section.quiet ? 'state-guide__quiet' : undefined}>
       <SplitSection id={section.id} title={section.title} tone={section.tone}>
         {section.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+        {section.badgeImage && (
+          <div className="state-guide__badge">
+            <img src={section.badgeImage} alt="Badge" />
+          </div>
+        )}
         {section.stats && (
           <dl className="state-guide__stats">
             {section.stats.map((stat) => (

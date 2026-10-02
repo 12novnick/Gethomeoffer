@@ -15,6 +15,7 @@
   align-items: end;
 }
 
+
 .page-hero--text .page-hero__layout {
   grid-template-columns: minmax(0, 1fr);
 }
@@ -49,6 +50,7 @@
 .page-hero__media {
   aspect-ratio: 4 / 5;
   overflow: hidden;
+  will-change: transform;
 }
 
 .page-hero__image {

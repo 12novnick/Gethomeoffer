@@ -1,5 +1,5 @@
 import { Link } from 'react-router';
-import { LOCATIONS } from '../../data/locations';
+import { CASH_STATES } from '../../data/locations';
 import './StateDirectory.css';
 
 interface StateDirectoryProps {
@@ -21,7 +21,7 @@ export function StateDirectory({ id, title, lede, basePath }: StateDirectoryProp
         </header>
 
         <ul role="list" className="state-directory__list">
-          {LOCATIONS.map((state) => (
+          {CASH_STATES.map((state) => (
             <li key={state.slug}>
               <Link to={`${basePath}${state.slug}/`} className="state-directory__link">
                 <span>{state.name}</span>

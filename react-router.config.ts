@@ -1,15 +1,13 @@
 import { copyFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import type { Config } from '@react-router/dev/config';
-import { LOCATIONS } from './src/data/locations.ts';
+import { CASH_STATES } from './src/data/locations.ts';
 import { PAGES } from './src/data/pages.ts';
 
-const locationPaths = ['/we-buy-houses-cash/', '/real-estate-agent-program/'].flatMap((base) =>
-  LOCATIONS.flatMap((state) => [
-    `${base}${state.slug}/`,
-    ...state.cities.map((city) => `${base}${state.slug}/${city.slug}/`),
-  ]),
-);
+const locationPaths = CASH_STATES.flatMap((state) => [
+  `/we-buy-houses-cash/${state.slug}/`,
+  ...state.cities.map((city) => `/we-buy-houses-cash/${state.slug}/${city.slug}/`),
+]);
 
 export default {
   appDirectory: 'src',

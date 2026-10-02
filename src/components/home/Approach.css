@@ -1,6 +1,6 @@
 .approach__layout {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: clamp(2.5rem, 7vw, 8rem);
 }
 
@@ -71,6 +71,12 @@
 
 .approach__body {
   color: var(--color-text-muted);
+}
+
+@media (min-width: 1024px) {
+  .approach__media {
+    display: none;
+  }
 }
 
 @media (max-width: 1023px) {

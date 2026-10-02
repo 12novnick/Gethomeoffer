@@ -44,11 +44,6 @@
   color: var(--color-text);
 }
 
-/* Agent card sits lower so the pair reads as two distinct paths. */
-.program-card--agent {
-  margin-top: clamp(0rem, 6vw, 5rem);
-}
-
 .program-card__media {
   aspect-ratio: 5 / 4;
   overflow: hidden;
@@ -157,9 +152,5 @@
 
   .options__header .lede {
     margin-top: var(--space-md);
-  }
-
-  .program-card--agent {
-    margin-top: 0;
   }
 }
