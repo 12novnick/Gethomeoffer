@@ -51,6 +51,11 @@ export const PAGES: Record<string, PageInfo> = {
     description: "Let's talk about your property. Ask about a cash offer or about exploring the Real Estate Agent Program.",
     heading: 'Get your free cash offer!',
   },
+  '/sitemap/': {
+    title: 'Sitemap | GetHomeOffer',
+    description: 'Every page on GetHomeOffer.com in one place: our programs, the cities where we buy houses, company information and legal pages.',
+    heading: 'Sitemap',
+  },
   '/privacy-policy/': {
     title: 'Privacy Policy | GetHomeOffer',
     description:

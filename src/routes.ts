@@ -13,6 +13,7 @@ export default [
   route('contact', 'routes/contact.tsx'),
   route('privacy-policy', 'routes/privacy-policy.tsx'),
   route('terms', 'routes/terms.tsx'),
+  route('sitemap', 'routes/sitemap-page.tsx'),
   route('sitemap.xml', 'routes/sitemap.ts'),
   route('*', 'routes/not-found.tsx'),
 ] satisfies RouteConfig;

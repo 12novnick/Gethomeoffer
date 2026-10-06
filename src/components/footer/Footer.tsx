@@ -40,6 +40,9 @@ export function Footer() {
                   <Link to={item.path}>{item.label}</Link>
                 </li>
               ))}
+              <li>
+                <Link to="/sitemap/">Sitemap</Link>
+              </li>
             </ul>
           </nav>
         </div>

@@ -8,6 +8,7 @@ export const ABOUT_CRUMBS: Crumb[] = [HOME, { label: 'About Us', path: '/about/'
 export const FAQ_CRUMBS: Crumb[] = [HOME, { label: 'FAQ', path: '/faq/' }];
 export const LOCATIONS_CRUMB: Crumb = { label: 'Locations', path: '/locations/' };
 export const LOCATIONS_CRUMBS: Crumb[] = [HOME, LOCATIONS_CRUMB];
+export const SITEMAP_CRUMBS: Crumb[] = [HOME, { label: 'Sitemap', path: '/sitemap/' }];
 export const CONTACT_CRUMBS: Crumb[] = [HOME, { label: 'Contact', path: '/contact/' }];
 export const CASH_CRUMBS: Crumb[] = [HOME, { label: CASH_PROGRAM.name, path: CASH_PROGRAM.path }];
 export const AGENT_CRUMBS: Crumb[] = [HOME, { label: AGENT_PROGRAM.name, path: AGENT_PROGRAM.path }];
