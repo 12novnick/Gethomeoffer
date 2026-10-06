@@ -1,6 +1,4 @@
 import { Link } from 'react-router';
-import { SidebarLayout } from '../../components/locations/SidebarLayout';
-import { StateDirectory } from '../../components/locations/StateDirectory';
 import { CtaBand } from '../../components/ui/CtaBand';
 import { DetailGrid } from '../../components/ui/DetailGrid';
 import { PageHero } from '../../components/ui/PageHero';
@@ -13,7 +11,6 @@ import './ProgramPage.css';
 
 export function CashProgramPage() {
   return (
-    <SidebarLayout>
     <div className="program-page--no-dividers">
       <PageHero
         crumbs={CASH_CRUMBS}
@@ -56,15 +53,14 @@ export function CashProgramPage() {
         <p className="program-note">Don't see your property type? Tell us about it and we'll let you know.</p>
       </SplitSection>
 
-      <StateDirectory
-        id="cash-locations"
-        title="Where We Buy Houses"
-        lede="Choose your state to learn how the Cash Program works where your property is located."
-        basePath={CASH_PROGRAM.path}
-      />
-
       <section className="section">
         <div className="container">
+          <p>
+            <Link to="/locations/" className="arrow-link">
+              See where we buy houses
+              <span className="btn__arrow" aria-hidden="true">→</span>
+            </Link>
+          </p>
           <p className="program-note">
             A direct sale isn't right for everyone. If reaching the highest possible market price matters most, the
             traditional market may be a better fit. <Link to={AGENT_PROGRAM.path}>Explore the Real Estate Agent Program</Link>.
@@ -87,6 +83,5 @@ export function CashProgramPage() {
         }
       />
     </div>
-    </SidebarLayout>
   );
 }

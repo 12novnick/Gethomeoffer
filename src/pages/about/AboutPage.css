@@ -5,6 +5,10 @@
   margin-top: var(--space-lg);
 }
 
+.split-section:is([aria-labelledby='why'], [aria-labelledby='story']) .split-section__body p {
+  color: #000;
+}
+
 .split-section__body p a {
   font-weight: 600;
 }

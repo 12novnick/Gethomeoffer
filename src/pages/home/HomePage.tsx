@@ -28,15 +28,6 @@ export function HomePage() {
           </p>
           <ul role="list" style={{ marginTop: '1rem', paddingLeft: '1.5rem' }}>
             <li><Link to="/we-buy-houses-cash/wisconsin/milwaukee/">Milwaukee</Link></li>
-            <li><Link to="/we-buy-houses-cash/wisconsin/madison/">Madison</Link></li>
-            <li><Link to="/we-buy-houses-cash/wisconsin/green-bay/">Green Bay</Link></li>
-            <li><Link to="/we-buy-houses-cash/wisconsin/kenosha/">Kenosha</Link></li>
-            <li><Link to="/we-buy-houses-cash/wisconsin/racine/">Racine</Link></li>
-            <li><Link to="/we-buy-houses-cash/wisconsin/appleton/">Appleton</Link></li>
-            <li><Link to="/we-buy-houses-cash/wisconsin/waukesha/">Waukesha</Link></li>
-            <li><Link to="/we-buy-houses-cash/wisconsin/eau-claire/">Eau Claire</Link></li>
-            <li><Link to="/we-buy-houses-cash/wisconsin/la-crosse/">La Crosse</Link></li>
-            <li><Link to="/we-buy-houses-cash/wisconsin/oshkosh/">Oshkosh</Link></li>
           </ul>
         </div>
       </section>

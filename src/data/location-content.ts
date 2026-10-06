@@ -26,6 +26,8 @@ export interface GuideSection {
   table?: { caption: string; rows: { label: string; count: string; share: string }[] };
   /** Small print under the section: a data source or legal note. */
   note?: string;
+  /** External page the note links to. */
+  noteUrl?: string;
   cta?: boolean;
   tone?: 'default' | 'surface';
   /** Visually secondary section. */
@@ -100,7 +102,7 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
         },
         {
           question: 'What areas of Wisconsin do you serve?',
-          answer: 'We primarily buy in Milwaukee, Madison, Green Bay, Kenosha, Racine, Appleton, Waukesha, Eau Claire, La Crosse, and Oshkosh. If you\'re in one of these cities, we can help. Not sure if your property qualifies? Reach out and we\'ll let you know.',
+          answer: 'We primarily buy in Milwaukee and the surrounding Milwaukee County suburbs. Not sure if your property qualifies? Reach out and we\'ll let you know.',
         },
         {
           question: 'Can you help if I\'m facing foreclosure or need to sell quickly?',
@@ -120,20 +122,20 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
         'There are no repairs to make, no open houses to host and no commissions taken out at closing. You get a clear number, and you decide.',
       ],
       guide: {
-        introTitle: 'We buy houses in Milwaukee, in any condition.',
+        introTitle: 'Sell your house As-Is',
         introCta: true,
         sections: [
           {
             id: 'houses-we-buy',
-            title: 'You Don’t Need a Perfect House or Situation to Sell It.',
+            title: 'You Don\'t Need a Perfect House or Situation to Sell It.',
             body: ['If you own it in Milwaukee and want to move on from it, tell us about it.'],
-            items: [
-              { title: 'Houses needing repairs', body: 'Roof, foundation, plumbing or wiring. Leave it as it is.' },
-              { title: 'Inherited houses', body: 'Skip the cleanout and the costs of holding an estate property.' },
-              { title: 'Vacant houses', body: 'Stop paying taxes, utilities and insurance on an empty home.' },
-              { title: 'Duplexes and rentals', body: 'Occupied or vacant. You do not need to wait for a lease to end.' },
-              { title: 'Facing foreclosure', body: 'A fast sale can help you move before the timeline runs out.' },
-              { title: 'Any other reason', body: 'Divorce, relocation or simply ready to be done.' },
+            list: [
+              'Houses needing repairs',
+              'Inherited houses',
+              'Vacant houses',
+              'Duplexes and rentals',
+              'Facing foreclosure',
+              'Any other reason',
             ],
             after: ['Not sure your property fits? Ask us. It costs nothing.'],
             cta: true,
@@ -176,12 +178,13 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
               'Selling as-is to us means you do not have to clear these up first. Tell us what is open and we will factor it into the offer.',
             ],
             note: 'Source: City of Milwaukee Department of Neighborhood Services.',
+            noteUrl: 'https://city.milwaukee.gov/dns',
           },
           {
             id: 'why-us',
             title: 'Why work with us?',
             body: [
-              'I founded GetHomeOffer because Milwaukee homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
+              'I created GetHomeOffer because Milwaukee homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
               'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees. And often, our offer is more than what competing buyers propose.',
             ],
             badgeImage: '/images/number1-badge.png',
@@ -207,20 +210,6 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
             ],
             after: ['Near Milwaukee but not listed? Ask us anyway.'],
             cta: true,
-          },
-          {
-            id: 'market',
-            title: 'Milwaukee housing at a glance.',
-            tone: 'surface',
-            quiet: true,
-            body: ['Area-wide numbers describe the market, not your house. Your offer is based on your property.'],
-            stats: [
-              { value: '$339,896', label: 'Median owner-occupied home value' },
-              { value: '1,062,233', label: 'Total housing units' },
-              { value: '34.9%', label: 'Renter-occupied homes' },
-              { value: '77,615', label: 'Vacant housing units' },
-            ],
-            note: 'Source: Esri Housing Profile, Milwaukee, WI (DMA). 2026 Esri forecasts; U.S. Census Bureau 2020 decennial Census. Figures cover the Milwaukee media market, not only the city.',
           },
         ],
         stepsTitle: 'How selling your Milwaukee house works.',
@@ -271,312 +260,6 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
           answer: 'No. Our offer comes with no obligation. You decide whether it works for you.',
         },
       ],
-    },
-    'wisconsin/madison': {
-      guide: {
-        introTitle: 'We buy houses in Madison, in any condition.',
-        introCta: true,
-        sections: [
-          {
-            id: 'why-us',
-            title: 'Why work with us?',
-            body: [
-              'I founded GetHomeOffer because Madison homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
-              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
-            ],
-            badgeImage: '/images/number1-badge.png',
-            cta: true,
-          },
-        ],
-        stepsTitle: 'How selling your Madison house works.',
-        steps: [
-          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
-          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
-          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
-          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
-          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
-        ],
-        citiesTitle: 'Other Wisconsin cities we serve',
-        closing: {
-          title: 'See what we could offer for your Madison house.',
-          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
-          secondaryLabel: 'See all Wisconsin cities',
-          secondaryPath: '/we-buy-houses-cash/wisconsin/',
-        },
-        faqTitle: 'Questions Madison sellers ask.',
-      },
-    },
-    'wisconsin/green-bay': {
-      guide: {
-        introTitle: 'We buy houses in Green Bay, in any condition.',
-        introCta: true,
-        sections: [
-          {
-            id: 'why-us',
-            title: 'Why work with us?',
-            body: [
-              'I founded GetHomeOffer because Green Bay homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
-              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
-            ],
-            badgeImage: '/images/number1-badge.png',
-            cta: true,
-          },
-        ],
-        stepsTitle: 'How selling your Green Bay house works.',
-        steps: [
-          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
-          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
-          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
-          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
-          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
-        ],
-        citiesTitle: 'Other Wisconsin cities we serve',
-        closing: {
-          title: 'See what we could offer for your Green Bay house.',
-          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
-          secondaryLabel: 'See all Wisconsin cities',
-          secondaryPath: '/we-buy-houses-cash/wisconsin/',
-        },
-        faqTitle: 'Questions Green Bay sellers ask.',
-      },
-    },
-    'wisconsin/kenosha': {
-      guide: {
-        introTitle: 'We buy houses in Kenosha, in any condition.',
-        introCta: true,
-        sections: [
-          {
-            id: 'why-us',
-            title: 'Why work with us?',
-            body: [
-              'I founded GetHomeOffer because Kenosha homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
-              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
-            ],
-            badgeImage: '/images/number1-badge.png',
-            cta: true,
-          },
-        ],
-        stepsTitle: 'How selling your Kenosha house works.',
-        steps: [
-          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
-          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
-          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
-          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
-          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
-        ],
-        citiesTitle: 'Other Wisconsin cities we serve',
-        closing: {
-          title: 'See what we could offer for your Kenosha house.',
-          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
-          secondaryLabel: 'See all Wisconsin cities',
-          secondaryPath: '/we-buy-houses-cash/wisconsin/',
-        },
-        faqTitle: 'Questions Kenosha sellers ask.',
-      },
-    },
-    'wisconsin/racine': {
-      guide: {
-        introTitle: 'We buy houses in Racine, in any condition.',
-        introCta: true,
-        sections: [
-          {
-            id: 'why-us',
-            title: 'Why work with us?',
-            body: [
-              'I founded GetHomeOffer because Racine homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
-              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
-            ],
-            badgeImage: '/images/number1-badge.png',
-            cta: true,
-          },
-        ],
-        stepsTitle: 'How selling your Racine house works.',
-        steps: [
-          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
-          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
-          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
-          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
-          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
-        ],
-        citiesTitle: 'Other Wisconsin cities we serve',
-        closing: {
-          title: 'See what we could offer for your Racine house.',
-          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
-          secondaryLabel: 'See all Wisconsin cities',
-          secondaryPath: '/we-buy-houses-cash/wisconsin/',
-        },
-        faqTitle: 'Questions Racine sellers ask.',
-      },
-    },
-    'wisconsin/appleton': {
-      guide: {
-        introTitle: 'We buy houses in Appleton, in any condition.',
-        introCta: true,
-        sections: [
-          {
-            id: 'why-us',
-            title: 'Why work with us?',
-            body: [
-              'I founded GetHomeOffer because Appleton homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
-              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
-            ],
-            badgeImage: '/images/number1-badge.png',
-            cta: true,
-          },
-        ],
-        stepsTitle: 'How selling your Appleton house works.',
-        steps: [
-          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
-          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
-          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
-          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
-          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
-        ],
-        citiesTitle: 'Other Wisconsin cities we serve',
-        closing: {
-          title: 'See what we could offer for your Appleton house.',
-          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
-          secondaryLabel: 'See all Wisconsin cities',
-          secondaryPath: '/we-buy-houses-cash/wisconsin/',
-        },
-        faqTitle: 'Questions Appleton sellers ask.',
-      },
-    },
-    'wisconsin/waukesha': {
-      guide: {
-        introTitle: 'We buy houses in Waukesha, in any condition.',
-        introCta: true,
-        sections: [
-          {
-            id: 'why-us',
-            title: 'Why work with us?',
-            body: [
-              'I founded GetHomeOffer because Waukesha homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
-              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
-            ],
-            badgeImage: '/images/number1-badge.png',
-            cta: true,
-          },
-        ],
-        stepsTitle: 'How selling your Waukesha house works.',
-        steps: [
-          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
-          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
-          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
-          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
-          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
-        ],
-        citiesTitle: 'Other Wisconsin cities we serve',
-        closing: {
-          title: 'See what we could offer for your Waukesha house.',
-          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
-          secondaryLabel: 'See all Wisconsin cities',
-          secondaryPath: '/we-buy-houses-cash/wisconsin/',
-        },
-        faqTitle: 'Questions Waukesha sellers ask.',
-      },
-    },
-    'wisconsin/eau-claire': {
-      guide: {
-        introTitle: 'We buy houses in Eau Claire, in any condition.',
-        introCta: true,
-        sections: [
-          {
-            id: 'why-us',
-            title: 'Why work with us?',
-            body: [
-              'I founded GetHomeOffer because Eau Claire homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
-              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
-            ],
-            badgeImage: '/images/number1-badge.png',
-            cta: true,
-          },
-        ],
-        stepsTitle: 'How selling your Eau Claire house works.',
-        steps: [
-          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
-          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
-          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
-          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
-          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
-        ],
-        citiesTitle: 'Other Wisconsin cities we serve',
-        closing: {
-          title: 'See what we could offer for your Eau Claire house.',
-          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
-          secondaryLabel: 'See all Wisconsin cities',
-          secondaryPath: '/we-buy-houses-cash/wisconsin/',
-        },
-        faqTitle: 'Questions Eau Claire sellers ask.',
-      },
-    },
-    'wisconsin/la-crosse': {
-      guide: {
-        introTitle: 'We buy houses in La Crosse, in any condition.',
-        introCta: true,
-        sections: [
-          {
-            id: 'why-us',
-            title: 'Why work with us?',
-            body: [
-              'I founded GetHomeOffer because La Crosse homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
-              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
-            ],
-            badgeImage: '/images/number1-badge.png',
-            cta: true,
-          },
-        ],
-        stepsTitle: 'How selling your La Crosse house works.',
-        steps: [
-          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
-          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
-          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
-          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
-          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
-        ],
-        citiesTitle: 'Other Wisconsin cities we serve',
-        closing: {
-          title: 'See what we could offer for your La Crosse house.',
-          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
-          secondaryLabel: 'See all Wisconsin cities',
-          secondaryPath: '/we-buy-houses-cash/wisconsin/',
-        },
-        faqTitle: 'Questions La Crosse sellers ask.',
-      },
-    },
-    'wisconsin/oshkosh': {
-      guide: {
-        introTitle: 'We buy houses in Oshkosh, in any condition.',
-        introCta: true,
-        sections: [
-          {
-            id: 'why-us',
-            title: 'Why work with us?',
-            body: [
-              'I founded GetHomeOffer because Oshkosh homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
-              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
-            ],
-            badgeImage: '/images/number1-badge.png',
-            cta: true,
-          },
-        ],
-        stepsTitle: 'How selling your Oshkosh house works.',
-        steps: [
-          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
-          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
-          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
-          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
-          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
-        ],
-        citiesTitle: 'Other Wisconsin cities we serve',
-        closing: {
-          title: 'See what we could offer for your Oshkosh house.',
-          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
-          secondaryLabel: 'See all Wisconsin cities',
-          secondaryPath: '/we-buy-houses-cash/wisconsin/',
-        },
-        faqTitle: 'Questions Oshkosh sellers ask.',
-      },
     },
   },
   agent: {},

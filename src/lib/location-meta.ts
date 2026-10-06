@@ -1,4 +1,5 @@
 import type { MetaDescriptor } from 'react-router';
+import { LOCATIONS_CRUMB } from '../data/breadcrumbs';
 import { LOCATION_LABELS } from '../data/location-labels';
 import type { CityPageData, StatePageData } from './location-pages';
 import { breadcrumbSchema, faqSchema, serviceSchema, type Crumb } from './schema';
@@ -8,7 +9,7 @@ export function stateCrumbs(page: StatePageData | CityPageData): Crumb[] {
   const { program } = LOCATION_LABELS[page.program];
   return [
     { label: 'Home', path: '/' },
-    { label: program.name, path: program.path },
+    LOCATIONS_CRUMB,
     { label: page.state.name, path: `${program.path}${page.state.slug}/` },
   ];
 }

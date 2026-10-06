@@ -76,8 +76,9 @@ export const IMAGES = {
     tone: 'sand',
   },
   aboutHero: {
-    alt: 'Afternoon light across the facade of a home and its front garden.',
-    label: 'About · Home facade and garden, warm afternoon light, vertical',
+    src: '/images/founder-portrait.jpg',
+    alt: 'Portrait of the founder of GetHomeOffer',
+    label: 'About · Founder portrait',
     tone: 'olive',
   },
   cashHero: {
@@ -111,9 +112,15 @@ export const IMAGES = {
     tone: 'dusk',
   },
   milwaukeeHero: {
-    src: '/images/milwaukee-hero.avif',
-    alt: 'Milwaukee neighborhood street view.',
+    src: '/images/we-buy-houses-milwaukee.avif',
+    alt: 'We Buy Houses Milwaukee',
     label: 'Milwaukee · Historic neighborhoods, vertical',
+    tone: 'stone',
+  },
+  founderPortrait: {
+    src: '/images/founder-portrait.jpg',
+    alt: 'Founder portrait',
+    label: 'Founder portrait',
     tone: 'stone',
   },
 } satisfies Record<string, ImageAsset>;

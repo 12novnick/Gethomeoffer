@@ -9,6 +9,11 @@ export function Credentials() {
           alt="U.S. News & World Report Best Rankings"
           className="credentials__badge"
         />
+        <img
+          src="/images/bbb-logo.png"
+          alt="BBB Accredited"
+          className="credentials__badge"
+        />
       </div>
     </section>
   );

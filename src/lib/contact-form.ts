@@ -1,18 +1,19 @@
 export type Pathway = 'cash' | 'agent' | 'unsure';
 
-export interface ContactSubmission {
+export interface LeadSubmission {
   pathway: Pathway;
-  name: string;
+  firstName: string;
+  lastName: string;
+  phone: string;
   email: string;
-  phone?: string;
-  address?: string;
-  message?: string;
+  address: string;
+  smsConsent: boolean;
 }
 
 export type SubmitResult = 'sent' | 'error' | 'not-connected';
 
 // Not wired to a backend yet. Replace with a POST to a Cloudflare Worker/Pages Function when it exists.
-export async function submitContact(submission: ContactSubmission): Promise<SubmitResult> {
+export async function submitLead(submission: LeadSubmission): Promise<SubmitResult> {
   void submission;
   return 'not-connected';
 }

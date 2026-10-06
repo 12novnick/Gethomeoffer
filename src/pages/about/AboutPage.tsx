@@ -1,5 +1,4 @@
 import { Link } from 'react-router';
-import { ContentSlot } from '../../components/ui/ContentSlot';
 import { CtaBand } from '../../components/ui/CtaBand';
 import { DetailGrid } from '../../components/ui/DetailGrid';
 import { PageHero } from '../../components/ui/PageHero';
@@ -51,10 +50,25 @@ export function AboutPage() {
       </SplitSection>
 
       <SplitSection id="story" eyebrow="Our story" title="Who we are." tone="surface">
-        <ContentSlot
-          label="Company story"
-          guidance="The founding story, the team and relevant background. Use verified facts only: no invented years in business, transaction counts, credentials or awards."
-        />
+        <p>
+          I grew up in Wisconsin and studied real estate and risk management at the University of Wisconsin–Madison,
+          where both programs ranked first in the nation. Those programs taught me two things: how to understand
+          property and markets, and how to manage complexity and help people make decisions in uncertain situations.
+        </p>
+        <p>
+          For years, I watched homeowners face a frustrating choice: list with an agent and wait months for a buyer
+          to finance their purchase, or sell to someone who didn't understand their market or their situation. Too often,
+          owners felt pressured into decisions that didn't fit their lives.
+        </p>
+        <p>
+          I created GetHomeOffer because Wisconsin homeowners deserve better. They deserve to understand both options
+          clearly, to work with someone who knows their market, and to choose the path that actually fits their situation,
+          whether that's a fast cash sale or the traditional market with a professional.
+        </p>
+        <p>
+          GetHomeOffer is built on the idea that selling a home isn't just a transaction. It's a life event. And the
+          person selling deserves respect, clarity, and real options.
+        </p>
       </SplitSection>
 
       <section className="section" aria-labelledby="beliefs-title">

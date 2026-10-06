@@ -651,15 +651,6 @@ export const LOCATIONS: State[] = [
     slug: 'wisconsin',
     cities: [
       { id: 'milwaukee', name: 'Milwaukee', state: 'WI', slug: 'milwaukee' },
-      { id: 'madison', name: 'Madison', state: 'WI', slug: 'madison' },
-      { id: 'green-bay', name: 'Green Bay', state: 'WI', slug: 'green-bay' },
-      { id: 'kenosha', name: 'Kenosha', state: 'WI', slug: 'kenosha' },
-      { id: 'racine', name: 'Racine', state: 'WI', slug: 'racine' },
-      { id: 'appleton', name: 'Appleton', state: 'WI', slug: 'appleton' },
-      { id: 'waukesha', name: 'Waukesha', state: 'WI', slug: 'waukesha' },
-      { id: 'eau-claire', name: 'Eau Claire', state: 'WI', slug: 'eau-claire' },
-      { id: 'la-crosse', name: 'La Crosse', state: 'WI', slug: 'la-crosse' },
-      { id: 'oshkosh', name: 'Oshkosh', state: 'WI', slug: 'oshkosh' },
     ],
   },
   {

@@ -166,17 +166,28 @@
 }
 
 @media (max-width: 1023px) {
-  .site-nav,
-  .site-header__cta {
+  .site-nav {
     display: none;
   }
 
   .site-header__bar {
     justify-content: space-between;
+    gap: var(--space-sm);
   }
 
   .menu-toggle {
     display: inline-flex;
+    order: 3;
+  }
+
+  .wordmark {
+    order: 1;
+  }
+
+  .site-header__cta {
+    order: 2;
+    min-height: 2.75rem;
+    padding-inline: 1rem;
   }
 
   .mobile-menu {

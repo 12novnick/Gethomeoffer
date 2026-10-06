@@ -57,7 +57,8 @@ Every image goes through `ImageSlot` + an entry in `src/data/images.ts`. Without
   - Sticky mobile CTA is hidden on the offer/contact page; `scroll-padding-bottom` keeps focused elements above it.
 - Phase 8: Privacy Policy + Terms via `pages/legal/LegalPage`. Section outlines in `src/data/legal.ts`; no legal text written. A document is noindex, excluded from the sitemap and shows a draft notice until every section has `body` (attorney-approved text).
 - Phase 6: How It Works page (`pages/how-it-works/`). Journey stages in `src/data/how-it-works.ts`; both pathways reuse `programs.ts` steps. Comparison table is shared (`components/programs/ComparisonTable`).
-- Open: confirm production domain (`SITE_URL`); add default og:image once photos exist.
+- Production domain confirmed: https://gethomeoffer.com (`SITE_URL`).
+- Open: add default og:image once photos exist.
 
 ## Commands
 `npm run dev` · `npm run build` (typegen + typecheck + prerender) · `npm run preview` · `npm run lint`

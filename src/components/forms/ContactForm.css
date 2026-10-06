@@ -118,6 +118,38 @@
   border-color: var(--color-focus);
 }
 
+.consent {
+  border: 0;
+}
+
+.consent__legend {
+  margin-bottom: var(--space-sm);
+  font-weight: 600;
+}
+
+.consent__required {
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-earth);
+}
+
+.consent__option {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: var(--text-small);
+  line-height: 1.6;
+  cursor: pointer;
+}
+
+.consent__input {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-top: 0.1rem;
+  accent-color: var(--color-cta);
+}
+
 .contact-form__footer {
   display: flex;
   flex-wrap: wrap;

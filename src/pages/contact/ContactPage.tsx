@@ -13,13 +13,27 @@ export function ContactPage() {
       <PageHero
         crumbs={CONTACT_CRUMBS}
         eyebrow="Contact"
-        title="Let's Talk About Your Property."
+        title="Get your free cash offer!"
         lede="Tell us a little about your property and what you're hoping to do. Whether you want a cash offer or would like to explore the Real Estate Agent Program, we'll help you take the next step."
       />
 
       <section className="section" aria-labelledby="contact-form-title">
         <div className="container contact-layout">
           <aside className="contact-details" aria-label="Contact details">
+            <div className="trust-box">
+              <h2 className="trust-box__title">Why Wisconsin homeowners sell to us</h2>
+              <ul role="list" className="trust-box__list">
+                <li>No Commissions</li>
+                <li>No Fees</li>
+                <li>Sell Your House "As Is"</li>
+                <li>Leave Tenants To Us</li>
+              </ul>
+              <div className="trust-box__badges">
+                <img src="/images/badge.png" alt="U.S. News & World Report Best Rankings" />
+                <img src="/images/bbb-logo.png" alt="BBB Accredited" />
+              </div>
+            </div>
+
             <h2 className="contact-details__title">Reach us directly</h2>
             <dl className="contact-details__list">
               <div>

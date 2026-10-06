@@ -1,0 +1,42 @@
+.locations__state {
+  font-size: var(--text-heading);
+  margin-bottom: var(--space-lg);
+}
+
+.locations__state a {
+  color: var(--color-cta);
+  text-decoration: none;
+}
+
+.locations__state a:hover {
+  text-decoration: underline;
+}
+
+.locations__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: var(--space-sm);
+}
+
+.locations__city {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.25rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.locations__city:hover {
+  border-color: var(--color-cta);
+  color: var(--color-cta);
+}
+
+.locations__city:hover .btn__arrow {
+  transform: translateX(4px);
+}

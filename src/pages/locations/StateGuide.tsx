@@ -66,7 +66,17 @@ function GuideBlock({ section, program }: { section: GuideSection; program: Prog
         )}
         {section.items && <DetailGrid items={section.items} />}
         {section.after?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-        {section.note && <p className="state-guide__note">{section.note}</p>}
+        {section.note && (
+          <p className="state-guide__note">
+            {section.noteUrl ? (
+              <a href={section.noteUrl} target="_blank" rel="noopener noreferrer">
+                {section.note}
+              </a>
+            ) : (
+              section.note
+            )}
+          </p>
+        )}
         {section.cta && <OfferLink program={program} />}
       </SplitSection>
     </div>

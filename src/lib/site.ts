@@ -10,6 +10,7 @@ export const AGENT_CONNECT_PATH = '/contact/?path=agent';
 
 export const NAV_ITEMS = [
   { label: 'Services', path: '/services/' },
+  { label: 'Locations', path: '/locations/' },
   { label: 'About Us', path: '/about/' },
   { label: 'FAQ', path: '/faq/' },
   { label: 'Contact', path: '/contact/' },

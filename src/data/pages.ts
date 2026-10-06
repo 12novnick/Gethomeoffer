@@ -24,6 +24,12 @@ export const PAGES: Record<string, PageInfo> = {
       'Explore a direct sale and get a straightforward cash offer for your property. See how the Cash Program works and where we buy houses.',
     heading: 'Discover What a Cash Sale Could Look Like In Our We Buy Houses Program',
   },
+  '/locations/': {
+    title: 'Locations: Where We Buy Houses | GetHomeOffer',
+    description:
+      'See where we buy houses for cash in Wisconsin, including Milwaukee and its nearby suburbs. Choose your city to learn more.',
+    heading: 'Where We Buy Houses',
+  },
   '/real-estate-agent-program/': {
     title: 'Real Estate Agent Program: Sell on the Traditional Market | GetHomeOffer',
     description:
@@ -43,7 +49,7 @@ export const PAGES: Record<string, PageInfo> = {
   '/contact/': {
     title: 'Contact Us | GetHomeOffer',
     description: "Let's talk about your property. Ask about a cash offer or about exploring the Real Estate Agent Program.",
-    heading: "Let's Talk About Your Property.",
+    heading: 'Get your free cash offer!',
   },
   '/privacy-policy/': {
     title: 'Privacy Policy | GetHomeOffer',
