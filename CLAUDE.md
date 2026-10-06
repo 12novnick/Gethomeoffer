@@ -67,6 +67,7 @@ Every image goes through `ImageSlot` + an entry in `src/data/images.ts`. Without
 - Contact page trust box: four checkmark points + U.S. News and BBB badges. Owner must confirm BBB accreditation before relying on that seal.
 - Company contact (`src/data/company.ts`): phone (608) 571-4547 (tel link), email info@gethomeoffer.com.
 - About page has the owner's founder story (Wisconsin roots, UW-Madison real estate + risk management programs) and founder portrait. Home page shows U.S. News + BBB badges.
+- Security headers live in `public/_headers` (HSTS, CSP with 'unsafe-inline' required for hydration/JSON-LD, X-Frame-Options, Referrer-Policy). Cloudflare Email Address Obfuscation stays ON by owner's choice, so crawlers report a 404 on `/cdn-cgi/l/email-protection` and a missing referrer policy on Cloudflare's email-decode script; both are expected.
 - Owner preferences: no em dashes in copy; short, transactional copy aimed at sellers.
 - Open: wire `submitLead`; add default og:image; owner to confirm which Milwaukee suburbs are served; Privacy/Terms still need attorney text; submit sitemap in Google Search Console.
 
