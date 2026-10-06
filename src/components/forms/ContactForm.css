@@ -181,11 +181,6 @@
   background-color: var(--color-surface-alt);
 }
 
-.contact-form__status.is-not-connected {
-  border: 1px dashed var(--color-border-strong);
-  color: var(--color-earth);
-}
-
 .contact-form__status.is-error {
   color: #8a2c1d;
 }
@@ -198,4 +193,12 @@
   .contact-form__footer .btn {
     flex: 1 1 100%;
   }
+}
+
+.contact-form__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }

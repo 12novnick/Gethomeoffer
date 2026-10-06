@@ -5,9 +5,7 @@ import './ContactForm.css';
 
 const STATUS_MESSAGES: Record<SubmitResult, string> = {
   sent: "Thank you. We've received your details and will be in touch.",
-  error: 'Something went wrong sending your information. Please try again.',
-  'not-connected':
-    '[Placeholder] This form is not connected yet, so nothing was sent. Submissions will work once the form backend is set up.',
+  error: 'Something went wrong sending your information. Please try again, or call us.',
 };
 
 const PATHWAYS: Pathway[] = ['cash', 'agent', 'unsure'];
@@ -19,7 +17,8 @@ export function ContactForm() {
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const form = new FormData(event.currentTarget);
+    const formElement = event.currentTarget;
+    const form = new FormData(formElement);
     const text = (key: string) => String(form.get(key) ?? '').trim();
     const requested = searchParams.get('path') as Pathway | null;
 
@@ -32,9 +31,11 @@ export function ContactForm() {
       email: text('email'),
       address: text('address'),
       smsConsent: form.get('smsConsent') === 'yes',
+      company: text('company'),
     });
     setIsSubmitting(false);
     setStatus(result);
+    if (result === 'sent') formElement.reset();
   }
 
   return (
@@ -60,6 +61,11 @@ export function ContactForm() {
           <label htmlFor="lead-address">Property address</label>
           <input id="lead-address" name="address" type="text" autoComplete="street-address" required />
         </div>
+      </div>
+
+      <div className="contact-form__trap" aria-hidden="true">
+        <label htmlFor="lead-company">Company</label>
+        <input id="lead-company" name="company" type="text" tabIndex={-1} autoComplete="off" />
       </div>
 
       <fieldset className="consent">

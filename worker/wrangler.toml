@@ -1,0 +1,16 @@
+﻿name = "gethomeoffer-leads"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+
+# No public route: the Pages Function at /api/lead calls this Worker through a service binding.
+workers_dev = false
+
+[vars]
+# Must be a verified destination address in Cloudflare Email Routing.
+LEAD_TO = "acehomebuyer@gmail.com"
+# Must be an address on gethomeoffer.com (Email Routing enabled on the zone).
+LEAD_FROM = "leads@gethomeoffer.com"
+
+[[send_email]]
+name = "EMAIL"
+allowed_destination_addresses = ["acehomebuyer@gmail.com"]

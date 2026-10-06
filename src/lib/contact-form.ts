@@ -8,12 +8,22 @@ export interface LeadSubmission {
   email: string;
   address: string;
   smsConsent: boolean;
+  /** Hidden honeypot; real visitors leave it empty. */
+  company: string;
 }
 
-export type SubmitResult = 'sent' | 'error' | 'not-connected';
+export type SubmitResult = 'sent' | 'error';
 
-// Not wired to a backend yet. Replace with a POST to a Cloudflare Worker/Pages Function when it exists.
+// Handled by the gethomeoffer-leads Worker (worker/), routed on the site's own domain.
 export async function submitLead(submission: LeadSubmission): Promise<SubmitResult> {
-  void submission;
-  return 'not-connected';
+  try {
+    const response = await fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(submission),
+    });
+    return response.ok ? 'sent' : 'error';
+  } catch {
+    return 'error';
+  }
 }
