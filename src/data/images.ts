@@ -113,7 +113,7 @@ export const IMAGES = {
   },
   milwaukeeHero: {
     src: '/images/we-buy-houses-milwaukee.avif',
-    alt: 'We Buy Houses Milwaukee',
+    alt: 'bridge on water',
     label: 'Milwaukee · Historic neighborhoods, vertical',
     tone: 'stone',
   },
