@@ -55,6 +55,8 @@ export interface StateGuide {
 export interface LocalContent {
   /** Custom H1; defaults to the program's location title. */
   heading?: string;
+  /** Full <title> when it should differ from the program default. */
+  metaTitle?: string;
   /** Hero paragraph under the H1. */
   summary?: string;
   /** Meta description when it should differ from `summary`. */
@@ -112,11 +114,12 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
     },
     'wisconsin/milwaukee': {
       image: IMAGES.milwaukeeHero,
-      heading: 'We Buy Houses in Milwaukee, WI. Sell Fast. Get Cash.',
+      heading: 'We Buy Houses Milwaukee, WI. Sell Fast. Get Cash.',
+      metaTitle: 'We Buy Houses Milwaukee, WI | Fast Cash Offers | GetHomeOffer',
       summary:
         'Sell your Milwaukee house as-is, with no repairs, no showings and no commissions. Get a cash offer and close in as little as 14 days.',
       metaDescription:
-        'We buy houses in Milwaukee, WI in any condition. No repairs, no fees or commissions, and closing in 14 to 30 days. Get your cash offer.',
+        'We buy houses Milwaukee-wide in any condition. No repairs, no fees or commissions, and closing in 14 to 30 days. Get your cash offer.',
       intro: [
         'Whether your house needs work, sits empty, came to you through an estate or has tenants you are tired of managing, we can make you a cash offer on it as it stands today.',
         'There are no repairs to make, no open houses to host and no commissions taken out at closing. You get a clear number, and you decide.',

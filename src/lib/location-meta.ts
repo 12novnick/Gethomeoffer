@@ -45,10 +45,11 @@ export function cityMeta(page: CityPageData | undefined): MetaDescriptor[] {
   if (!page) return [];
   const labels = LOCATION_LABELS[page.program];
   const crumbs = cityCrumbs(page);
-  const description = page.content.summary ?? labels.cityDescription(page.city.name, page.state.abbr);
+  const description =
+    page.content.metaDescription ?? page.content.summary ?? labels.cityDescription(page.city.name, page.state.abbr);
   return [
     ...seo({
-      title: `${labels.cityTitle(page.city.name, page.state.abbr)} | GetHomeOffer`,
+      title: page.content.metaTitle ?? `${labels.cityTitle(page.city.name, page.state.abbr)} | GetHomeOffer`,
       description,
       path: crumbs[crumbs.length - 1].path,
       noindex: !page.published,
