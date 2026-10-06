@@ -16,8 +16,8 @@ React 19 + TypeScript + Vite + React Router 8 in framework mode (`appDirectory: 
 ## Structure
 - `src/styles/tokens.css` — all colors, type scale, spacing, motion. Never hardcode colors; sky blue (`--color-cta`) is for CTAs only. Links use `--color-link` (sky blue fails contrast as text on ivory).
 - `src/styles/globals.css` — reset, base type, `.btn--primary/ghost/ghost-inverse`, `.eyebrow`, `.lede`, `.container`, `.section`, `.on-dark`.
-- `src/lib/site.ts` — nav items and paths. `OFFER_PATH` points to /contact/ until the offer form exists.
-- `src/data/` — content separate from components: `images.ts` (image registry), `home.ts`, `locations.ts` (50 states × top 5 cities).
+- `src/lib/site.ts` — nav items (Services, Locations, About Us, FAQ, Contact) and paths. `OFFER_PATH` is /contact/, which holds the lead form.
+- `src/data/` — content separate from components: `images.ts` (image registry), `home.ts`, `locations.ts` (all 50 states; only Wisconsin → Milwaukee is built for the cash program via `CASH_STATE_SLUGS`).
 - `src/components/{navigation,footer,home,ui}` — each component has a co-located CSS file.
 - `src/pages/` — page components used by route modules; unbuilt routes share `routes/placeholder.tsx`.
 
@@ -46,7 +46,6 @@ Every image goes through `ImageSlot` + an entry in `src/data/images.ts`. Without
   - Phone/email live in `src/data/company.ts`; undefined values render `[Placeholder]` markers.
   - Contact form (`components/forms/ContactForm`) pre-selects pathway from `?path=cash|agent`. `submitContact` in `src/lib/contact-form.ts` is a stub returning 'not-connected'; wire it to a Cloudflare function later.
   - FAQ content in `src/data/faq.ts` (FAQPage JSON-LD); About values in `src/data/about.ts`; About "Our story" is a ContentSlot awaiting verified facts.
-- Phase 9 (lead form) skipped by owner's request.
 - Phase 10 audit: all 611 pages crawled (no broken links, unique titles/descriptions, one H1, no heading skips). Lighthouse mobile on 10 pages: perf 92–95, a11y 100, best practices 100, SEO 100 on indexable pages (noindex pages score 63 by design). Decisions from the audit:
   - `build.cssCodeSplit: false` (one ~9KB gz stylesheet). Because bundle order is no longer per-route, `globals.css` is wrapped in `@layer base` so component CSS always wins; keep new global rules inside that layer.
   - Fraunces loads the `opsz` variant (no SOFT axis) and both latin fonts are preloaded in `root.tsx` to prevent heading re-wrap layout shift.
@@ -58,7 +57,18 @@ Every image goes through `ImageSlot` + an entry in `src/data/images.ts`. Without
 - Phase 8: Privacy Policy + Terms via `pages/legal/LegalPage`. Section outlines in `src/data/legal.ts`; no legal text written. A document is noindex, excluded from the sitemap and shows a draft notice until every section has `body` (attorney-approved text).
 - Phase 6: How It Works page (`pages/how-it-works/`). Journey stages in `src/data/how-it-works.ts`; both pathways reuse `programs.ts` steps. Comparison table is shared (`components/programs/ComparisonTable`).
 - Production domain confirmed: https://gethomeoffer.com (`SITE_URL`).
-- Open: add default og:image once photos exist.
+
+## Current state (supersedes older phase notes above where they conflict)
+- Deployment: Cloudflare Pages project `gethomeoffer`, auto-deploys on every push to `main` (build `npm run build`, output `build/client`). Custom domains: gethomeoffer.com (+ www). Pushing = publishing; ask before pushing.
+- Cash program is Wisconsin only, and Milwaukee is the only city page. Other cities (Madison etc.) were removed at the owner's request. Sitemap has 10 URLs.
+- Locations tab (`/locations/`, `pages/locations/LocationsPage`) lists served cities; location breadcrumbs go Home › Locations › State › City.
+- Milwaukee page (`location-content.ts` → `'wisconsin/milwaukee'`) uses the long-form `guide`. SEO target keyword "we buy houses Milwaukee" is in `metaTitle`, `metaDescription` and `heading`; keep it there. City pages honor `metaTitle`/`metaDescription`.
+- Contact page is the lead form: first/last name, phone, email, property address, required SMS consent (TCPA disclosure linking Privacy/Terms). Pathway still read silently from `?path=`. `submitLead` in `src/lib/contact-form.ts` is still a stub returning 'not-connected'; next step is a Cloudflare function that emails leads.
+- Contact page trust box: four checkmark points + U.S. News and BBB badges. Owner must confirm BBB accreditation before relying on that seal.
+- Company contact (`src/data/company.ts`): phone (608) 571-4547 (tel link), email info@gethomeoffer.com.
+- About page has the owner's founder story (Wisconsin roots, UW-Madison real estate + risk management programs) and founder portrait. Home page shows U.S. News + BBB badges.
+- Owner preferences: no em dashes in copy; short, transactional copy aimed at sellers.
+- Open: wire `submitLead`; add default og:image; owner to confirm which Milwaukee suburbs are served; Privacy/Terms still need attorney text; submit sitemap in Google Search Console.
 
 ## Commands
 `npm run dev` · `npm run build` (typegen + typecheck + prerender) · `npm run preview` · `npm run lint`
