@@ -8,7 +8,7 @@ type Message = { role: 'user' | 'assistant'; content: string };
 const GREETING: Message = {
   role: 'assistant',
   content:
-    "Hi there! I'm happy to help with any questions about selling your home, whether that's a cash sale or working with an agent. What's on your mind?",
+    "Hi there! I'm Amy, Get Home Offer's virtual assistant. I'm happy to help with any questions about selling your home, whether that's a cash sale or working with an agent. What's on your mind?",
 };
 
 const FALLBACK =
@@ -120,9 +120,9 @@ export function ChatWidget() {
   return (
     <div className="chat-widget">
       {isOpen && (
-        <section id={panelId} className="chat-widget__panel" aria-label="Chat with Get Home Offer">
+        <section id={panelId} className="chat-widget__panel" aria-label="Chat with Amy">
           <header className="chat-widget__header">
-            <p className="chat-widget__title">{view === 'lead' ? 'Request an offer' : 'Ask a question'}</p>
+            <p className="chat-widget__title">{view === 'lead' ? 'Request an offer' : 'Chat with Amy'}</p>
             <button type="button" className="chat-widget__close" onClick={() => setIsOpen(false)}>
               Close
             </button>
