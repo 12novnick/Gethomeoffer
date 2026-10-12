@@ -8,10 +8,11 @@ type Message = { role: 'user' | 'assistant'; content: string };
 const GREETING: Message = {
   role: 'assistant',
   content:
-    'Hi, I can answer questions about our Cash Program and Real Estate Agent Program. For anything about your property, use the contact form.',
+    "Hi there! I'm happy to help with any questions about selling your home, whether that's a cash sale or working with an agent. What's on your mind?",
 };
 
-const FALLBACK = 'Sorry, I cannot answer right now. Please use the contact form and we will get back to you.';
+const FALLBACK =
+  "I'm sorry, I'm having trouble answering right now. Send us a note through the contact form and we'll get back to you soon.";
 
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
