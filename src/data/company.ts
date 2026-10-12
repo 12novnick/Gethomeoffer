@@ -8,4 +8,5 @@ export const SOCIAL_LINKS: { label: string; url: string }[] = [
   { label: 'Facebook', url: 'https://www.facebook.com/Gethomeofferusa/' },
   { label: 'X', url: 'https://x.com/GetHomeOffer' },
   { label: 'LinkedIn', url: 'https://www.linkedin.com/company/get-home-offer/' },
+  { label: 'YouTube', url: 'https://www.youtube.com/@GetHomeOffer' },
 ];
