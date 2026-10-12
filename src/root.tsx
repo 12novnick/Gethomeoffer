@@ -11,6 +11,7 @@ import { Navigation } from './components/navigation/Navigation';
 import { StickyMobileCTA } from './components/navigation/StickyMobileCTA';
 import { ScrollToTop } from './components/navigation/ScrollToTop';
 import { ScrollProgress } from './components/navigation/ScrollProgress';
+import { ChatWidget } from './components/chat/ChatWidget';
 import { PlaceholderPage } from './pages/PlaceholderPage';
 
 // Preloading the two latin font files prevents headings from re-wrapping (layout shift) when fonts swap in.
@@ -41,6 +42,7 @@ export function Layout({ children }: { children: ReactNode }) {
         </main>
         <Footer />
         <StickyMobileCTA />
+        <ChatWidget />
         <ScrollToTop />
         <ScrollRestoration />
         <Scripts />
