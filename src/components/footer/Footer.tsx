@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { SOCIAL_LINKS } from '../../data/company';
 import { AGENT_PATH, CASH_PATH, LEGAL_ITEMS, NAV_ITEMS } from '../../lib/site';
 import './Footer.css';
 
@@ -51,6 +52,15 @@ export function Footer() {
           <Link to="/" className="site-footer__wordmark">
             Get Home Offer
           </Link>
+          <ul role="list" className="site-footer__social" aria-label="Follow us">
+            {SOCIAL_LINKS.map((item) => (
+              <li key={item.url}>
+                <a href={item.url} target="_blank" rel="noopener noreferrer">
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
           <p>© {CURRENT_YEAR} Get Home Offer. All rights reserved.</p>
         </div>
       </div>

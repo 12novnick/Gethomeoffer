@@ -5,7 +5,7 @@ Ready-to-paste copy for each social media profile. Use the same name, website, p
 ## Shared details
 
 - **Name:** Get Home Offer
-- **Handle:** @gethomeoffer (fallbacks: @gethomeofferusa, @gethomeoffer_hq)
+- **Handle:** @gethomeofferusa (Facebook: https://www.facebook.com/Gethomeofferusa/). Use the same handle on every platform.
 - **Website:** https://gethomeoffer.com
 - **Phone:** (608) 571-4547
 - **Email:** info@gethomeoffer.com
@@ -64,7 +64,7 @@ Get Home Offer helps property owners sell a home the way that fits their situati
 ## YouTube
 
 - **Channel name:** Get Home Offer
-- **Handle:** @gethomeoffer
+- **Handle:** @gethomeofferusa
 - **Description:** use the long description above, then add "Learn more at https://gethomeoffer.com".
 - **Links:** Website, Facebook, Instagram.
 

@@ -1,4 +1,5 @@
 import type { MetaFunction } from 'react-router';
+import { SOCIAL_LINKS } from '../data/company';
 import { PAGES } from '../data/pages';
 import { SITE_NAME, SITE_URL, seo } from '../lib/seo';
 import { HomePage } from '../pages/home/HomePage';
@@ -9,7 +10,13 @@ export const meta: MetaFunction = () => [
     'script:ld+json': {
       '@context': 'https://schema.org',
       '@graph': [
-        { '@type': 'Organization', '@id': `${SITE_URL}/#organization`, name: SITE_NAME, url: `${SITE_URL}/` },
+        {
+          '@type': 'Organization',
+          '@id': `${SITE_URL}/#organization`,
+          name: SITE_NAME,
+          url: `${SITE_URL}/`,
+          sameAs: SOCIAL_LINKS.map((item) => item.url),
+        },
         {
           '@type': 'WebSite',
           '@id': `${SITE_URL}/#website`,

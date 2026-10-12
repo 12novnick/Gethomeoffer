@@ -3,3 +3,7 @@ export const COMPANY: { phone?: string; email?: string } = {
   phone: '(608) 571-4547',
   email: 'info@gethomeoffer.com',
 };
+
+export const SOCIAL_LINKS: { label: string; url: string }[] = [
+  { label: 'Facebook', url: 'https://www.facebook.com/Gethomeofferusa/' },
+];
