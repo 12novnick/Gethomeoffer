@@ -34,17 +34,17 @@ export function AboutPage() {
         crumbs={ABOUT_CRUMBS}
         eyebrow="About Us"
         title="A different way forward for property owners."
-        lede="GetHomeOffer helps property owners understand their options and choose what comes next."
+        lede="Get Home Offer helps property owners understand their options and choose what comes next."
         image={IMAGES.aboutHero}
       />
 
-      <SplitSection id="why" eyebrow="Why we exist" title="Why GetHomeOffer exists.">
+      <SplitSection id="why" eyebrow="Why we exist" title="Why Get Home Offer exists.">
         <p>
           Selling a property is rarely just a transaction. It usually comes with a change in life: an inheritance, a
           move, or a property that has become more than you want to manage.
         </p>
         <p>
-          Too often, owners are steered toward a single answer. GetHomeOffer exists to put the options side by side, a
+          Too often, owners are steered toward a single answer. Get Home Offer exists to put the options side by side, a
           direct sale or the traditional market, so the owner can choose.
         </p>
       </SplitSection>
@@ -61,12 +61,12 @@ export function AboutPage() {
           owners felt pressured into decisions that didn't fit their lives.
         </p>
         <p>
-          I created GetHomeOffer because Wisconsin homeowners deserve better. They deserve to understand both options
+          I created Get Home Offer because Wisconsin homeowners deserve better. They deserve to understand both options
           clearly, to work with someone who knows their market, and to choose the path that actually fits their situation,
           whether that's a fast cash sale or the traditional market with a professional.
         </p>
         <p>
-          GetHomeOffer is built on the idea that selling a home isn't just a transaction. It's a life event. And the
+          Get Home Offer is built on the idea that selling a home isn't just a transaction. It's a life event. And the
           person selling deserves respect, clarity, and real options.
         </p>
       </SplitSection>

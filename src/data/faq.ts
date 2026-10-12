@@ -13,9 +13,9 @@ export const FAQ_CATEGORIES: FaqCategory[] = [
     title: 'General Questions',
     faqs: [
       {
-        question: 'What is GetHomeOffer?',
+        question: 'What is Get Home Offer?',
         answer:
-          'GetHomeOffer helps property owners explore two ways to sell: a direct sale through our Cash Program, or a traditional sale on the open market through our Real Estate Agent Program.',
+          'Get Home Offer helps property owners explore two ways to sell: a direct sale through our Cash Program, or a traditional sale on the open market through our Real Estate Agent Program.',
       },
       {
         question: 'How do I know which program is right for me?',

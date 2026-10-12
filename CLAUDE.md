@@ -1,4 +1,4 @@
-# GetHomeOffer.com
+# Get Home Offer
 
 Premium real estate site. Two programs: We Buy Houses Cash, Agent Program. Full brief: `GetHomeOffer_Claude_Code_Build_Spec` (provided by the owner).
 

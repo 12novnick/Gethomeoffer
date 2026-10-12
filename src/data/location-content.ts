@@ -84,7 +84,7 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
   cash: {
     wisconsin: {
       summary: 'Looking to sell a property in Wisconsin? Explore a straightforward cash option and find a path that fits your situation.',
-      intro: ['Selling a property in Wisconsin can follow different paths. Whether you have inherited a home, are relocating, own a vacant property, or want to explore your options, GetHomeOffer provides a direct way to move forward.'],
+      intro: ['Selling a property in Wisconsin can follow different paths. Whether you have inherited a home, are relocating, own a vacant property, or want to explore your options, Get Home Offer provides a direct way to move forward.'],
       faqs: [
         {
           question: 'How fast can you close on a Wisconsin home?',
@@ -115,7 +115,7 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
     'wisconsin/milwaukee': {
       image: IMAGES.milwaukeeHero,
       heading: 'We Buy Houses Milwaukee, WI. Sell Fast. Get Cash.',
-      metaTitle: 'We Buy Houses Milwaukee, WI | Fast Cash Offers | GetHomeOffer',
+      metaTitle: 'We Buy Houses Milwaukee, WI | Fast Cash Offers | Get Home Offer',
       summary:
         'Sell your Milwaukee house as-is, with no repairs, no showings and no commissions. Get a cash offer and close in as little as 14 days.',
       metaDescription:
@@ -187,7 +187,7 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
             id: 'why-us',
             title: 'Why work with us?',
             body: [
-              'I created GetHomeOffer because Milwaukee homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
+              'I created Get Home Offer because Milwaukee homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
               'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees. And often, our offer is more than what competing buyers propose.',
             ],
             badgeImage: '/images/number1-badge.png',

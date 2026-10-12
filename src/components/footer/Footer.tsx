@@ -51,7 +51,7 @@ export function Footer() {
           <Link to="/" className="site-footer__wordmark">
             Get Home Offer
           </Link>
-          <p>© {CURRENT_YEAR} GetHomeOffer. All rights reserved.</p>
+          <p>© {CURRENT_YEAR} Get Home Offer. All rights reserved.</p>
         </div>
       </div>
     </footer>

@@ -77,7 +77,7 @@ export const IMAGES = {
   },
   aboutHero: {
     src: '/images/founder-portrait.jpg',
-    alt: 'Portrait of the founder of GetHomeOffer',
+    alt: 'Portrait of the founder of Get Home Offer',
     label: 'About · Founder portrait',
     tone: 'olive',
   },

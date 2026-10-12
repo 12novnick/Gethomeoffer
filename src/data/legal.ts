@@ -20,12 +20,12 @@ export interface LegalDocument {
 export const PRIVACY_POLICY: LegalDocument = {
   path: '/privacy-policy/',
   title: 'Privacy Policy',
-  lede: 'How GetHomeOffer collects, uses and protects your information.',
+  lede: 'How Get Home Offer collects, uses and protects your information.',
   sections: [
     {
       id: 'who-we-are',
       title: 'Who we are',
-      guidance: 'The legal entity operating GetHomeOffer.com, its mailing address and how to reach it about privacy.',
+      guidance: 'The legal entity operating Get Home Offer, its mailing address and how to reach it about privacy.',
     },
     {
       id: 'information-we-collect',
@@ -84,7 +84,7 @@ export const PRIVACY_POLICY: LegalDocument = {
     {
       id: 'contact',
       title: 'Contact us',
-      guidance: 'How to reach GetHomeOffer with privacy questions or requests.',
+      guidance: 'How to reach Get Home Offer with privacy questions or requests.',
     },
   ],
 };
@@ -92,7 +92,7 @@ export const PRIVACY_POLICY: LegalDocument = {
 export const TERMS: LegalDocument = {
   path: '/terms/',
   title: 'Terms & Conditions',
-  lede: 'The terms that apply to your use of GetHomeOffer.com.',
+  lede: 'The terms that apply to your use of Get Home Offer.',
   sections: [
     {
       id: 'acceptance',
@@ -114,7 +114,7 @@ export const TERMS: LegalDocument = {
       id: 'agent-program',
       title: 'Real Estate Agent Program',
       guidance:
-        'The relationship between GetHomeOffer and any real estate professionals, including any referral arrangements, compensation and licensing disclosures required in each state. Attorney review required.',
+        'The relationship between Get Home Offer and any real estate professionals, including any referral arrangements, compensation and licensing disclosures required in each state. Attorney review required.',
     },
     {
       id: 'use-of-site',
@@ -134,7 +134,7 @@ export const TERMS: LegalDocument = {
     {
       id: 'third-party-links',
       title: 'Third-party links',
-      guidance: 'Responsibility for external sites linked from GetHomeOffer.com.',
+      guidance: 'Responsibility for external sites linked from Get Home Offer.',
     },
     {
       id: 'disclaimers',
@@ -159,7 +159,7 @@ export const TERMS: LegalDocument = {
     {
       id: 'contact',
       title: 'Contact us',
-      guidance: 'How to reach GetHomeOffer with questions about these terms.',
+      guidance: 'How to reach Get Home Offer with questions about these terms.',
     },
   ],
 };

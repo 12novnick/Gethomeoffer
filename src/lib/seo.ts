@@ -2,7 +2,7 @@ import type { MetaDescriptor } from 'react-router';
 
 // Production origin used for canonical URLs, Open Graph and the sitemap.
 export const SITE_URL = 'https://gethomeoffer.com';
-export const SITE_NAME = 'GetHomeOffer';
+export const SITE_NAME = 'Get Home Offer';
 
 interface SeoInput {
   title: string;

@@ -4,7 +4,7 @@ import { PlaceholderPage } from '../pages/PlaceholderPage';
 
 export const meta: MetaFunction = () =>
   seo({
-    title: 'Page Not Found | GetHomeOffer',
+    title: 'Page Not Found | Get Home Offer',
     description: "The page you're looking for doesn't exist or has moved.",
     path: '/404',
     noindex: true,

@@ -40,7 +40,7 @@ export function SitemapPage({ locationLinks }: { locationLinks: SitemapLink[] })
 
   return (
     <>
-      <PageHero crumbs={SITEMAP_CRUMBS} title="Sitemap" lede="Every page on GetHomeOffer, in one place." />
+      <PageHero crumbs={SITEMAP_CRUMBS} title="Sitemap" lede="Every page on Get Home Offer, in one place." />
 
       <section className="section sitemap" aria-label="All pages">
         <div className="container sitemap__grid">

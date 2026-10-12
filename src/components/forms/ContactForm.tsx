@@ -75,7 +75,7 @@ export function ContactForm() {
         <label className="consent__option">
           <input type="checkbox" name="smsConsent" value="yes" required className="consent__input" />
           <span>
-            I agree to receive communications by text message from GetHomeOffer about updates and inquiries. You may
+            I agree to receive communications by text message from Get Home Offer about updates and inquiries. You may
             opt out by replying STOP or ask for more information by replying HELP. Message frequency varies. Message
             and data rates may apply. You may review our <Link to="/privacy-policy/">Privacy Policy</Link> and{' '}
             <Link to="/terms/">Terms &amp; Conditions</Link>.

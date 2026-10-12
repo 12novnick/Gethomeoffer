@@ -54,7 +54,7 @@ export default {
 
     const name = `${lead.firstName} ${lead.lastName}`;
     const text = [
-      `New lead from GetHomeOffer.com`,
+      `New lead from Get Home Offer`,
       ``,
       `Name: ${name}`,
       `Phone: ${lead.phone}`,

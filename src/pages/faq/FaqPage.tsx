@@ -12,7 +12,7 @@ export function FaqPage() {
         crumbs={FAQ_CRUMBS}
         eyebrow="FAQ"
         title="Frequently Asked Questions"
-        lede="Answers to common questions about GetHomeOffer, the Cash Program, the Real Estate Agent Program and where we operate."
+        lede="Answers to common questions about Get Home Offer, the Cash Program, the Real Estate Agent Program and where we operate."
       />
 
       <section className="section" aria-label="Questions by topic">

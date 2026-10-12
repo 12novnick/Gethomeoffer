@@ -25,7 +25,7 @@ export function stateMeta(page: StatePageData | undefined): MetaDescriptor[] {
   const description = page.content.metaDescription ?? page.content.summary ?? labels.stateDescription(page.state.name);
   return [
     ...seo({
-      title: `${labels.stateTitle(page.state.name)} | GetHomeOffer`,
+      title: `${labels.stateTitle(page.state.name)} | Get Home Offer`,
       description,
       path: crumbs[crumbs.length - 1].path,
       noindex: !page.published,
@@ -49,7 +49,7 @@ export function cityMeta(page: CityPageData | undefined): MetaDescriptor[] {
     page.content.metaDescription ?? page.content.summary ?? labels.cityDescription(page.city.name, page.state.abbr);
   return [
     ...seo({
-      title: page.content.metaTitle ?? `${labels.cityTitle(page.city.name, page.state.abbr)} | GetHomeOffer`,
+      title: page.content.metaTitle ?? `${labels.cityTitle(page.city.name, page.state.abbr)} | Get Home Offer`,
       description,
       path: crumbs[crumbs.length - 1].path,
       noindex: !page.published,
