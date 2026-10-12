@@ -6,4 +6,5 @@ export const COMPANY: { phone?: string; email?: string } = {
 
 export const SOCIAL_LINKS: { label: string; url: string }[] = [
   { label: 'Facebook', url: 'https://www.facebook.com/Gethomeofferusa/' },
+  { label: 'X', url: 'https://x.com/GetHomeOffer' },
 ];
