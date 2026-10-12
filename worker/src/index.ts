@@ -52,9 +52,19 @@ export default {
       return json({ ok: false, error: 'invalid' }, 422);
     }
 
+    const transcript = Array.isArray(body.transcript)
+      ? body.transcript
+          .slice(-20)
+          .map((item) => {
+            const entry = item as { role?: unknown; content?: unknown };
+            const speaker = entry.role === 'user' ? 'Visitor' : 'Chatbot';
+            return `${speaker}: ${clean(entry.content, 600)}`;
+          })
+      : [];
+
     const name = `${lead.firstName} ${lead.lastName}`;
     const text = [
-      `New lead from Get Home Offer`,
+      `New lead from Get Home Offer${transcript.length ? ' (chat)' : ''}`,
       ``,
       `Name: ${name}`,
       `Phone: ${lead.phone}`,
@@ -62,6 +72,7 @@ export default {
       `Property address: ${lead.address}`,
       `Interested in: ${PATHWAY_LABELS[pathway]}`,
       `SMS consent: Yes (agreed ${new Date().toISOString()})`,
+      ...(transcript.length ? [``, `Chat conversation:`, ...transcript] : []),
     ].join('\n');
 
     try {
@@ -69,7 +80,7 @@ export default {
         to: env.LEAD_TO,
         from: env.LEAD_FROM,
         replyTo: lead.email,
-        subject: `New lead: ${name}, ${lead.address}`,
+        subject: `New ${transcript.length ? 'chat ' : ''}lead: ${name}, ${lead.address}`,
         text,
       });
     } catch (error) {

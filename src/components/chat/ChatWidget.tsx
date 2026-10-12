@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
 import { Link } from 'react-router';
-import { OFFER_PATH } from '../../lib/site';
+import { submitLead } from '../../lib/contact-form';
 import './ChatWidget.css';
 
 type Message = { role: 'user' | 'assistant'; content: string };
@@ -12,16 +12,24 @@ const GREETING: Message = {
 };
 
 const FALLBACK =
-  "I'm sorry, I'm having trouble answering right now. Send us a note through the contact form and we'll get back to you soon.";
+  "I'm sorry, I'm having trouble answering right now. Tap \"Request an offer\" below and we'll get back to you soon.";
+
+const LEAD_SENT =
+  "Thank you! We've received your details and someone from our team will reach out soon. Feel free to keep asking questions here.";
 
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([GREETING]);
   const [draft, setDraft] = useState('');
   const [isSending, setIsSending] = useState(false);
+  const [view, setView] = useState<'chat' | 'lead'>('chat');
+  const [leadSent, setLeadSent] = useState(false);
+  const [leadError, setLeadError] = useState(false);
   const panelId = useId();
   const toggleRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const firstFieldRef = useRef<HTMLInputElement>(null);
+  const logRef = useRef<HTMLOListElement>(null);
   const wasOpen = useRef(false);
 
   useEffect(() => {
@@ -32,6 +40,17 @@ export function ChatWidget() {
     }
     wasOpen.current = isOpen;
   }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    if (view === 'lead') firstFieldRef.current?.focus();
+    else inputRef.current?.focus();
+  }, [view, isOpen]);
+
+  useEffect(() => {
+    const log = logRef.current;
+    if (log) log.scrollTop = log.scrollHeight;
+  }, [messages, isSending, view]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -69,48 +88,145 @@ export function ChatWidget() {
     setIsSending(false);
   }
 
+  async function sendLead(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    const form = new FormData(event.currentTarget);
+    const text = (key: string) => String(form.get(key) ?? '').trim();
+
+    setIsSending(true);
+    setLeadError(false);
+    const result = await submitLead({
+      pathway: 'unsure',
+      firstName: text('firstName'),
+      lastName: text('lastName'),
+      phone: text('phone'),
+      email: text('email'),
+      address: text('address'),
+      smsConsent: form.get('smsConsent') === 'yes',
+      company: text('company'),
+      transcript: messages.filter((item) => item !== GREETING),
+    });
+    setIsSending(false);
+
+    if (result === 'sent') {
+      setLeadSent(true);
+      setMessages((current) => [...current, { role: 'assistant', content: LEAD_SENT }]);
+      setView('chat');
+    } else {
+      setLeadError(true);
+    }
+  }
+
   return (
     <div className="chat-widget">
       {isOpen && (
         <section id={panelId} className="chat-widget__panel" aria-label="Chat with Get Home Offer">
           <header className="chat-widget__header">
-            <p className="chat-widget__title">Ask a question</p>
+            <p className="chat-widget__title">{view === 'lead' ? 'Request an offer' : 'Ask a question'}</p>
             <button type="button" className="chat-widget__close" onClick={() => setIsOpen(false)}>
               Close
             </button>
           </header>
 
-          <ol className="chat-widget__log" aria-live="polite">
-            {messages.map((message, index) => (
-              <li key={index} className={`chat-widget__message chat-widget__message--${message.role}`}>
-                {message.content}
-              </li>
-            ))}
-            {isSending && <li className="chat-widget__message chat-widget__message--assistant">Typing...</li>}
-          </ol>
+          {view === 'chat' ? (
+            <>
+              <ol ref={logRef} className="chat-widget__log" aria-live="polite">
+                {messages.map((message, index) => (
+                  <li key={index} className={`chat-widget__message chat-widget__message--${message.role}`}>
+                    {message.content}
+                  </li>
+                ))}
+                {isSending && <li className="chat-widget__message chat-widget__message--assistant">Typing...</li>}
+              </ol>
 
-          <p className="chat-widget__note">
-            For details about your property, <Link to={OFFER_PATH}>use the contact form</Link>.
-          </p>
+              {!leadSent && (
+                <button type="button" className="chat-widget__offer" onClick={() => setView('lead')}>
+                  Request an offer
+                </button>
+              )}
 
-          <form className="chat-widget__form" onSubmit={send}>
-            <label className="chat-widget__label" htmlFor={`${panelId}-input`}>
-              Your question
-            </label>
-            <input
-              ref={inputRef}
-              id={`${panelId}-input`}
-              className="chat-widget__input"
-              type="text"
-              value={draft}
-              maxLength={500}
-              autoComplete="off"
-              onChange={(event) => setDraft(event.target.value)}
-            />
-            <button type="submit" className="btn btn--primary chat-widget__send" disabled={isSending || !draft.trim()}>
-              Send
-            </button>
-          </form>
+              <form className="chat-widget__form" onSubmit={send}>
+                <label className="chat-widget__label" htmlFor={`${panelId}-input`}>
+                  Your question
+                </label>
+                <input
+                  ref={inputRef}
+                  id={`${panelId}-input`}
+                  className="chat-widget__input"
+                  type="text"
+                  value={draft}
+                  maxLength={500}
+                  autoComplete="off"
+                  onChange={(event) => setDraft(event.target.value)}
+                />
+                <button
+                  type="submit"
+                  className="btn btn--primary chat-widget__send"
+                  disabled={isSending || !draft.trim()}
+                >
+                  Send
+                </button>
+              </form>
+            </>
+          ) : (
+            <form className="chat-widget__lead" onSubmit={sendLead}>
+              <p className="chat-widget__note">Share your details and we'll reach out about your home.</p>
+              <div className="chat-widget__row">
+                <label>
+                  First name
+                  <input ref={firstFieldRef} name="firstName" type="text" autoComplete="given-name" required />
+                </label>
+                <label>
+                  Last name
+                  <input name="lastName" type="text" autoComplete="family-name" required />
+                </label>
+              </div>
+              <label>
+                Phone number
+                <input name="phone" type="tel" autoComplete="tel" inputMode="tel" required />
+              </label>
+              <label>
+                Email
+                <input name="email" type="email" autoComplete="email" required />
+              </label>
+              <label>
+                Property address
+                <input name="address" type="text" autoComplete="street-address" required />
+              </label>
+
+              <div className="chat-widget__trap" aria-hidden="true">
+                <label>
+                  Company
+                  <input name="company" type="text" tabIndex={-1} autoComplete="off" />
+                </label>
+              </div>
+
+              <label className="chat-widget__consent">
+                <input type="checkbox" name="smsConsent" value="yes" required />
+                <span>
+                  I agree to receive communications by text message from Get Home Offer about updates and inquiries. You
+                  may opt out by replying STOP or ask for more information by replying HELP. Message frequency varies.
+                  Message and data rates may apply. You may review our <Link to="/privacy-policy/">Privacy Policy</Link>{' '}
+                  and <Link to="/terms/">Terms &amp; Conditions</Link>.
+                </span>
+              </label>
+
+              {leadError && (
+                <p className="chat-widget__error" role="alert">
+                  Something went wrong sending your details. Please try again.
+                </p>
+              )}
+
+              <div className="chat-widget__actions">
+                <button type="button" className="chat-widget__close" onClick={() => setView('chat')}>
+                  Back to chat
+                </button>
+                <button type="submit" className="btn btn--primary chat-widget__send" disabled={isSending}>
+                  {isSending ? 'Sending...' : 'Send my details'}
+                </button>
+              </div>
+            </form>
+          )}
         </section>
       )}
 

@@ -167,6 +167,102 @@
   padding-inline: 1rem;
 }
 
+.chat-widget__offer {
+  appearance: none;
+  font: inherit;
+  font-size: var(--text-small);
+  font-weight: 600;
+  padding: 0.6rem 1rem;
+  min-height: 44px;
+  border: 1px solid var(--color-cta);
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  color: var(--color-cta);
+  cursor: pointer;
+}
+
+.chat-widget__offer:hover {
+  background-color: var(--color-surface-alt);
+}
+
+.chat-widget__offer:focus-visible,
+.chat-widget__lead input:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.chat-widget__lead {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  overflow-y: auto;
+  font-size: var(--text-small);
+}
+
+.chat-widget__lead label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  color: var(--color-text-muted);
+}
+
+.chat-widget__lead input[type='text'],
+.chat-widget__lead input[type='tel'],
+.chat-widget__lead input[type='email'] {
+  font: inherit;
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  background-color: var(--color-white);
+  color: var(--color-text);
+  min-width: 0;
+}
+
+.chat-widget__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xs);
+}
+
+.chat-widget__lead .chat-widget__consent {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.chat-widget__consent input {
+  margin-top: 0.2rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+}
+
+.chat-widget__consent a {
+  color: var(--color-link);
+}
+
+.chat-widget__trap {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.chat-widget__error {
+  margin: 0;
+  color: var(--color-earth);
+}
+
+.chat-widget__actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
 .chat-widget__send:disabled {
   opacity: 0.5;
   cursor: not-allowed;
