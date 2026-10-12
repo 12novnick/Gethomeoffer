@@ -69,7 +69,7 @@ Every image goes through `ImageSlot` + an entry in `src/data/images.ts`. Without
 - About page has the owner's founder story (Wisconsin roots, UW-Madison real estate + risk management programs) and founder portrait. Home page shows U.S. News + BBB badges.
 - Security headers live in `public/_headers` (HSTS, CSP with 'unsafe-inline' required for hydration/JSON-LD, X-Frame-Options, Referrer-Policy). Cloudflare Email Address Obfuscation stays ON by owner's choice, so crawlers report a 404 on `/cdn-cgi/l/email-protection` and a missing referrer policy on Cloudflare's email-decode script; both are expected.
 - Owner preferences: no em dashes in copy; short, transactional copy aimed at sellers.
-- Open: wire `submitLead`; add default og:image; owner to confirm which Milwaukee suburbs are served; Privacy Policy text written 2026-10-12 at owner's request (published, not attorney-reviewed; recommend review); Terms still need text; submit sitemap in Google Search Console.
+- Open: wire `submitLead`; add default og:image; owner to confirm which Milwaukee suburbs are served; Privacy Policy and Terms & Conditions text written 2026-10-12 at owner's request (published, not attorney-reviewed; recommend legal review); submit sitemap in Google Search Console.
 
 ## Commands
 `npm run dev` · `npm run build` (typegen + typecheck + prerender) · `npm run preview` · `npm run lint`
