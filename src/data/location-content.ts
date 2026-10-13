@@ -53,6 +53,9 @@ export interface StateGuide {
  * labeled content slot. A page is published (indexed + in the sitemap) once `intro` is provided.
  */
 export interface LocalContent {
+  /** ISO dates for WebPage schema. Change `modified` only when this page's content changes. */
+  published?: string;
+  modified?: string;
   /** Custom H1; defaults to the program's location title. */
   heading?: string;
   /** Full <title> when it should differ from the program default. */
@@ -83,6 +86,8 @@ export interface LocalContent {
 export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> = {
   cash: {
     wisconsin: {
+      published: '2026-10-02',
+      modified: '2026-10-12',
       summary: 'Looking to sell a property in Wisconsin? Explore a straightforward cash option and find a path that fits your situation.',
       intro: ['Selling a property in Wisconsin can follow different paths. Whether you have inherited a home, are relocating, own a vacant property, or want to explore your options, Get Home Offer provides a direct way to move forward.'],
       faqs: [
@@ -113,6 +118,8 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
       ],
     },
     'wisconsin/milwaukee': {
+      published: '2026-10-02',
+      modified: '2026-10-12',
       image: IMAGES.milwaukeeHero,
       heading: 'We Buy Houses Milwaukee, WI. Sell Fast. Get Cash.',
       metaTitle: 'We Buy Houses Milwaukee, WI | Fast Cash Offers | Get Home Offer',

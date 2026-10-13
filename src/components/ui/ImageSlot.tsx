@@ -1,5 +1,5 @@
 import type { ImageAsset } from '../../data/images';
-import { responsiveImage } from '../../lib/images';
+import { IMAGE_SIZES, responsiveImage } from '../../lib/images';
 import './ImageSlot.css';
 
 interface ImageSlotProps {
@@ -13,6 +13,7 @@ interface ImageSlotProps {
 export function ImageSlot({ image, className = '', priority = false, sizes = '100vw' }: ImageSlotProps) {
   if (image.src) {
     const { src, srcSet } = responsiveImage(image.src);
+    const size = IMAGE_SIZES[image.src];
     return (
       <img
         className={`image-slot ${className}`}
@@ -20,6 +21,8 @@ export function ImageSlot({ image, className = '', priority = false, sizes = '10
         srcSet={srcSet}
         sizes={srcSet ? sizes : undefined}
         alt={image.alt}
+        width={size?.width}
+        height={size?.height}
         loading={priority ? 'eager' : 'lazy'}
         fetchPriority={priority ? 'high' : 'auto'}
         decoding="async"

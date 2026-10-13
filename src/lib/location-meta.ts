@@ -29,6 +29,8 @@ export function stateMeta(page: StatePageData | undefined): MetaDescriptor[] {
       description,
       path: crumbs[crumbs.length - 1].path,
       noindex: !page.published,
+      published: page.content.published,
+      modified: page.content.modified,
     }),
     breadcrumbSchema(crumbs),
     serviceSchema({
@@ -53,6 +55,8 @@ export function cityMeta(page: CityPageData | undefined): MetaDescriptor[] {
       description,
       path: crumbs[crumbs.length - 1].path,
       noindex: !page.published,
+      published: page.content.published,
+      modified: page.content.modified,
     }),
     breadcrumbSchema(crumbs),
     serviceSchema({

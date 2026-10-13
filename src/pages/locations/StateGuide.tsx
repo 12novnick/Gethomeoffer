@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import { IMAGE_SIZES } from '../../lib/images';
 import { DetailGrid } from '../../components/ui/DetailGrid';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import { SplitSection } from '../../components/ui/SplitSection';
@@ -23,7 +24,7 @@ function GuideBlock({ section, program }: { section: GuideSection; program: Prog
         {section.body?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         {section.badgeImage && (
           <div className="state-guide__badge">
-            <img src={section.badgeImage} alt="Badge" />
+            <img src={section.badgeImage} width={IMAGE_SIZES[section.badgeImage]?.width} height={IMAGE_SIZES[section.badgeImage]?.height} loading="lazy" alt="Badge" />
           </div>
         )}
         {section.stats && (

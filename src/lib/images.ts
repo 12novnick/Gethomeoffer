@@ -15,3 +15,14 @@ export function responsiveImage(src: string) {
     srcSet: WIDTHS.map((w) => `${cdnUrl(src, w)} ${w}w`).join(', '),
   };
 }
+
+// Intrinsic sizes of files in public/images, so every <img> reserves its space before loading.
+export const IMAGE_SIZES: Record<string, { width: number; height: number }> = {
+  '/images/hero-home.avif': { width: 4104, height: 2736 },
+  '/images/situation-relocation.avif': { width: 2475, height: 3713 },
+  '/images/program-cash.jpg': { width: 474, height: 1024 },
+  '/images/program-agent.avif': { width: 3000, height: 4500 },
+  '/images/founder-portrait.jpg': { width: 1024, height: 1024 },
+  '/images/we-buy-houses-milwaukee.avif': { width: 4032, height: 2268 },
+  '/images/number1-badge.png': { width: 584, height: 427 },
+};

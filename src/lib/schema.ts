@@ -1,12 +1,13 @@
 import type { MetaDescriptor } from 'react-router';
-import { SITE_NAME, SITE_URL } from './seo';
+import { ORGANIZATION_ID, SITE_NAME, SITE_URL } from './seo';
+
+export { ORGANIZATION_ID };
 
 export interface Crumb {
   label: string;
   path: string;
 }
 
-export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 
 export function breadcrumbSchema(crumbs: Crumb[]): MetaDescriptor {
   return {

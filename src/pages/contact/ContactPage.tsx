@@ -29,8 +29,8 @@ export function ContactPage() {
                 <li>Leave Tenants To Us</li>
               </ul>
               <div className="trust-box__badges">
-                <img src="/images/badge.png" alt="U.S. News & World Report Best Rankings" />
-                <img src="/images/bbb-logo.png" alt="BBB Accredited" />
+                <img src="/images/badge.png" width={584} height={427} loading="lazy" alt="U.S. News & World Report Best Rankings" />
+                <img src="/images/bbb-logo.png" width={582} height={367} loading="lazy" alt="BBB Accredited" />
               </div>
             </div>
 
