@@ -10,12 +10,12 @@ export interface PageInfo {
 // Keys are canonical paths (always with a trailing slash). Every entry is prerendered and listed in the sitemap.
 export const PAGES: Record<string, PageInfo> = {
   '/': {
-    title: 'Get Home Offer | Fast Solutions for Your Next Move',
+    title: 'Get Home Offer | We Buy Houses',
     description:
-      'Explore two ways to sell your property: a direct sale through our Cash Program, or the traditional market through our Real Estate Agent Program.',
+      'We buy houses for cash, as-is, or help you sell on the open market with a real estate professional. Explore your options with Get Home Offer.',
     heading: 'Every property has a story.',
     published: '2026-09-29',
-    modified: '2026-10-12',
+    modified: '2026-10-13',
   },
   '/services/': {
     title: 'Services: Cash Program & Real Estate Agent Program | Get Home Offer',

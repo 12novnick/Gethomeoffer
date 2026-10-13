@@ -12,7 +12,7 @@ export interface ImageAsset {
 export const IMAGES = {
   heroHome: {
     src: '/images/hero-home.avif',
-    alt: 'A family home at golden hour, seen from across a quiet residential street.',
+    alt: 'We buy houses like this family home on a quiet residential street.',
     label: 'Hero · Residential exterior at golden hour, wide, calm street',
     tone: 'dusk',
   },
