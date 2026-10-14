@@ -101,30 +101,6 @@ export function ServicePage({ page }: { page: ServicePageData }) {
             Looking for more ways to {lowerHeading}? Visit our <Link to={page.group.path}>{page.group.label}</Link>{' '}
             page for every related situation we buy in.
           </p>
-          {page.related.length > 0 && (
-            <p>
-              Related:{' '}
-              {page.related.map((related, index) => (
-                <span key={related.path}>
-                  {index > 0 && ' · '}
-                  <Link to={related.path}>{related.name}</Link>
-                </span>
-              ))}
-            </p>
-          )}
-          {page.cities.length > 0 && (
-            <p>
-              Where we buy:{' '}
-              {page.cities.map((city, index) => (
-                <span key={city.path}>
-                  {index > 0 && ' · '}
-                  <Link to={city.path}>
-                    {content.heading} in {city.name}, {city.stateAbbr}
-                  </Link>
-                </span>
-              ))}
-            </p>
-          )}
         </div>
       </section>
 

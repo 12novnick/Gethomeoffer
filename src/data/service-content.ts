@@ -14,7 +14,6 @@ export interface ServiceContent {
   /** Things to know before selling in this situation. */
   know: string[];
   faqs: Faq[];
-  related: string[];
 }
 
 // Build-time only: imported by the service route loader, never by components, so it stays out of the JS bundle.
@@ -49,7 +48,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'How fast can you close?', answer: 'Typically 14 to 30 days. We can often work around the date you need.' },
       { question: 'Do I have to accept your offer?', answer: 'No. The offer comes with no obligation. You decide.' },
     ],
-    related: ['sell-house-as-is', 'sell-house-without-realtor', 'sell-house-relocating'],
   },
 
   'sell-house-as-is': {
@@ -81,7 +79,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Do I need to clean the house before selling?', answer: 'No. Take what you want to keep and leave the rest.' },
       { question: 'Will you still inspect the house?', answer: 'We look at the property to make our offer, but there is no repair list for you to complete.' },
     ],
-    related: ['sell-house-needs-repairs', 'sell-outdated-house', 'sell-hoarder-house'],
   },
 
   'sell-house-without-realtor': {
@@ -113,7 +110,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Are there any fees?', answer: 'No. There are no realtor commissions, listing fees or hidden costs.' },
       { question: 'Who handles the paperwork?', answer: 'The closing is handled through a title company, so you are not doing it alone.' },
     ],
-    related: ['sell-house-fast', 'sell-house-as-is', 'sell-house-after-failed-sale'],
   },
 
   'sell-house-needs-repairs': {
@@ -145,7 +141,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'What if I do not know everything that is wrong?', answer: 'That is fine. Share what you know and we will look at the rest.' },
       { question: 'Is there a repair too big for you?', answer: 'Tell us about it. We consider houses with major issues.' },
     ],
-    related: ['sell-house-as-is', 'sell-house-roof-damage', 'sell-house-foundation-problems'],
   },
 
   'sell-house-foundation-problems': {
@@ -177,7 +172,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Do I need an engineer\'s report?', answer: 'No, but if you already have one, sharing it helps us make an accurate offer.' },
       { question: 'Can you buy a house a buyer\'s lender would not approve?', answer: 'Yes. We pay cash, so the sale does not depend on a lender.' },
     ],
-    related: ['sell-house-needs-repairs', 'sell-water-damaged-house', 'sell-house-after-failed-sale'],
   },
 
   'sell-fire-damaged-house': {
@@ -209,7 +203,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Can I sell before my insurance claim is settled?', answer: 'Often, yes, but it depends on your policy. Talk to your insurer first and tell us where things stand.' },
       { question: 'Does the house need to be cleaned out?', answer: 'No. We buy it in its current condition.' },
     ],
-    related: ['sell-water-damaged-house', 'sell-house-needs-repairs', 'sell-house-as-is'],
   },
 
   'sell-water-damaged-house': {
@@ -241,7 +234,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Do you buy houses with flood damage?', answer: 'Yes. Tell us what happened and we will look at the property.' },
       { question: 'What if mold has started?', answer: 'We also buy houses with mold. Let us know what you have seen.' },
     ],
-    related: ['sell-house-with-mold', 'sell-fire-damaged-house', 'sell-house-roof-damage'],
   },
 
   'sell-house-with-mold': {
@@ -273,7 +265,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Do I need mold testing before selling?', answer: 'No. If you already have test results, sharing them is helpful.' },
       { question: 'Can I sell if the mold is widespread?', answer: 'Yes. Tell us what you have seen and we will review the property.' },
     ],
-    related: ['sell-water-damaged-house', 'sell-house-needs-repairs', 'sell-house-as-is'],
   },
 
   'sell-hoarder-house': {
@@ -305,7 +296,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Do I have to clean out the house?', answer: 'No. Take what you want and leave the rest.' },
       { question: 'Will anyone else see the inside of the house?', answer: 'No listing and no open house. Only the people involved in the purchase.' },
     ],
-    related: ['sell-inherited-house', 'sell-house-as-is', 'sell-house-needs-repairs'],
   },
 
   'sell-house-code-violations': {
@@ -337,7 +327,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Do I have to fix violations before selling to you?', answer: 'No. Tell us what is open and we will factor it into the offer.' },
       { question: 'What about unpaid fines?', answer: 'They are handled at closing, often from the sale proceeds. Share the notices so we can plan for them.' },
     ],
-    related: ['sell-house-unpermitted-additions', 'sell-house-liens-back-taxes', 'sell-house-needs-repairs'],
   },
 
   'sell-outdated-house': {
@@ -369,7 +358,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Is my house too old for you?', answer: 'No. We buy older houses in many conditions.' },
       { question: 'Should I update the kitchen before selling?', answer: 'Not to sell to us. We factor the updates into our offer.' },
     ],
-    related: ['sell-house-as-is', 'sell-house-needs-repairs', 'sell-house-downsizing'],
   },
 
   'sell-house-unpermitted-additions': {
@@ -401,7 +389,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Do I need to get permits before selling?', answer: 'Not to sell to us. We factor the unpermitted work into the offer.' },
       { question: 'What if I did not know the work was unpermitted?', answer: 'That happens often. Tell us what you know and we will take it from there.' },
     ],
-    related: ['sell-house-code-violations', 'sell-house-after-failed-sale', 'sell-house-as-is'],
   },
 
   'sell-house-roof-damage': {
@@ -433,7 +420,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Do I need to replace the roof to sell?', answer: 'Not to sell to us. We factor it into the offer.' },
       { question: 'What if water has damaged the inside?', answer: 'We look at the whole house, including any interior damage.' },
     ],
-    related: ['sell-water-damaged-house', 'sell-house-needs-repairs', 'sell-outdated-house'],
   },
 
   'sell-house-termite-damage': {
@@ -465,7 +451,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Do I need a pest inspection before selling?', answer: 'No. If you have a recent report, it helps us make an accurate offer.' },
       { question: 'Are the termites still active a problem?', answer: 'Tell us what you know. We buy houses with active or past infestations.' },
     ],
-    related: ['sell-house-foundation-problems', 'sell-house-needs-repairs', 'sell-house-after-failed-sale'],
   },
 
   'sell-vacant-house': {
@@ -497,7 +482,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Can I sell if I live out of state?', answer: 'Yes. Much of the process can be handled remotely, with closing paperwork through a title company.' },
       { question: 'Do I need to remove what is left inside?', answer: 'No. Take what you want and leave the rest.' },
     ],
-    related: ['sell-inherited-house', 'sell-house-relocating', 'sell-rental-property'],
   },
 
   'sell-rental-property': {
@@ -529,7 +513,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Can you buy my rental with tenants living there?', answer: 'Yes. We buy tenant-occupied properties.' },
       { question: 'Do I need to fix it up between tenants?', answer: 'No. We buy it in its current condition.' },
     ],
-    related: ['sell-house-with-tenants', 'sell-duplex-multi-family', 'sell-vacant-house'],
   },
 
   'sell-house-with-tenants': {
@@ -561,7 +544,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Do my tenants have to move out before closing?', answer: 'No. We buy tenant-occupied houses.' },
       { question: 'What happens to security deposits?', answer: 'They are typically transferred to us at closing through the title company.' },
     ],
-    related: ['sell-rental-property', 'sell-duplex-multi-family', 'sell-house-fast'],
   },
 
   'sell-duplex-multi-family': {
@@ -593,7 +575,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Do you buy owner-occupied duplexes?', answer: 'Yes, whether you live in one unit or none.' },
       { question: 'Can some units be vacant?', answer: 'Yes. Any mix of occupied and vacant units is fine.' },
     ],
-    related: ['sell-rental-property', 'sell-house-with-tenants', 'sell-vacant-house'],
   },
 
   'sell-condo-townhome': {
@@ -625,7 +606,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Do you buy condos with high association fees?', answer: 'Yes. Share the fee amount and any assessments so we can account for them.' },
       { question: 'What about special assessments?', answer: 'Tell us about any approved or pending assessments. They are handled at closing.' },
     ],
-    related: ['sell-house-relocating', 'sell-house-downsizing', 'sell-house-as-is'],
   },
 
   'sell-vacant-land': {
@@ -657,7 +637,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'What details should I share about my land?', answer: 'The address or parcel number, size, and anything you know about access, utilities or zoning.' },
       { question: 'Can I sell land with back taxes owed?', answer: 'Often, yes. Back taxes are typically settled from the proceeds at closing.' },
     ],
-    related: ['sell-inherited-house', 'sell-house-liens-back-taxes', 'sell-vacant-house'],
   },
 
   'sell-inherited-house': {
@@ -689,7 +668,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Can I sell before probate is finished?', answer: 'It depends on your state and the estate. An estate attorney can confirm, and we can work with the timeline.' },
       { question: 'Do all heirs need to agree?', answer: 'Usually everyone with an ownership interest must sign. We can share one offer for everyone to review.' },
     ],
-    related: ['sell-probate-house', 'sell-hoarder-house', 'sell-vacant-house'],
   },
 
   'sell-probate-house': {
@@ -721,7 +699,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Can a house be sold during probate?', answer: 'Often, yes, with the right authority and sometimes court approval. The estate\'s attorney can confirm.' },
       { question: 'Who signs the sale?', answer: 'The personal representative or executor with legal authority over the estate.' },
     ],
-    related: ['sell-inherited-house', 'sell-hoarder-house', 'sell-house-liens-back-taxes'],
   },
 
   'sell-house-divorce': {
@@ -753,7 +730,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Do both spouses need to sign?', answer: 'Usually everyone on the title must sign. Your attorneys will confirm.' },
       { question: 'How are the proceeds split?', answer: 'That follows your agreement or court order. The title company pays out as directed.' },
     ],
-    related: ['sell-house-fast', 'sell-house-relocating', 'sell-house-as-is'],
   },
 
   'sell-house-relocating': {
@@ -785,7 +761,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Can I close after I move?', answer: 'Yes. Closing paperwork can usually be handled remotely through the title company.' },
       { question: 'What if I need to stay a little longer?', answer: 'Tell us. We can often set a later closing date.' },
     ],
-    related: ['sell-house-fast', 'sell-vacant-house', 'sell-condo-townhome'],
   },
 
   'sell-house-downsizing': {
@@ -817,7 +792,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Can I pick when I move out?', answer: 'Yes. We set the closing date around your plans.' },
       { question: 'Do I need to empty the house?', answer: 'No. Take what you want and leave the rest.' },
     ],
-    related: ['sell-house-assisted-living', 'sell-outdated-house', 'sell-condo-townhome'],
   },
 
   'sell-house-assisted-living': {
@@ -849,7 +823,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Can a family member sell on a parent\'s behalf?', answer: 'Usually only with legal authority, like a power of attorney. An attorney can confirm.' },
       { question: 'Do we need to clear the house first?', answer: 'No. Take what matters and leave the rest.' },
     ],
-    related: ['sell-house-downsizing', 'sell-inherited-house', 'sell-hoarder-house'],
   },
 
   'sell-house-behind-on-payments': {
@@ -881,7 +854,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'What happens to my mortgage when I sell?', answer: 'It is paid off from the sale proceeds at closing through the title company.' },
       { question: 'Should I talk to my lender first?', answer: 'Yes. Your lender and a HUD-approved housing counselor can explain all your options.' },
     ],
-    related: ['sell-house-liens-back-taxes', 'sell-house-fast', 'sell-house-divorce'],
   },
 
   'sell-house-liens-back-taxes': {
@@ -913,7 +885,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Can I sell a house with a tax lien?', answer: 'Often, yes. Back taxes are typically paid from the proceeds at closing.' },
       { question: 'How do I find out what liens are on my house?', answer: 'The title company runs a title search that shows recorded liens.' },
     ],
-    related: ['sell-house-behind-on-payments', 'sell-house-code-violations', 'sell-probate-house'],
   },
 
   'sell-house-after-failed-sale': {
@@ -945,7 +916,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Can I sell to you if my listing is still active?', answer: 'Check your listing agreement first. Once you are free to sell, we can make an offer.' },
       { question: 'Will the old inspection report help?', answer: 'Yes. Sharing it helps us make an accurate offer.' },
     ],
-    related: ['sell-house-fast', 'sell-house-without-realtor', 'sell-house-needs-repairs'],
   },
 };
 

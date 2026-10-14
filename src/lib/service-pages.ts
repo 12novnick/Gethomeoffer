@@ -33,10 +33,6 @@ function buildService(slug: string) {
     group: { label: group.label, path: groupPath(group.slug) },
     path: servicePath(service.slug),
     content,
-    related: content.related.flatMap((relatedSlug) => {
-      const related = getService(relatedSlug);
-      return related ? [{ name: related.name, path: servicePath(related.slug) }] : [];
-    }),
     cities: publishedCashCities(),
   };
 }
