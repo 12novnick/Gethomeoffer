@@ -9,7 +9,7 @@ import { AGENT_HELP_AREAS } from '../../data/programs';
 import { cityCrumbs } from '../../lib/location-meta';
 import type { CityPageData } from '../../lib/location-pages';
 import { AreasServed, LocalFaqs, LocalIntro, LocalServices, LocalSituations, LocationCta, OtherCities, Paragraphs, ProgramSteps } from './LocationSections';
-import { AreaCards, AreasStrip } from './LocationAreas';
+import { AreasStrip } from './LocationAreas';
 import { StateGuideSections } from './StateGuide';
 
 export function CityPage({ page }: { page: CityPageData }) {
@@ -37,8 +37,7 @@ export function CityPage({ page }: { page: CityPageData }) {
           />
           <StateGuideSections guide={guide} intro={page.content.intro ?? []} program={program} />
           <LocalServices city={page.city.name} />
-          <AreasStrip places={servedPlaces} />
-          <AreaCards city={page.city.name} areas={page.areas} />
+          <AreasStrip places={servedPlaces} link={page.areasHub} />
           {page.content.faqs?.length ? (
             <LocalFaqs place={page.city.name} content={page.content} title={guide.faqTitle} />
           ) : null}

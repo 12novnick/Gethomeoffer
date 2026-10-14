@@ -7,6 +7,7 @@ export default [
   route('we-buy-houses-cash', 'routes/cash-program.tsx'),
   route('we-buy-houses-cash/:service', 'routes/service.tsx'),
   route('we-buy-houses-cash/:state/:city', 'routes/cash-city.tsx'),
+  route('we-buy-houses-cash/:state/:city/areas', 'routes/cash-areas.tsx'),
   route('we-buy-houses-cash/:state/:city/:area', 'routes/cash-area.tsx'),
   route('real-estate-agent-program', 'routes/agent-program.tsx'),
   route('about', 'routes/about.tsx'),

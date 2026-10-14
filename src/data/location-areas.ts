@@ -41,4 +41,7 @@ export const CITY_AREAS: Record<string, AreaLink[]> = {
   ],
 };
 
+/** Hub listing every area of a city. */
+export const areasHubPath = (cityKey: string) => `/we-buy-houses-cash/${cityKey}/areas/`;
+
 export const areaPath = (cityKey: string, slug: string) => `/we-buy-houses-cash/${cityKey}/${slug}/`;

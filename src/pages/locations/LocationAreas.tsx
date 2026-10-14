@@ -13,7 +13,7 @@ function PinIcon() {
   );
 }
 
-export function AreasStrip({ places }: { places: string[] }) {
+export function AreasStrip({ places, link = '/locations/' }: { places: string[]; link?: string }) {
   if (!places.length) return null;
   const shown = places.slice(0, 6);
   return (
@@ -27,7 +27,7 @@ export function AreasStrip({ places }: { places: string[] }) {
           {shown.join(' • ')}
           {places.length > shown.length ? ' & more' : ''}
         </span>
-        <Link to="/locations/" className="areas-strip__all">
+        <Link to={link} className="areas-strip__all">
           View all locations <span aria-hidden="true">→</span>
         </Link>
       </div>

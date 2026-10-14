@@ -2,7 +2,7 @@ import { data } from 'react-router';
 import { LOCATION_CONTENT, type LocalContent, type ProgramId } from '../data/location-content';
 import { CASH_STATE_SLUGS, LOCATIONS, getCityBySlug, getStateBySlug } from '../data/locations';
 import { AREA_CONTENT } from '../data/location-area-content';
-import { CITY_AREAS, areaPath } from '../data/location-areas';
+import { CITY_AREAS, areaPath, areasHubPath } from '../data/location-areas';
 import { getService, servicePath } from '../data/service-list';
 import { AGENT_PATH, CASH_PATH } from './site';
 
@@ -27,6 +27,7 @@ export function buildCityPage(program: ProgramId, stateSlug: string | undefined,
     state: { name: state.name, abbr: state.abbr, slug: state.slug },
     city: { name: city.name, slug: city.slug },
     otherCities: state.cities.filter((other) => other.slug !== city.slug).map((other) => ({ name: other.name, slug: other.slug })),
+    areasHub: program === 'cash' && CITY_AREAS[`${state.slug}/${city.slug}`]?.length ? areasHubPath(`${state.slug}/${city.slug}`) : undefined,
     areas: (program === 'cash' ? (CITY_AREAS[`${state.slug}/${city.slug}`] ?? []) : []).map((area) => ({
       ...area,
       path: areaPath(`${state.slug}/${city.slug}`, area.slug),
@@ -88,5 +89,22 @@ export type AreaPageData = ReturnType<typeof buildAreaPage>;
 
 /** Area pages for the sitemap. */
 export function areaPaths() {
-  return Object.entries(CITY_AREAS).flatMap(([cityKey, areas]) => areas.map((area) => areaPath(cityKey, area.slug)));
+  return Object.entries(CITY_AREAS).flatMap(([cityKey, areas]) => [
+    areasHubPath(cityKey),
+    ...areas.map((area) => areaPath(cityKey, area.slug)),
+  ]);
 }
+
+/** Hub page listing every neighborhood page of a Cash Program city. */
+export function buildAreasHub(stateSlug: string | undefined, citySlug: string | undefined) {
+  const cityPage = buildCityPage('cash', stateSlug, citySlug);
+  if (!cityPage.areasHub) throw data(null, { status: 404 });
+  return {
+    state: cityPage.state,
+    city: { ...cityPage.city, path: `${CASH_PATH}${cityPage.state.slug}/${cityPage.city.slug}/` },
+    path: cityPage.areasHub,
+    areas: cityPage.areas,
+  };
+}
+
+export type AreasHubData = ReturnType<typeof buildAreasHub>;
