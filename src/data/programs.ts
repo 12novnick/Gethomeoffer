@@ -77,15 +77,6 @@ export const CASH_AUDIENCE: ContentItem[] = [
   { title: 'Avoiding showings', body: 'You would rather not prepare for open houses and repeated visits.' },
 ];
 
-export const CASH_PROPERTY_TYPES: ContentItem[] = [
-  { title: 'Single-family homes' },
-  { title: 'Condos and townhomes' },
-  { title: 'Small multi-family (2–4 units)' },
-  { title: 'Inherited and estate properties' },
-  { title: 'Vacant properties' },
-  { title: 'Homes needing repairs' },
-  { title: 'Rental properties' },
-];
 
 export type AgentTopic = 'pricing' | 'preparation' | 'marketing' | 'showings' | 'negotiation' | 'closing';
 

@@ -1,22 +1,37 @@
 import { Link } from 'react-router';
 import { CtaBand } from '../../components/ui/CtaBand';
-import { DetailGrid } from '../../components/ui/DetailGrid';
 import { PageHero } from '../../components/ui/PageHero';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import { SplitSection } from '../../components/ui/SplitSection';
 import { StepSequence } from '../../components/ui/StepSequence';
-import { ServiceLinks } from '../../components/services/ServiceLinks';
+import { ServiceCards } from '../../components/services/ServiceCards';
 import { CASH_CRUMBS } from '../../data/breadcrumbs';
 import { CASH_STATES } from '../../data/locations';
-import { AGENT_PROGRAM, CASH_PROGRAM, CASH_PROPERTY_TYPES } from '../../data/programs';
+import { AGENT_PROGRAM, CASH_PROGRAM } from '../../data/programs';
+import type { ServiceCardGroup } from '../../lib/service-pages';
 import './ProgramPage.css';
 
-export function CashProgramPage() {
+const TRUST_POINTS = ['No Commissions', 'No Fees', 'Sell Your House "As Is"', 'Leave Tenants To Us'];
+
+export function CashProgramPage({ serviceGroups }: { serviceGroups: ServiceCardGroup[] }) {
   return (
     <div className="program-page--no-dividers">
       <PageHero
         crumbs={CASH_CRUMBS}
         title="Discover What a Cash Sale Could Look Like In Our We Buy Houses Program"
+        lede="Find the situation closest to yours below, or tell us about your property and we will figure it out together."
+        actions={
+          <>
+            <Link to={CASH_PROGRAM.cta.path} className="btn btn--primary">
+              {CASH_PROGRAM.cta.label}
+            </Link>
+            <ul role="list" className="trust-points">
+              {TRUST_POINTS.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+          </>
+        }
         divider={false}
       />
 
@@ -29,7 +44,30 @@ export function CashProgramPage() {
         </p>
       </SplitSection>
 
-      <SplitSection id="cash-fit" tone="surface">
+      <section id="cash-services" className="section" aria-labelledby="cash-services-title">
+        <div className="container">
+          <SectionHeader
+            id="cash-services-title"
+            title="Every situation we buy in."
+            lede="Choose the one closest to yours to see how a direct sale works for it."
+          />
+          <ServiceCards groups={serviceGroups} />
+        </div>
+      </section>
+
+      <SplitSection id="cash-unsure" title="Not sure which fits?" tone="surface">
+        <p>
+          Many houses fit more than one situation, and some fit none of these exactly. Tell us about yours and we will
+          let you know how we can help. No pressure and no obligation.
+        </p>
+        <p>
+          <Link to={CASH_PROGRAM.cta.path} className="btn btn--primary">
+            {CASH_PROGRAM.cta.label}
+          </Link>
+        </p>
+      </SplitSection>
+
+      <SplitSection id="cash-fit">
         <p>The Cash Program tends to suit property owners who want a clear, simple path forward.</p>
         <ul role="list" className="check-list">
           {CASH_PROGRAM.bestFor.map((reason) => (
@@ -49,22 +87,7 @@ export function CashProgramPage() {
         </div>
       </section>
 
-<SplitSection id="cash-properties" title="Properties we consider.">
-        <p>We consider a range of residential properties, in many conditions.</p>
-        <DetailGrid items={CASH_PROPERTY_TYPES} />
-        <p className="program-note">Don't see your property type? Tell us about it and we'll let you know.</p>
-      </SplitSection>
 
-      <section id="cash-services" className="section" aria-labelledby="cash-services-title">
-        <div className="container">
-          <SectionHeader
-            id="cash-services-title"
-            title="Every situation we buy in."
-            lede="Choose the one closest to yours to see how a direct sale works for it."
-          />
-          <ServiceLinks />
-        </div>
-      </section>
 
       <section id="cash-locations" className="section" aria-labelledby="cash-locations-title">
         <div className="container">
