@@ -1,6 +1,6 @@
 import { Link } from 'react-router';
 import { SOCIAL_LINKS } from '../../data/company';
-import { AGENT_PATH, CASH_PATH, LEGAL_ITEMS, NAV_ITEMS } from '../../lib/site';
+import { AGENT_PATH, CASH_PATH, FOOTER_EXTRA_ITEMS, LEGAL_ITEMS, NAV_ITEMS } from '../../lib/site';
 import './Footer.css';
 
 const CURRENT_YEAR = new Date().getFullYear();
@@ -18,12 +18,11 @@ export function Footer() {
                   <Link to={item.path}>{item.label}</Link>
                 </li>
               ))}
-              <li>
-                <Link to="/services/">Compare Your Options</Link>
-              </li>
-              <li>
-                <Link to="/contact/">Contact</Link>
-              </li>
+              {FOOTER_EXTRA_ITEMS.map((item) => (
+                <li key={item.path}>
+                  <Link to={item.path}>{item.label}</Link>
+                </li>
+              ))}
             </ul>
           </nav>
 

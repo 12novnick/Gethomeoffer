@@ -1,69 +1,50 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router';
-import { CASH_STATES } from '../../data/locations';
 import { SERVICE_GROUPS, SERVICES, servicePath } from '../../data/service-list';
-import { CASH_PATH, NAV_ITEMS, OFFER_PATH } from '../../lib/site';
+import { AGENT_PATH, CASH_PATH, NAV_ITEMS, OFFER_PATH } from '../../lib/site';
 import './Navigation.css';
 
-type MenuId = 'services' | 'locations';
+type MenuId = 'services';
 
 const NAV_SERVICE_GROUPS = SERVICE_GROUPS.map((group) => ({
   ...group,
   services: SERVICES.filter((service) => service.inNav && service.group === group.id),
 })).filter((group) => group.services.length > 0);
 
-const cityPath = (stateSlug: string, citySlug: string) => `${CASH_PATH}${stateSlug}/${citySlug}/`;
-
-function MenuLinks({ menu, onNavigate, linkClass }: { menu: MenuId; onNavigate?: () => void; linkClass: string }) {
-  if (menu === 'services') {
-    return (
-      <>
-        <Link to={CASH_PATH} className={`${linkClass} nav-menu__overview`} onClick={onNavigate}>
-          How we buy houses for cash
-        </Link>
-        <div className="nav-menu__groups">
-          {NAV_SERVICE_GROUPS.map((group) => (
-            <div key={group.id} className="nav-menu__group">
-              <p className="nav-menu__heading">{group.label}</p>
-              <ul role="list">
-                {group.services.map((service) => (
-                  <li key={service.slug}>
-                    <Link to={servicePath(service.slug)} className={linkClass} onClick={onNavigate}>
-                      {service.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-        <Link to={`${CASH_PATH}#cash-services`} className={`${linkClass} nav-menu__all`} onClick={onNavigate}>
-          See all services
-        </Link>
-      </>
-    );
-  }
-
+function ServicesMenu({ onNavigate, linkClass }: { onNavigate?: () => void; linkClass: string }) {
   return (
     <>
+      <Link to={CASH_PATH} className={`${linkClass} nav-menu__overview`} onClick={onNavigate}>
+        How we buy houses for cash
+      </Link>
       <div className="nav-menu__groups">
-        {CASH_STATES.map((state) => (
-          <div key={state.slug} className="nav-menu__group">
-            <p className="nav-menu__heading">{state.name}</p>
+        {NAV_SERVICE_GROUPS.map((group) => (
+          <div key={group.id} className="nav-menu__group">
+            <p className="nav-menu__heading">{group.label}</p>
             <ul role="list">
-              {state.cities.map((city) => (
-                <li key={city.slug}>
-                  <Link to={cityPath(state.slug, city.slug)} className={linkClass} onClick={onNavigate}>
-                    {city.name}
+              {group.services.map((service) => (
+                <li key={service.slug}>
+                  <Link to={servicePath(service.slug)} className={linkClass} onClick={onNavigate}>
+                    {service.name}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
         ))}
+        <div className="nav-menu__group">
+          <p className="nav-menu__heading">Prefer the open market?</p>
+          <ul role="list">
+            <li>
+              <Link to={AGENT_PATH} className={linkClass} onClick={onNavigate}>
+                Sell With an Agent
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
-      <Link to="/locations/" className={`${linkClass} nav-menu__all`} onClick={onNavigate}>
-        All locations
+      <Link to={`${CASH_PATH}#cash-services`} className={`${linkClass} nav-menu__all`} onClick={onNavigate}>
+        See all services
       </Link>
     </>
   );
@@ -155,12 +136,12 @@ export function Navigation() {
                     className={`nav-menu nav-menu--${item.menu}`}
                     hidden={openMenu !== item.menu}
                   >
-                    <MenuLinks menu={item.menu} linkClass="nav-menu__link" onNavigate={() => setOpenMenu(null)} />
+                    <ServicesMenu linkClass="nav-menu__link" onNavigate={() => setOpenMenu(null)} />
                   </div>
                 </li>
               ) : (
                 <li key={item.path} className="site-nav__item">
-                  <NavLink to={item.path} className="site-nav__link">
+                  <NavLink to={item.path} end className="site-nav__link">
                     {item.label}
                   </NavLink>
                 </li>
@@ -187,7 +168,7 @@ export function Navigation() {
                   <details className="mobile-menu__section">
                     <summary className="mobile-menu__link mobile-menu__summary">{item.label}</summary>
                     <div className="mobile-menu__panel">
-                      <MenuLinks menu={item.menu} linkClass="mobile-menu__sublink" onNavigate={closeMenu} />
+                      <ServicesMenu linkClass="mobile-menu__sublink" onNavigate={closeMenu} />
                     </div>
                   </details>
                 ) : (

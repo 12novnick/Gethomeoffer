@@ -149,10 +149,6 @@
   box-shadow: var(--shadow-soft);
 }
 
-.nav-menu--locations {
-  width: min(36rem, calc(100vw - 2 * var(--gutter)));
-}
-
 .nav-menu[hidden] {
   display: none;
 }
