@@ -1,3 +1,46 @@
+.home-services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-md);
+}
+
+.home-services__card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  min-width: 0;
+  padding: var(--space-lg);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.home-services__card p {
+  flex: 1;
+  margin: 0;
+  color: var(--color-text-muted);
+}
+
+.home-services__title {
+  font-size: var(--text-heading);
+  line-height: var(--leading-snug);
+}
+
+.home-services__title a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.home-services__title a:hover {
+  color: var(--color-link);
+}
+
+.home-services__more {
+  display: flex;
+  justify-content: center;
+  margin-block: var(--space-xl) var(--space-2xl);
+}
+
 .home-explore__grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));

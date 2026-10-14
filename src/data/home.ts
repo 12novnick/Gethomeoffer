@@ -81,3 +81,19 @@ export const STEPS = [
     body: 'You decide what comes next, on a timeline that works for you.',
   },
 ];
+
+// The three services featured on the homepage, with a "View All Services" button beneath them.
+export const FEATURED_SERVICES = [
+  {
+    slug: 'sell-house-as-is',
+    body: 'No repairs, no cleaning and no showings. We make an offer on your house exactly as it stands today.',
+  },
+  {
+    slug: 'sell-inherited-house',
+    body: "Sell a loved one's house without clearing it out, fixing it up or managing a listing from afar.",
+  },
+  {
+    slug: 'sell-house-with-tenants',
+    body: 'You do not have to wait for the lease to end. We buy tenant-occupied houses and rentals.',
+  },
+];

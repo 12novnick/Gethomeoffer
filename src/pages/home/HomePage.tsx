@@ -8,7 +8,8 @@ import { Process } from '../../components/home/Process';
 import { Situations } from '../../components/home/Situations';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import { CASH_STATES } from '../../data/locations';
-import { SERVICES, servicePath } from '../../data/service-list';
+import { FEATURED_SERVICES } from '../../data/home';
+import { getService, servicePath } from '../../data/service-list';
 import { CASH_PATH } from '../../lib/site';
 import './HomePage.css';
 
@@ -27,23 +28,34 @@ export function HomePage() {
           <SectionHeader
             id="home-explore-title"
             title="We buy houses in every situation."
-            lede="Find the page for your situation, or choose your city."
+            lede="Every house and every situation is different. Here are a few we help with most."
           />
+          <ul role="list" className="home-services">
+            {FEATURED_SERVICES.map((featured) => {
+              const service = getService(featured.slug);
+              if (!service) return null;
+              return (
+                <li key={featured.slug} className="home-services__card">
+                  <h3 className="home-services__title">
+                    <Link to={servicePath(featured.slug)}>{service.name}</Link>
+                  </h3>
+                  <p>{featured.body}</p>
+                  <Link to={servicePath(featured.slug)} className="arrow-link" aria-hidden="true" tabIndex={-1}>
+                    Learn more
+                    <span className="btn__arrow">→</span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          <div className="home-services__more">
+            <Link to={CASH_PATH} className="btn btn--primary">
+              View All Services
+              <span className="btn__arrow" aria-hidden="true">→</span>
+            </Link>
+          </div>
+
           <div className="home-explore__grid">
-            <div>
-              <h3 className="home-explore__heading">Situations we buy in</h3>
-              <ul role="list" className="home-explore__list">
-                {SERVICES.filter((service) => service.inNav).map((service) => (
-                  <li key={service.slug}>
-                    <Link to={servicePath(service.slug)}>{service.name}</Link>
-                  </li>
-                ))}
-              </ul>
-              <Link to={CASH_PATH} className="arrow-link">
-                See all situations
-                <span className="btn__arrow" aria-hidden="true">→</span>
-              </Link>
-            </div>
             <div>
               <h3 className="home-explore__heading">Where we buy</h3>
               <ul role="list" className="home-explore__list">
