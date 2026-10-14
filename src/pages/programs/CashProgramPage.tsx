@@ -4,11 +4,9 @@ import { SectionHeader } from '../../components/ui/SectionHeader';
 import { SplitSection } from '../../components/ui/SplitSection';
 import { ServiceCards } from '../../components/services/ServiceCards';
 import { CASH_CRUMBS } from '../../data/breadcrumbs';
-import { CASH_PROGRAM } from '../../data/programs';
+import { CASH_PROGRAM, CASH_TRUST_POINTS } from '../../data/programs';
 import type { ServiceCardGroup } from '../../lib/service-pages';
 import './ProgramPage.css';
-
-const TRUST_POINTS = ['No Commissions', 'No Fees', 'Sell Your House "As Is"', 'Leave Tenants To Us'];
 
 export function CashProgramPage({ serviceGroups }: { serviceGroups: ServiceCardGroup[] }) {
   return (
@@ -23,7 +21,7 @@ export function CashProgramPage({ serviceGroups }: { serviceGroups: ServiceCardG
               {CASH_PROGRAM.cta.label}
             </Link>
             <ul role="list" className="trust-points">
-              {TRUST_POINTS.map((point) => (
+              {CASH_TRUST_POINTS.map((point) => (
                 <li key={point}>{point}</li>
               ))}
             </ul>

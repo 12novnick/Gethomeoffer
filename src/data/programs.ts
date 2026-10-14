@@ -68,6 +68,9 @@ export const AGENT_PROGRAM: Program = {
 
 export const PROGRAMS = [CASH_PROGRAM, AGENT_PROGRAM];
 
+// Owner-stated benefits, shown as checkmarks in program and service page heroes.
+export const CASH_TRUST_POINTS = ['No Commissions', 'No Fees', 'Sell Your House "As Is"', 'Leave Tenants To Us'];
+
 export const CASH_AUDIENCE: ContentItem[] = [
   { title: 'Inheriting a property', body: 'Managing an estate, or a home you do not plan to keep.' },
   { title: 'Facing significant repairs', body: 'Work you would rather not fund or manage before selling.' },
