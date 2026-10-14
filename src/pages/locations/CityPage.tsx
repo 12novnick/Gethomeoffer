@@ -41,7 +41,6 @@ export function CityPage({ page }: { page: CityPageData }) {
           {page.content.faqs?.length ? (
             <LocalFaqs place={page.city.name} content={page.content} title={guide.faqTitle} />
           ) : null}
-          <OtherCities cities={page.otherCities} basePath={`${program.path}${page.state.slug}/`} />
           <LocationCta program={page.program} place={page.city.name} closing={guide.closing} />
         </div>
       </SidebarLayout>

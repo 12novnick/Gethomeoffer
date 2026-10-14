@@ -1,0 +1,11 @@
+name = "gethomeoffer-chatgpt-app"
+main = "src/index.ts"
+compatibility_date = "2026-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Public MCP endpoint for ChatGPT: https://gethomeoffer-chatgpt-app.<subdomain>.workers.dev/mcp
+workers_dev = true
+
+[[services]]
+binding = "LEADS"
+service = "gethomeoffer-leads"
