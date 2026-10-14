@@ -1,6 +1,9 @@
 import { data } from 'react-router';
 import { LOCATION_CONTENT, type LocalContent, type ProgramId } from '../data/location-content';
 import { CASH_STATE_SLUGS, LOCATIONS, getCityBySlug, getStateBySlug } from '../data/locations';
+import { AREA_CONTENT } from '../data/location-area-content';
+import { CITY_AREAS, areaPath } from '../data/location-areas';
+import { getService, servicePath } from '../data/service-list';
 import { AGENT_PATH, CASH_PATH } from './site';
 
 // Build-time only: imported by route loaders, never by components.
@@ -24,6 +27,10 @@ export function buildCityPage(program: ProgramId, stateSlug: string | undefined,
     state: { name: state.name, abbr: state.abbr, slug: state.slug },
     city: { name: city.name, slug: city.slug },
     otherCities: state.cities.filter((other) => other.slug !== city.slug).map((other) => ({ name: other.name, slug: other.slug })),
+    areas: (program === 'cash' ? (CITY_AREAS[`${state.slug}/${city.slug}`] ?? []) : []).map((area) => ({
+      ...area,
+      path: areaPath(`${state.slug}/${city.slug}`, area.slug),
+    })),
     content,
     published: isPublished(content),
   };
@@ -54,4 +61,32 @@ export function publishedCashCities() {
       .filter((city) => CASH_STATE_SLUGS.includes(state.slug) && isPublished(contentFor('cash', `${state.slug}/${city.slug}`)))
       .map((city) => ({ name: city.name, stateName: state.name, stateAbbr: state.abbr, path: `${CASH_PATH}${state.slug}/${city.slug}/` })),
   );
+}
+
+/** Neighborhood or landmark page under a Cash Program city page. */
+export function buildAreaPage(stateSlug: string | undefined, citySlug: string | undefined, areaSlug: string | undefined) {
+  const cityPage = buildCityPage('cash', stateSlug, citySlug);
+  const cityKey = `${cityPage.state.slug}/${cityPage.city.slug}`;
+  const area = (CITY_AREAS[cityKey] ?? []).find((item) => item.slug === areaSlug);
+  const content = area && AREA_CONTENT[`${cityKey}/${area.slug}`];
+  if (!area || !content) throw data(null, { status: 404 });
+
+  return {
+    state: cityPage.state,
+    city: { ...cityPage.city, path: `${CASH_PATH}${cityKey}/` },
+    area: { name: area.name, path: areaPath(cityKey, area.slug) },
+    content,
+    situations: content.situations.flatMap((item) => {
+      const service = getService(item.slug);
+      return service ? [{ name: service.name, path: servicePath(service.slug), reason: item.reason }] : [];
+    }),
+    otherAreas: cityPage.areas.filter((other) => other.slug !== area.slug).map((other) => ({ name: other.name, path: other.path })),
+  };
+}
+
+export type AreaPageData = ReturnType<typeof buildAreaPage>;
+
+/** Area pages for the sitemap. */
+export function areaPaths() {
+  return Object.entries(CITY_AREAS).flatMap(([cityKey, areas]) => areas.map((area) => areaPath(cityKey, area.slug)));
 }

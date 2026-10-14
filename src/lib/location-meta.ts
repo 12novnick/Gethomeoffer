@@ -1,7 +1,7 @@
 import type { MetaDescriptor } from 'react-router';
 import { LOCATIONS_CRUMB } from '../data/breadcrumbs';
 import { LOCATION_LABELS } from '../data/location-labels';
-import type { CityPageData } from './location-pages';
+import type { AreaPageData, CityPageData } from './location-pages';
 import { breadcrumbSchema, faqSchema, serviceSchema, type Crumb } from './schema';
 import { seo } from './seo';
 
@@ -39,5 +39,14 @@ export function cityMeta(page: CityPageData | undefined): MetaDescriptor[] {
       areaType: 'City',
     }),
     ...(page.content.faqs?.length ? [faqSchema(page.content.faqs)] : []),
+  ];
+}
+
+export function areaCrumbs(page: AreaPageData): Crumb[] {
+  return [
+    { label: 'Home', path: '/' },
+    LOCATIONS_CRUMB,
+    { label: page.city.name, path: page.city.path },
+    { label: page.area.name, path: page.area.path },
   ];
 }

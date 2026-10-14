@@ -1,13 +1,13 @@
 import { isDraftLegalPath } from '../data/legal';
 import { PAGES } from '../data/pages';
 import { SERVICE_GROUPS, SERVICES, groupPath, servicePath } from '../data/service-list';
-import { publishedLocationPaths } from '../lib/location-pages';
+import { areaPaths, publishedLocationPaths } from '../lib/location-pages';
 import { SITE_URL } from '../lib/seo';
 
 // Location pages are listed only once they have localized content (see isPublished).
 export function loader() {
   const urls = [...Object.keys(PAGES).filter((path) => !isDraftLegalPath(path)), ...SERVICE_GROUPS.map((group) => groupPath(group.slug)),
-    ...SERVICES.map((service) => servicePath(service.slug)), ...publishedLocationPaths()]
+    ...SERVICES.map((service) => servicePath(service.slug)), ...publishedLocationPaths(), ...areaPaths()]
     .map((path) => `  <url><loc>${SITE_URL}${path}</loc></url>`)
     .join('\n');
 

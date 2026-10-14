@@ -1,0 +1,70 @@
+import { Link } from 'react-router';
+import { SectionHeader } from '../../components/ui/SectionHeader';
+import './LocationAreas.css';
+
+type Area = { slug: string; name: string; card: string; anchor?: string; path: string };
+
+function PinIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z" />
+      <circle cx="12" cy="9.5" r="2.5" />
+    </svg>
+  );
+}
+
+export function AreasStrip({ places }: { places: string[] }) {
+  if (!places.length) return null;
+  const shown = places.slice(0, 6);
+  return (
+    <div className="areas-strip">
+      <div className="container areas-strip__inner">
+        <span className="areas-strip__label">
+          <PinIcon />
+          Areas we serve:
+        </span>
+        <span className="areas-strip__list">
+          {shown.join(' • ')}
+          {places.length > shown.length ? ' & more' : ''}
+        </span>
+        <Link to="/locations/" className="areas-strip__all">
+          View all locations <span aria-hidden="true">→</span>
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+export function AreaCards({ city, areas }: { city: string; areas: Area[] }) {
+  if (!areas.length) return null;
+  return (
+    <section className="section" aria-labelledby="area-cards-title">
+      <div className="container">
+        <SectionHeader
+          id="area-cards-title"
+          title={`We buy houses by area in ${city}.`}
+          lede="Choose your neighborhood to see how selling works there."
+        />
+        <ul role="list" className="area-cards">
+          {areas.map((area) => (
+            <li key={area.slug}>
+              <Link to={area.path} className="area-card">
+                <span className="area-card__title">
+                  <PinIcon />
+                  {area.name}
+                </span>
+                <span className="area-card__body">{area.card}</span>
+                <span className="area-card__more">
+                  {area.anchor ?? `We buy houses in ${area.name}`}
+                  <span className="btn__arrow" aria-hidden="true">
+                    →
+                  </span>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}

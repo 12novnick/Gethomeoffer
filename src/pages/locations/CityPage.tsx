@@ -9,6 +9,7 @@ import { AGENT_HELP_AREAS } from '../../data/programs';
 import { cityCrumbs } from '../../lib/location-meta';
 import type { CityPageData } from '../../lib/location-pages';
 import { AreasServed, LocalFaqs, LocalIntro, LocalServices, LocalSituations, LocationCta, OtherCities, Paragraphs, ProgramSteps } from './LocationSections';
+import { AreaCards, AreasStrip } from './LocationAreas';
 import { StateGuideSections } from './StateGuide';
 
 export function CityPage({ page }: { page: CityPageData }) {
@@ -17,6 +18,7 @@ export function CityPage({ page }: { page: CityPageData }) {
   const isCash = page.program === 'cash';
   const crumbs = cityCrumbs(page);
   const { guide } = page.content;
+  const servedPlaces = guide?.sections.find((section) => section.id === 'service-area')?.list ?? page.content.areas ?? [];
 
   if (guide) {
     return (
@@ -33,7 +35,9 @@ export function CityPage({ page }: { page: CityPageData }) {
               </Link>
             }
           />
+          <AreasStrip places={servedPlaces} />
           <StateGuideSections guide={guide} intro={page.content.intro ?? []} program={program} />
+          <AreaCards city={page.city.name} areas={page.areas} />
           <LocalServices city={page.city.name} />
           <LocalFaqs place={page.city.name} content={page.content} title={guide.faqTitle} />
           <OtherCities cities={page.otherCities} basePath={`${program.path}${page.state.slug}/`} />
