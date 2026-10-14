@@ -1,7 +1,7 @@
 import { Link } from 'react-router';
 import { PageHero } from '../../components/ui/PageHero';
 import { SITEMAP_CRUMBS } from '../../data/breadcrumbs';
-import { SERVICES, servicePath } from '../../data/service-list';
+import { SERVICE_GROUPS, SERVICES, groupPath, servicePath } from '../../data/service-list';
 import { AGENT_PATH, CASH_PATH, LEGAL_ITEMS } from '../../lib/site';
 import './SitemapPage.css';
 
@@ -34,7 +34,10 @@ export function SitemapPage({ locationLinks }: { locationLinks: SitemapLink[] })
     {
       id: 'services',
       title: 'Situations We Buy In',
-      links: SERVICES.map((service) => ({ label: service.name, path: servicePath(service.slug) })),
+      links: [
+        ...SERVICE_GROUPS.map((group) => ({ label: group.label, path: groupPath(group.slug) })),
+        ...SERVICES.map((service) => ({ label: service.name, path: servicePath(service.slug) })),
+      ],
     },
     {
       id: 'locations',

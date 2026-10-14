@@ -1,5 +1,6 @@
 import type { Faq } from './location-content';
 import type { ContentItem } from './programs';
+import type { ServiceGroup } from './service-list';
 
 export interface ServiceContent {
   metaTitle: string;
@@ -945,5 +946,109 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       { question: 'Will the old inspection report help?', answer: 'Yes. Sharing it helps us make an accurate offer.' },
     ],
     related: ['sell-house-fast', 'sell-house-without-realtor', 'sell-house-needs-repairs'],
+  },
+};
+
+export interface ServiceGroupContent {
+  metaTitle: string;
+  metaDescription: string;
+  heading: string;
+  summary: string;
+  intro: string[];
+  points: ContentItem[];
+  faqs: Faq[];
+}
+
+// Hub pages for each service group. Build-time only, like SERVICE_CONTENT. No city names.
+export const GROUP_CONTENT: Record<ServiceGroup, ServiceGroupContent> = {
+  core: {
+    metaTitle: 'Selling Your House for Cash | Get Home Offer',
+    metaDescription:
+      'How selling your house for cash works: sell fast, sell as-is or sell without a realtor. No commissions, no fees and no showings.',
+    heading: 'Selling Your House for Cash',
+    summary: 'Sell fast, sell as-is or sell without a realtor. One straightforward offer and a closing date you choose.',
+    intro: [
+      'A cash sale skips the parts of a traditional sale that take the most time and money: preparing the house, listing it, hosting showings and waiting on a buyer\'s loan.',
+      'You tell us about the property, we make a straightforward offer, and if you accept, we close on your schedule, typically 14 to 30 days out. There are no commissions or fees taken out at closing.',
+    ],
+    points: [
+      { title: 'No listing', body: 'No photos, no open houses and no strangers touring your home.' },
+      { title: 'No lender', body: 'A cash purchase does not depend on a buyer\'s financing or appraisal.' },
+      { title: 'No commissions', body: 'There are no realtor commissions, listing fees or hidden costs.' },
+    ],
+    faqs: [
+      {
+        question: 'Will a cash offer be lower than listing my house?',
+        answer:
+          'Usually, yes. A cash offer trades some price for speed, certainty and no repair or holding costs. Compare the amount you would actually keep, not just the headline price.',
+      },
+      { question: 'How quickly can I get paid?', answer: 'Most sales close in 14 to 30 days, and we can often work around the date you need.' },
+    ],
+  },
+  condition: {
+    metaTitle: 'Sell Your House in Any Condition | Get Home Offer',
+    metaDescription:
+      'Sell your house in any condition: needs repairs, fire or water damage, mold, foundation problems or code violations. Get a cash offer as-is.',
+    heading: 'Sell Your House in Any Condition',
+    summary: 'Repairs, damage, code violations or just decades of wear. We buy houses as they are and handle the work after closing.',
+    intro: [
+      'A house with problems is hard to sell the traditional way. Buyers want it move-in ready, inspections uncover more work, and many lenders will not finance a house with major issues.',
+      'We buy houses in their current condition. We estimate the work, factor it into a straightforward offer and take care of it after closing, so you never pay for repairs on a house you are leaving.',
+    ],
+    points: [
+      { title: 'No repairs first', body: 'You do not need to hire contractors or fix anything before selling.' },
+      { title: 'Honest pricing', body: 'We account for the work in the offer and explain how we arrived at it.' },
+      { title: 'No inspection surprises', body: 'There is no buyer repair list to negotiate after you accept.' },
+    ],
+    faqs: [
+      { question: 'Is any house in too rough a shape for you?', answer: 'Tell us about it. We consider houses with major damage and long repair lists.' },
+      {
+        question: 'Do I have to disclose problems?',
+        answer: 'Most states require sellers to disclose known problems. Share what you know; it also helps us make an accurate offer the first time.',
+      },
+    ],
+  },
+  type: {
+    metaTitle: 'We Buy Houses, Rentals, Duplexes, Condos & Land | Get Home Offer',
+    metaDescription:
+      'We buy single-family houses, vacant homes, rentals, tenant-occupied houses, duplexes and small multi-family, condos, townhomes and vacant land.',
+    heading: 'We Buy Many Types of Property',
+    summary: 'Vacant houses, rentals with tenants, duplexes, condos, townhomes and land. Tell us what you have.',
+    intro: [
+      'Not every property fits a typical listing. Rentals come with tenants and leases, vacant houses keep costing money, and condos come with association rules.',
+      'We buy a range of residential properties, occupied or empty, in any condition. Tell us about yours and we will make a straightforward cash offer.',
+    ],
+    points: [
+      { title: 'Occupied or vacant', body: 'We buy with tenants in place or with nobody living there.' },
+      { title: 'One to four units', body: 'Single-family houses through small multi-family properties.' },
+      { title: 'Any condition', body: 'Properties that need work are priced in, not turned away.' },
+    ],
+    faqs: [
+      { question: 'Do you buy houses with tenants?', answer: 'Yes. We buy tenant-occupied houses and rentals, subject to the existing leases.' },
+      { question: 'My property type is not listed. Can you still help?', answer: 'Possibly. Tell us about it and we will let you know.' },
+    ],
+  },
+  situation: {
+    metaTitle: 'Sell Your House in Any Situation | Get Home Offer',
+    metaDescription:
+      'Inherited, probate, divorce, relocating, downsizing or behind on payments. Sell your house on your timeline with a straightforward cash offer.',
+    heading: 'Sell Your House in Any Situation',
+    summary: 'Inheritance, probate, divorce, a move or money pressure. Sell on a timeline that fits what you are going through.',
+    intro: [
+      'Most people sell a house because life changed: a loved one passed, a marriage ended, a job moved or the payments became too much.',
+      'We buy houses in all of these situations, as they are and on your timeline. We work with attorneys, personal representatives and family members when needed, and you are never obligated to accept our offer.',
+    ],
+    points: [
+      { title: 'Your timeline', body: 'Close quickly, or later when the paperwork and the family are ready.' },
+      { title: 'Less to manage', body: 'No clean-out, no repairs and no showings while you deal with everything else.' },
+      { title: 'Clear numbers', body: 'One straightforward offer that everyone involved can review.' },
+    ],
+    faqs: [
+      {
+        question: 'Can you work with my attorney?',
+        answer: 'Yes. For probate, divorce and similar situations, we coordinate with your attorney or the estate\'s representative.',
+      },
+      { question: 'What if I am not sure selling is right for me?', answer: 'That is fine. Ask us questions; there is no pressure and no obligation.' },
+    ],
   },
 };

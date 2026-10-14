@@ -7,11 +7,12 @@ export interface ServiceLink {
   group: ServiceGroup;
 }
 
-export const SERVICE_GROUPS: { id: ServiceGroup; label: string }[] = [
-  { id: 'core', label: 'Selling for cash' },
-  { id: 'condition', label: 'By property condition' },
-  { id: 'type', label: 'By property type' },
-  { id: 'situation', label: 'By situation' },
+// Each group has its own hub page at /we-buy-houses-cash/<slug>/. Slugs must never match a service slug.
+export const SERVICE_GROUPS: { id: ServiceGroup; slug: string; label: string }[] = [
+  { id: 'core', slug: 'selling-for-cash', label: 'Selling for cash' },
+  { id: 'condition', slug: 'property-condition', label: 'By property condition' },
+  { id: 'type', slug: 'property-type', label: 'By property type' },
+  { id: 'situation', slug: 'selling-situations', label: 'By situation' },
 ];
 
 // One entry per Google Business Profile service. Page copy lives in service-content.ts (build-time only).
@@ -54,3 +55,9 @@ export const SERVICES: ServiceLink[] = [
 export const servicePath = (slug: string) => `/we-buy-houses-cash/${slug}/`;
 
 export const getService = (slug: string) => SERVICES.find((service) => service.slug === slug);
+
+export const groupPath = (slug: string) => `/we-buy-houses-cash/${slug}/`;
+
+export const getGroup = (id: ServiceGroup) => SERVICE_GROUPS.find((group) => group.id === id)!;
+
+export const getGroupBySlug = (slug: string) => SERVICE_GROUPS.find((group) => group.slug === slug);

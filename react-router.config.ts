@@ -3,10 +3,10 @@ import { join } from 'node:path';
 import type { Config } from '@react-router/dev/config';
 import { CASH_STATES } from './src/data/locations.ts';
 import { PAGES } from './src/data/pages.ts';
-import { SERVICES } from './src/data/service-list.ts';
+import { SERVICE_GROUPS, SERVICES } from './src/data/service-list.ts';
 
 const locationPaths = CASH_STATES.flatMap((state) => state.cities.map((city) => `/we-buy-houses-cash/${state.slug}/${city.slug}/`));
-const servicePaths = SERVICES.map((service) => `/we-buy-houses-cash/${service.slug}/`);
+const servicePaths = [...SERVICE_GROUPS, ...SERVICES].map((item) => `/we-buy-houses-cash/${item.slug}/`);
 
 export default {
   appDirectory: 'src',

@@ -82,3 +82,25 @@
     transition: none;
   }
 }
+
+.service-cards__heading a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.service-cards__heading a:hover {
+  color: var(--color-link);
+}
+
+.service-cards__heading .btn__arrow {
+  font-size: 0.8em;
+  color: var(--color-link);
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.service-cards__heading a:hover .btn__arrow {
+  transform: translateX(3px);
+}

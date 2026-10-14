@@ -1,24 +1,30 @@
 import { breadcrumbSchema, faqSchema, serviceSchema } from '../lib/schema';
 import { seo } from '../lib/seo';
-import { buildServicePage } from '../lib/service-pages';
-import { serviceCrumbs } from '../lib/service-crumbs';
+import { groupCrumbs, serviceCrumbs } from '../lib/service-crumbs';
+import { buildServiceRoute } from '../lib/service-pages';
+import { ServiceGroupPage } from '../pages/services/ServiceGroupPage';
 import { ServicePage } from '../pages/services/ServicePage';
 import type { Route } from './+types/service';
 
-export const loader = ({ params }: Route.LoaderArgs) => buildServicePage(params.service);
+export const loader = ({ params }: Route.LoaderArgs) => buildServiceRoute(params.service);
+
+const DATES = { published: '2026-10-14', modified: '2026-10-14' };
 
 export const meta = ({ loaderData }: Route.MetaArgs) => {
   if (!loaderData) return [];
   const { content, path, cities } = loaderData;
+  const tags = [
+    ...seo({ title: content.metaTitle, description: content.metaDescription, path, ...DATES }),
+    faqSchema(content.faqs),
+  ];
+
+  if (loaderData.kind === 'group') {
+    return [...tags, breadcrumbSchema(groupCrumbs({ label: loaderData.group.label, path }))];
+  }
+
   return [
-    ...seo({
-      title: content.metaTitle,
-      description: content.metaDescription,
-      path,
-      published: '2026-10-14',
-      modified: '2026-10-14',
-    }),
-    breadcrumbSchema(serviceCrumbs(loaderData.service, path)),
+    ...tags,
+    breadcrumbSchema(serviceCrumbs(loaderData.group, loaderData.service, path)),
     serviceSchema({
       name: content.heading,
       description: content.metaDescription,
@@ -26,10 +32,9 @@ export const meta = ({ loaderData }: Route.MetaArgs) => {
       areaServed: cities.map((city) => city.name),
       areaType: 'City',
     }),
-    faqSchema(content.faqs),
   ];
 };
 
 export default function Service({ loaderData }: Route.ComponentProps) {
-  return <ServicePage page={loaderData} />;
+  return loaderData.kind === 'group' ? <ServiceGroupPage page={loaderData} /> : <ServicePage page={loaderData} />;
 }
