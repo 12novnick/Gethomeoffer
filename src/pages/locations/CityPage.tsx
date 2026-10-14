@@ -35,10 +35,10 @@ export function CityPage({ page }: { page: CityPageData }) {
               </Link>
             }
           />
-          <AreasStrip places={servedPlaces} />
           <StateGuideSections guide={guide} intro={page.content.intro ?? []} program={program} />
-          <AreaCards city={page.city.name} areas={page.areas} />
           <LocalServices city={page.city.name} />
+          <AreasStrip places={servedPlaces} />
+          <AreaCards city={page.city.name} areas={page.areas} />
           {page.content.faqs?.length ? (
             <LocalFaqs place={page.city.name} content={page.content} title={guide.faqTitle} />
           ) : null}
