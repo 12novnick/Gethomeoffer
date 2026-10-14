@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import { FaqList } from '../../components/faq/FaqList';
 import { ServiceLinks } from '../../components/services/ServiceLinks';
+import { ServiceCards } from '../../components/services/ServiceCards';
 import { ContentSlot } from '../../components/ui/ContentSlot';
 import { CtaBand } from '../../components/ui/CtaBand';
 import { DetailGrid } from '../../components/ui/DetailGrid';
@@ -8,6 +9,7 @@ import { SectionHeader } from '../../components/ui/SectionHeader';
 import { SplitSection } from '../../components/ui/SplitSection';
 import { StepSequence } from '../../components/ui/StepSequence';
 import type { LocalContent, ProgramId } from '../../data/location-content';
+import type { ServiceCardGroup } from '../../lib/service-pages';
 import { AGENT_PROGRAM, CASH_PROGRAM, type Program } from '../../data/programs';
 import './LocationPage.css';
 
@@ -144,7 +146,7 @@ export function LocationCta({
   );
 }
 
-export function LocalServices({ city }: { city: string }) {
+export function LocalServices({ city, serviceCards }: { city: string; serviceCards?: ServiceCardGroup[] }) {
   return (
     <section className="section" aria-labelledby="local-services-title">
       <div className="container">
@@ -153,7 +155,7 @@ export function LocalServices({ city }: { city: string }) {
           title={`Ways to sell your house in ${city}.`}
           lede="Whatever your situation, we can make a cash offer. Choose the one closest to yours."
         />
-        <ServiceLinks place={city} />
+        {serviceCards ? <ServiceCards groups={serviceCards} /> : <ServiceLinks place={city} />}
       </div>
     </section>
   );

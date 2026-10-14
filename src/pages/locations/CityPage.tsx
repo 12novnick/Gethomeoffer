@@ -36,7 +36,7 @@ export function CityPage({ page }: { page: CityPageData }) {
             }
           />
           <StateGuideSections guide={guide} intro={page.content.intro ?? []} program={program} />
-          <LocalServices city={page.city.name} />
+          <LocalServices city={page.city.name} serviceCards={page.serviceCards} />
           <AreasStrip places={servedPlaces} link={page.areasHub} />
           {page.content.faqs?.length ? (
             <LocalFaqs place={page.city.name} content={page.content} title={guide.faqTitle} />

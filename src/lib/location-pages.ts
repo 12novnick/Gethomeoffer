@@ -5,6 +5,7 @@ import { AREA_CONTENT } from '../data/location-area-content';
 import { CITY_AREAS, areaPath, areasHubPath } from '../data/location-areas';
 import { getService, servicePath } from '../data/service-list';
 import { AGENT_PATH, CASH_PATH } from './site';
+import { buildServiceCards } from './service-pages';
 
 // Build-time only: imported by route loaders, never by components.
 
@@ -34,6 +35,7 @@ export function buildCityPage(program: ProgramId, stateSlug: string | undefined,
     })),
     content,
     published: isPublished(content),
+    serviceCards: program === 'cash' ? buildServiceCards() : undefined,
   };
 }
 
