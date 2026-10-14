@@ -87,10 +87,12 @@ function GuideBlock({ section, program }: { section: GuideSection; program: Prog
 export function StateGuideSections({ guide, intro, program }: { guide: Guide; intro: string[]; program: Program }) {
   return (
     <>
-      <GuideBlock
-        program={program}
-        section={{ id: 'local-intro', title: guide.introTitle, body: intro, cta: guide.introCta }}
-      />
+      {guide.introTitle && (
+        <GuideBlock
+          program={program}
+          section={{ id: 'local-intro', title: guide.introTitle, body: intro, cta: guide.introCta }}
+        />
+      )}
       {guide.sections.map((section) => (
         <GuideBlock key={section.id} section={section} program={program} />
       ))}

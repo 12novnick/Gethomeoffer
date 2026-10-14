@@ -38,7 +38,8 @@ export interface GuideSection {
 
 /** Long-form state page. When present it replaces the generic template sections. */
 export interface StateGuide {
-  introTitle: string;
+  /** Omit to hide the intro block (the intro text still publishes the page). */
+  introTitle?: string;
   introCta?: boolean;
   sections: GuideSection[];
   stepsTitle: string;
@@ -89,6 +90,8 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
       published: '2026-10-02',
       modified: '2026-10-12',
       image: IMAGES.milwaukeeHero,
+      // Suburbs served; shown in the "Areas we serve" strip under the hero.
+      areas: ['Wauwatosa', 'West Allis', 'Greenfield', 'Oak Creek', 'Franklin', 'Cudahy', 'South Milwaukee', 'St. Francis', 'Shorewood', 'Whitefish Bay', 'Glendale', 'Brown Deer'],
       heading: 'We Buy Houses Milwaukee, WI. Sell Fast. Get Cash.',
       metaTitle: 'We Buy Houses Milwaukee, WI | Fast Cash Offers | Get Home Offer',
       summary:
@@ -100,64 +103,7 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
         'There are no repairs to make, no open houses to host and no commissions taken out at closing. You get a clear number, and you decide.',
       ],
       guide: {
-        introTitle: 'Sell your house As-Is',
-        introCta: true,
         sections: [
-          {
-            id: 'houses-we-buy',
-            title: 'You Don\'t Need a Perfect House or Situation to Sell It.',
-            body: ['If you own it in Milwaukee and want to move on from it, tell us about it.'],
-            list: [
-              'Houses needing repairs',
-              'Inherited houses',
-              'Vacant houses',
-              'Duplexes and rentals',
-              'Facing foreclosure',
-              'Any other reason',
-            ],
-            after: ['Not sure your property fits? Ask us. It costs nothing.'],
-            cta: true,
-          },
-          {
-            id: 'milwaukee-homes',
-            title: 'We know Milwaukee properties.',
-            body: [
-              'Many Milwaukee homes are decades old, and getting one ready for the open market can mean months of contractors, inspections and surprise costs before a buyer even walks through.',
-              'We buy houses exactly as they are. We factor the work into our offer and handle every repair after closing, so you never spend a dollar or a weekend on the house again.',
-              'An as-is offer will usually be lower than what a fully renovated house might list for. What you get in return is certainty, speed and no out-of-pocket costs.',
-            ],
-            items: [
-              {
-                title: 'Older homes',
-                body: 'Aging systems, deferred maintenance or dated interiors. We price the work in, not against you.',
-              },
-              {
-                title: 'Duplexes and multi-unit',
-                body: 'Milwaukee has a deep stock of duplexes. We buy them owner-occupied, tenant-occupied or empty.',
-              },
-              {
-                title: 'Vacant properties',
-                body: 'An empty house keeps costing you every month. We can take it off your hands quickly.',
-              },
-              {
-                title: 'Vacant building registration',
-                body: 'A house left empty 30 days or more must be registered with the Department of Neighborhood Services. Longer vacancies bring inspections and fees.',
-              },
-              {
-                title: 'Rental property registration',
-                body: 'Non-owner-occupied homes must be registered with the city, and a new owner has 15 days after the sale to re-register.',
-              },
-              {
-                title: 'Open code violations',
-                body: 'Unresolved city orders transfer to the next owner and often scare off retail buyers.',
-              },
-            ],
-            after: [
-              'Selling as-is to us means you do not have to clear these up first. Tell us what is open and we will factor it into the offer.',
-            ],
-            note: 'Source: City of Milwaukee Department of Neighborhood Services.',
-            noteUrl: 'https://city.milwaukee.gov/dns',
-          },
           {
             id: 'why-us',
             title: 'Why work with us?',
@@ -166,27 +112,6 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
               'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees. And often, our offer is more than what competing buyers propose.',
             ],
             badgeImage: '/images/number1-badge.png',
-            cta: true,
-          },
-          {
-            id: 'service-area',
-            title: 'Milwaukee and nearby suburbs.',
-            body: ['We buy houses across the city and the surrounding Milwaukee County suburbs, including:'],
-            list: [
-              'Wauwatosa',
-              'West Allis',
-              'Greenfield',
-              'Oak Creek',
-              'Franklin',
-              'Cudahy',
-              'South Milwaukee',
-              'St. Francis',
-              'Shorewood',
-              'Whitefish Bay',
-              'Glendale',
-              'Brown Deer',
-            ],
-            after: ['Near Milwaukee but not listed? Ask us anyway.'],
             cta: true,
           },
         ],
