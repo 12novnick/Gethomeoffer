@@ -1,11 +1,10 @@
 import { Link } from 'react-router';
-import { CtaBand } from '../../components/ui/CtaBand';
 import { PageHero } from '../../components/ui/PageHero';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import { SplitSection } from '../../components/ui/SplitSection';
 import { ServiceCards } from '../../components/services/ServiceCards';
 import { CASH_CRUMBS } from '../../data/breadcrumbs';
-import { AGENT_PROGRAM, CASH_PROGRAM } from '../../data/programs';
+import { CASH_PROGRAM } from '../../data/programs';
 import type { ServiceCardGroup } from '../../lib/service-pages';
 import './ProgramPage.css';
 
@@ -56,20 +55,6 @@ export function CashProgramPage({ serviceGroups }: { serviceGroups: ServiceCardG
         </p>
       </SplitSection>
 
-      <CtaBand
-        id="cash-cta"
-        title="See what a direct sale could look like."
-        body="Tell us about your property. We'll review the details and follow up with a straightforward offer."
-        cta={CASH_PROGRAM.cta}
-        secondary={
-          <Link to={AGENT_PROGRAM.path} className="arrow-link">
-            Or explore the Real Estate Agent Program
-            <span className="btn__arrow" aria-hidden="true">
-              →
-            </span>
-          </Link>
-        }
-      />
     </div>
   );
 }
