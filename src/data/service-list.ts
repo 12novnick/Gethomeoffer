@@ -5,7 +5,7 @@ export interface ServiceLink {
   /** Short label used in menus and link lists. Never includes a city. */
   name: string;
   group: ServiceGroup;
-  /** Shown in the main nav dropdown. */
+  /** Featured in the homepage "Situations we buy in" list. */
   inNav?: boolean;
 }
 

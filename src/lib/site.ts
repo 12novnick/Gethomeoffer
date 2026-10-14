@@ -8,13 +8,13 @@ export const AGENT_PATH = '/real-estate-agent-program/';
 export const CASH_OFFER_PATH = '/contact/?path=cash';
 export const AGENT_CONNECT_PATH = '/contact/?path=agent';
 
-// Top-level menu. Items with a `menu` open a dropdown; none of them link to city-specific service pages.
-export const NAV_ITEMS: { label: string; path: string; menu?: 'services' }[] = [
+// Top-level menu: plain links only, and never to city-specific service pages.
+export const NAV_ITEMS = [
   { label: 'Home', path: '/' },
-  { label: 'Services', path: CASH_PATH, menu: 'services' },
+  { label: 'Services', path: CASH_PATH },
   { label: 'About Us', path: '/about/' },
   { label: 'Contact', path: '/contact/' },
-];
+] as const;
 
 // Footer-only links, so pages dropped from the main menu stay one click from every page.
 export const FOOTER_EXTRA_ITEMS = [
