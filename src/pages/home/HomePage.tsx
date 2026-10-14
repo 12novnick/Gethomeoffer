@@ -3,7 +3,6 @@ import { Approach } from '../../components/home/Approach';
 import { Credentials } from '../../components/home/Credentials';
 import { Hero } from '../../components/home/Hero';
 import { NextChapter } from '../../components/home/NextChapter';
-import { Options } from '../../components/home/Options';
 import { Process } from '../../components/home/Process';
 import { Situations } from '../../components/home/Situations';
 import { SectionHeader } from '../../components/ui/SectionHeader';
@@ -19,10 +18,6 @@ export function HomePage() {
       <Hero />
       <Credentials />
       <Situations />
-      <Options />
-      <Approach />
-      <Process />
-      <NextChapter />
       <section className="section home-explore" aria-labelledby="home-explore-title">
         <div className="container">
           <SectionHeader
@@ -77,6 +72,9 @@ export function HomePage() {
           </div>
         </div>
       </section>
+      <Approach />
+      <Process />
+      <NextChapter />
     </>
   );
 }
