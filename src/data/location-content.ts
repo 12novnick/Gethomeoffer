@@ -130,39 +130,8 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
           secondaryLabel: 'See all locations',
           secondaryPath: '/locations/',
         },
-        faqTitle: 'Questions Milwaukee sellers ask.',
       },
-      faqs: [
-        {
-          question: 'Do you buy houses as-is in Milwaukee?',
-          answer: 'Yes, in any condition. No repairs, cleaning or updates needed.',
-        },
-        {
-          question: 'How much will you pay for my house?',
-          answer:
-            'Every offer is calculated for your specific property, based on its condition, location and value. Tell us about it and we will give you a straightforward number.',
-        },
-        {
-          question: 'Are there any fees or commissions?',
-          answer: 'No. There are no realtor commissions, listing fees or hidden costs.',
-        },
-        {
-          question: 'How quickly can you close?',
-          answer: 'Typically 14 to 30 days. We can often work around the date you need.',
-        },
-        {
-          question: 'Can you buy a house with tenants, or one I inherited?',
-          answer: 'Yes. We buy tenant-occupied, vacant and inherited properties.',
-        },
-        {
-          question: 'Do you buy houses outside Milwaukee?',
-          answer: 'Yes. We buy throughout the nearby suburbs, from Wauwatosa and West Allis to Oak Creek and Brown Deer.',
-        },
-        {
-          question: 'Do I have to accept your offer?',
-          answer: 'No. Our offer comes with no obligation. You decide whether it works for you.',
-        },
-      ],
+      faqs: [],
     },
     'wisconsin/madison': {
       published: '2026-10-13',
