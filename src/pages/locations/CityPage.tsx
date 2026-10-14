@@ -39,7 +39,9 @@ export function CityPage({ page }: { page: CityPageData }) {
           <StateGuideSections guide={guide} intro={page.content.intro ?? []} program={program} />
           <AreaCards city={page.city.name} areas={page.areas} />
           <LocalServices city={page.city.name} />
-          <LocalFaqs place={page.city.name} content={page.content} title={guide.faqTitle} />
+          {page.content.faqs?.length ? (
+            <LocalFaqs place={page.city.name} content={page.content} title={guide.faqTitle} />
+          ) : null}
           <OtherCities cities={page.otherCities} basePath={`${program.path}${page.state.slug}/`} />
           <LocationCta program={page.program} place={page.city.name} closing={guide.closing} />
         </div>

@@ -46,7 +46,7 @@ export interface StateGuide {
   steps: ContentItem[];
   citiesTitle: string;
   closing: { title: string; body: string; secondaryLabel: string; secondaryPath: string };
-  faqTitle: string;
+  faqTitle?: string;
 }
 
 /**
@@ -131,7 +131,6 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
           secondaryPath: '/locations/',
         },
       },
-      faqs: [],
     },
     'wisconsin/madison': {
       published: '2026-10-13',
