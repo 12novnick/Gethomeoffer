@@ -16,9 +16,7 @@ export function SidebarLayout({ children }: { children: ReactNode }) {
             return (
               <nav key={state.slug} aria-label={`${state.name} cities`}>
                 <p className="sidebar-layout__heading">Where we buy houses</p>
-                <NavLink to={statePath} end className="sidebar-layout__state">
-                  {state.name}
-                </NavLink>
+                <p className="sidebar-layout__state">{state.name}</p>
                 <ul role="list" className="sidebar-layout__list">
                   {state.cities.map((city) => (
                     <li key={city.slug}>

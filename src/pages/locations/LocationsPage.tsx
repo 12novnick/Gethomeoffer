@@ -21,7 +21,7 @@ export function LocationsPage() {
           <section key={state.slug} className="section locations" aria-labelledby={`locations-${state.slug}`}>
             <div className="container">
               <h2 id={`locations-${state.slug}`} className="locations__state">
-                <Link to={statePath}>We Buy Houses in {state.name}</Link>
+                We Buy Houses in {state.name}
               </h2>
               <ul role="list" className="locations__grid">
                 {state.cities.map((city) => (

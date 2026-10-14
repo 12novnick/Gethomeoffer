@@ -85,38 +85,6 @@ export interface LocalContent {
  */
 export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> = {
   cash: {
-    wisconsin: {
-      published: '2026-10-02',
-      modified: '2026-10-12',
-      summary: 'Looking to sell a property in Wisconsin? Explore a straightforward cash option and find a path that fits your situation.',
-      intro: ['Selling a property in Wisconsin can follow different paths. Whether you have inherited a home, are relocating, own a vacant property, or want to explore your options, Get Home Offer provides a direct way to move forward.'],
-      faqs: [
-        {
-          question: 'How fast can you close on a Wisconsin home?',
-          answer: 'Most of our sales close in 14 to 30 days. We move quickly because we have the cash available and don\'t need to wait for financing or appraisals. If you need to close faster or have more time, we can often work with your timeline.',
-        },
-        {
-          question: 'Do you buy as-is?',
-          answer: 'Yes. We buy houses in any condition, whether they need cosmetic updates, major repairs, or structural work. You don\'t need to fix anything before selling to us. We handle all repairs after closing.',
-        },
-        {
-          question: 'How do you calculate your cash offer?',
-          answer: 'Every property is unique, so we evaluate each one individually. We consider the property\'s condition, location, market value, and what repairs or updates it may need. After our assessment, we\'ll make you a straightforward offer with no surprises.',
-        },
-        {
-          question: 'Do I pay realtor fees or commissions?',
-          answer: 'No. Since you\'re selling directly to us, there are no realtor commissions, no listing fees, and no hidden costs. You keep more of your proceeds.',
-        },
-        {
-          question: 'What areas of Wisconsin do you serve?',
-          answer: 'We primarily buy in Milwaukee and the surrounding Milwaukee County suburbs. Not sure if your property qualifies? Reach out and we\'ll let you know.',
-        },
-        {
-          question: 'Can you help if I\'m facing foreclosure or need to sell quickly?',
-          answer: 'Yes. We work with homeowners in all situations: foreclosure, inherited properties, estate sales, relocation, divorce, or just needing a fast sale. We understand urgency and can often close in weeks, not months.',
-        },
-      ],
-    },
     'wisconsin/milwaukee': {
       published: '2026-10-02',
       modified: '2026-10-12',
@@ -234,8 +202,8 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
         closing: {
           title: 'See what we could offer for your Milwaukee house.',
           body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
-          secondaryLabel: 'See all Wisconsin cities',
-          secondaryPath: '/we-buy-houses-cash/wisconsin/',
+          secondaryLabel: 'See all locations',
+          secondaryPath: '/locations/',
         },
         faqTitle: 'Questions Milwaukee sellers ask.',
       },
@@ -264,6 +232,168 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
         {
           question: 'Do you buy houses outside Milwaukee?',
           answer: 'Yes. We buy throughout the nearby suburbs, from Wauwatosa and West Allis to Oak Creek and Brown Deer.',
+        },
+        {
+          question: 'Do I have to accept your offer?',
+          answer: 'No. Our offer comes with no obligation. You decide whether it works for you.',
+        },
+      ],
+    },
+    'wisconsin/madison': {
+      published: '2026-10-13',
+      modified: '2026-10-13',
+      heading: 'We Buy Houses Madison, WI. Sell Fast. Get Cash.',
+      metaTitle: 'We Buy Houses Madison, WI | Fast Cash Offers | Get Home Offer',
+      summary:
+        'Sell your Madison house as-is, with no repairs, no showings and no commissions. Get a cash offer from a local Madison team and close in as little as 14 days.',
+      metaDescription:
+        'We buy houses in Madison, WI in any condition. Local Madison office, no repairs, no fees or commissions, and closing in 14 to 30 days. Get your cash offer.',
+      intro: [
+        'Get Home Offer is based right here in Madison. Whether your house needs work, sits empty, came to you through an estate or has tenants you are tired of managing, we can make you a cash offer on it as it stands today.',
+        'There are no repairs to make, no open houses to host and no commissions taken out at closing. You get a clear number, and you decide.',
+      ],
+      guide: {
+        introTitle: 'Sell your Madison house As-Is',
+        introCta: true,
+        sections: [
+          {
+            id: 'houses-we-buy',
+            title: "You Don't Need a Perfect House or Situation to Sell It.",
+            body: ['If you own it in Madison and want to move on from it, tell us about it.'],
+            list: [
+              'Houses needing repairs',
+              'Inherited houses',
+              'Vacant houses',
+              'Duplexes and rentals',
+              'Facing foreclosure',
+              'Any other reason',
+            ],
+            after: ['Not sure your property fits? Ask us. It costs nothing.'],
+            cta: true,
+          },
+          {
+            id: 'madison-homes',
+            title: 'We know Madison properties.',
+            body: [
+              'Getting a house ready for the open market can mean months of contractors, inspections and surprise costs before a buyer even walks through.',
+              'We buy houses exactly as they are. We factor the work into our offer and handle every repair after closing, so you never spend a dollar or a weekend on the house again.',
+              'An as-is offer will usually be lower than what a fully renovated house might list for. What you get in return is certainty, speed and no out-of-pocket costs.',
+            ],
+            items: [
+              {
+                title: 'Older homes',
+                body: 'Aging systems, deferred maintenance or dated interiors. We price the work in, not against you.',
+              },
+              {
+                title: 'Rentals and student housing',
+                body: 'Tired of being a landlord? We buy rentals owner-occupied, tenant-occupied or empty.',
+              },
+              {
+                title: 'Duplexes and multi-unit',
+                body: 'Small multi-family properties of two to four units are welcome.',
+              },
+              {
+                title: 'Vacant properties',
+                body: 'An empty house keeps costing you every month. We can take it off your hands quickly.',
+              },
+              {
+                title: 'Inherited and estate homes',
+                body: "Sell without clearing out, cleaning or fixing up a loved one's house first.",
+              },
+              {
+                title: 'Relocating',
+                body: 'Moving for a new job or a new chapter? Sell on your schedule without carrying two homes.',
+              },
+            ],
+          },
+          {
+            id: 'why-us',
+            title: 'Why work with a local Madison buyer?',
+            body: [
+              'I created Get Home Offer because Wisconsin homeowners deserve better options. I grew up in Wisconsin and studied real estate and risk management at UW-Madison (both top-ranked programs). I understand both the market and the people in it.',
+              'What I offer: straightforward cash offers based on real numbers, not guesswork. I buy as-is, close fast with proof of funds, and listen to your timeline and concerns. You get certainty and speed, with no inspections, appraisals, or commission fees.',
+            ],
+            badgeImage: '/images/number1-badge.png',
+            cta: true,
+          },
+          {
+            id: 'office',
+            title: 'Visit our Madison office.',
+            body: ['Get Home Offer, 1723 Waldorf Blvd, Suite 401, Madison, WI 53719.'],
+            list: ['Phone: (608) 571-4547', 'Email: info@gethomeoffer.com', 'Open every day, 9am to 9pm'],
+            note: 'Get directions on Google Maps',
+            noteUrl: 'https://www.google.com/maps/search/?api=1&query=1723+Waldorf+Blvd+Suite+401+Madison+WI+53719',
+          },
+          {
+            id: 'service-area',
+            title: 'Madison and nearby communities.',
+            body: ['We buy houses across Madison and the surrounding Dane County communities, including:'],
+            list: [
+              'Middleton',
+              'Fitchburg',
+              'Verona',
+              'Sun Prairie',
+              'Monona',
+              'McFarland',
+              'Waunakee',
+              'Cottage Grove',
+              'DeForest',
+              'Oregon',
+              'Stoughton',
+              'Maple Bluff',
+            ],
+            after: ['Near Madison but not listed? Ask us anyway.'],
+            cta: true,
+          },
+        ],
+        stepsTitle: 'How selling your Madison house works.',
+        steps: [
+          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
+          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
+          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
+          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
+          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
+        ],
+        citiesTitle: 'Other Wisconsin cities we serve',
+        closing: {
+          title: 'See what we could offer for your Madison house.',
+          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
+          secondaryLabel: 'See all locations',
+          secondaryPath: '/locations/',
+        },
+        faqTitle: 'Questions Madison sellers ask.',
+      },
+      faqs: [
+        {
+          question: 'Do you buy houses as-is in Madison?',
+          answer: 'Yes, in any condition. No repairs, cleaning or updates needed.',
+        },
+        {
+          question: 'Are you a local Madison company?',
+          answer:
+            'Yes. Our office is at 1723 Waldorf Blvd, Suite 401, Madison, WI 53719, and we are open every day from 9am to 9pm.',
+        },
+        {
+          question: 'How much will you pay for my house?',
+          answer:
+            'Every offer is calculated for your specific property, based on its condition, location and value. Tell us about it and we will give you a straightforward number.',
+        },
+        {
+          question: 'Are there any fees or commissions?',
+          answer: 'No. There are no realtor commissions, listing fees or hidden costs.',
+        },
+        {
+          question: 'How quickly can you close?',
+          answer: 'Typically 14 to 30 days. We can often work around the date you need.',
+        },
+        {
+          question: 'Can you buy a rental with tenants, or a house I inherited?',
+          answer: 'Yes. We buy tenant-occupied, vacant and inherited properties.',
+        },
+        {
+          question: 'Do you buy houses outside Madison?',
+          answer:
+            'Yes. We buy throughout nearby Dane County communities, from Middleton and Fitchburg to Sun Prairie and Verona.',
         },
         {
           question: 'Do I have to accept your offer?',

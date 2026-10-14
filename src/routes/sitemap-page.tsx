@@ -13,7 +13,7 @@ export function loader() {
   const published = new Set(publishedLocationPaths());
   return CASH_STATES.flatMap((state) => {
     const statePath = `${CASH_PATH}${state.slug}/`;
-    const links = published.has(statePath) ? [{ label: `We Buy Houses in ${state.name}`, path: statePath }] : [];
+    const links: { label: string; path: string }[] = [];
     for (const city of state.cities) {
       const path = `${statePath}${city.slug}/`;
       if (published.has(path)) links.push({ label: `We Buy Houses in ${city.name}, ${state.abbr}`, path });

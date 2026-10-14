@@ -8,7 +8,7 @@ import { LOCATION_LABELS } from '../../data/location-labels';
 import { AGENT_HELP_AREAS } from '../../data/programs';
 import { cityCrumbs } from '../../lib/location-meta';
 import type { CityPageData } from '../../lib/location-pages';
-import { AreasServed, LocalFaqs, LocalIntro, LocalSituations, LocationCta, Paragraphs, ProgramSteps } from './LocationSections';
+import { AreasServed, LocalFaqs, LocalIntro, LocalServices, LocalSituations, LocationCta, OtherCities, Paragraphs, ProgramSteps } from './LocationSections';
 import { StateGuideSections } from './StateGuide';
 
 export function CityPage({ page }: { page: CityPageData }) {
@@ -34,7 +34,9 @@ export function CityPage({ page }: { page: CityPageData }) {
             }
           />
           <StateGuideSections guide={guide} intro={page.content.intro ?? []} program={program} />
+          <LocalServices city={page.city.name} />
           <LocalFaqs place={page.city.name} content={page.content} title={guide.faqTitle} />
+          <OtherCities cities={page.otherCities} basePath={`${program.path}${page.state.slug}/`} />
           <LocationCta program={page.program} place={page.city.name} closing={guide.closing} />
         </div>
       </SidebarLayout>
@@ -96,7 +98,11 @@ export function CityPage({ page }: { page: CityPageData }) {
 
       <AreasServed city={page.city.name} content={page.content} />
 
+      {isCash && <LocalServices city={page.city.name} />}
+
       <LocalFaqs place={page.city.name} content={page.content} />
+
+      <OtherCities cities={page.otherCities} basePath={`${program.path}${page.state.slug}/`} />
 
       <LocationCta program={page.program} place={page.city.name} />
     </SidebarLayout>

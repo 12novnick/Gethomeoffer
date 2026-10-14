@@ -18,6 +18,12 @@ export function Footer() {
                   <Link to={item.path}>{item.label}</Link>
                 </li>
               ))}
+              <li>
+                <Link to="/services/">Compare Your Options</Link>
+              </li>
+              <li>
+                <Link to="/contact/">Contact</Link>
+              </li>
             </ul>
           </nav>
 

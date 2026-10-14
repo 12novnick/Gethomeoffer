@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 import { PageHero } from '../../components/ui/PageHero';
 import { SITEMAP_CRUMBS } from '../../data/breadcrumbs';
+import { SERVICES, servicePath } from '../../data/service-list';
 import { AGENT_PATH, CASH_PATH, LEGAL_ITEMS } from '../../lib/site';
 import './SitemapPage.css';
 
@@ -29,6 +30,11 @@ export function SitemapPage({ locationLinks }: { locationLinks: SitemapLink[] })
         { label: 'We Buy Houses Cash', path: CASH_PATH },
         { label: 'Real Estate Agent Program', path: AGENT_PATH },
       ],
+    },
+    {
+      id: 'services',
+      title: 'Situations We Buy In',
+      links: SERVICES.map((service) => ({ label: service.name, path: servicePath(service.slug) })),
     },
     {
       id: 'locations',

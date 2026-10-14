@@ -13,20 +13,6 @@ export function isPublished(content: LocalContent) {
   return Boolean(content.intro?.length);
 }
 
-export function buildStatePage(program: ProgramId, stateSlug: string | undefined) {
-  const state = getStateBySlug(stateSlug ?? '');
-  if (!state || !CASH_STATE_SLUGS.includes(state.slug)) throw data(null, { status: 404 });
-
-  const content = contentFor(program, state.slug);
-  return {
-    program,
-    state: { name: state.name, abbr: state.abbr, slug: state.slug },
-    cities: state.cities.map((city) => ({ name: city.name, slug: city.slug })),
-    content,
-    published: isPublished(content),
-  };
-}
-
 export function buildCityPage(program: ProgramId, stateSlug: string | undefined, citySlug: string | undefined) {
   const state = getStateBySlug(stateSlug ?? '');
   const city = state && getCityBySlug(state.slug, citySlug ?? '');
@@ -43,7 +29,6 @@ export function buildCityPage(program: ProgramId, stateSlug: string | undefined,
   };
 }
 
-export type StatePageData = ReturnType<typeof buildStatePage>;
 export type CityPageData = ReturnType<typeof buildCityPage>;
 
 const PROGRAM_BASE: Record<ProgramId, string> = { cash: CASH_PATH, agent: AGENT_PATH };
@@ -52,7 +37,6 @@ export function publishedLocationPaths() {
   return (Object.keys(PROGRAM_BASE) as ProgramId[]).flatMap((program) =>
     LOCATIONS.flatMap((state) => {
       const paths: string[] = [];
-      if (isPublished(contentFor(program, state.slug))) paths.push(`${PROGRAM_BASE[program]}${state.slug}/`);
       for (const city of state.cities) {
         if (isPublished(contentFor(program, `${state.slug}/${city.slug}`))) {
           paths.push(`${PROGRAM_BASE[program]}${state.slug}/${city.slug}/`);
@@ -60,5 +44,14 @@ export function publishedLocationPaths() {
       }
       return paths;
     }),
+  );
+}
+
+/** Published Cash Program city pages, for "Where we buy" links on service pages. */
+export function publishedCashCities() {
+  return LOCATIONS.flatMap((state) =>
+    state.cities
+      .filter((city) => CASH_STATE_SLUGS.includes(state.slug) && isPublished(contentFor('cash', `${state.slug}/${city.slug}`)))
+      .map((city) => ({ name: city.name, stateName: state.name, stateAbbr: state.abbr, path: `${CASH_PATH}${state.slug}/${city.slug}/` })),
   );
 }

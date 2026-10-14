@@ -5,7 +5,9 @@ import { PageHero } from '../../components/ui/PageHero';
 import { SectionHeader } from '../../components/ui/SectionHeader';
 import { SplitSection } from '../../components/ui/SplitSection';
 import { StepSequence } from '../../components/ui/StepSequence';
+import { ServiceLinks } from '../../components/services/ServiceLinks';
 import { CASH_CRUMBS } from '../../data/breadcrumbs';
+import { CASH_STATES } from '../../data/locations';
 import { AGENT_PROGRAM, CASH_PROGRAM, CASH_PROPERTY_TYPES } from '../../data/programs';
 import './ProgramPage.css';
 
@@ -53,11 +55,34 @@ export function CashProgramPage() {
         <p className="program-note">Don't see your property type? Tell us about it and we'll let you know.</p>
       </SplitSection>
 
-      <section className="section">
+      <section id="cash-services" className="section" aria-labelledby="cash-services-title">
         <div className="container">
+          <SectionHeader
+            id="cash-services-title"
+            title="Every situation we buy in."
+            lede="Choose the one closest to yours to see how a direct sale works for it."
+          />
+          <ServiceLinks />
+        </div>
+      </section>
+
+      <section id="cash-locations" className="section" aria-labelledby="cash-locations-title">
+        <div className="container">
+          <SectionHeader id="cash-locations-title" title="Where we buy houses." />
+          <ul role="list" className="cash-locations">
+            {CASH_STATES.flatMap((state) =>
+              state.cities.map((city) => (
+                <li key={city.slug}>
+                  <Link to={`${CASH_PROGRAM.path}${state.slug}/${city.slug}/`}>
+                    We buy houses in {city.name}, {state.abbr}
+                  </Link>
+                </li>
+              )),
+            )}
+          </ul>
           <p>
             <Link to="/locations/" className="arrow-link">
-              See where we buy houses
+              See all locations
               <span className="btn__arrow" aria-hidden="true">→</span>
             </Link>
           </p>

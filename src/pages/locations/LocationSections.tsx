@@ -1,5 +1,6 @@
 import { Link } from 'react-router';
 import { FaqList } from '../../components/faq/FaqList';
+import { ServiceLinks } from '../../components/services/ServiceLinks';
 import { ContentSlot } from '../../components/ui/ContentSlot';
 import { CtaBand } from '../../components/ui/CtaBand';
 import { DetailGrid } from '../../components/ui/DetailGrid';
@@ -140,5 +141,43 @@ export function LocationCta({
         </Link>
       }
     />
+  );
+}
+
+export function LocalServices({ city }: { city: string }) {
+  return (
+    <section className="section" aria-labelledby="local-services-title">
+      <div className="container">
+        <SectionHeader
+          id="local-services-title"
+          title={`Ways to sell your house in ${city}.`}
+          lede="Whatever your situation, we can make a cash offer. Choose the one closest to yours."
+        />
+        <ServiceLinks place={city} />
+      </div>
+    </section>
+  );
+}
+
+export function OtherCities({ cities, basePath }: { cities: { name: string; slug: string }[]; basePath: string }) {
+  if (!cities.length) return null;
+  return (
+    <SplitSection id="other-cities" title="Other cities we serve." tone="surface">
+      <ul role="list" className="location-page__other-cities">
+        {cities.map((city) => (
+          <li key={city.slug}>
+            <Link to={`${basePath}${city.slug}/`}>We buy houses in {city.name}</Link>
+          </li>
+        ))}
+      </ul>
+      <p>
+        <Link to="/locations/" className="arrow-link">
+          See all locations
+          <span className="btn__arrow" aria-hidden="true">
+            →
+          </span>
+        </Link>
+      </p>
+    </SplitSection>
   );
 }
