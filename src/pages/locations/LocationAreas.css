@@ -34,14 +34,15 @@
   flex-wrap: wrap;
   align-items: center;
   gap: var(--space-xs) var(--space-lg);
-  padding-block: var(--space-sm);
-  font-size: var(--text-small);
+  padding-block: var(--space-lg);
+  font-size: 1.125rem;
 }
 
 .areas-strip__label {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--color-text);
 }
