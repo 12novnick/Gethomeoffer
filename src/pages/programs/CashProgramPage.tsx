@@ -35,15 +35,6 @@ export function CashProgramPage({ serviceGroups }: { serviceGroups: ServiceCardG
         divider={false}
       />
 
-      <SplitSection id="cash-what">
-        <p>
-          We Buy Houses, but what if selling yours didn't require the usual steps? The Cash Program is a way to sell your property directly, without listing it on the open market.</p>
-        <p>
-          Instead of preparing for showings and waiting on a buyer's financing, you receive a straightforward offer
-          and decide whether it's right for you.
-        </p>
-      </SplitSection>
-
       <section id="cash-services" className="section" aria-labelledby="cash-services-title">
         <div className="container">
           <SectionHeader
