@@ -35,6 +35,8 @@ const BUSINESS = {
   ...(COMPANY.email && { email: COMPANY.email }),
   address: { '@type': 'PostalAddress', ...BUSINESS_ADDRESS },
   geo: { '@type': 'GeoCoordinates', ...BUSINESS_GEO },
+  foundingDate: '2026',
+  founder: { '@type': 'Person', name: 'Nicolas Vera', jobTitle: 'Founder and CEO' },
   areaServed: { '@type': 'Country', name: 'United States' },
   openingHoursSpecification: {
     '@type': 'OpeningHoursSpecification',
