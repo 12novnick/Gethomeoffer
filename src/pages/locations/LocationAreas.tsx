@@ -43,7 +43,7 @@ export function AreaCards({ city, areas }: { city: string; areas: Area[] }) {
         <SectionHeader
           id="area-cards-title"
           title={`We buy houses by area in ${city}.`}
-          lede="Choose your neighborhood to see how selling works there."
+          lede="Choose your neighborhood to learn more."
         />
         <ul role="list" className="area-cards">
           {areas.map((area) => (

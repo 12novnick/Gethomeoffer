@@ -85,7 +85,7 @@ export function ContactForm() {
 
       <div className="contact-form__footer">
         <button type="submit" className="btn btn--primary" disabled={isSubmitting}>
-          {isSubmitting ? 'Sending…' : 'Get My Cash Offer'}
+          {isSubmitting ? 'Sending…' : 'Get My Free Cash Offer'}
         </button>
         <p className="contact-form__note">
           See our <Link to="/privacy-policy/">Privacy Policy</Link> for how we handle your information.

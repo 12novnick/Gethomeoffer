@@ -27,7 +27,7 @@ export const CASH_PROGRAM: Program = {
   kicker: 'Direct sale',
   summary: 'Explore a direct sale and get a straightforward offer for your property.',
   exploreLabel: 'Explore the Cash Program',
-  cta: { label: 'Get My Cash Offer', path: CASH_OFFER_PATH },
+  cta: { label: 'Get My Free Cash Offer', path: CASH_OFFER_PATH },
   image: IMAGES.programCash,
   bestFor: [
     'You value certainty and a simple process',

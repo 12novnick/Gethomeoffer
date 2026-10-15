@@ -28,7 +28,7 @@ export function Hero() {
         </p>
         <div className="hero__actions">
           <Link to={OFFER_PATH} className="btn btn--primary">
-            Get My Cash Offer
+            Get My Free Cash Offer
           </Link>
         </div>
       </div>

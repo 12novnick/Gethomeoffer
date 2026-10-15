@@ -28,7 +28,7 @@ export function NextChapter() {
           the next step.
         </p>
         <Link to={OFFER_PATH} className="btn btn--primary next-chapter__cta">
-          Get My Cash Offer
+          Get My Free Cash Offer
           <span className="btn__arrow" aria-hidden="true">
             →
           </span>

@@ -109,7 +109,7 @@ export function AboutPage() {
         id="about-cta"
         title="Let's talk about your property."
         body="Tell us about your property and your situation, and we'll help you understand your options."
-        cta={{ label: 'Get My Cash Offer', path: OFFER_PATH }}
+        cta={{ label: 'Get My Free Cash Offer', path: OFFER_PATH }}
       />
     </>
   );

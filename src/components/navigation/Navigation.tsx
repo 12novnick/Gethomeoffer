@@ -60,7 +60,7 @@ export function Navigation() {
         </Link>
 
         <Link to={OFFER_PATH} className="btn btn--primary site-header__cta">
-          Get My Cash Offer
+          Get My Free Cash Offer
         </Link>
       </div>
 
@@ -76,7 +76,7 @@ export function Navigation() {
             ))}
           </ul>
           <Link to={OFFER_PATH} className="btn btn--primary mobile-menu__cta" onClick={closeMenu}>
-            Get My Cash Offer
+            Get My Free Cash Offer
           </Link>
         </nav>
       </div>

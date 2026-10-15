@@ -70,7 +70,7 @@ export function ServicesPage() {
         id="services-cta"
         title="Not sure which path fits?"
         body="Tell us about your property and your situation. We'll help you understand both options."
-        cta={{ label: 'Get My Cash Offer', path: OFFER_PATH }}
+        cta={{ label: 'Get My Free Cash Offer', path: OFFER_PATH }}
       />
     </>
   );

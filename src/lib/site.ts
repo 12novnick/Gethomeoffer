@@ -1,4 +1,4 @@
-// Every "Get My Cash Offer" CTA points here so it changes in one place.
+// Every "Get My Free Cash Offer" CTA points here so it changes in one place.
 export const OFFER_PATH = '/contact/';
 
 export const CASH_PATH = '/we-buy-houses-cash/';

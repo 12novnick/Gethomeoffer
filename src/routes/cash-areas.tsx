@@ -27,7 +27,7 @@ export const meta = ({ loaderData }: Route.MetaArgs) => {
       description: `We buy houses across ${city.name}, ${state.abbr}. Choose your neighborhood to see how selling your house for cash works there.`,
       path,
       published: '2026-10-14',
-      modified: '2026-10-14',
+      modified: '2026-10-15',
     }),
     breadcrumbSchema(crumbs(loaderData)),
   ];
@@ -44,8 +44,8 @@ export default function CashAreas({ loaderData }: Route.ComponentProps) {
       </div>
       <PageHero
         crumbs={crumbs(page)}
-        title={`Areas We Serve in ${page.city.name}`}
-        lede={`We buy houses across ${page.city.name}. Choose your neighborhood to see how selling works there.`}
+        title={`Areas We Buy In ${page.city.name}`}
+        lede={`We buy houses across ${page.city.name}. Choose your neighborhood to learn more.`}
         actions={
           <Link to={CASH_PROGRAM.cta.path} className="btn btn--primary">
             {CASH_PROGRAM.cta.label}
