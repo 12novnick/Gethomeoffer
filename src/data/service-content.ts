@@ -14,21 +14,128 @@ export interface ServiceContent {
   /** Things to know before selling in this situation. */
   know: string[];
   faqs: Faq[];
+  /** Optional long-form guide shown after the intro. Text may contain [label](url) links. */
+  guide?: GuideSection[];
+  /** Optional comparison table shown after the guide sections listed before it. */
+  comparison?: { title: string; afterSection: number; columns: string[]; rows: string[][] };
+  /** Overrides the shared modified date when this page's copy changes. */
+  modified?: string;
+}
+
+export interface GuideSection {
+  heading: string;
+  paragraphs?: string[];
+  bullets?: string[];
+  /** Short closing note, shown in bold lead-in style. */
+  note?: { label: string; text: string };
 }
 
 // Build-time only: imported by the service route loader, never by components, so it stays out of the JS bundle.
 // No city names here: service pages are shared by every location.
 export const SERVICE_CONTENT: Record<string, ServiceContent> = {
   'sell-house-fast': {
-    metaTitle: 'Sell Your House Fast for Cash | Get Home Offer',
+    metaTitle: 'How to Sell Your House Fast: 5 Options Compared',
     metaDescription:
-      'Need to sell your house fast? Get a straightforward cash offer, skip listing and showings, and pick a closing date that works for you.',
-    heading: 'Sell Your House Fast',
-    summary: 'Skip the listing, the showings and the wait on a buyer\'s loan. Get a cash offer and choose your closing date.',
+      'Need to sell your house fast? Compare your options, what each costs, how long each takes and how to avoid scams. Plus a free cash offer if you want one.',
+    heading: 'How to Sell Your House Fast',
+    summary: 'Compare the five main ways to sell quickly, what each costs and what slows a sale down.',
+    modified: '2026-10-15',
     intro: [
-      'A traditional sale can take months: prep work, photos, showings, offers, inspections and a buyer\'s financing that may or may not come through.',
-      'When time matters, a direct cash sale removes most of those steps. We review your property, make a straightforward offer, and if you accept, we close on the date you choose, typically 14 to 30 days out.',
+      'To sell your house fast, you have five main options: price it to sell with an agent, sell it as-is, sell to a cash home buyer, sell to an iBuyer, or sell it yourself to someone you already know.',
+      'The fastest is usually a cash buyer. There is no lender, so you can often close in a few weeks instead of waiting on mortgage approval. The trade-off is price: speed usually costs you some of what you could get on the open market. Here is how each option works.',
     ],
+    guide: [
+      {
+        heading: '1. Price it to sell and list with an agent',
+        paragraphs: [
+          'A well-priced home in good condition can sell quickly on the open market. A local agent can show you what similar homes near you sold for and how fast. To move faster:',
+        ],
+        bullets: [
+          'Price at or slightly below recent comparable sales.',
+          'Handle small, cheap fixes: paint, lighting, curb appeal.',
+          'Make the home easy to show.',
+        ],
+        note: {
+          label: 'Keep in mind:',
+          text: 'Most buyers use a mortgage. Appraisal, inspection and underwriting take time, and financing can fall through late in the process. Our [Real Estate Agent Program](/real-estate-agent-program/) can help if you want to list.',
+        },
+      },
+      {
+        heading: '2. Sell as-is',
+        paragraphs: [
+          'Selling [as-is](/we-buy-houses-cash/sell-house-as-is/) means you will not make repairs. You can do this through an agent or with a direct buyer. You still have to share known defects. In most states, sellers must fill out a property condition disclosure.',
+        ],
+        note: { label: 'Best when:', text: 'The house needs work you cannot afford or do not have time to do.' },
+      },
+      {
+        heading: '3. Sell to a cash home buyer',
+        paragraphs: [
+          'Cash buyers, often called "we buy houses" companies, buy the house directly. There is no listing, no showings and no lender. That is usually what makes them the fastest option. What to expect:',
+        ],
+        bullets: [
+          'An offer based on the home\'s condition and what it would sell for after repairs',
+          'No agent commissions. Ask who pays the closing costs.',
+          'A closing date you choose, often within weeks',
+        ],
+        note: { label: 'Trade-off:', text: 'The offer is usually below full market value. You are trading price for speed and certainty.' },
+      },
+      {
+        heading: '4. Sell to an iBuyer',
+        paragraphs: [
+          'iBuyers are tech companies that make instant offers on homes in certain markets. They usually want homes in good condition. They often charge a service fee and take repair costs out of the offer.',
+        ],
+      },
+      {
+        heading: '5. Sell to someone you know',
+        paragraphs: [
+          'A tenant, neighbor or relative may want to buy. You will save on marketing, but you still need a title company or real estate attorney to close properly. See how to [sell without a realtor](/we-buy-houses-cash/sell-house-without-realtor/).',
+        ],
+      },
+      {
+        heading: 'What slows a sale down',
+        bullets: [
+          'Buyer financing: loan approval, appraisal and underwriting. The CFPB explains [each step of the mortgage process](https://www.consumerfinance.gov/owning-a-home/).',
+          'Inspection problems: repair requests and renegotiation.',
+          'Title issues: liens, unpaid taxes, or heirs who have not signed off.',
+          'Closing paperwork: lenders must give buyers a Closing Disclosure at least three business days before closing. See the CFPB\'s [Closing Disclosure guide](https://www.consumerfinance.gov/ask-cfpb/what-is-a-closing-disclosure-en-1983/).',
+        ],
+      },
+      {
+        heading: 'Behind on payments or facing foreclosure?',
+        paragraphs: [
+          'Talk to a HUD-approved housing counselor before you sell. Counseling is often free, and they can explain options you may not know about. Find one through [HUD](https://www.hud.gov/findacounselor) or the [CFPB](https://www.consumerfinance.gov/find-a-housing-counselor/). USA.gov also lists [federal help for homeowners](https://www.usa.gov/housing-help).',
+          'If selling is the right move, see how to [sell a house when you are behind on payments](/we-buy-houses-cash/sell-house-behind-on-payments/).',
+        ],
+      },
+      {
+        heading: 'How to avoid scams when selling fast',
+        bullets: [
+          'Never sign over your deed before you are paid at closing.',
+          'Close through a licensed title company or attorney.',
+          'Be wary of anyone who pressures you to sign the same day.',
+          'Get the offer in writing and read every fee.',
+          'Check reviews and Better Business Bureau ratings.',
+        ],
+      },
+      {
+        heading: 'Do you owe taxes when you sell?',
+        paragraphs: [
+          'Maybe. If the house was your main home, you may be able to exclude up to $250,000 of gain from income, or $500,000 for married couples filing jointly, if you meet the ownership and use rules. See [IRS Publication 523, Selling Your Home](https://www.irs.gov/publications/p523). A tax professional can confirm what applies to you.',
+        ],
+      },
+    ],
+    comparison: {
+      title: 'Quick comparison',
+      afterSection: 5,
+      columns: ['Option', 'Typical speed', 'Repairs needed', 'Main cost'],
+      rows: [
+        ['Agent, priced to sell', 'Depends on market and financing', 'Usually some', 'Commission and closing costs'],
+        ['As-is listing', 'Depends on market', 'None', 'Lower price, commission'],
+        ['Cash buyer', 'Often a few weeks', 'None', 'Price below market value'],
+        ['iBuyer', 'Weeks, in select markets', 'Deducted from offer', 'Service fee and repairs'],
+        ['Private sale', 'Varies', 'Negotiable', 'Legal and title fees'],
+      ],
+    },
     signs: [
       'You have a deadline, such as a move, a new job or a payment coming due',
       'You do not want to spend weeks preparing the house for buyers',
@@ -45,6 +152,16 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       'If getting the highest possible price matters more than timing, compare our offer with a traditional listing through our Real Estate Agent Program.',
     ],
     faqs: [
+      { question: 'What is the fastest way to sell a house?', answer: 'Usually a cash buyer. There is no lender, so you can close in a few weeks.' },
+      {
+        question: 'Can I sell my house fast without a realtor?',
+        answer: 'Yes. You can sell to a cash buyer, an iBuyer or someone you know. Use a title company or attorney to close.',
+      },
+      { question: 'Do I have to fix my house before selling?', answer: 'No. You can sell as-is, but you still have to disclose known defects.' },
+      {
+        question: 'Will I get less money if I sell fast?',
+        answer: 'Often, yes. Faster options usually trade some price for speed and certainty. Compare the net amount you would walk away with, not just the offer.',
+      },
       { question: 'How fast can you close?', answer: 'Typically 14 to 30 days. We can often work around the date you need.' },
       { question: 'Do I have to accept your offer?', answer: 'No. The offer comes with no obligation. You decide.' },
     ],

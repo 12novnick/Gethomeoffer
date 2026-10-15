@@ -10,6 +10,7 @@ import { COMPANY } from '../../data/company';
 import { CASH_PROGRAM, CASH_TRUST_POINTS } from '../../data/programs';
 import { serviceCrumbs } from '../../lib/service-crumbs';
 import type { ServicePageData } from '../../lib/service-pages';
+import { ServiceGuide } from './ServiceGuide';
 import '../programs/ProgramPage.css';
 import './ServicePage.css';
 
@@ -21,7 +22,7 @@ export function ServicePage({ page }: { page: ServicePageData }) {
   const lowerHeading = content.heading.toLowerCase();
 
   return (
-    <>
+    <div className="service-page">
       <div className="container service-page__back">
         <Link to={page.group.path} className="arrow-link">
           <span aria-hidden="true">←</span> Back to {page.group.label}
@@ -58,6 +59,8 @@ export function ServicePage({ page }: { page: ServicePageData }) {
           ))}
         </div>
       </section>
+
+      {content.guide && <ServiceGuide guide={content.guide} comparison={content.comparison} />}
 
       <SplitSection id="service-when" title="When this makes sense." tone="surface">
         <ul role="list" className="check-list">
@@ -110,6 +113,6 @@ export function ServicePage({ page }: { page: ServicePageData }) {
         body={`Tell us about your property and we will follow up with a straightforward cash offer.${COMPANY.phone ? ` Or call us at ${COMPANY.phone}.` : ''}`}
         cta={CASH_PROGRAM.cta}
       />
-    </>
+    </div>
   );
 }

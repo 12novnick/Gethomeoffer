@@ -1,3 +1,73 @@
+/* Tighter vertical rhythm than the site default (4.5–9.5rem per side). */
+.service-page {
+  --section-pad: clamp(2.5rem, 1.5rem + 3.5vw, 4.5rem);
+}
+
+/* Long-form guide (e.g. Sell House Fast) */
+.service-guide {
+  padding-top: 0;
+}
+
+.service-guide__body {
+  display: grid;
+  gap: var(--space-xl);
+  max-width: var(--container-narrow);
+  font-size: var(--text-body-lg);
+}
+
+.service-guide__group,
+.service-guide__block {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.service-guide__group {
+  gap: var(--space-xl);
+}
+
+.service-guide__heading {
+  font-size: var(--text-heading);
+}
+
+.service-guide__list {
+  display: grid;
+  gap: 0.5rem;
+  padding-left: 1.25rem;
+  list-style: disc;
+}
+
+.service-guide a {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+
+.service-guide a:hover {
+  color: var(--color-link-hover);
+}
+
+.service-guide__table-wrap {
+  overflow-x: auto;
+}
+
+.service-guide__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-body);
+}
+
+.service-guide__table th,
+.service-guide__table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.service-guide__table thead th {
+  border-bottom-color: var(--color-border-strong);
+  font-weight: 600;
+}
+
 .service-page__tinted {
   background-color: var(--color-surface-alt);
 }

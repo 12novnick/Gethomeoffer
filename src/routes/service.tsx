@@ -14,7 +14,13 @@ export const meta = ({ loaderData }: Route.MetaArgs) => {
   if (!loaderData) return [];
   const { content, path, cities } = loaderData;
   const tags = [
-    ...seo({ title: content.metaTitle, description: content.metaDescription, path, ...DATES }),
+    ...seo({
+      title: content.metaTitle,
+      description: content.metaDescription,
+      path,
+      ...DATES,
+      ...('modified' in content && content.modified && { modified: content.modified }),
+    }),
     faqSchema(content.faqs),
   ];
 
