@@ -112,9 +112,6 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
         bullets: [
           'Never sign over your deed before you are paid at closing.',
           'Close through a licensed title company or attorney.',
-          'Be wary of anyone who pressures you to sign the same day.',
-          'Get the offer in writing and read every fee.',
-          'Check reviews and Better Business Bureau ratings.',
         ],
       },
       {

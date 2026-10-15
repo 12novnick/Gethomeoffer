@@ -16,7 +16,7 @@ import './ServicePage.css';
 
 const phoneHref = COMPANY.phone ? `tel:${COMPANY.phone.replace(/[^\d+]/g, '')}` : undefined;
 
-// Section order follows the reference layout: back link, hero, intro, when, process, offer, why us, parent link, CTA.
+// Section order follows the reference layout: back link, hero, intro, guide, why us, when, process, offer, FAQs, parent link, CTA.
 export function ServicePage({ page }: { page: ServicePageData }) {
   const { content } = page;
   const lowerHeading = content.heading.toLowerCase();
@@ -62,6 +62,13 @@ export function ServicePage({ page }: { page: ServicePageData }) {
 
       {content.guide && <ServiceGuide guide={content.guide} comparison={content.comparison} />}
 
+      <section className="section" aria-labelledby="service-why-title">
+        <div className="container">
+          <SectionHeader id="service-why-title" title="Why choose Get Home Offer." />
+          <DetailGrid items={content.help} />
+        </div>
+      </section>
+
       <SplitSection id="service-when" title="When this makes sense." tone="surface">
         <ul role="list" className="check-list">
           {content.signs.map((sign) => (
@@ -86,13 +93,6 @@ export function ServicePage({ page }: { page: ServicePageData }) {
           <p key={paragraph}>{paragraph}</p>
         ))}
       </SplitSection>
-
-      <section className="section" aria-labelledby="service-why-title">
-        <div className="container">
-          <SectionHeader id="service-why-title" title="Why choose Get Home Offer." />
-          <DetailGrid items={content.help} />
-        </div>
-      </section>
 
       <SplitSection id="service-faqs" title="Common questions." tone="surface">
         <FaqList faqs={content.faqs} />
