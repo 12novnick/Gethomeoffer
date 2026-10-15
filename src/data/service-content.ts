@@ -148,20 +148,8 @@ export const SERVICE_CONTENT: Record<string, ServiceContent> = {
       'A fast cash offer is usually lower than the top price a fully prepared house might get on the open market. What you gain is speed, certainty and no repair or holding costs.',
       'If getting the highest possible price matters more than timing, compare our offer with a traditional listing through our Real Estate Agent Program.',
     ],
-    faqs: [
-      { question: 'What is the fastest way to sell a house?', answer: 'Usually a cash buyer. There is no lender, so you can close in a few weeks.' },
-      {
-        question: 'Can I sell my house fast without a realtor?',
-        answer: 'Yes. You can sell to a cash buyer, an iBuyer or someone you know. Use a title company or attorney to close.',
-      },
-      { question: 'Do I have to fix my house before selling?', answer: 'No. You can sell as-is, but you still have to disclose known defects.' },
-      {
-        question: 'Will I get less money if I sell fast?',
-        answer: 'Often, yes. Faster options usually trade some price for speed and certainty. Compare the net amount you would walk away with, not just the offer.',
-      },
-      { question: 'How fast can you close?', answer: 'Typically 14 to 30 days. We can often work around the date you need.' },
-      { question: 'Do I have to accept your offer?', answer: 'No. The offer comes with no obligation. You decide.' },
-    ],
+    // Owner removed the FAQ section from this page (2026-10-15).
+    faqs: [],
   },
 
   'sell-house-as-is': {

@@ -94,9 +94,11 @@ export function ServicePage({ page }: { page: ServicePageData }) {
         ))}
       </SplitSection>
 
-      <SplitSection id="service-faqs" title="Common questions." tone="surface">
-        <FaqList faqs={content.faqs} />
-      </SplitSection>
+      {content.faqs.length > 0 && (
+        <SplitSection id="service-faqs" title="Common questions." tone="surface">
+          <FaqList faqs={content.faqs} />
+        </SplitSection>
+      )}
 
       <section className="section service-page__links" aria-label="More ways to sell">
         <div className="container service-page__prose">

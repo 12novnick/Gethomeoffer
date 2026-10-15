@@ -21,7 +21,7 @@ export const meta = ({ loaderData }: Route.MetaArgs) => {
       ...DATES,
       ...('modified' in content && content.modified && { modified: content.modified }),
     }),
-    faqSchema(content.faqs),
+    ...(content.faqs.length ? [faqSchema(content.faqs)] : []),
   ];
 
   if (loaderData.kind === 'group') {
