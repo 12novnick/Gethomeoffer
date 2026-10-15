@@ -26,12 +26,12 @@ export const PAGES: Record<string, PageInfo> = {
     modified: '2026-09-30',
   },
   '/we-buy-houses-cash/': {
-    title: 'We Buy Houses | A Simpler Way to Sell Your Home | Get Home Offer',
+    title: 'We Buy Houses | Get Your Free Offer',
     description:
-      'Explore a direct sale and get a straightforward cash offer for your property. See how the Cash Program works and where we buy houses.',
+      'We buy houses as-is for cash. Get your free, no-obligation offer with no repairs, no fees and no commissions. See how it works and where we buy.',
     heading: 'Discover What a Cash Sale Could Look Like In Our We Buy Houses Program',
     published: '2026-09-29',
-    modified: '2026-10-06',
+    modified: '2026-10-15',
   },
   '/locations/': {
     title: 'Locations: Where We Buy Houses | Get Home Offer',

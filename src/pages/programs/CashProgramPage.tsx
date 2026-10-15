@@ -14,7 +14,7 @@ export function CashProgramPage({ serviceGroups }: { serviceGroups: ServiceCardG
       <PageHero
         crumbs={CASH_CRUMBS}
         title="Discover What a Cash Sale Could Look Like In Our We Buy Houses Program"
-        lede="Find the situation closest to yours below, or tell us about your property and we will figure it out together."
+        lede="We buy houses as-is for cash. Find the situation closest to yours below, or tell us about your property and we will figure it out together."
         actions={
           <>
             <Link to={CASH_PROGRAM.cta.path} className="btn btn--primary">
