@@ -83,7 +83,7 @@ export const PAGES: Record<string, PageInfo> = {
       'Read how Get Home Offer collects, uses, shares and protects the information you provide through Get Home Offer.',
     heading: 'Privacy Policy',
     published: '2026-09-29',
-    modified: '2026-10-12',
+    modified: '2026-10-19',
   },
   '/terms/': {
     title: 'Terms & Conditions | Get Home Offer',
@@ -91,7 +91,7 @@ export const PAGES: Record<string, PageInfo> = {
       'The terms and conditions that apply to using Get Home Offer, the Cash Program and the Real Estate Agent Program.',
     heading: 'Terms & Conditions',
     published: '2026-09-29',
-    modified: '2026-10-12',
+    modified: '2026-10-19',
   },
 };
 

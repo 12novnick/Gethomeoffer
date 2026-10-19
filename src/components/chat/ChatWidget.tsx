@@ -208,10 +208,11 @@ export function ChatWidget() {
               <label className="chat-widget__consent">
                 <input type="checkbox" name="smsConsent" value="yes" required />
                 <span>
-                  I agree to receive communications by text message from Get Home Offer about updates and inquiries. You
-                  may opt out by replying STOP or ask for more information by replying HELP. Message frequency varies.
-                  Message and data rates may apply. You may review our <Link to="/privacy-policy/">Privacy Policy</Link>{' '}
-                  and <Link to="/terms/">Terms &amp; Conditions</Link>.
+                  I agree to receive text messages from Get Home Offer at the number above about my request, my property
+                  and offers to buy it, including follow-up and marketing messages, which may be sent using automated
+                  technology. Consent is not a condition of selling or any purchase. Message frequency varies. Message
+                  and data rates may apply. Reply STOP to opt out or HELP for help. See our{' '}
+                  <Link to="/privacy-policy/">Privacy Policy</Link> and <Link to="/terms/">Terms &amp; Conditions</Link>.
                 </span>
               </label>
 

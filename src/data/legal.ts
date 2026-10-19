@@ -21,7 +21,7 @@ export const PRIVACY_POLICY: LegalDocument = {
   path: '/privacy-policy/',
   title: 'Privacy Policy',
   lede: 'How Get Home Offer collects, uses and protects your information.',
-  lastUpdated: 'October 12, 2026',
+  lastUpdated: 'October 19, 2026',
   sections: [
     {
       id: 'who-we-are',
@@ -72,8 +72,9 @@ export const PRIVACY_POLICY: LegalDocument = {
         'How and when you contact people who submit the form, how they consent and how they opt out. Attorney review needed for telemarketing and texting rules.',
       body: [
         "When you submit your details, we may contact you by phone, email or text message about your property and your request.",
-        "Text messages. We only send text messages if you check the SMS consent box on our form. By giving consent, you agree to receive text messages from Get Home Offer about updates and inquiries. Message frequency varies. Message and data rates may apply. Consent to receive text messages is not a condition of any purchase.",
-        "You can opt out of text messages at any time by replying STOP. Reply HELP for more information. You can also ask us to stop calling or emailing you by contacting us.",
+        "Text messages. We only send text messages if you check the SMS consent box on our form. By giving consent, you agree to receive text messages from Get Home Offer at the number you provided, including messages about your request, your property and offers to buy it, and follow-up and marketing messages. Messages may be sent using automated technology. Message frequency varies. Message and data rates may apply. Consent to receive text messages is not a condition of selling your property or of any purchase.",
+        "We send text messages only between 8am and 9pm in your local time zone, or within any narrower hours your state requires.",
+        "You can opt out of text messages at any time by replying STOP, or by telling us in any other reasonable way, such as replying \"unsubscribe\" or contacting us. We honor opt-out requests promptly. Reply HELP for more information. You can also ask us to stop calling or emailing you by contacting us.",
         "No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. Text messaging originator opt-in data and consent will not be shared with any third parties.",
       ],
     },
@@ -143,6 +144,7 @@ export const TERMS: LegalDocument = {
   path: '/terms/',
   title: 'Terms & Conditions',
   lede: 'The terms that apply to your use of Get Home Offer.',
+  lastUpdated: 'October 19, 2026',
   sections: [
     {
       id: 'acceptance',
@@ -198,6 +200,19 @@ export const TERMS: LegalDocument = {
       body: [
         "Any information you provide to Get Home Offer through our website, contact form, chat or otherwise must be accurate, current and complete. You are responsible for the accuracy of information you submit.",
         "For how we handle, use and protect your personal information, please see our Privacy Policy.",
+      ],
+    },
+    {
+      id: 'text-messaging',
+      title: 'Text messaging program',
+      guidance: 'SMS program terms required by wireless carriers: program description, frequency, rates, opt-out, help and support contact.',
+      body: [
+        "Get Home Offer text messages. If you check the SMS consent box on our form, you agree to receive text messages from Get Home Offer at the number you provided about your request, your property, offers to buy it, and follow-up and marketing messages. Messages may be sent using automated technology. Consent is not a condition of selling your property or of any purchase.",
+        "Message frequency varies. Message and data rates may apply. Check your mobile plan for details.",
+        "To stop receiving messages, reply STOP to any message. You will receive one message confirming that you have been unsubscribed, and no further messages after that. To start again, reply START or submit our form again.",
+        "For help, reply HELP or contact us at info@gethomeoffer.com or (608) 571-4547.",
+        "Wireless carriers are not liable for delayed or undelivered messages.",
+        "For how we handle your information, including that we do not share mobile numbers or SMS opt-in data with third parties for marketing, see our Privacy Policy.",
       ],
     },
     {

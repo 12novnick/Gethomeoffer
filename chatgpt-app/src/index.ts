@@ -8,7 +8,7 @@ interface Env {
 }
 
 const SMS_CONSENT_TEXT =
-  'I agree to receive communications by text message from Get Home Offer about updates and inquiries. You may opt out by replying STOP or ask for more information by replying HELP. Message frequency varies. Message and data rates may apply. Privacy Policy: https://gethomeoffer.com/privacy-policy/ Terms: https://gethomeoffer.com/terms/';
+  'I agree to receive text messages from Get Home Offer at the number provided about my request, my property and offers to buy it, including follow-up and marketing messages, which may be sent using automated technology. Consent is not a condition of selling or any purchase. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. Privacy Policy: https://gethomeoffer.com/privacy-policy/ Terms: https://gethomeoffer.com/terms/';
 
 const PROGRAM_INFO = [
   'Get Home Offer operates in all 50 states and helps property owners sell a home in one of two ways.',
