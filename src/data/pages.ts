@@ -36,10 +36,10 @@ export const PAGES: Record<string, PageInfo> = {
   '/locations/': {
     title: 'Locations: Where We Buy Houses | Get Home Offer',
     description:
-      'See where we buy houses for cash in Wisconsin, including Milwaukee, Madison and their nearby suburbs. Choose your city to learn more.',
+      'See where we buy houses for cash, including Milwaukee and Madison, Wisconsin and San Diego, California. Choose your city to learn more.',
     heading: 'Where We Buy Houses',
     published: '2026-10-06',
-    modified: '2026-10-06',
+    modified: '2026-10-19',
   },
   '/real-estate-agent-program/': {
     title: 'Real Estate Agent Program: Sell on the Traditional Market | Get Home Offer',

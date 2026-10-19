@@ -294,6 +294,155 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
         },
       ],
     },
+    'california/san-diego': {
+      published: '2026-10-19',
+      modified: '2026-10-19',
+      heading: 'We Buy Houses San Diego, CA. Sell Fast. Get Cash.',
+      metaTitle: 'We Buy Houses San Diego, CA | Fast Cash Offers | Get Home Offer',
+      summary:
+        'Sell your San Diego house as-is, with no repairs, no showings and no commissions. Get a cash offer and close in as little as 14 days.',
+      metaDescription:
+        'We buy houses in San Diego, CA in any condition. No repairs, no fees or commissions, and closing in 14 to 30 days. Get your free cash offer.',
+      intro: [
+        'From older bungalows to condos, rentals and inherited homes, we make cash offers on San Diego houses exactly as they stand today.',
+        'There are no repairs to make, no open houses to host and no commissions taken out at closing. You get a clear number, and you decide.',
+      ],
+      guide: {
+        introTitle: 'Sell your San Diego house As-Is',
+        introCta: true,
+        sections: [
+          {
+            id: 'houses-we-buy',
+            title: "You Don't Need a Perfect House or Situation to Sell It.",
+            body: ['If you own it in San Diego and want to move on from it, tell us about it.'],
+            list: [
+              'Houses needing repairs',
+              'Inherited houses',
+              'Condos and townhomes',
+              'Rentals with tenants',
+              'Facing foreclosure',
+              'Any other reason',
+            ],
+            after: ['Not sure your property fits? Ask us. It costs nothing.'],
+            cta: true,
+          },
+          {
+            id: 'san-diego-homes',
+            title: 'Selling a San Diego house without the prep.',
+            body: [
+              'Getting a house market-ready in San Diego can mean weeks of contractors, staging and showings before a buyer even makes an offer.',
+              'We buy houses exactly as they are. We factor the work into our offer and handle every repair after closing, so you never spend a dollar or a weekend on the house again.',
+              'An as-is offer will usually be lower than what a fully renovated house might list for. What you get in return is certainty, speed and no out-of-pocket costs.',
+            ],
+            items: [
+              {
+                title: 'Older homes',
+                body: 'Dated kitchens, aging roofs or original plumbing. We price the work in, not against you.',
+              },
+              {
+                title: 'Condos and townhomes',
+                body: 'Units with HOA dues, special assessments or overdue updates are welcome.',
+              },
+              {
+                title: 'Rentals and tenant-occupied homes',
+                body: 'Tired of being a landlord? We buy rentals with tenants in place or empty.',
+              },
+              {
+                title: 'Inherited and estate homes',
+                body: "Sell without clearing out, cleaning or fixing up a loved one's house first.",
+              },
+              {
+                title: 'Military relocation',
+                body: 'Got orders? Sell on your timeline without carrying a house you no longer live in.',
+              },
+              {
+                title: 'Vacant properties',
+                body: 'An empty house keeps costing you every month. We can take it off your hands quickly.',
+              },
+            ],
+          },
+          {
+            id: 'why-us',
+            title: 'Why work with Get Home Offer?',
+            body: [
+              'What we offer: straightforward cash offers based on real numbers, not guesswork. We buy as-is, close fast with proof of funds, and listen to your timeline and concerns.',
+              'You get certainty and speed, with no inspections, appraisals or commission fees.',
+            ],
+            badgeImage: '/images/number1-badge.png',
+            cta: true,
+          },
+          {
+            id: 'service-area',
+            title: 'San Diego and nearby communities.',
+            body: ['We buy houses across San Diego and the surrounding San Diego County communities, including:'],
+            list: [
+              'Chula Vista',
+              'National City',
+              'La Mesa',
+              'El Cajon',
+              'Santee',
+              'Poway',
+              'Escondido',
+              'San Marcos',
+              'Vista',
+              'Oceanside',
+              'Carlsbad',
+              'Encinitas',
+            ],
+            after: ['Near San Diego but not listed? Ask us anyway.'],
+            cta: true,
+          },
+        ],
+        stepsTitle: 'How selling your San Diego house works.',
+        steps: [
+          { title: 'Tell us about it', body: 'Share the address and a few details. It takes a few minutes.' },
+          { title: 'We review it', body: 'We look at the condition, location and your situation.' },
+          { title: 'Get your offer', body: 'A straightforward cash offer, with no fees or commissions.' },
+          { title: 'You decide', body: 'No pressure and no obligation to accept.' },
+          { title: 'Close and get paid', body: 'Pick your date, typically 14 to 30 days out.' },
+        ],
+        citiesTitle: 'Other California cities we serve',
+        closing: {
+          title: 'See what we could offer for your San Diego house.',
+          body: 'Tell us about your property and your situation. We will review it and get back to you with a straightforward cash offer.',
+          secondaryLabel: 'See all locations',
+          secondaryPath: '/locations/',
+        },
+        faqTitle: 'Questions San Diego sellers ask.',
+      },
+      faqs: [
+        {
+          question: 'Do you buy houses as-is in San Diego?',
+          answer: 'Yes, in any condition. No repairs, cleaning or updates needed.',
+        },
+        {
+          question: 'How much will you pay for my house?',
+          answer:
+            'Every offer is calculated for your specific property, based on its condition, location and value. Tell us about it and we will give you a straightforward number.',
+        },
+        {
+          question: 'Are there any fees or commissions?',
+          answer: 'No. There are no realtor commissions, listing fees or hidden costs.',
+        },
+        {
+          question: 'How quickly can you close?',
+          answer: 'Typically 14 to 30 days. We can often work around the date you need.',
+        },
+        {
+          question: 'Do you buy condos and houses with tenants?',
+          answer: 'Yes. We buy condos, townhomes, tenant-occupied, vacant and inherited properties.',
+        },
+        {
+          question: 'Do you buy houses outside San Diego?',
+          answer:
+            'Yes. We buy throughout San Diego County, from Chula Vista and El Cajon to Escondido and Oceanside.',
+        },
+        {
+          question: 'Do I have to accept your offer?',
+          answer: 'No. Our offer comes with no obligation. You decide whether it works for you.',
+        },
+      ],
+    },
   },
   agent: {},
 };

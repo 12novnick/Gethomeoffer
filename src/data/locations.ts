@@ -670,9 +670,18 @@ export const LOCATIONS: State[] = [
 ];
 
 // States with Cash Program pages. Only these are listed, built and reachable.
-export const CASH_STATE_SLUGS: readonly string[] = ['wisconsin'];
+// Cities the Cash Program serves, by state. Only these get city pages.
+const CASH_CITY_SLUGS: Record<string, readonly string[]> = {
+  wisconsin: ['milwaukee', 'madison'],
+  california: ['san-diego'],
+};
 
-export const CASH_STATES = LOCATIONS.filter((state) => CASH_STATE_SLUGS.includes(state.slug));
+export const CASH_STATE_SLUGS: readonly string[] = Object.keys(CASH_CITY_SLUGS);
+
+export const CASH_STATES = LOCATIONS.filter((state) => CASH_STATE_SLUGS.includes(state.slug)).map((state) => ({
+  ...state,
+  cities: state.cities.filter((city) => CASH_CITY_SLUGS[state.slug].includes(city.slug)),
+}));
 
 // Helper function to get a state by slug
 export const getStateBySlug = (slug: string): State | undefined => {

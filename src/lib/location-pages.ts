@@ -1,6 +1,6 @@
 import { data } from 'react-router';
 import { LOCATION_CONTENT, type LocalContent, type ProgramId } from '../data/location-content';
-import { CASH_STATE_SLUGS, LOCATIONS, getCityBySlug, getStateBySlug } from '../data/locations';
+import { CASH_STATES, CASH_STATE_SLUGS, LOCATIONS } from '../data/locations';
 import { AREA_CONTENT } from '../data/location-area-content';
 import { CITY_AREAS, areaPath, areasHubPath } from '../data/location-areas';
 import { getService, servicePath } from '../data/service-list';
@@ -18,9 +18,9 @@ export function isPublished(content: LocalContent) {
 }
 
 export function buildCityPage(program: ProgramId, stateSlug: string | undefined, citySlug: string | undefined) {
-  const state = getStateBySlug(stateSlug ?? '');
-  const city = state && getCityBySlug(state.slug, citySlug ?? '');
-  if (!state || !city || !CASH_STATE_SLUGS.includes(state.slug)) throw data(null, { status: 404 });
+  const state = CASH_STATES.find((item) => item.slug === stateSlug);
+  const city = state?.cities.find((item) => item.slug === citySlug);
+  if (!state || !city) throw data(null, { status: 404 });
 
   const content = contentFor(program, `${state.slug}/${city.slug}`);
   return {
