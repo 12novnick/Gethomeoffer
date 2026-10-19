@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { submitLead, type Pathway, type SubmitResult } from '../../lib/contact-form';
+import { TOKEN_FIELD, Turnstile } from './Turnstile';
 import './ContactForm.css';
 
 const STATUS_MESSAGES: Record<SubmitResult, string> = {
@@ -14,6 +15,8 @@ export function ContactForm() {
   const [searchParams] = useSearchParams();
   const [status, setStatus] = useState<SubmitResult | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  // Turnstile tokens are single-use, so each attempt gets a fresh widget.
+  const [attempt, setAttempt] = useState(0);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -32,8 +35,10 @@ export function ContactForm() {
       address: text('address'),
       smsConsent: form.get('smsConsent') === 'yes',
       company: text('company'),
+      turnstileToken: text(TOKEN_FIELD),
     });
     setIsSubmitting(false);
+    setAttempt((count) => count + 1);
     setStatus(result);
     if (result === 'sent') formElement.reset();
   }
@@ -82,6 +87,8 @@ export function ContactForm() {
           </span>
         </label>
       </fieldset>
+
+      <Turnstile key={attempt} />
 
       <div className="contact-form__footer">
         <button type="submit" className="btn btn--primary" disabled={isSubmitting}>

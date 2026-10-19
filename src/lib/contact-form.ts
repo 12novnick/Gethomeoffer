@@ -10,6 +10,8 @@ export interface LeadSubmission {
   smsConsent: boolean;
   /** Hidden honeypot; real visitors leave it empty. */
   company: string;
+  /** Cloudflare Turnstile token, checked by /api/lead when Turnstile is configured. */
+  turnstileToken?: string;
   /** Chat conversation, when the lead comes from the chat widget. */
   transcript?: { role: 'user' | 'assistant'; content: string }[];
 }

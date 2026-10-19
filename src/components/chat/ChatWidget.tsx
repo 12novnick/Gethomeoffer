@@ -1,6 +1,7 @@
 import { useEffect, useId, useRef, useState, type FormEvent } from 'react';
 import { Link } from 'react-router';
 import { submitLead } from '../../lib/contact-form';
+import { TOKEN_FIELD, Turnstile } from '../forms/Turnstile';
 import './ChatWidget.css';
 
 type Message = { role: 'user' | 'assistant'; content: string };
@@ -25,6 +26,7 @@ export function ChatWidget() {
   const [view, setView] = useState<'chat' | 'lead'>('chat');
   const [leadSent, setLeadSent] = useState(false);
   const [leadError, setLeadError] = useState(false);
+  const [leadAttempt, setLeadAttempt] = useState(0);
   const panelId = useId();
   const toggleRef = useRef<HTMLButtonElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -104,9 +106,11 @@ export function ChatWidget() {
       address: text('address'),
       smsConsent: form.get('smsConsent') === 'yes',
       company: text('company'),
+      turnstileToken: text(TOKEN_FIELD),
       transcript: messages.filter((item) => item !== GREETING),
     });
     setIsSending(false);
+    setLeadAttempt((count) => count + 1);
 
     if (result === 'sent') {
       setLeadSent(true);
@@ -210,6 +214,8 @@ export function ChatWidget() {
                   and <Link to="/terms/">Terms &amp; Conditions</Link>.
                 </span>
               </label>
+
+              <Turnstile key={leadAttempt} />
 
               {leadError && (
                 <p className="chat-widget__error" role="alert">
