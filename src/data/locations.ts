@@ -674,6 +674,7 @@ export const LOCATIONS: State[] = [
 const CASH_CITY_SLUGS: Record<string, readonly string[]> = {
   wisconsin: ['milwaukee', 'madison'],
   california: ['san-diego'],
+  ohio: ['cincinnati'],
 };
 
 export const CASH_STATE_SLUGS: readonly string[] = Object.keys(CASH_CITY_SLUGS);
