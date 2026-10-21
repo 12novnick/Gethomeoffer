@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { IMAGES } from '../../data/images';
-import { BATHROOM_CONDITIONS, EXTERIOR_CONDITIONS, KITCHEN_CONDITIONS, LIVING_ROOM_CONDITIONS, PROPERTY_TYPES, TIMELINES, submitLead, type HomeDetails, type Pathway, type SubmitResult } from '../../lib/contact-form';
+import { BATHROOM_CONDITIONS, EXTERIOR_CONDITIONS, HOME_FEATURES, KITCHEN_CONDITIONS, LIVING_ROOM_CONDITIONS, PROPERTY_TYPES, TIMELINES, submitLead, type HomeDetails, type Pathway, type SubmitResult } from '../../lib/contact-form';
 import { ImageSlot } from '../ui/ImageSlot';
 import { AddressAutocomplete } from './AddressAutocomplete';
 import { TOKEN_FIELD, Turnstile } from './Turnstile';
@@ -14,13 +14,15 @@ const STATUS_MESSAGES: Record<SubmitResult, string> = {
 
 const PATHWAYS: Pathway[] = ['cash', 'agent', 'unsure'];
 
-const STEPS = ['Your details', 'Your home', 'Home details', 'Kitchen', 'Bathroom', 'Living room', 'Exterior', 'Timeline', 'Confirm'] as const;
+const STEPS = ['Your details', 'Your home', 'Home details', 'Kitchen', 'Bathroom', 'Living room', 'Exterior', 'Features', 'Timeline', 'Confirm'] as const;
 const DETAILS_STEP = 2;
 const KITCHEN_STEP = 3;
 const BATHROOM_STEP = 4;
 const LIVING_ROOM_STEP = 5;
 const EXTERIOR_STEP = 6;
+const FEATURES_STEP = 7;
 // Steps that don't apply to an empty lot.
+const NONE_FEATURE = 'None of the above';
 const BUILDING_STEPS = [DETAILS_STEP, KITCHEN_STEP, BATHROOM_STEP, LIVING_ROOM_STEP, EXTERIOR_STEP];
 
 const range = (from: number, to: number) => Array.from({ length: to - from + 1 }, (_, index) => String(from + index));
@@ -202,6 +204,7 @@ export function ContactForm() {
   const [propertyType, setPropertyType] = useState('');
   const [ownership, setOwnership] = useState('');
   const [basement, setBasement] = useState('');
+  const [features, setFeatures] = useState<string[]>([]);
   // An empty lot has no rooms, so the home-details step is skipped.
   const skipDetails = propertyType === 'lot';
   const isSkipped = (index: number) => skipDetails && BUILDING_STEPS.includes(index);
@@ -228,6 +231,15 @@ export function ContactForm() {
     let target = step + 1;
     while (isSkipped(target)) target++;
     goTo(target);
+  }
+
+  function toggleFeature(value: string, checked: boolean) {
+    // "None of the above" can't be combined with anything else.
+    setFeatures((current) => {
+      if (!checked) return current.filter((item) => item !== value);
+      if (value === NONE_FEATURE) return [NONE_FEATURE];
+      return [...current.filter((item) => item !== NONE_FEATURE), value];
+    });
   }
 
   function back() {
@@ -257,6 +269,7 @@ export function ContactForm() {
       address: text('address'),
       propertyType: text('propertyType'),
       hoa: text('hoa'),
+      features: form.getAll('features').map(String),
       kitchen: skipDetails ? undefined : text('kitchen'),
       bathroom: skipDetails ? undefined : text('bathroom'),
       livingRoom: skipDetails ? undefined : text('livingRoom'),
@@ -279,6 +292,7 @@ export function ContactForm() {
       setPropertyType('');
       setOwnership('');
       setBasement('');
+      setFeatures([]);
       moved.current = false;
       setStep(0);
     }
@@ -546,15 +560,63 @@ export function ContactForm() {
 
       <fieldset
         ref={(el) => {
-          stepRefs.current[7] = el;
+          stepRefs.current[FEATURES_STEP] = el;
         }}
         className="contact-form__step"
-        hidden={step !== 7}
+        hidden={step !== FEATURES_STEP}
+        aria-describedby="features-help"
+      >
+        <h3
+          ref={(el) => {
+            headingRefs.current[FEATURES_STEP] = el;
+          }}
+          tabIndex={-1}
+          className="contact-form__step-title"
+        >
+          Do any of these apply to your home?
+        </h3>
+        <p id="features-help" className="contact-form__step-help">
+          Select all that apply. We keep an eye out for these things when we're making an offer.
+        </p>
+        <div className="property-types">
+          {[...HOME_FEATURES, { value: NONE_FEATURE }].map((option, index) => (
+            <label key={option.value} className="property-type">
+              <input
+                type="checkbox"
+                name="features"
+                value={option.value}
+                checked={features.includes(option.value)}
+                required={index === 0 && features.length === 0}
+                onChange={(event) => {
+                  // The "select one" message sits on the first box; any change clears it.
+                  event.currentTarget.form
+                    ?.querySelectorAll<HTMLInputElement>('input[name="features"]')
+                    .forEach((input) => input.setCustomValidity(''));
+                  toggleFeature(option.value, event.currentTarget.checked);
+                }}
+                onInvalid={(event) => event.currentTarget.setCustomValidity('Select at least one option, or "None of the above".')}
+                className="property-type__input"
+              />
+              <span className="property-type__text">
+                <span className="property-type__label">{option.value}</span>
+                {'hint' in option && option.hint && <span className="property-type__hint">{option.hint}</span>}
+              </span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset
+        ref={(el) => {
+          stepRefs.current[8] = el;
+        }}
+        className="contact-form__step"
+        hidden={step !== 8}
         aria-describedby="timeline-help"
       >
         <h3
           ref={(el) => {
-            headingRefs.current[7] = el;
+            headingRefs.current[8] = el;
           }}
           tabIndex={-1}
           className="contact-form__step-title"
@@ -576,14 +638,14 @@ export function ContactForm() {
 
       <fieldset
         ref={(el) => {
-          stepRefs.current[8] = el;
+          stepRefs.current[9] = el;
         }}
         className="contact-form__step"
-        hidden={step !== 8}
+        hidden={step !== 9}
       >
         <h3
           ref={(el) => {
-            headingRefs.current[8] = el;
+            headingRefs.current[9] = el;
           }}
           tabIndex={-1}
           className="contact-form__step-title"

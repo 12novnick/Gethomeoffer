@@ -47,6 +47,16 @@ export const EXTERIOR_CONDITIONS = [
   { value: 'Luxury', hint: 'Exterior has elegant, top-tier finishes', image: 'exteriorLuxury' },
 ] as const;
 
+// Values must match HOME_FEATURES in worker/src/index.ts. The form adds "None of the above".
+export const HOME_FEATURES = [
+  { value: 'Leased or financed solar panels', hint: 'You may need to buy out the lease or remove the panels to sell to us' },
+  { value: 'Known foundation issues', hint: 'Excessive cracking, uneven floors' },
+  { value: 'Fire damage' },
+  { value: 'Well water', hint: 'You maintain a well to supply water' },
+  { value: 'Septic system', hint: 'Separate from municipal sewage' },
+  { value: 'Mobile or manufactured home' },
+] as const;
+
 // Values must match TIMELINES in worker/src/index.ts.
 export const TIMELINES = ['ASAP', '7-30 days', '1-3 months', '3-6 months'];
 
@@ -75,6 +85,8 @@ export interface LeadSubmission {
   propertyType?: string;
   /** 'Yes' or 'No': whether the home is in a homeowners association. */
   hoa?: string;
+  /** Values from HOME_FEATURES, or ["None of the above"]. */
+  features?: string[];
   /** One of KITCHEN_CONDITIONS' values. */
   kitchen?: string;
   /** One of BATHROOM_CONDITIONS' values. */

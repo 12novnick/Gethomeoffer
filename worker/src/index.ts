@@ -24,6 +24,17 @@ const PROPERTY_TYPES: Record<string, string> = {
 // Must match KITCHEN_CONDITIONS, BATHROOM_CONDITIONS, LIVING_ROOM_CONDITIONS and EXTERIOR_CONDITIONS in src/lib/contact-form.ts.
 const CONDITION_LEVELS = ['Fixer upper', 'Dated', 'Standard', 'High end', 'Luxury'];
 
+// Must match HOME_FEATURES in src/lib/contact-form.ts, plus the form's "None of the above".
+const HOME_FEATURES = [
+  'Leased or financed solar panels',
+  'Known foundation issues',
+  'Fire damage',
+  'Well water',
+  'Septic system',
+  'Mobile or manufactured home',
+  'None of the above',
+];
+
 // Must match TIMELINES in src/lib/contact-form.ts.
 const TIMELINES = ['ASAP', '7-30 days', '1-3 months', '3-6 months'];
 
@@ -87,6 +98,9 @@ export default {
     const livingRoom = condition(body.livingRoom);
     const exterior = condition(body.exterior);
     const hoa = body.hoa === 'Yes' || body.hoa === 'No' ? body.hoa : '';
+    const features = Array.isArray(body.features)
+      ? body.features.filter((item): item is string => typeof item === 'string' && HOME_FEATURES.includes(item))
+      : [];
     const timeline = typeof body.timeline === 'string' && TIMELINES.includes(body.timeline) ? body.timeline : '';
     const ownership =
       body.ownership === 'owner'
@@ -126,6 +140,7 @@ export default {
       ...(ownership ? [`Relationship to property: ${ownership}`] : []),
       ...(propertyType ? [`Property type: ${propertyType}`] : []),
       ...(hoa ? [`Part of an HOA: ${hoa}`] : []),
+      ...(features.length ? [`Applies to the home: ${features.join(', ')}`] : []),
       ...(timeline ? [`Needs to sell: ${timeline}`] : []),
       ...(details.length || kitchen || bathroom || livingRoom || exterior
         ? [``, `Home details:`, ...details, ...(kitchen ? [`Kitchen: ${kitchen}`] : []), ...(bathroom ? [`Main bathroom: ${bathroom}`] : []),
