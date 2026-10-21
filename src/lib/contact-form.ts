@@ -38,6 +38,15 @@ export const LIVING_ROOM_CONDITIONS = [
   { value: 'Luxury', hint: 'Living room has elegant, top-tier finishes', image: 'livingRoomLuxury' },
 ] as const;
 
+// Values must match EXTERIOR_CONDITIONS in worker/src/index.ts.
+export const EXTERIOR_CONDITIONS = [
+  { value: 'Fixer upper', hint: 'Exterior needs significant repairs', image: 'exteriorFixerUpper' },
+  { value: 'Dated', hint: "Exterior hasn't been updated recently", image: 'exteriorDated' },
+  { value: 'Standard', hint: 'Exterior is updated with common finishes', image: 'exteriorStandard' },
+  { value: 'High end', hint: 'Exterior has high-quality upgrades', image: 'exteriorHighEnd' },
+  { value: 'Luxury', hint: 'Exterior has elegant, top-tier finishes', image: 'exteriorLuxury' },
+] as const;
+
 // Values must match TIMELINES in worker/src/index.ts.
 export const TIMELINES = ['ASAP', '7-30 days', '1-3 months', '3-6 months'];
 
@@ -64,12 +73,16 @@ export interface LeadSubmission {
   address: string;
   /** One of PROPERTY_TYPES' values; the contact form asks for it, the chat form does not. */
   propertyType?: string;
+  /** 'Yes' or 'No': whether the home is in a homeowners association. */
+  hoa?: string;
   /** One of KITCHEN_CONDITIONS' values. */
   kitchen?: string;
   /** One of BATHROOM_CONDITIONS' values. */
   bathroom?: string;
   /** One of LIVING_ROOM_CONDITIONS' values. */
   livingRoom?: string;
+  /** One of EXTERIOR_CONDITIONS' values. */
+  exterior?: string;
   /** One of TIMELINES. */
   timeline?: string;
   /** 'owner' or 'other'; when 'other', ownershipOther says how they're related to the property. */

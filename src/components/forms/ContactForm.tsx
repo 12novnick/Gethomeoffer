@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { IMAGES } from '../../data/images';
-import { BATHROOM_CONDITIONS, KITCHEN_CONDITIONS, LIVING_ROOM_CONDITIONS, PROPERTY_TYPES, TIMELINES, submitLead, type HomeDetails, type Pathway, type SubmitResult } from '../../lib/contact-form';
+import { BATHROOM_CONDITIONS, EXTERIOR_CONDITIONS, KITCHEN_CONDITIONS, LIVING_ROOM_CONDITIONS, PROPERTY_TYPES, TIMELINES, submitLead, type HomeDetails, type Pathway, type SubmitResult } from '../../lib/contact-form';
 import { ImageSlot } from '../ui/ImageSlot';
 import { AddressAutocomplete } from './AddressAutocomplete';
 import { TOKEN_FIELD, Turnstile } from './Turnstile';
@@ -14,13 +14,14 @@ const STATUS_MESSAGES: Record<SubmitResult, string> = {
 
 const PATHWAYS: Pathway[] = ['cash', 'agent', 'unsure'];
 
-const STEPS = ['Your details', 'Your home', 'Home details', 'Kitchen', 'Bathroom', 'Living room', 'Timeline', 'Confirm'] as const;
+const STEPS = ['Your details', 'Your home', 'Home details', 'Kitchen', 'Bathroom', 'Living room', 'Exterior', 'Timeline', 'Confirm'] as const;
 const DETAILS_STEP = 2;
 const KITCHEN_STEP = 3;
 const BATHROOM_STEP = 4;
 const LIVING_ROOM_STEP = 5;
+const EXTERIOR_STEP = 6;
 // Steps that don't apply to an empty lot.
-const BUILDING_STEPS = [DETAILS_STEP, KITCHEN_STEP, BATHROOM_STEP, LIVING_ROOM_STEP];
+const BUILDING_STEPS = [DETAILS_STEP, KITCHEN_STEP, BATHROOM_STEP, LIVING_ROOM_STEP, EXTERIOR_STEP];
 
 const range = (from: number, to: number) => Array.from({ length: to - from + 1 }, (_, index) => String(from + index));
 
@@ -255,9 +256,11 @@ export function ContactForm() {
       email: text('email'),
       address: text('address'),
       propertyType: text('propertyType'),
+      hoa: text('hoa'),
       kitchen: skipDetails ? undefined : text('kitchen'),
       bathroom: skipDetails ? undefined : text('bathroom'),
       livingRoom: skipDetails ? undefined : text('livingRoom'),
+      exterior: skipDetails ? undefined : text('exterior'),
       timeline: text('timeline'),
       ownership: text('ownership'),
       ownershipOther: text('ownershipOther'),
@@ -418,6 +421,23 @@ export function ContactForm() {
             </label>
           ))}
         </div>
+
+        <div className="contact-form__subquestion" role="radiogroup" aria-labelledby="hoa-title" aria-describedby="hoa-help">
+          <h4 id="hoa-title" className="contact-form__subquestion-title">
+            Is your home part of a homeowners association?
+          </h4>
+          <p id="hoa-help" className="contact-form__step-help">
+            This is often called an HOA. It's a group that helps maintain your community for a fee.
+          </p>
+          <div className="property-types">
+            {['Yes', 'No'].map((answer) => (
+              <label key={answer} className="property-type">
+                <input type="radio" name="hoa" value={answer} required className="property-type__input" />
+                <span className="property-type__label">{answer}</span>
+              </label>
+            ))}
+          </div>
+        </div>
       </fieldset>
 
       <fieldset
@@ -510,17 +530,31 @@ export function ContactForm() {
         }}
       />
 
+      <ConditionStep
+        name="exterior"
+        title="How would you describe your home exterior?"
+        options={EXTERIOR_CONDITIONS}
+        hidden={step !== EXTERIOR_STEP}
+        disabled={skipDetails}
+        stepRef={(el) => {
+          stepRefs.current[EXTERIOR_STEP] = el;
+        }}
+        headingRef={(el) => {
+          headingRefs.current[EXTERIOR_STEP] = el;
+        }}
+      />
+
       <fieldset
         ref={(el) => {
-          stepRefs.current[6] = el;
+          stepRefs.current[7] = el;
         }}
         className="contact-form__step"
-        hidden={step !== 6}
+        hidden={step !== 7}
         aria-describedby="timeline-help"
       >
         <h3
           ref={(el) => {
-            headingRefs.current[6] = el;
+            headingRefs.current[7] = el;
           }}
           tabIndex={-1}
           className="contact-form__step-title"
@@ -542,14 +576,14 @@ export function ContactForm() {
 
       <fieldset
         ref={(el) => {
-          stepRefs.current[7] = el;
+          stepRefs.current[8] = el;
         }}
         className="contact-form__step"
-        hidden={step !== 7}
+        hidden={step !== 8}
       >
         <h3
           ref={(el) => {
-            headingRefs.current[7] = el;
+            headingRefs.current[8] = el;
           }}
           tabIndex={-1}
           className="contact-form__step-title"

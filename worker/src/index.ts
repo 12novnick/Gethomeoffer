@@ -21,7 +21,7 @@ const PROPERTY_TYPES: Record<string, string> = {
   lot: 'Empty lot',
 };
 
-// Must match KITCHEN_CONDITIONS, BATHROOM_CONDITIONS and LIVING_ROOM_CONDITIONS in src/lib/contact-form.ts.
+// Must match KITCHEN_CONDITIONS, BATHROOM_CONDITIONS, LIVING_ROOM_CONDITIONS and EXTERIOR_CONDITIONS in src/lib/contact-form.ts.
 const CONDITION_LEVELS = ['Fixer upper', 'Dated', 'Standard', 'High end', 'Luxury'];
 
 // Must match TIMELINES in src/lib/contact-form.ts.
@@ -85,6 +85,8 @@ export default {
     const kitchen = condition(body.kitchen);
     const bathroom = condition(body.bathroom);
     const livingRoom = condition(body.livingRoom);
+    const exterior = condition(body.exterior);
+    const hoa = body.hoa === 'Yes' || body.hoa === 'No' ? body.hoa : '';
     const timeline = typeof body.timeline === 'string' && TIMELINES.includes(body.timeline) ? body.timeline : '';
     const ownership =
       body.ownership === 'owner'
@@ -123,10 +125,12 @@ export default {
       `Property address: ${lead.address}`,
       ...(ownership ? [`Relationship to property: ${ownership}`] : []),
       ...(propertyType ? [`Property type: ${propertyType}`] : []),
+      ...(hoa ? [`Part of an HOA: ${hoa}`] : []),
       ...(timeline ? [`Needs to sell: ${timeline}`] : []),
-      ...(details.length || kitchen || bathroom || livingRoom
+      ...(details.length || kitchen || bathroom || livingRoom || exterior
         ? [``, `Home details:`, ...details, ...(kitchen ? [`Kitchen: ${kitchen}`] : []), ...(bathroom ? [`Main bathroom: ${bathroom}`] : []),
-            ...(livingRoom ? [`Living room: ${livingRoom}`] : []), ``]
+            ...(livingRoom ? [`Living room: ${livingRoom}`] : []),
+            ...(exterior ? [`Exterior: ${exterior}`] : []), ``]
         : []),
       `Interested in: ${PATHWAY_LABELS[pathway]}`,
       `SMS consent: Yes (agreed ${new Date().toISOString()})`,

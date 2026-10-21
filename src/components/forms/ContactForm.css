@@ -236,6 +236,20 @@
   }
 }
 
+.contact-form__subquestion {
+  display: grid;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.contact-form__subquestion-title {
+  font-family: var(--font-body);
+  font-size: var(--text-body-lg);
+  font-weight: 600;
+}
+
 .property-types {
   display: grid;
   gap: 0.75rem;

@@ -39,5 +39,10 @@ export const IMAGE_SIZES: Record<string, { width: number; height: number }> = {
   '/images/living-room-standard.jpg': { width: 960, height: 576 },
   '/images/living-room-high-end.jpg': { width: 960, height: 576 },
   '/images/living-room-luxury.jpg': { width: 960, height: 576 },
+  '/images/exterior-fixer-upper.jpg': { width: 960, height: 576 },
+  '/images/exterior-dated.jpg': { width: 960, height: 576 },
+  '/images/exterior-standard.jpg': { width: 960, height: 576 },
+  '/images/exterior-high-end.jpg': { width: 960, height: 576 },
+  '/images/exterior-luxury.jpg': { width: 960, height: 576 },
   '/images/number1-badge.png': { width: 584, height: 427 },
 };

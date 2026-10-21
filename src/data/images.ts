@@ -219,4 +219,36 @@ export const IMAGES = {
     label: 'Living room · Luxury',
     tone: 'dusk',
   },
+  // Example photos for the contact form's exterior-condition question. Pexels (free license, no attribution required),
+  // photo IDs: fixer upper 10320592, dated 8894802, standard 8031882, high end 4030036, luxury 7031594.
+  exteriorFixerUpper: {
+    src: '/images/exterior-fixer-upper.jpg',
+    alt: 'Example of a fixer-upper home exterior needing significant repairs',
+    label: 'Exterior · Fixer upper',
+    tone: 'earth',
+  },
+  exteriorDated: {
+    src: '/images/exterior-dated.jpg',
+    alt: 'Example of a dated home exterior that has not been updated recently',
+    label: 'Exterior · Dated',
+    tone: 'sand',
+  },
+  exteriorStandard: {
+    src: '/images/exterior-standard.jpg',
+    alt: 'Example of a standard home exterior updated with common finishes',
+    label: 'Exterior · Standard',
+    tone: 'stone',
+  },
+  exteriorHighEnd: {
+    src: '/images/exterior-high-end.jpg',
+    alt: 'Example of a high-end home exterior with high-quality upgrades',
+    label: 'Exterior · High end',
+    tone: 'olive',
+  },
+  exteriorLuxury: {
+    src: '/images/exterior-luxury.jpg',
+    alt: 'Example of a luxury home exterior with elegant, top-tier finishes',
+    label: 'Exterior · Luxury',
+    tone: 'dusk',
+  },
 } satisfies Record<string, ImageAsset>;
