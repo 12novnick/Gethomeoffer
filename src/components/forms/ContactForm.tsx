@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useSearchParams } from 'react-router';
-import { PROPERTY_TYPES, submitLead, type HomeDetails, type Pathway, type SubmitResult } from '../../lib/contact-form';
+import { PROPERTY_TYPES, TIMELINES, submitLead, type HomeDetails, type Pathway, type SubmitResult } from '../../lib/contact-form';
 import { AddressAutocomplete } from './AddressAutocomplete';
 import { TOKEN_FIELD, Turnstile } from './Turnstile';
 import './ContactForm.css';
@@ -12,11 +12,10 @@ const STATUS_MESSAGES: Record<SubmitResult, string> = {
 
 const PATHWAYS: Pathway[] = ['cash', 'agent', 'unsure'];
 
-const STEPS = ['Your details', 'Your home', 'Home details', 'Confirm'] as const;
+const STEPS = ['Your details', 'Your home', 'Home details', 'Timeline', 'Confirm'] as const;
 const DETAILS_STEP = 2;
 
 const range = (from: number, to: number) => Array.from({ length: to - from + 1 }, (_, index) => String(from + index));
-const YEARS = [...range(1900, new Date().getFullYear()).reverse(), 'Before 1900'];
 
 type DetailSelectConfig = { name: keyof HomeDetails; label: string; hint: string; options: string[] };
 
@@ -39,7 +38,6 @@ const BASEMENT: DetailSelectConfig = {
   options: ['No', 'Yes'],
 };
 const SELECTS_AT_END: DetailSelectConfig[] = [
-  { name: 'yearBuilt', label: 'Year built', hint: 'Your best estimate is fine.', options: YEARS },
   { name: 'pool', label: 'Pool', hint: 'Does the property have a pool?', options: ['In-ground', 'Above-ground', 'Community pool', 'No pool'] },
 ];
 
@@ -197,6 +195,7 @@ export function ContactForm() {
       email: text('email'),
       address: text('address'),
       propertyType: text('propertyType'),
+      timeline: text('timeline'),
       ownership: text('ownership'),
       ownershipOther: text('ownershipOther'),
       details: skipDetails
@@ -411,10 +410,40 @@ export function ContactForm() {
         }}
         className="contact-form__step"
         hidden={step !== 3}
+        aria-describedby="timeline-help"
       >
         <h3
           ref={(el) => {
             headingRefs.current[3] = el;
+          }}
+          tabIndex={-1}
+          className="contact-form__step-title"
+        >
+          When do you need to sell your home?
+        </h3>
+        <p id="timeline-help" className="contact-form__step-help">
+          This won't affect your offer. We're here to help with any timeline.
+        </p>
+        <div className="property-types">
+          {TIMELINES.map((option) => (
+            <label key={option} className="property-type">
+              <input type="radio" name="timeline" value={option} required className="property-type__input" />
+              <span className="property-type__label">{option}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset
+        ref={(el) => {
+          stepRefs.current[4] = el;
+        }}
+        className="contact-form__step"
+        hidden={step !== 4}
+      >
+        <h3
+          ref={(el) => {
+            headingRefs.current[4] = el;
           }}
           tabIndex={-1}
           className="contact-form__step-title"

@@ -21,6 +21,9 @@ const PROPERTY_TYPES: Record<string, string> = {
   lot: 'Empty lot',
 };
 
+// Must match TIMELINES in src/lib/contact-form.ts.
+const TIMELINES = ['ASAP', '7-30 days', '1-3 months', '3-6 months'];
+
 // Keys must match HomeDetails in src/lib/contact-form.ts.
 const DETAIL_LABELS: Record<string, string> = {
   bedrooms: 'Bedrooms',
@@ -32,7 +35,6 @@ const DETAIL_LABELS: Record<string, string> = {
   basement: 'Basement',
   finishedBasementSqft: 'Finished basement sq. ft.',
   unfinishedBasementSqft: 'Unfinished basement sq. ft.',
-  yearBuilt: 'Year built',
   pool: 'Pool',
 };
 
@@ -76,6 +78,7 @@ export default {
       typeof body.propertyType === 'string' && Object.hasOwn(PROPERTY_TYPES, body.propertyType)
         ? PROPERTY_TYPES[body.propertyType]
         : undefined;
+    const timeline = typeof body.timeline === 'string' && TIMELINES.includes(body.timeline) ? body.timeline : '';
     const ownership =
       body.ownership === 'owner'
         ? 'Owner'
@@ -113,6 +116,7 @@ export default {
       `Property address: ${lead.address}`,
       ...(ownership ? [`Relationship to property: ${ownership}`] : []),
       ...(propertyType ? [`Property type: ${propertyType}`] : []),
+      ...(timeline ? [`Needs to sell: ${timeline}`] : []),
       ...(details.length ? [``, `Home details:`, ...details, ``] : []),
       `Interested in: ${PATHWAY_LABELS[pathway]}`,
       `SMS consent: Yes (agreed ${new Date().toISOString()})`,

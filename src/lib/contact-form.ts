@@ -11,6 +11,9 @@ export const PROPERTY_TYPES: { value: string; label: string; hint?: string }[] =
   { value: 'lot', label: 'Empty lot' },
 ];
 
+// Values must match TIMELINES in worker/src/index.ts.
+export const TIMELINES = ['ASAP', '7-30 days', '1-3 months', '3-6 months'];
+
 // Answers from the contact form's home-details step. Keys must match DETAIL_LABELS in worker/src/index.ts.
 export interface HomeDetails {
   bedrooms: string;
@@ -22,7 +25,6 @@ export interface HomeDetails {
   basement: string;
   finishedBasementSqft: string;
   unfinishedBasementSqft: string;
-  yearBuilt: string;
   pool: string;
 }
 
@@ -35,6 +37,8 @@ export interface LeadSubmission {
   address: string;
   /** One of PROPERTY_TYPES' values; the contact form asks for it, the chat form does not. */
   propertyType?: string;
+  /** One of TIMELINES. */
+  timeline?: string;
   /** 'owner' or 'other'; when 'other', ownershipOther says how they're related to the property. */
   ownership?: string;
   ownershipOther?: string;
