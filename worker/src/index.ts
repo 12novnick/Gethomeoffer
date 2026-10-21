@@ -10,6 +10,17 @@ const PATHWAY_LABELS: Record<string, string> = {
   unsure: 'Not sure yet',
 };
 
+// Values must match PROPERTY_TYPES in src/lib/contact-form.ts.
+const PROPERTY_TYPES: Record<string, string> = {
+  'single-family': 'Single-family home',
+  townhouse: 'Townhouse or attached single-family home',
+  condo: 'Apartment or condo',
+  mobile: 'Mobile or manufactured home',
+  'multi-family': 'Multi-family (3+ units)',
+  commercial: 'Commercial',
+  lot: 'Empty lot',
+};
+
 const LIMITS = { firstName: 80, lastName: 80, phone: 30, email: 200, address: 300 } as const;
 type Field = keyof typeof LIMITS;
 
@@ -46,6 +57,10 @@ export default {
     ) as Record<Field, string>;
     const pathway = typeof body.pathway === 'string' && body.pathway in PATHWAY_LABELS ? body.pathway : 'cash';
     const smsConsent = body.smsConsent === true;
+    const propertyType =
+      typeof body.propertyType === 'string' && Object.hasOwn(PROPERTY_TYPES, body.propertyType)
+        ? PROPERTY_TYPES[body.propertyType]
+        : undefined;
 
     const missing = (Object.keys(LIMITS) as Field[]).filter((key) => !lead[key]);
     if (missing.length || !EMAIL_PATTERN.test(lead.email) || !smsConsent) {
@@ -70,6 +85,7 @@ export default {
       `Phone: ${lead.phone}`,
       `Email: ${lead.email}`,
       `Property address: ${lead.address}`,
+      ...(propertyType ? [`Property type: ${propertyType}`] : []),
       `Interested in: ${PATHWAY_LABELS[pathway]}`,
       `SMS consent: Yes (agreed ${new Date().toISOString()})`,
       ...(transcript.length ? [``, `Chat conversation:`, ...transcript] : []),
