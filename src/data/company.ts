@@ -10,14 +10,3 @@ export const SOCIAL_LINKS: { label: string; url: string }[] = [
   { label: 'LinkedIn', url: 'https://www.linkedin.com/company/get-home-offer/' },
   { label: 'YouTube', url: 'https://www.youtube.com/@GetHomeOffer' },
 ];
-
-export const BUSINESS_ADDRESS = {
-  streetAddress: '1723 Waldorf Blvd, Suite 401',
-  addressLocality: 'Madison',
-  addressRegion: 'WI',
-  postalCode: '53719',
-  addressCountry: 'US',
-};
-
-// From OpenStreetMap for 1723 Waldorf Blvd, Madison, WI.
-export const BUSINESS_GEO = { latitude: 43.0339091, longitude: -89.525369 };

@@ -1,5 +1,5 @@
 import type { MetaDescriptor } from 'react-router';
-import { BUSINESS_ADDRESS, BUSINESS_GEO, COMPANY, SOCIAL_LINKS } from '../data/company';
+import { COMPANY, SOCIAL_LINKS } from '../data/company';
 
 // Production origin used for canonical URLs, Open Graph and the sitemap.
 export const SITE_URL = 'https://gethomeoffer.com';
@@ -33,8 +33,6 @@ const BUSINESS = {
   image: DEFAULT_OG_IMAGE.url,
   ...(COMPANY.phone && { telephone: COMPANY.phone }),
   ...(COMPANY.email && { email: COMPANY.email }),
-  address: { '@type': 'PostalAddress', ...BUSINESS_ADDRESS },
-  geo: { '@type': 'GeoCoordinates', ...BUSINESS_GEO },
   foundingDate: '2026',
   founder: { '@type': 'Person', name: 'Nicolas Vera', jobTitle: 'Founder and CEO' },
   areaServed: { '@type': 'Country', name: 'United States' },

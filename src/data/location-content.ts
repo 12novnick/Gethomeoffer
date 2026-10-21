@@ -134,13 +134,13 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
     },
     'wisconsin/madison': {
       published: '2026-10-13',
-      modified: '2026-10-13',
+      modified: '2026-10-21',
       heading: 'We Buy Houses Madison, WI. Sell Fast. Get Cash.',
       metaTitle: 'We Buy Houses Madison, WI | Fast Cash Offers | Get Home Offer',
       summary:
         'Sell your Madison house as-is, with no repairs, no showings and no commissions. Get a cash offer from a local Madison team and close in as little as 14 days.',
       metaDescription:
-        'We buy houses in Madison, WI in any condition. Local Madison office, no repairs, no fees or commissions, and closing in 14 to 30 days. Get your cash offer.',
+        'We buy houses in Madison, WI in any condition. Local Madison team, no repairs, no fees or commissions, and closing in 14 to 30 days. Get your cash offer.',
       intro: [
         'Get Home Offer is based right here in Madison. Whether your house needs work, sits empty, came to you through an estate or has tenants you are tired of managing, we can make you a cash offer on it as it stands today.',
         'There are no repairs to make, no open houses to host and no commissions taken out at closing. You get a clear number, and you decide.',
@@ -210,14 +210,6 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
             cta: true,
           },
           {
-            id: 'office',
-            title: 'Visit our Madison office.',
-            body: ['Get Home Offer, 1723 Waldorf Blvd, Suite 401, Madison, WI 53719.'],
-            list: ['Phone: (608) 571-4547', 'Email: info@gethomeoffer.com', 'Open every day, 9am to 9pm'],
-            note: 'Get directions on Google Maps',
-            noteUrl: 'https://www.google.com/maps/search/?api=1&query=1723+Waldorf+Blvd+Suite+401+Madison+WI+53719',
-          },
-          {
             id: 'service-area',
             title: 'Madison and nearby communities.',
             body: ['We buy houses across Madison and the surrounding Dane County communities, including:'],
@@ -264,7 +256,7 @@ export const LOCATION_CONTENT: Record<ProgramId, Record<string, LocalContent>> =
         {
           question: 'Are you a local Madison company?',
           answer:
-            'Yes. Our office is at 1723 Waldorf Blvd, Suite 401, Madison, WI 53719, and we are open every day from 9am to 9pm.',
+            'Yes. We are based in Madison, and we are open every day from 9am to 9pm.',
         },
         {
           question: 'How much will you pay for my house?',

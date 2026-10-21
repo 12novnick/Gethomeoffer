@@ -28,7 +28,7 @@ export const PRIVACY_POLICY: LegalDocument = {
       title: 'Who we are',
       guidance: 'The legal entity operating Get Home Offer, its mailing address and how to reach it about privacy.',
       body: [
-        "Get Home Offer, located at 1723 Waldorf Blvd, Suite 401, Madison, WI 53719, operates the website at gethomeoffer.com. We help property owners explore two ways to sell a home: a direct sale through our Cash Program, or a traditional sale through our Real Estate Agent Program.",
+        "Get Home Offer operates the website at gethomeoffer.com. We help property owners explore two ways to sell a home: a direct sale through our Cash Program, or a traditional sale through our Real Estate Agent Program.",
         "This Privacy Policy explains what information we collect when you use our website, how we use it, and the choices you have. If you have questions about this policy, you can reach us using the details in the \"Contact us\" section below.",
       ],
     },
@@ -135,7 +135,7 @@ export const PRIVACY_POLICY: LegalDocument = {
       title: 'Contact us',
       guidance: 'How to reach Get Home Offer with privacy questions or requests.',
       body: [
-        "If you have questions about this Privacy Policy or want to make a privacy request, contact us by email at info@gethomeoffer.com, by phone at (608) 571-4547, or by mail at Get Home Offer, 1723 Waldorf Blvd, Suite 401, Madison, WI 53719.",
+        "If you have questions about this Privacy Policy or want to make a privacy request, contact us by email at info@gethomeoffer.com or by phone at (608) 571-4547.",
       ],
     },
   ],
@@ -145,7 +145,7 @@ export const TERMS: LegalDocument = {
   path: '/terms/',
   title: 'Terms & Conditions',
   lede: 'The terms that apply to your use of Get Home Offer.',
-  lastUpdated: 'October 19, 2026',
+  lastUpdated: 'October 21, 2026',
   sections: [
     {
       id: 'acceptance',
@@ -153,7 +153,7 @@ export const TERMS: LegalDocument = {
       guidance: 'That using the site means agreeing to these terms, and who the agreement is with.',
       body: [
         "By using the website gethomeoffer.com, you agree to these Terms & Conditions. These terms apply to your use of our website, the services we offer, and any interactions with Get Home Offer. If you do not agree to these terms, do not use the website.",
-        "These terms are an agreement between you and Get Home Offer, located at 1723 Waldorf Blvd, Suite 401, Madison, WI 53719.",
+        "These terms are an agreement between you and Get Home Offer.",
       ],
     },
     {
@@ -274,7 +274,7 @@ export const TERMS: LegalDocument = {
       title: 'Contact us',
       guidance: 'How to reach Get Home Offer with questions about these terms.',
       body: [
-        "If you have questions about these Terms & Conditions or any other aspect of our business, contact us by email at info@gethomeoffer.com, by phone at (608) 571-4547, or by mail at Get Home Offer, 1723 Waldorf Blvd, Suite 401, Madison, WI 53719.",
+        "If you have questions about these Terms & Conditions or any other aspect of our business, contact us by email at info@gethomeoffer.com or by phone at (608) 571-4547.",
       ],
     },
   ],

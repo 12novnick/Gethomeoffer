@@ -9,7 +9,6 @@ Ready-to-paste copy for each social media profile. Use the same name, website, p
 - **Website:** https://gethomeoffer.com
 - **Phone:** (608) 571-4547
 - **Email:** info@gethomeoffer.com
-- **Address:** 1723 Waldorf Blvd, Suite 401, Madison, WI 53719
 - **Service area:** All 50 states
 - **Category:** Real Estate Service
 
