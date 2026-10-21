@@ -10,11 +10,11 @@ workers_dev = false
 LEAD_TO = "acehomebuyer@gmail.com"
 # Must be an address on gethomeoffer.com (Email Routing enabled on the zone).
 LEAD_FROM = "leads@gethomeoffer.com"
-# GoHighLevel: same location and pipeline as the ChatGPT app. The token is a secret:
+# GoHighLevel: website leads go to the "Website Form" pipeline. The token is a secret:
 #   npx wrangler secret put GHL_PRIVATE_INTEGRATION_TOKEN
 GHL_LOCATION_ID = "rw9lvvUcqXFWmwTUOycc"
-GHL_PIPELINE_NAME = "Get Home Offer ChatGPT"
-GHL_INITIAL_STAGE_NAME = "New Chat GPT Lead"
+GHL_PIPELINE_NAME = "Website Form"
+GHL_INITIAL_STAGE_NAME = "New Website Lead"
 
 [[send_email]]
 name = "EMAIL"
