@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { submitLead, type Pathway, type SubmitResult } from '../../lib/contact-form';
+import { AddressAutocomplete } from './AddressAutocomplete';
 import { TOKEN_FIELD, Turnstile } from './Turnstile';
 import './ContactForm.css';
 
@@ -45,6 +46,13 @@ export function ContactForm() {
 
   return (
     <form className="contact-form" onSubmit={handleSubmit}>
+      <p className="contact-form__time">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 2" />
+        </svg>
+        Takes 5 to 10 minutes
+      </p>
       <div className="contact-form__grid">
         <div className="field">
           <label htmlFor="lead-first-name">First name</label>
@@ -64,7 +72,7 @@ export function ContactForm() {
         </div>
         <div className="field field--full">
           <label htmlFor="lead-address">Property address</label>
-          <input id="lead-address" name="address" type="text" autoComplete="street-address" required />
+          <AddressAutocomplete id="lead-address" name="address" />
         </div>
       </div>
 
