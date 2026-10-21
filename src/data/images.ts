@@ -123,4 +123,36 @@ export const IMAGES = {
     label: 'Founder portrait',
     tone: 'stone',
   },
+  // Example photos for the contact form's kitchen-condition question. Pexels (free license, no attribution required),
+  // photo IDs: fixer upper 17139803, dated 38744250, standard 8031933, high end 5353945, luxury 18039822.
+  kitchenFixerUpper: {
+    src: '/images/kitchen-fixer-upper.jpg',
+    alt: 'Example of a fixer-upper kitchen needing significant repairs',
+    label: 'Kitchen · Fixer upper: damaged cabinets, missing fixtures, worn floors',
+    tone: 'earth',
+  },
+  kitchenDated: {
+    src: '/images/kitchen-dated.jpg',
+    alt: 'Example of a dated kitchen that has not been updated recently',
+    label: 'Kitchen · Dated: older laminate counters and cabinets, original fixtures',
+    tone: 'sand',
+  },
+  kitchenStandard: {
+    src: '/images/kitchen-standard.jpg',
+    alt: 'Example of a standard kitchen updated with common finishes',
+    label: 'Kitchen · Standard: wood cabinets, stainless appliances, simple counters',
+    tone: 'stone',
+  },
+  kitchenHighEnd: {
+    src: '/images/kitchen-high-end.jpg',
+    alt: 'Example of a high-end kitchen with high-quality upgrades',
+    label: 'Kitchen · High end: shaker cabinets, granite or quartz, stainless appliances',
+    tone: 'olive',
+  },
+  kitchenLuxury: {
+    src: '/images/kitchen-luxury.jpg',
+    alt: 'Example of a luxury kitchen with elegant, top-tier finishes',
+    label: 'Kitchen · Luxury: large island, designer lighting, premium stone and appliances',
+    tone: 'dusk',
+  },
 } satisfies Record<string, ImageAsset>;

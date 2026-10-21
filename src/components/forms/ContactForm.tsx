@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useSearchParams } from 'react-router';
-import { PROPERTY_TYPES, TIMELINES, submitLead, type HomeDetails, type Pathway, type SubmitResult } from '../../lib/contact-form';
+import { IMAGES } from '../../data/images';
+import { KITCHEN_CONDITIONS, PROPERTY_TYPES, TIMELINES, submitLead, type HomeDetails, type Pathway, type SubmitResult } from '../../lib/contact-form';
+import { ImageSlot } from '../ui/ImageSlot';
 import { AddressAutocomplete } from './AddressAutocomplete';
 import { TOKEN_FIELD, Turnstile } from './Turnstile';
 import './ContactForm.css';
@@ -12,8 +14,11 @@ const STATUS_MESSAGES: Record<SubmitResult, string> = {
 
 const PATHWAYS: Pathway[] = ['cash', 'agent', 'unsure'];
 
-const STEPS = ['Your details', 'Your home', 'Home details', 'Timeline', 'Confirm'] as const;
+const STEPS = ['Your details', 'Your home', 'Home details', 'Kitchen', 'Timeline', 'Confirm'] as const;
 const DETAILS_STEP = 2;
+const KITCHEN_STEP = 3;
+// Steps that don't apply to an empty lot.
+const BUILDING_STEPS = [DETAILS_STEP, KITCHEN_STEP];
 
 const range = (from: number, to: number) => Array.from({ length: to - from + 1 }, (_, index) => String(from + index));
 
@@ -148,6 +153,7 @@ export function ContactForm() {
   const [basement, setBasement] = useState('');
   // An empty lot has no rooms, so the home-details step is skipped.
   const skipDetails = propertyType === 'lot';
+  const isSkipped = (index: number) => skipDetails && BUILDING_STEPS.includes(index);
 
   useEffect(() => {
     if (moved.current) headingRefs.current[step]?.focus();
@@ -168,11 +174,15 @@ export function ContactForm() {
         return;
       }
     }
-    goTo(step + 1 === DETAILS_STEP && skipDetails ? step + 2 : step + 1);
+    let target = step + 1;
+    while (isSkipped(target)) target++;
+    goTo(target);
   }
 
   function back() {
-    goTo(step - 1 === DETAILS_STEP && skipDetails ? step - 2 : step - 1);
+    let target = step - 1;
+    while (isSkipped(target)) target--;
+    goTo(target);
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -195,6 +205,7 @@ export function ContactForm() {
       email: text('email'),
       address: text('address'),
       propertyType: text('propertyType'),
+      kitchen: skipDetails ? undefined : text('kitchen'),
       timeline: text('timeline'),
       ownership: text('ownership'),
       ownershipOther: text('ownershipOther'),
@@ -218,8 +229,9 @@ export function ContactForm() {
     }
   }
 
-  const totalSteps = skipDetails ? STEPS.length - 1 : STEPS.length;
-  const stepNumber = skipDetails && step > DETAILS_STEP ? step : step + 1;
+  const activeSteps = STEPS.map((_, index) => index).filter((index) => !isSkipped(index));
+  const totalSteps = activeSteps.length;
+  const stepNumber = activeSteps.indexOf(step) + 1;
   const progress = (stepNumber / totalSteps) * 100;
 
   return (
@@ -406,15 +418,54 @@ export function ContactForm() {
 
       <fieldset
         ref={(el) => {
-          stepRefs.current[3] = el;
+          stepRefs.current[KITCHEN_STEP] = el;
         }}
         className="contact-form__step"
-        hidden={step !== 3}
+        hidden={step !== KITCHEN_STEP}
+        disabled={skipDetails}
+        aria-describedby="kitchen-help"
+      >
+        <h3
+          ref={(el) => {
+            headingRefs.current[KITCHEN_STEP] = el;
+          }}
+          tabIndex={-1}
+          className="contact-form__step-title"
+        >
+          How would you describe your kitchen?
+        </h3>
+        <p id="kitchen-help" className="contact-form__step-help">
+          For these questions, just select the closest match.
+        </p>
+        <div className="condition-cards">
+          {KITCHEN_CONDITIONS.map((option) => (
+            <label key={option.value} className="condition-card">
+              <input type="radio" name="kitchen" value={option.value} required className="condition-card__input" />
+              <ImageSlot
+                image={IMAGES[option.image]}
+                className="condition-card__image"
+                sizes="(min-width: 900px) 320px, (min-width: 600px) 45vw, 90vw"
+              />
+              <span className="condition-card__text">
+                <span className="condition-card__label">{option.value}</span>
+                <span className="condition-card__hint">{option.hint}</span>
+              </span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset
+        ref={(el) => {
+          stepRefs.current[4] = el;
+        }}
+        className="contact-form__step"
+        hidden={step !== 4}
         aria-describedby="timeline-help"
       >
         <h3
           ref={(el) => {
-            headingRefs.current[3] = el;
+            headingRefs.current[4] = el;
           }}
           tabIndex={-1}
           className="contact-form__step-title"
@@ -436,14 +487,14 @@ export function ContactForm() {
 
       <fieldset
         ref={(el) => {
-          stepRefs.current[4] = el;
+          stepRefs.current[5] = el;
         }}
         className="contact-form__step"
-        hidden={step !== 4}
+        hidden={step !== 5}
       >
         <h3
           ref={(el) => {
-            headingRefs.current[4] = el;
+            headingRefs.current[5] = el;
           }}
           tabIndex={-1}
           className="contact-form__step-title"

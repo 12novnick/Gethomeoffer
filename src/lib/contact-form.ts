@@ -11,6 +11,15 @@ export const PROPERTY_TYPES: { value: string; label: string; hint?: string }[] =
   { value: 'lot', label: 'Empty lot' },
 ];
 
+// Values must match KITCHEN_CONDITIONS in worker/src/index.ts.
+export const KITCHEN_CONDITIONS = [
+  { value: 'Fixer upper', hint: 'Kitchen needs significant repairs', image: 'kitchenFixerUpper' },
+  { value: 'Dated', hint: "Kitchen hasn't been updated recently", image: 'kitchenDated' },
+  { value: 'Standard', hint: 'Kitchen is updated with common finishes', image: 'kitchenStandard' },
+  { value: 'High end', hint: 'Kitchen has high-quality upgrades', image: 'kitchenHighEnd' },
+  { value: 'Luxury', hint: 'Kitchen has elegant, top-tier finishes', image: 'kitchenLuxury' },
+] as const;
+
 // Values must match TIMELINES in worker/src/index.ts.
 export const TIMELINES = ['ASAP', '7-30 days', '1-3 months', '3-6 months'];
 
@@ -37,6 +46,8 @@ export interface LeadSubmission {
   address: string;
   /** One of PROPERTY_TYPES' values; the contact form asks for it, the chat form does not. */
   propertyType?: string;
+  /** One of KITCHEN_CONDITIONS' values. */
+  kitchen?: string;
   /** One of TIMELINES. */
   timeline?: string;
   /** 'owner' or 'other'; when 'other', ownershipOther says how they're related to the property. */

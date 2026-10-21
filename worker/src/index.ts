@@ -21,6 +21,9 @@ const PROPERTY_TYPES: Record<string, string> = {
   lot: 'Empty lot',
 };
 
+// Must match KITCHEN_CONDITIONS in src/lib/contact-form.ts.
+const KITCHEN_CONDITIONS = ['Fixer upper', 'Dated', 'Standard', 'High end', 'Luxury'];
+
 // Must match TIMELINES in src/lib/contact-form.ts.
 const TIMELINES = ['ASAP', '7-30 days', '1-3 months', '3-6 months'];
 
@@ -78,6 +81,7 @@ export default {
       typeof body.propertyType === 'string' && Object.hasOwn(PROPERTY_TYPES, body.propertyType)
         ? PROPERTY_TYPES[body.propertyType]
         : undefined;
+    const kitchen = typeof body.kitchen === 'string' && KITCHEN_CONDITIONS.includes(body.kitchen) ? body.kitchen : '';
     const timeline = typeof body.timeline === 'string' && TIMELINES.includes(body.timeline) ? body.timeline : '';
     const ownership =
       body.ownership === 'owner'
@@ -117,7 +121,7 @@ export default {
       ...(ownership ? [`Relationship to property: ${ownership}`] : []),
       ...(propertyType ? [`Property type: ${propertyType}`] : []),
       ...(timeline ? [`Needs to sell: ${timeline}`] : []),
-      ...(details.length ? [``, `Home details:`, ...details, ``] : []),
+      ...(details.length || kitchen ? [``, `Home details:`, ...details, ...(kitchen ? [`Kitchen: ${kitchen}`] : []), ``] : []),
       `Interested in: ${PATHWAY_LABELS[pathway]}`,
       `SMS consent: Yes (agreed ${new Date().toISOString()})`,
       ...(transcript.length ? [``, `Chat conversation:`, ...transcript] : []),

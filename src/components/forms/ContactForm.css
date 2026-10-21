@@ -163,6 +163,79 @@
   accent-color: var(--color-link);
 }
 
+.condition-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-sm);
+}
+
+.condition-card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.condition-card:hover {
+  border-color: var(--color-text);
+}
+
+.condition-card:has(:checked) {
+  background-color: #eef7fb;
+  border-color: var(--color-link);
+  box-shadow: inset 0 0 0 2px var(--color-link);
+}
+
+.condition-card:has(:focus-visible) {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.condition-card__input {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  z-index: 1;
+  width: 1.25rem;
+  height: 1.25rem;
+  accent-color: var(--color-link);
+}
+
+.condition-card__image {
+  width: 100%;
+  aspect-ratio: 5 / 3;
+  object-fit: cover;
+}
+
+.condition-card__text {
+  display: grid;
+  gap: 0.2rem;
+  align-content: start;
+  padding: 0.875rem 1rem 1rem;
+}
+
+.condition-card__label {
+  font-weight: 600;
+}
+
+.condition-card__hint {
+  font-size: var(--text-small);
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 479px) {
+  .condition-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 .property-types {
   display: grid;
   gap: 0.75rem;

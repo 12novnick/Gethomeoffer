@@ -24,5 +24,10 @@ export const IMAGE_SIZES: Record<string, { width: number; height: number }> = {
   '/images/program-agent.avif': { width: 3000, height: 4500 },
   '/images/founder-portrait.jpg': { width: 1024, height: 1024 },
   '/images/we-buy-houses-milwaukee.avif': { width: 4032, height: 2268 },
+  '/images/kitchen-fixer-upper.jpg': { width: 960, height: 576 },
+  '/images/kitchen-dated.jpg': { width: 960, height: 576 },
+  '/images/kitchen-standard.jpg': { width: 960, height: 576 },
+  '/images/kitchen-high-end.jpg': { width: 960, height: 576 },
+  '/images/kitchen-luxury.jpg': { width: 960, height: 576 },
   '/images/number1-badge.png': { width: 584, height: 427 },
 };
