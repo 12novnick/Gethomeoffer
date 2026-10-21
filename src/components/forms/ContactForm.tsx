@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { IMAGES } from '../../data/images';
-import { KITCHEN_CONDITIONS, PROPERTY_TYPES, TIMELINES, submitLead, type HomeDetails, type Pathway, type SubmitResult } from '../../lib/contact-form';
+import { BATHROOM_CONDITIONS, KITCHEN_CONDITIONS, PROPERTY_TYPES, TIMELINES, submitLead, type HomeDetails, type Pathway, type SubmitResult } from '../../lib/contact-form';
 import { ImageSlot } from '../ui/ImageSlot';
 import { AddressAutocomplete } from './AddressAutocomplete';
 import { TOKEN_FIELD, Turnstile } from './Turnstile';
@@ -14,11 +14,12 @@ const STATUS_MESSAGES: Record<SubmitResult, string> = {
 
 const PATHWAYS: Pathway[] = ['cash', 'agent', 'unsure'];
 
-const STEPS = ['Your details', 'Your home', 'Home details', 'Kitchen', 'Timeline', 'Confirm'] as const;
+const STEPS = ['Your details', 'Your home', 'Home details', 'Kitchen', 'Bathroom', 'Timeline', 'Confirm'] as const;
 const DETAILS_STEP = 2;
 const KITCHEN_STEP = 3;
+const BATHROOM_STEP = 4;
 // Steps that don't apply to an empty lot.
-const BUILDING_STEPS = [DETAILS_STEP, KITCHEN_STEP];
+const BUILDING_STEPS = [DETAILS_STEP, KITCHEN_STEP, BATHROOM_STEP];
 
 const range = (from: number, to: number) => Array.from({ length: to - from + 1 }, (_, index) => String(from + index));
 
@@ -100,6 +101,54 @@ function NumberField({
         aria-describedby={`${id}-hint`}
       />
     </div>
+  );
+}
+
+type ConditionOption = { value: string; hint: string; image: keyof typeof IMAGES };
+
+function ConditionStep({
+  name,
+  title,
+  options,
+  hidden,
+  disabled,
+  stepRef,
+  headingRef,
+}: {
+  name: string;
+  title: string;
+  options: readonly ConditionOption[];
+  hidden: boolean;
+  disabled: boolean;
+  stepRef: (el: HTMLFieldSetElement | null) => void;
+  headingRef: (el: HTMLHeadingElement | null) => void;
+}) {
+  const helpId = `${name}-help`;
+  return (
+    <fieldset ref={stepRef} className="contact-form__step" hidden={hidden} disabled={disabled} aria-describedby={helpId}>
+      <h3 ref={headingRef} tabIndex={-1} className="contact-form__step-title">
+        {title}
+      </h3>
+      <p id={helpId} className="contact-form__step-help">
+        For these questions, just select the closest match.
+      </p>
+      <div className="condition-cards">
+        {options.map((option) => (
+          <label key={option.value} className="condition-card">
+            <input type="radio" name={name} value={option.value} required className="condition-card__input" />
+            <ImageSlot
+              image={IMAGES[option.image]}
+              className="condition-card__image"
+              sizes="(min-width: 900px) 320px, (min-width: 600px) 45vw, 90vw"
+            />
+            <span className="condition-card__text">
+              <span className="condition-card__label">{option.value}</span>
+              <span className="condition-card__hint">{option.hint}</span>
+            </span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
   );
 }
 
@@ -206,6 +255,7 @@ export function ContactForm() {
       address: text('address'),
       propertyType: text('propertyType'),
       kitchen: skipDetails ? undefined : text('kitchen'),
+      bathroom: skipDetails ? undefined : text('bathroom'),
       timeline: text('timeline'),
       ownership: text('ownership'),
       ownershipOther: text('ownershipOther'),
@@ -416,56 +466,45 @@ export function ContactForm() {
         </div>
       </fieldset>
 
-      <fieldset
-        ref={(el) => {
-          stepRefs.current[KITCHEN_STEP] = el;
-        }}
-        className="contact-form__step"
+      <ConditionStep
+        name="kitchen"
+        title="How would you describe your kitchen?"
+        options={KITCHEN_CONDITIONS}
         hidden={step !== KITCHEN_STEP}
         disabled={skipDetails}
-        aria-describedby="kitchen-help"
-      >
-        <h3
-          ref={(el) => {
-            headingRefs.current[KITCHEN_STEP] = el;
-          }}
-          tabIndex={-1}
-          className="contact-form__step-title"
-        >
-          How would you describe your kitchen?
-        </h3>
-        <p id="kitchen-help" className="contact-form__step-help">
-          For these questions, just select the closest match.
-        </p>
-        <div className="condition-cards">
-          {KITCHEN_CONDITIONS.map((option) => (
-            <label key={option.value} className="condition-card">
-              <input type="radio" name="kitchen" value={option.value} required className="condition-card__input" />
-              <ImageSlot
-                image={IMAGES[option.image]}
-                className="condition-card__image"
-                sizes="(min-width: 900px) 320px, (min-width: 600px) 45vw, 90vw"
-              />
-              <span className="condition-card__text">
-                <span className="condition-card__label">{option.value}</span>
-                <span className="condition-card__hint">{option.hint}</span>
-              </span>
-            </label>
-          ))}
-        </div>
-      </fieldset>
+        stepRef={(el) => {
+          stepRefs.current[KITCHEN_STEP] = el;
+        }}
+        headingRef={(el) => {
+          headingRefs.current[KITCHEN_STEP] = el;
+        }}
+      />
+
+      <ConditionStep
+        name="bathroom"
+        title="How would you describe your main bathroom?"
+        options={BATHROOM_CONDITIONS}
+        hidden={step !== BATHROOM_STEP}
+        disabled={skipDetails}
+        stepRef={(el) => {
+          stepRefs.current[BATHROOM_STEP] = el;
+        }}
+        headingRef={(el) => {
+          headingRefs.current[BATHROOM_STEP] = el;
+        }}
+      />
 
       <fieldset
         ref={(el) => {
-          stepRefs.current[4] = el;
+          stepRefs.current[5] = el;
         }}
         className="contact-form__step"
-        hidden={step !== 4}
+        hidden={step !== 5}
         aria-describedby="timeline-help"
       >
         <h3
           ref={(el) => {
-            headingRefs.current[4] = el;
+            headingRefs.current[5] = el;
           }}
           tabIndex={-1}
           className="contact-form__step-title"
@@ -487,14 +526,14 @@ export function ContactForm() {
 
       <fieldset
         ref={(el) => {
-          stepRefs.current[5] = el;
+          stepRefs.current[6] = el;
         }}
         className="contact-form__step"
-        hidden={step !== 5}
+        hidden={step !== 6}
       >
         <h3
           ref={(el) => {
-            headingRefs.current[5] = el;
+            headingRefs.current[6] = el;
           }}
           tabIndex={-1}
           className="contact-form__step-title"

@@ -155,4 +155,36 @@ export const IMAGES = {
     label: 'Kitchen · Luxury: large island, designer lighting, premium stone and appliances',
     tone: 'dusk',
   },
+  // Example photos for the contact form's bathroom-condition question. Pexels (free license, no attribution required),
+  // photo IDs: fixer upper 30547083, dated 19776970, standard 35527001, high end 8031880, luxury 105934.
+  bathroomFixerUpper: {
+    src: '/images/bathroom-fixer-upper.jpg',
+    alt: 'Example of a fixer-upper bathroom needing significant repairs',
+    label: 'Bathroom · Fixer upper',
+    tone: 'earth',
+  },
+  bathroomDated: {
+    src: '/images/bathroom-dated.jpg',
+    alt: 'Example of a dated bathroom that has not been updated recently',
+    label: 'Bathroom · Dated',
+    tone: 'sand',
+  },
+  bathroomStandard: {
+    src: '/images/bathroom-standard.jpg',
+    alt: 'Example of a standard bathroom updated with common finishes',
+    label: 'Bathroom · Standard',
+    tone: 'stone',
+  },
+  bathroomHighEnd: {
+    src: '/images/bathroom-high-end.jpg',
+    alt: 'Example of a high-end bathroom with high-quality upgrades',
+    label: 'Bathroom · High end',
+    tone: 'olive',
+  },
+  bathroomLuxury: {
+    src: '/images/bathroom-luxury.jpg',
+    alt: 'Example of a luxury bathroom with elegant, top-tier finishes',
+    label: 'Bathroom · Luxury',
+    tone: 'dusk',
+  },
 } satisfies Record<string, ImageAsset>;

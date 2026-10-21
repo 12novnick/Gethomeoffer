@@ -21,8 +21,8 @@ const PROPERTY_TYPES: Record<string, string> = {
   lot: 'Empty lot',
 };
 
-// Must match KITCHEN_CONDITIONS in src/lib/contact-form.ts.
-const KITCHEN_CONDITIONS = ['Fixer upper', 'Dated', 'Standard', 'High end', 'Luxury'];
+// Must match KITCHEN_CONDITIONS and BATHROOM_CONDITIONS in src/lib/contact-form.ts.
+const CONDITION_LEVELS = ['Fixer upper', 'Dated', 'Standard', 'High end', 'Luxury'];
 
 // Must match TIMELINES in src/lib/contact-form.ts.
 const TIMELINES = ['ASAP', '7-30 days', '1-3 months', '3-6 months'];
@@ -81,7 +81,9 @@ export default {
       typeof body.propertyType === 'string' && Object.hasOwn(PROPERTY_TYPES, body.propertyType)
         ? PROPERTY_TYPES[body.propertyType]
         : undefined;
-    const kitchen = typeof body.kitchen === 'string' && KITCHEN_CONDITIONS.includes(body.kitchen) ? body.kitchen : '';
+    const condition = (value: unknown) => (typeof value === 'string' && CONDITION_LEVELS.includes(value) ? value : '');
+    const kitchen = condition(body.kitchen);
+    const bathroom = condition(body.bathroom);
     const timeline = typeof body.timeline === 'string' && TIMELINES.includes(body.timeline) ? body.timeline : '';
     const ownership =
       body.ownership === 'owner'
@@ -121,7 +123,9 @@ export default {
       ...(ownership ? [`Relationship to property: ${ownership}`] : []),
       ...(propertyType ? [`Property type: ${propertyType}`] : []),
       ...(timeline ? [`Needs to sell: ${timeline}`] : []),
-      ...(details.length || kitchen ? [``, `Home details:`, ...details, ...(kitchen ? [`Kitchen: ${kitchen}`] : []), ``] : []),
+      ...(details.length || kitchen || bathroom
+        ? [``, `Home details:`, ...details, ...(kitchen ? [`Kitchen: ${kitchen}`] : []), ...(bathroom ? [`Main bathroom: ${bathroom}`] : []), ``]
+        : []),
       `Interested in: ${PATHWAY_LABELS[pathway]}`,
       `SMS consent: Yes (agreed ${new Date().toISOString()})`,
       ...(transcript.length ? [``, `Chat conversation:`, ...transcript] : []),
