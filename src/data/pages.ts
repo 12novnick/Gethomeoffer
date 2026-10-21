@@ -83,7 +83,7 @@ export const PAGES: Record<string, PageInfo> = {
       'Read how Get Home Offer collects, uses, shares and protects the information you provide through Get Home Offer.',
     heading: 'Privacy Policy',
     published: '2026-09-29',
-    modified: '2026-10-19',
+    modified: '2026-10-21',
   },
   '/terms/': {
     title: 'Terms & Conditions | Get Home Offer',

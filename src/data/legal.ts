@@ -21,7 +21,7 @@ export const PRIVACY_POLICY: LegalDocument = {
   path: '/privacy-policy/',
   title: 'Privacy Policy',
   lede: 'How Get Home Offer collects, uses and protects your information.',
-  lastUpdated: 'October 19, 2026',
+  lastUpdated: 'October 21, 2026',
   sections: [
     {
       id: 'who-we-are',
@@ -39,6 +39,7 @@ export const PRIVACY_POLICY: LegalDocument = {
         'What visitors provide (contact form: name, email, phone, property address, message) and what is collected automatically (analytics, device and log data, cookies).',
       body: [
         "Information you give us. When you request an offer or contact us, through our contact form or the chat window on our site, we collect your first and last name, phone number, email address and the address of your property. We also record whether you agreed to receive text messages from us.",
+        "Our ChatGPT app. If you use the Get Home Offer app in ChatGPT to request an offer, we receive only the details you choose to submit through it: your first and last name, phone number, email address, the address of the property you want to sell, its condition, when you need to sell, and whether you agreed to be contacted, along with the time you agreed. We do not receive your ChatGPT conversation history. We use this information only to review your request and contact you about it.",
         "Chat conversations. Our website chat assistant, Amy, is an automated virtual assistant. The questions you type into the chat are processed to generate a reply. If you send us your contact details through the chat, a copy of your chat conversation is sent to us along with your details so we understand what you asked about.",
         "Information collected automatically. Like most websites, our hosting provider automatically receives basic technical information when you visit, such as your IP address, browser type, device type, the pages you view and the date and time of your visit. We use cookie-free website analytics to understand overall traffic to our site.",
         "Please do not share sensitive personal information, such as Social Security numbers or financial account numbers, through our forms or chat.",
@@ -61,7 +62,7 @@ export const PRIVACY_POLICY: LegalDocument = {
       body: [
         "We do not sell your personal information, and we do not share it with third parties for their own marketing purposes.",
         "Real estate professionals. If you are interested in selling through our Real Estate Agent Program, we may share your contact and property details with a real estate professional in your area so they can contact you about your sale.",
-        "Service providers. We use trusted service providers to run our website and business, such as website hosting, security, email delivery and the technology that powers our chat assistant. These providers process information on our behalf only as needed to provide their services to us.",
+        "Service providers. We use trusted service providers to run our website and business, such as website hosting, security, email delivery, the customer relationship management (CRM) system where we keep seller requests, and the technology that powers our chat assistant. These providers process information on our behalf only as needed to provide their services to us.",
         "Legal and business reasons. We may disclose information if required by law, to respond to legal process, to protect the rights, property or safety of Get Home Offer, our users or others, or in connection with a merger, sale or transfer of our business.",
       ],
     },
