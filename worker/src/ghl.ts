@@ -17,6 +17,8 @@ export interface GhlLead {
   email: string;
   address: string;
   timeline: string;
+  /** Room-by-room condition summary for the Property Condition field. */
+  condition: string;
   notes: string;
   tags: string[];
 }
@@ -82,6 +84,7 @@ export async function sendToGhl(config: GhlConfig, lead: GhlLead) {
   setField('Property Street Address', lead.address);
   const timeline = lead.timeline ? matchOption(lead.timeline, byName.get('selling timeline')) : null;
   if (timeline) setField('Selling Timeline', timeline);
+  setField('Property Condition', lead.condition);
   setField('Additional Notes', lead.notes);
 
   const { contact } = await ghl<{ contact?: { id?: string } }>(config, 'POST', '/contacts/upsert', {
