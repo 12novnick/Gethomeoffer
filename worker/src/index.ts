@@ -1,7 +1,14 @@
+import { sendToGhl } from './ghl';
+
 interface Env {
   EMAIL: { send(message: { to: string; from: string; subject: string; text: string; replyTo?: string }): Promise<unknown> };
   LEAD_TO: string;
   LEAD_FROM: string;
+  /** GoHighLevel Private Integration Token (secret). Without it, leads are only emailed. */
+  GHL_PRIVATE_INTEGRATION_TOKEN?: string;
+  GHL_LOCATION_ID: string;
+  GHL_PIPELINE_NAME: string;
+  GHL_INITIAL_STAGE_NAME: string;
 }
 
 const PATHWAY_LABELS: Record<string, string> = {
@@ -152,13 +159,43 @@ export default {
       ...(transcript.length ? [``, `Chat conversation:`, ...transcript] : []),
     ].join('\n');
 
+    // Leads go to GoHighLevel. Email is only a fallback when GoHighLevel isn't configured or fails,
+    // so a lead is never lost.
+    let crmNote = '';
+    if (env.GHL_PRIVATE_INTEGRATION_TOKEN) {
+      try {
+        await sendToGhl(
+          {
+            token: env.GHL_PRIVATE_INTEGRATION_TOKEN,
+            locationId: env.GHL_LOCATION_ID,
+            pipelineName: env.GHL_PIPELINE_NAME,
+            stageName: env.GHL_INITIAL_STAGE_NAME,
+          },
+          {
+            firstName: lead.firstName,
+            lastName: lead.lastName,
+            phone: lead.phone,
+            email: lead.email,
+            address: lead.address,
+            timeline,
+            notes: text,
+            tags: ['source-website', transcript.length ? 'website-chat' : 'website-form', `interest-${pathway}`],
+          },
+        );
+        return json({ ok: true });
+      } catch (error) {
+        console.error('GoHighLevel sync failed', error);
+        crmNote = '\n\nNote: this lead could not be added to GoHighLevel automatically. Please add it by hand.';
+      }
+    }
+
     try {
       await env.EMAIL.send({
         to: env.LEAD_TO,
         from: env.LEAD_FROM,
         replyTo: lead.email,
         subject: `New ${transcript.length ? 'chat ' : ''}lead: ${name}, ${lead.address}`,
-        text,
+        text: text + crmNote,
       });
     } catch (error) {
       console.error('Lead email failed', error);
