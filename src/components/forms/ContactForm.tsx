@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useSearchParams } from 'react-router';
-import { PROPERTY_TYPES, submitLead, type Pathway, type SubmitResult } from '../../lib/contact-form';
+import { PROPERTY_TYPES, submitLead, type HomeDetails, type Pathway, type SubmitResult } from '../../lib/contact-form';
 import { AddressAutocomplete } from './AddressAutocomplete';
 import { TOKEN_FIELD, Turnstile } from './Turnstile';
 import './ContactForm.css';
@@ -12,7 +12,128 @@ const STATUS_MESSAGES: Record<SubmitResult, string> = {
 
 const PATHWAYS: Pathway[] = ['cash', 'agent', 'unsure'];
 
-const STEPS = ['Your details', 'Your home', 'Confirm'] as const;
+const STEPS = ['Your details', 'Your home', 'Home details', 'Confirm'] as const;
+const DETAILS_STEP = 2;
+
+const range = (from: number, to: number) => Array.from({ length: to - from + 1 }, (_, index) => String(from + index));
+const YEARS = [...range(1900, new Date().getFullYear()).reverse(), 'Before 1900'];
+
+type DetailSelectConfig = { name: keyof HomeDetails; label: string; hint: string; options: string[] };
+
+const SELECTS_BEFORE_SIZE: DetailSelectConfig[] = [
+  { name: 'bedrooms', label: 'Bedrooms', hint: 'Must have a door, closet, and window.', options: [...range(0, 6), '7+'] },
+  { name: 'fullBaths', label: 'Full bathrooms', hint: 'Must have a toilet and a shower/tub.', options: [...range(0, 5), '6+'] },
+  { name: 'partialBaths', label: 'Partial bathrooms', hint: 'Must have a toilet and sink.', options: [...range(0, 4), '5+'] },
+];
+
+const FLOORS: DetailSelectConfig = {
+  name: 'floors',
+  label: 'Floors (above ground)',
+  hint: "Don't include the basement.",
+  options: ['1', '2', '3', '4+'],
+};
+const BASEMENT: DetailSelectConfig = {
+  name: 'basement',
+  label: 'Basement',
+  hint: 'Floors that are completely below ground.',
+  options: ['No', 'Yes'],
+};
+const SELECTS_AT_END: DetailSelectConfig[] = [
+  { name: 'yearBuilt', label: 'Year built', hint: 'Your best estimate is fine.', options: YEARS },
+  { name: 'pool', label: 'Pool', hint: 'Does the property have a pool?', options: ['In-ground', 'Above-ground', 'Community pool', 'No pool'] },
+];
+
+const BASEMENT_SIZES: { name: keyof HomeDetails; label: string; hint: string }[] = [
+  { name: 'finishedBasementSqft', label: 'Finished basement sq. ft.', hint: 'Heated, fully insulated, and waterproof.' },
+  {
+    name: 'unfinishedBasementSqft',
+    label: 'Unfinished basement sq. ft.',
+    hint: 'Non-heated, concrete floors, exposed pipes or drywall.',
+  },
+];
+
+const DETAIL_FIELDS: (keyof HomeDetails)[] = [
+  ...SELECTS_BEFORE_SIZE.map((item) => item.name),
+  'sqft',
+  'lotSqft',
+  'floors',
+  'basement',
+  'finishedBasementSqft',
+  'unfinishedBasementSqft',
+  ...SELECTS_AT_END.map((item) => item.name),
+];
+
+function NumberField({
+  name,
+  label,
+  hint,
+  optional = false,
+  min,
+}: {
+  name: string;
+  label: string;
+  hint: string;
+  optional?: boolean;
+  min: number;
+}) {
+  const id = `lead-${name}`;
+  return (
+    <div className="field">
+      <label htmlFor={id}>
+        {label}
+        {optional && <span className="field__optional"> (optional)</span>}
+      </label>
+      <span id={`${id}-hint`} className="field__hint">
+        {hint}
+      </span>
+      <input
+        id={id}
+        name={name}
+        type="number"
+        inputMode="numeric"
+        min={min}
+        max={100000000}
+        required={!optional}
+        aria-describedby={`${id}-hint`}
+      />
+    </div>
+  );
+}
+
+function DetailSelect({
+  name,
+  label,
+  hint,
+  options,
+  onChange,
+}: DetailSelectConfig & { onChange?: (value: string) => void }) {
+  const id = `lead-${name}`;
+  return (
+    <div className="field">
+      <label htmlFor={id}>{label}</label>
+      <span id={`${id}-hint`} className="field__hint">
+        {hint}
+      </span>
+      <select
+        id={id}
+        name={name}
+        required
+        defaultValue=""
+        aria-describedby={`${id}-hint`}
+        onChange={onChange && ((event) => onChange(event.target.value))}
+      >
+        <option value="" disabled>
+          Select...
+        </option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
 
 export function ContactForm() {
   const [searchParams] = useSearchParams();
@@ -24,6 +145,11 @@ export function ContactForm() {
   const stepRefs = useRef<(HTMLFieldSetElement | null)[]>([]);
   const headingRefs = useRef<(HTMLHeadingElement | null)[]>([]);
   const moved = useRef(false);
+  const [propertyType, setPropertyType] = useState('');
+  const [ownership, setOwnership] = useState('');
+  const [basement, setBasement] = useState('');
+  // An empty lot has no rooms, so the home-details step is skipped.
+  const skipDetails = propertyType === 'lot';
 
   useEffect(() => {
     if (moved.current) headingRefs.current[step]?.focus();
@@ -36,14 +162,19 @@ export function ContactForm() {
   }
 
   function next() {
-    const fields = stepRefs.current[step]?.querySelectorAll<HTMLInputElement>('input:not([type="hidden"])') ?? [];
+    const fields =
+      stepRefs.current[step]?.querySelectorAll<HTMLInputElement | HTMLSelectElement>('input:not([type="hidden"]), select') ?? [];
     for (const field of fields) {
       if (!field.checkValidity()) {
         field.reportValidity();
         return;
       }
     }
-    goTo(step + 1);
+    goTo(step + 1 === DETAILS_STEP && skipDetails ? step + 2 : step + 1);
+  }
+
+  function back() {
+    goTo(step - 1 === DETAILS_STEP && skipDetails ? step - 2 : step - 1);
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -66,6 +197,11 @@ export function ContactForm() {
       email: text('email'),
       address: text('address'),
       propertyType: text('propertyType'),
+      ownership: text('ownership'),
+      ownershipOther: text('ownershipOther'),
+      details: skipDetails
+        ? undefined
+        : (Object.fromEntries(DETAIL_FIELDS.map((name) => [name, text(name)])) as unknown as HomeDetails),
       smsConsent: form.get('smsConsent') === 'yes',
       company: text('company'),
       turnstileToken: text(TOKEN_FIELD),
@@ -75,12 +211,17 @@ export function ContactForm() {
     setStatus(result);
     if (result === 'sent') {
       formElement.reset();
+      setPropertyType('');
+      setOwnership('');
+      setBasement('');
       moved.current = false;
       setStep(0);
     }
   }
 
-  const progress = ((step + 1) / STEPS.length) * 100;
+  const totalSteps = skipDetails ? STEPS.length - 1 : STEPS.length;
+  const stepNumber = skipDetails && step > DETAILS_STEP ? step : step + 1;
+  const progress = (stepNumber / totalSteps) * 100;
 
   return (
     <form className="contact-form" onSubmit={handleSubmit} noValidate={step < STEPS.length - 1}>
@@ -93,7 +234,7 @@ export function ContactForm() {
           Takes 5 to 10 minutes
         </p>
         <p className="contact-form__step-count">
-          Step {step + 1} of {STEPS.length}
+          Step {stepNumber} of {totalSteps}
         </p>
       </div>
       <div
@@ -101,9 +242,9 @@ export function ContactForm() {
         role="progressbar"
         aria-label="Form progress"
         aria-valuemin={0}
-        aria-valuemax={STEPS.length}
-        aria-valuenow={step + 1}
-        aria-valuetext={`Step ${step + 1} of ${STEPS.length}: ${STEPS[step]}`}
+        aria-valuemax={totalSteps}
+        aria-valuenow={stepNumber}
+        aria-valuetext={`Step ${stepNumber} of ${totalSteps}: ${STEPS[step]}`}
       >
         <span className="contact-form__progress-bar" style={{ width: `${progress}%` }} />
       </div>
@@ -145,6 +286,34 @@ export function ContactForm() {
             <label htmlFor="lead-address">Property address</label>
             <AddressAutocomplete id="lead-address" name="address" />
           </div>
+          <div className="field field--full ownership" role="radiogroup" aria-labelledby="lead-ownership-label">
+            <span id="lead-ownership-label" className="ownership__label">
+              Are you the owner of this property?
+            </span>
+            <div className="ownership__options">
+              <label className="ownership__option">
+                <input type="radio" name="ownership" value="owner" required onChange={() => setOwnership('owner')} />
+                I'm the owner
+              </label>
+              <label className="ownership__option">
+                <input type="radio" name="ownership" value="other" required onChange={() => setOwnership('other')} />
+                Other
+              </label>
+            </div>
+            {ownership === 'other' && (
+              <div className="field">
+                <label htmlFor="lead-ownership-other">Please specify your relationship to the property</label>
+                <input
+                  id="lead-ownership-other"
+                  name="ownershipOther"
+                  type="text"
+                  required
+                  maxLength={120}
+                  placeholder="For example: family member, executor, co-owner, agent"
+                />
+              </div>
+            )}
+          </div>
         </div>
       </fieldset>
 
@@ -171,7 +340,14 @@ export function ContactForm() {
         <div className="property-types">
           {PROPERTY_TYPES.map((type) => (
             <label key={type.value} className="property-type">
-              <input type="radio" name="propertyType" value={type.value} required className="property-type__input" />
+              <input
+                type="radio"
+                name="propertyType"
+                value={type.value}
+                required
+                className="property-type__input"
+                onChange={() => setPropertyType(type.value)}
+              />
               <span className="property-type__text">
                 <span className="property-type__label">{type.label}</span>
                 {type.hint && <span className="property-type__hint">{type.hint}</span>}
@@ -183,14 +359,62 @@ export function ContactForm() {
 
       <fieldset
         ref={(el) => {
-          stepRefs.current[2] = el;
+          stepRefs.current[DETAILS_STEP] = el;
         }}
         className="contact-form__step"
-        hidden={step !== 2}
+        hidden={step !== DETAILS_STEP}
+        disabled={skipDetails}
+        aria-describedby="home-details-help"
       >
         <h3
           ref={(el) => {
-            headingRefs.current[2] = el;
+            headingRefs.current[DETAILS_STEP] = el;
+          }}
+          tabIndex={-1}
+          className="contact-form__step-title"
+        >
+          Do these home details look right to you?
+        </h3>
+        <p id="home-details-help" className="contact-form__step-help">
+          Your offer will be more accurate if all these details are up to date.
+        </p>
+        <div className="contact-form__details">
+          {SELECTS_BEFORE_SIZE.map((item) => (
+            <DetailSelect key={item.name} {...item} />
+          ))}
+          <NumberField
+            name="sqft"
+            label="Square footage (above ground)"
+            hint="Don't include basements, non-permitted additions, or non-heated square footage."
+            min={100}
+          />
+          <NumberField
+            name="lotSqft"
+            label="Lot square footage"
+            hint="This is the length x width of your lot (in feet)."
+            min={1}
+            optional
+          />
+          <DetailSelect {...FLOORS} />
+          <DetailSelect {...BASEMENT} onChange={setBasement} />
+          {basement === 'Yes' &&
+            BASEMENT_SIZES.map((item) => <NumberField key={item.name} name={item.name} label={item.label} hint={item.hint} min={0} />)}
+          {SELECTS_AT_END.map((item) => (
+            <DetailSelect key={item.name} {...item} />
+          ))}
+        </div>
+      </fieldset>
+
+      <fieldset
+        ref={(el) => {
+          stepRefs.current[3] = el;
+        }}
+        className="contact-form__step"
+        hidden={step !== 3}
+      >
+        <h3
+          ref={(el) => {
+            headingRefs.current[3] = el;
           }}
           tabIndex={-1}
           className="contact-form__step-title"
@@ -213,7 +437,7 @@ export function ContactForm() {
           </label>
         </div>
 
-        {step === 2 && <Turnstile key={attempt} />}
+        {step === STEPS.length - 1 && <Turnstile key={attempt} />}
       </fieldset>
 
       <div className="contact-form__trap" aria-hidden="true">
@@ -223,7 +447,7 @@ export function ContactForm() {
 
       <div className="contact-form__footer">
         {step > 0 && (
-          <button type="button" className="btn btn--ghost" onClick={() => goTo(step - 1)}>
+          <button type="button" className="btn btn--ghost" onClick={back}>
             Back
           </button>
         )}

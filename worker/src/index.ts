@@ -21,6 +21,21 @@ const PROPERTY_TYPES: Record<string, string> = {
   lot: 'Empty lot',
 };
 
+// Keys must match HomeDetails in src/lib/contact-form.ts.
+const DETAIL_LABELS: Record<string, string> = {
+  bedrooms: 'Bedrooms',
+  fullBaths: 'Full bathrooms',
+  partialBaths: 'Partial bathrooms',
+  sqft: 'Square footage (above ground)',
+  lotSqft: 'Lot square footage',
+  floors: 'Floors (above ground)',
+  basement: 'Basement',
+  finishedBasementSqft: 'Finished basement sq. ft.',
+  unfinishedBasementSqft: 'Unfinished basement sq. ft.',
+  yearBuilt: 'Year built',
+  pool: 'Pool',
+};
+
 const LIMITS = { firstName: 80, lastName: 80, phone: 30, email: 200, address: 300 } as const;
 type Field = keyof typeof LIMITS;
 
@@ -61,6 +76,17 @@ export default {
       typeof body.propertyType === 'string' && Object.hasOwn(PROPERTY_TYPES, body.propertyType)
         ? PROPERTY_TYPES[body.propertyType]
         : undefined;
+    const ownership =
+      body.ownership === 'owner'
+        ? 'Owner'
+        : body.ownership === 'other'
+          ? `Not the owner: ${clean(body.ownershipOther, 120) || 'not specified'}`
+          : '';
+    const rawDetails = body.details && typeof body.details === 'object' ? (body.details as Record<string, unknown>) : {};
+    const details = Object.entries(DETAIL_LABELS)
+      .map(([key, label]) => [label, clean(rawDetails[key], 20)])
+      .filter(([, value]) => value)
+      .map(([label, value]) => `${label}: ${value}`);
 
     const missing = (Object.keys(LIMITS) as Field[]).filter((key) => !lead[key]);
     if (missing.length || !EMAIL_PATTERN.test(lead.email) || !smsConsent) {
@@ -85,7 +111,9 @@ export default {
       `Phone: ${lead.phone}`,
       `Email: ${lead.email}`,
       `Property address: ${lead.address}`,
+      ...(ownership ? [`Relationship to property: ${ownership}`] : []),
       ...(propertyType ? [`Property type: ${propertyType}`] : []),
+      ...(details.length ? [``, `Home details:`, ...details, ``] : []),
       `Interested in: ${PATHWAY_LABELS[pathway]}`,
       `SMS consent: Yes (agreed ${new Date().toISOString()})`,
       ...(transcript.length ? [``, `Chat conversation:`, ...transcript] : []),

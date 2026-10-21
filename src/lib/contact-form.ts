@@ -11,6 +11,21 @@ export const PROPERTY_TYPES: { value: string; label: string; hint?: string }[] =
   { value: 'lot', label: 'Empty lot' },
 ];
 
+// Answers from the contact form's home-details step. Keys must match DETAIL_LABELS in worker/src/index.ts.
+export interface HomeDetails {
+  bedrooms: string;
+  fullBaths: string;
+  partialBaths: string;
+  sqft: string;
+  lotSqft: string;
+  floors: string;
+  basement: string;
+  finishedBasementSqft: string;
+  unfinishedBasementSqft: string;
+  yearBuilt: string;
+  pool: string;
+}
+
 export interface LeadSubmission {
   pathway: Pathway;
   firstName: string;
@@ -20,6 +35,10 @@ export interface LeadSubmission {
   address: string;
   /** One of PROPERTY_TYPES' values; the contact form asks for it, the chat form does not. */
   propertyType?: string;
+  /** 'owner' or 'other'; when 'other', ownershipOther says how they're related to the property. */
+  ownership?: string;
+  ownershipOther?: string;
+  details?: HomeDetails;
   smsConsent: boolean;
   /** Hidden honeypot; real visitors leave it empty. */
   company: string;
