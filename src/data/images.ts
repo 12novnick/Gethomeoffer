@@ -187,4 +187,36 @@ export const IMAGES = {
     label: 'Bathroom · Luxury',
     tone: 'dusk',
   },
+  // Example photos for the contact form's living-room-condition question. Pexels (free license, no attribution required),
+  // photo IDs: fixer upper 9908376, dated 7710007, standard 8583697, high end 6835056, luxury 24827078.
+  livingRoomFixerUpper: {
+    src: '/images/living-room-fixer-upper.jpg',
+    alt: 'Example of a fixer-upper living room needing significant repairs',
+    label: 'Living room · Fixer upper',
+    tone: 'earth',
+  },
+  livingRoomDated: {
+    src: '/images/living-room-dated.jpg',
+    alt: 'Example of a dated living room that has not been updated recently',
+    label: 'Living room · Dated',
+    tone: 'sand',
+  },
+  livingRoomStandard: {
+    src: '/images/living-room-standard.jpg',
+    alt: 'Example of a standard living room updated with common finishes',
+    label: 'Living room · Standard',
+    tone: 'stone',
+  },
+  livingRoomHighEnd: {
+    src: '/images/living-room-high-end.jpg',
+    alt: 'Example of a high-end living room with high-quality upgrades',
+    label: 'Living room · High end',
+    tone: 'olive',
+  },
+  livingRoomLuxury: {
+    src: '/images/living-room-luxury.jpg',
+    alt: 'Example of a luxury living room with elegant, top-tier finishes',
+    label: 'Living room · Luxury',
+    tone: 'dusk',
+  },
 } satisfies Record<string, ImageAsset>;

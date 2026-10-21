@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { IMAGES } from '../../data/images';
-import { BATHROOM_CONDITIONS, KITCHEN_CONDITIONS, PROPERTY_TYPES, TIMELINES, submitLead, type HomeDetails, type Pathway, type SubmitResult } from '../../lib/contact-form';
+import { BATHROOM_CONDITIONS, KITCHEN_CONDITIONS, LIVING_ROOM_CONDITIONS, PROPERTY_TYPES, TIMELINES, submitLead, type HomeDetails, type Pathway, type SubmitResult } from '../../lib/contact-form';
 import { ImageSlot } from '../ui/ImageSlot';
 import { AddressAutocomplete } from './AddressAutocomplete';
 import { TOKEN_FIELD, Turnstile } from './Turnstile';
@@ -14,12 +14,13 @@ const STATUS_MESSAGES: Record<SubmitResult, string> = {
 
 const PATHWAYS: Pathway[] = ['cash', 'agent', 'unsure'];
 
-const STEPS = ['Your details', 'Your home', 'Home details', 'Kitchen', 'Bathroom', 'Timeline', 'Confirm'] as const;
+const STEPS = ['Your details', 'Your home', 'Home details', 'Kitchen', 'Bathroom', 'Living room', 'Timeline', 'Confirm'] as const;
 const DETAILS_STEP = 2;
 const KITCHEN_STEP = 3;
 const BATHROOM_STEP = 4;
+const LIVING_ROOM_STEP = 5;
 // Steps that don't apply to an empty lot.
-const BUILDING_STEPS = [DETAILS_STEP, KITCHEN_STEP, BATHROOM_STEP];
+const BUILDING_STEPS = [DETAILS_STEP, KITCHEN_STEP, BATHROOM_STEP, LIVING_ROOM_STEP];
 
 const range = (from: number, to: number) => Array.from({ length: to - from + 1 }, (_, index) => String(from + index));
 
@@ -256,6 +257,7 @@ export function ContactForm() {
       propertyType: text('propertyType'),
       kitchen: skipDetails ? undefined : text('kitchen'),
       bathroom: skipDetails ? undefined : text('bathroom'),
+      livingRoom: skipDetails ? undefined : text('livingRoom'),
       timeline: text('timeline'),
       ownership: text('ownership'),
       ownershipOther: text('ownershipOther'),
@@ -494,17 +496,31 @@ export function ContactForm() {
         }}
       />
 
+      <ConditionStep
+        name="livingRoom"
+        title="How would you describe your living room?"
+        options={LIVING_ROOM_CONDITIONS}
+        hidden={step !== LIVING_ROOM_STEP}
+        disabled={skipDetails}
+        stepRef={(el) => {
+          stepRefs.current[LIVING_ROOM_STEP] = el;
+        }}
+        headingRef={(el) => {
+          headingRefs.current[LIVING_ROOM_STEP] = el;
+        }}
+      />
+
       <fieldset
         ref={(el) => {
-          stepRefs.current[5] = el;
+          stepRefs.current[6] = el;
         }}
         className="contact-form__step"
-        hidden={step !== 5}
+        hidden={step !== 6}
         aria-describedby="timeline-help"
       >
         <h3
           ref={(el) => {
-            headingRefs.current[5] = el;
+            headingRefs.current[6] = el;
           }}
           tabIndex={-1}
           className="contact-form__step-title"
@@ -526,14 +542,14 @@ export function ContactForm() {
 
       <fieldset
         ref={(el) => {
-          stepRefs.current[6] = el;
+          stepRefs.current[7] = el;
         }}
         className="contact-form__step"
-        hidden={step !== 6}
+        hidden={step !== 7}
       >
         <h3
           ref={(el) => {
-            headingRefs.current[6] = el;
+            headingRefs.current[7] = el;
           }}
           tabIndex={-1}
           className="contact-form__step-title"

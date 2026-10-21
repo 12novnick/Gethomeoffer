@@ -34,5 +34,10 @@ export const IMAGE_SIZES: Record<string, { width: number; height: number }> = {
   '/images/bathroom-standard.jpg': { width: 960, height: 576 },
   '/images/bathroom-high-end.jpg': { width: 960, height: 576 },
   '/images/bathroom-luxury.jpg': { width: 960, height: 576 },
+  '/images/living-room-fixer-upper.jpg': { width: 960, height: 576 },
+  '/images/living-room-dated.jpg': { width: 960, height: 576 },
+  '/images/living-room-standard.jpg': { width: 960, height: 576 },
+  '/images/living-room-high-end.jpg': { width: 960, height: 576 },
+  '/images/living-room-luxury.jpg': { width: 960, height: 576 },
   '/images/number1-badge.png': { width: 584, height: 427 },
 };

@@ -21,7 +21,7 @@ const PROPERTY_TYPES: Record<string, string> = {
   lot: 'Empty lot',
 };
 
-// Must match KITCHEN_CONDITIONS and BATHROOM_CONDITIONS in src/lib/contact-form.ts.
+// Must match KITCHEN_CONDITIONS, BATHROOM_CONDITIONS and LIVING_ROOM_CONDITIONS in src/lib/contact-form.ts.
 const CONDITION_LEVELS = ['Fixer upper', 'Dated', 'Standard', 'High end', 'Luxury'];
 
 // Must match TIMELINES in src/lib/contact-form.ts.
@@ -84,6 +84,7 @@ export default {
     const condition = (value: unknown) => (typeof value === 'string' && CONDITION_LEVELS.includes(value) ? value : '');
     const kitchen = condition(body.kitchen);
     const bathroom = condition(body.bathroom);
+    const livingRoom = condition(body.livingRoom);
     const timeline = typeof body.timeline === 'string' && TIMELINES.includes(body.timeline) ? body.timeline : '';
     const ownership =
       body.ownership === 'owner'
@@ -123,8 +124,9 @@ export default {
       ...(ownership ? [`Relationship to property: ${ownership}`] : []),
       ...(propertyType ? [`Property type: ${propertyType}`] : []),
       ...(timeline ? [`Needs to sell: ${timeline}`] : []),
-      ...(details.length || kitchen || bathroom
-        ? [``, `Home details:`, ...details, ...(kitchen ? [`Kitchen: ${kitchen}`] : []), ...(bathroom ? [`Main bathroom: ${bathroom}`] : []), ``]
+      ...(details.length || kitchen || bathroom || livingRoom
+        ? [``, `Home details:`, ...details, ...(kitchen ? [`Kitchen: ${kitchen}`] : []), ...(bathroom ? [`Main bathroom: ${bathroom}`] : []),
+            ...(livingRoom ? [`Living room: ${livingRoom}`] : []), ``]
         : []),
       `Interested in: ${PATHWAY_LABELS[pathway]}`,
       `SMS consent: Yes (agreed ${new Date().toISOString()})`,

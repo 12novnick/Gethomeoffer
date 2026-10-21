@@ -29,6 +29,15 @@ export const BATHROOM_CONDITIONS = [
   { value: 'Luxury', hint: 'Bathroom has elegant, top-tier finishes', image: 'bathroomLuxury' },
 ] as const;
 
+// Values must match LIVING_ROOM_CONDITIONS in worker/src/index.ts.
+export const LIVING_ROOM_CONDITIONS = [
+  { value: 'Fixer upper', hint: 'Living room needs significant repairs', image: 'livingRoomFixerUpper' },
+  { value: 'Dated', hint: "Living room hasn't been updated recently", image: 'livingRoomDated' },
+  { value: 'Standard', hint: 'Living room is updated with common finishes', image: 'livingRoomStandard' },
+  { value: 'High end', hint: 'Living room has high-quality upgrades', image: 'livingRoomHighEnd' },
+  { value: 'Luxury', hint: 'Living room has elegant, top-tier finishes', image: 'livingRoomLuxury' },
+] as const;
+
 // Values must match TIMELINES in worker/src/index.ts.
 export const TIMELINES = ['ASAP', '7-30 days', '1-3 months', '3-6 months'];
 
@@ -59,6 +68,8 @@ export interface LeadSubmission {
   kitchen?: string;
   /** One of BATHROOM_CONDITIONS' values. */
   bathroom?: string;
+  /** One of LIVING_ROOM_CONDITIONS' values. */
+  livingRoom?: string;
   /** One of TIMELINES. */
   timeline?: string;
   /** 'owner' or 'other'; when 'other', ownershipOther says how they're related to the property. */
