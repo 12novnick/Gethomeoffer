@@ -1,9 +1,9 @@
 :root {
   /* Color */
-  --color-background: #f6f2ec;
-  --color-surface: #fbf9f5;
+  --color-background: #ffffff;
+  --color-surface: #ffffff;
   --color-white: #ffffff;
-  --color-surface-alt: #ede7df;
+  --color-surface-alt: #f3f4f6;
   --color-ink: #1c1915;
   --color-text: #1c1915;
   --color-text-muted: #5e574e;
@@ -21,7 +21,7 @@
   --color-cta: #003d82;
   --color-cta-hover: #002d5f;
   --color-cta-text: white;
-  /* Text-weight blue for links on light backgrounds (≈5.8:1 on ivory). */
+  /* Text-weight blue for links on light backgrounds (≈6.1:1 on white). */
   --color-link: #1d6a86;
   --color-link-hover: #144e63;
   --color-focus: #1d6a86;

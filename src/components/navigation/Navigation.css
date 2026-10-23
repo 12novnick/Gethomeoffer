@@ -12,7 +12,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background-color: rgba(246, 242, 236, 0.92);
+  background-color: rgba(255, 255, 255, 0.92);
   backdrop-filter: saturate(140%) blur(12px);
 }
 
