@@ -2,16 +2,14 @@ import './SectionHeader.css';
 
 interface SectionHeaderProps {
   id: string;
-  eyebrow?: string;
   title: string;
   lede?: string;
 }
 
-export function SectionHeader({ id, eyebrow, title, lede }: SectionHeaderProps) {
+export function SectionHeader({ id, title, lede }: SectionHeaderProps) {
   return (
     <header className="section-header">
       <div>
-        {eyebrow && <p className="eyebrow">{eyebrow}</p>}
         <h2 id={id} className="section-header__title">
           {title}
         </h2>

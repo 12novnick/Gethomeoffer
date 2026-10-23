@@ -31,7 +31,7 @@ export function AgentProgramPage() {
         }
       />
 
-      <SplitSection id="agent-traditional" eyebrow="Traditional selling" title="Selling on the open market.">
+      <SplitSection id="agent-traditional" title="Selling on the open market.">
         <p>
           A traditional sale means listing your property on the open market, where buyers see it, visit it and make
           offers.
@@ -50,7 +50,6 @@ export function AgentProgramPage() {
         <div className="container">
           <SectionHeader
             id="agent-process-title"
-            eyebrow="The process"
             title="How the Real Estate Agent Program works."
             lede="From your first conversation to closing day, you stay in control of every decision."
           />
@@ -62,7 +61,6 @@ export function AgentProgramPage() {
         <div className="container">
           <SectionHeader
             id="agent-help-title"
-            eyebrow="The agent's role"
             title="What an agent can help with."
             lede="A real estate professional guides the sale from pricing through closing."
           />
@@ -70,7 +68,7 @@ export function AgentProgramPage() {
         </div>
       </section>
 
-      <SplitSection id="agent-expect" eyebrow="What to expect" title="What homeowners can expect.">
+      <SplitSection id="agent-expect" title="What homeowners can expect.">
         <p>
           A traditional sale usually moves through preparation, listing, showings and offers, followed by the buyer's
           inspection, appraisal and financing before closing.

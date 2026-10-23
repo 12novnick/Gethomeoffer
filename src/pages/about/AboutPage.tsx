@@ -38,7 +38,7 @@ export function AboutPage() {
         image={IMAGES.aboutHero}
       />
 
-      <SplitSection id="why" eyebrow="Why we exist" title="Why Get Home Offer exists.">
+      <SplitSection id="why" title="Why Get Home Offer exists.">
         <p>
           Selling a property is rarely just a transaction. It usually comes with a change in life: an inheritance, a
           move, or a property that has become more than you want to manage.
@@ -49,7 +49,7 @@ export function AboutPage() {
         </p>
       </SplitSection>
 
-      <SplitSection id="story" eyebrow="Our story" title="Who we are." tone="surface">
+      <SplitSection id="story" title="Who we are." tone="surface">
         <p>
           I grew up in Wisconsin and studied real estate and risk management at the University of Wisconsin–Madison,
           where both programs ranked first in the nation. Those programs taught me two things: how to understand
@@ -73,12 +73,12 @@ export function AboutPage() {
 
       <section className="section" aria-labelledby="beliefs-title">
         <div className="container">
-          <SectionHeader id="beliefs-title" eyebrow="What we believe" title="What we believe." />
+          <SectionHeader id="beliefs-title" title="What we believe." />
           <DetailGrid items={BELIEFS} numbered />
         </div>
       </section>
 
-      <SplitSection id="how-we-work" eyebrow="Working together" title="How we work with property owners." tone="surface">
+      <SplitSection id="how-we-work" title="How we work with property owners." tone="surface">
         <p>Whichever path you choose, the way we work stays the same.</p>
         <ul role="list" className="check-list">
           {WORKING_PRINCIPLES.map((principle) => (
@@ -87,7 +87,7 @@ export function AboutPage() {
         </ul>
       </SplitSection>
 
-      <SplitSection id="approach" eyebrow="Our approach" title="Our approach to real estate.">
+      <SplitSection id="approach" title="Our approach to real estate.">
         <p>
           We offer two programs because property owners need different things. The{' '}
           <Link to={CASH_PROGRAM.path}>Cash Program</Link> is a direct sale with a straightforward offer and no
@@ -100,7 +100,7 @@ export function AboutPage() {
         </p>
       </SplitSection>
 
-      <SplitSection id="where" eyebrow="Locations" title="Where we operate." tone="surface">
+      <SplitSection id="where" title="Where we operate." tone="surface">
         <p>Both programs list the states and cities we serve. Choose a program to find your state.</p>
         <ProgramLinks />
       </SplitSection>
