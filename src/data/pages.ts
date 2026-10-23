@@ -54,7 +54,7 @@ export const PAGES: Record<string, PageInfo> = {
     description: 'Why Get Home Offer exists, what we believe, and how we work with property owners.',
     heading: 'About Us',
     published: '2026-09-29',
-    modified: '2026-10-12',
+    modified: '2026-10-23',
   },
   '/faq/': {
     title: 'Frequently Asked Questions | Get Home Offer',

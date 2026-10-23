@@ -61,7 +61,7 @@ export function AboutPage() {
           owners felt pressured into decisions that didn't fit their lives.
         </p>
         <p>
-          I created Get Home Offer because Wisconsin homeowners deserve better. They deserve to understand both options
+          I created Get Home Offer because homeowners deserve better. They deserve to understand both options
           clearly, to work with someone who knows their market, and to choose the path that actually fits their situation,
           whether that's a fast cash sale or the traditional market with a professional.
         </p>
